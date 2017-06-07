@@ -122,7 +122,7 @@ Partial Class TTSDanmakuMgmt
         Me.ComboBox_Engine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_Engine.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.ComboBox_Engine.FormattingEnabled = True
-        Me.ComboBox_Engine.Items.AddRange(New Object() {"百度翻译 API（伪", ".NET 框架自带引擎"})
+        Me.ComboBox_Engine.Items.AddRange(New Object() {"百度翻译 API（伪", ".NET 框架自带引擎", "Google 娘"})
         Me.ComboBox_Engine.Location = New System.Drawing.Point(193, 44)
         Me.ComboBox_Engine.Name = "ComboBox_Engine"
         Me.ComboBox_Engine.Size = New System.Drawing.Size(137, 25)

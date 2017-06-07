@@ -95,15 +95,36 @@ Module Includings
     ''' 使用 .NET 框架自带实现方法读出，未出错则返回 True.
     ''' </summary>
     ''' <param name="text">文本</param>
-    ''' <returns></returns>
-    Public Function SpeechOutput(text As String) As Boolean
+    Public Sub SpeechOutput(text As String)
+        Dim obj As New Speech.Synthesis.SpeechSynthesizer() With {.Volume = 9, .Rate = 5}
+        obj.SelectVoice("Microsoft Huihui Desktop")
+        obj.SpeakAsync(text)
+    End Sub
+
+    ''' <summary>
+    ''' 召唤不存在的404娘语音
+    ''' </summary>
+    ''' <param name="text"></param>
+    Public Sub GoogleTTS(text As String)
+        Dim retryCount As Short = 0
+retry:
+        Dim filename As String = ""
         Try
-            Dim obj As New Speech.Synthesis.SpeechSynthesizer() With {.Volume = 9, .Rate = 5}
-            obj.SelectVoice("Microsoft Huihui Desktop")
-            obj.SpeakAsync(text)
-            Return True
+            filename = Google.TTS.TTSHelper.GerarArquivo(text, Google.TTS.Idioma.Chinese)
         Catch ex As Exception
-            Return False
+            If retryCount >= 5 Then Throw ex
+            retryCount += 1
+            GoTo retry
         End Try
-    End Function
+        Dim waveout As New NAudio.Wave.WaveOutEvent
+        Dim mp3reader As New NAudio.Wave.Mp3FileReader(filename)
+        waveout.Init(mp3reader)
+        Try
+            waveout.Play()
+        Catch ex As Exception
+            If retryCount >= 5 Then Throw ex
+            retryCount += 1
+            GoTo retry
+        End Try
+    End Sub
 End Module

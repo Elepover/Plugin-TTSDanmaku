@@ -153,6 +153,7 @@ Partial Class Form_StatusReport
         'Button_Cancel
         '
         Me.Button_Cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Button_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.Button_Cancel.Location = New System.Drawing.Point(379, 83)
         Me.Button_Cancel.Name = "Button_Cancel"
@@ -165,6 +166,7 @@ Partial Class Form_StatusReport
         'Button_Save
         '
         Me.Button_Save.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button_Save.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Button_Save.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.Button_Save.Location = New System.Drawing.Point(379, 22)
         Me.Button_Save.Name = "Button_Save"
@@ -200,9 +202,11 @@ Partial Class Form_StatusReport
         '
         'Form_StatusReport
         '
+        Me.AcceptButton = Me.Button_Save
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
+        Me.CancelButton = Me.Button_Cancel
         Me.ClientSize = New System.Drawing.Size(484, 272)
         Me.Controls.Add(Me.Panel_AutoScroll)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!)

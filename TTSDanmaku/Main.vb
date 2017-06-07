@@ -12,7 +12,7 @@ Public Class Main
         Me.PluginAuth = "Elepover"
         Me.PluginName = "TTSDanmaku"
         Me.PluginCont = "elepover@outlook.com"
-        Me.PluginVer = "1.0.3.47"
+        Me.PluginVer = "1.0.3.48"
         Me.PluginDesc = "把你收到的弹幕和礼物，读出来！"
     End Sub
 
@@ -114,11 +114,42 @@ DLoop:
             End Try
         End If
 
+
         If CheckNAudio() = False Then
             DBGLog("NAudio 模块错误，放弃。")
             Statistics.TTS_Dropped += 1
             Return False
         End If
+
+        If Settings.Settings.Engine = 2 Then
+            Try
+                DBGLog("使用 404 翻译 API。")
+                If silent Then DBGLog("正在静默播放模式中。")
+                If Not silent Then
+                    If Not IsCoolingDown Then
+                        DBGLog("启动播放: " & content)
+                        GoogleTTS(content)
+                        Statistics.TTS_Succeeded += 1
+                        If Settings.Settings.TTSDelayEnabled Then StartCoolDown() '启动冷却
+                        Return True
+                    Else
+                        Statistics.TTS_PlayedDuringCoolDown += 1
+                        DBGLog("正在冷却时间中，将不会播放 TTS。")
+                        Return True
+                    End If
+                Else
+                    Statistics.TTS_Silent += 1
+                    Return True
+                End If
+            Catch ex As Exception
+                Statistics.DBG_ErrCount += 1
+                Statistics.DBG_LastException = ex
+                Statistics.TTS_Failed += 1
+                Log("TTS 播放错误: " & ex.ToString)
+                Return False
+            End Try
+        End If
+
         Dim retryCount As Short = 0
 retry:
         DBGLog("正尝试播放: " & content)
@@ -259,7 +290,9 @@ retry:
 
     Private Sub Main_Connected(sender As Object, e As BilibiliDM_PluginFramework.ConnectedEvtArgs)
         DBGLog("Connected Event Handled, data: " & e.roomid)
-        PlayTTS("已成功连接至房间: " & e.roomid)
+        If IsEnabled Then
+            PlayTTS("已成功连接至房间: " & e.roomid)
+        End If
     End Sub
 
     Public Overrides Sub Admin()
