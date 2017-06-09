@@ -38,7 +38,7 @@ Description last updated at: 06/07/2017 05:46 (UTC)
 更新日志
 ----
 
-稳定版本（弹幕姬插件仓库版本）: **v1.0.3.41**
+稳定版本（弹幕姬插件仓库版本）: **v1.0.3.48**
 
 最新版本: [**v1.0.3.48**](https://ttsdanmaku.elepover.com)
 
