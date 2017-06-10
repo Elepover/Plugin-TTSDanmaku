@@ -50,7 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BilibiliDM_PluginFramework">
-      <HintPath>..\BilibiliDM_PluginFramework.dll</HintPath>
+      <HintPath>..\..\BilibiliDM_PluginFramework.dll</HintPath>
     </Reference>
     <Reference Include="NAudio, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
