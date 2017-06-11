@@ -308,6 +308,7 @@ retry:
         MyBase.[Stop]()
         '請勿使用任何阻塞方法
         DBGLog("停止状态报告线程...")
+        SRThread = New Threading.Thread(AddressOf ThrStatusReport)
         SRThread.Abort()
         IsEnabled = False
         Console.WriteLine("Plugin Stoped!")
