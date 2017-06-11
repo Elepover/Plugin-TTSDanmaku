@@ -306,12 +306,9 @@ retry:
 
     Public Overrides Sub [Stop]()
         MyBase.[Stop]()
-        '請勿使用任何阻塞方法
-        DBGLog("停止状态报告线程...")
-        If Not SRThread.Equals(Nothing) Then
-            If SRThread.IsAlive Then
-                SRThread.Abort()
-            End If
+        ''請勿使用任何阻塞方法
+        If SRThread?.IsAlive Then
+            SRThread.Abort()
         End If
         IsEnabled = False
         Console.WriteLine("Plugin Stoped!")
@@ -323,6 +320,7 @@ retry:
         '請勿使用任何阻塞方法
         Dim startSW As New Stopwatch
         startSW.Start()
+        Dim startupFailure As Boolean = False
         Log("正在启动...")
         Try
             Settings.Methods.Initialize()
@@ -341,6 +339,7 @@ retry:
             DBGLog("StatusReport_ResolveAdvVars: " & Settings.Settings.StatusReport_ResolveAdvVars)
         Catch ex As Exception
             Log("启动失败 - 无法初始化设置系统: " & ex.ToString)
+            startupFailure = True
             [Stop]()
         End Try
         If Settings.Settings.AutoClearCache Then
@@ -374,6 +373,8 @@ APIs:
             End If
         Catch ex As Exception
             Log("启动失败 - TTS 播放时出现错误: " & ex.ToString)
+            startupFailure = True
+            [Stop]()
         End Try
         DBGLog("初始化统计系统...")
         Statistics.ResetStats()
@@ -385,6 +386,10 @@ APIs:
         GC.Collect()
         Console.WriteLine("Plugin Started!")
         startSW.Stop()
+        If startupFailure Then
+            Log("启动过程中出现无法恢复的错误，请检查日志。")
+            Exit Sub
+        End If
         Me.Log("已启动成功! 耗时: " & startSW.Elapsed.TotalSeconds & "s.")
         If startSW.ElapsedMilliseconds > 5000 Then
             Log("TTSDanmaku 启动用时比以往来得久...如有条件请将 TTSDanmaku 自动清理缓存选项关闭。")
@@ -394,9 +399,7 @@ APIs:
 
     Public Overrides Sub DeInit()
         MyBase.DeInit()
-        If Status Then
-            SRThread.Abort()
-        End If
+        SRThread?.Abort()
         IsEnabled = False
     End Sub
 

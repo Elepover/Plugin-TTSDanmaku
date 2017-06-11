@@ -166,6 +166,7 @@
         GroupBox_Statistics.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         GroupBox_TempMgr.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         GroupBox_TTSOptions.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Label_ThanksViaMyHeart.Font = New Drawing.Font("Microsoft Yahei UI", 10)
 
         Status("就绪", False)
     End Sub
