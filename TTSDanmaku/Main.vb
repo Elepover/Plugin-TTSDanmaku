@@ -399,7 +399,9 @@ APIs:
 
     Public Overrides Sub DeInit()
         MyBase.DeInit()
-        SRThread?.Abort()
+        If SRThread?.IsAlive Then
+            SRThread.Abort()
+        End If
         IsEnabled = False
     End Sub
 
