@@ -416,15 +416,15 @@ Partial Class TTSDanmakuMgmt
         Me.Label_ThanksViaMyHeart.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label_ThanksViaMyHeart.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Label_ThanksViaMyHeart.Font = New System.Drawing.Font("微软雅黑", 11.0!)
+        Me.Label_ThanksViaMyHeart.Font = New System.Drawing.Font("微软雅黑", 10.0!)
         Me.Label_ThanksViaMyHeart.Location = New System.Drawing.Point(211, 537)
         Me.Label_ThanksViaMyHeart.Name = "Label_ThanksViaMyHeart"
         Me.Label_ThanksViaMyHeart.Size = New System.Drawing.Size(232, 23)
         Me.Label_ThanksViaMyHeart.TabIndex = 9
         Me.Label_ThanksViaMyHeart.Text = "真诚地感谢您使用本插件。"
         Me.Label_ThanksViaMyHeart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip_Default.SetToolTip(Me.Label_ThanksViaMyHeart, "真诚地在此感谢您在安装使用本插件上所花费的分分秒秒。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "““相聚是缘，相逢是歌””，您的使用是对我最大的鼓舞。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果有任何使用问题，请参见右侧常见问题。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如没" &
-        "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在““给我一些建议””处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
+        Me.ToolTip_Default.SetToolTip(Me.Label_ThanksViaMyHeart, "真诚地在此感谢您在安装使用本插件上所花费的分分秒秒。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & """相聚是缘，相逢是歌""，您的使用是对我最大的鼓舞。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果有任何使用问题，请参见右侧常见问题。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如没" &
+        "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
         "his is an open-source(MIT) software.")
         '
         'TTSDanmakuMgmt

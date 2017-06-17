@@ -12,7 +12,7 @@ Public Class Main
         Me.PluginAuth = "Elepover"
         Me.PluginName = "TTSDanmaku"
         Me.PluginCont = "elepover@outlook.com"
-        Me.PluginVer = "1.0.3.49"
+        Me.PluginVer = "1.0.3.50"
         Me.PluginDesc = "把你收到的弹幕和礼物，读出来！"
     End Sub
 
@@ -55,7 +55,7 @@ DLoop:
         Loop
     End Sub
 
-    Private Sub DBGLog(logstr As String)
+    Public Sub DBGLog(logstr As String)
         If Settings.Settings.DebugMode Then Log(logstr)
     End Sub
 
@@ -77,7 +77,7 @@ DLoop:
     ''' <param name="silent">静默模式，调试用。</param>
     ''' <param name="sysMsg">系统消息，启用此选项将无视冷却时间。</param>
     ''' <returns></returns>
-    Private Function PlayTTS(content As String, Optional silent As Boolean = False, Optional sysMsg As Boolean = False) As Boolean
+    Public Function PlayTTS(content As String, Optional silent As Boolean = False, Optional sysMsg As Boolean = False) As Boolean
         Statistics.TTS_Total += 1
         If content.Length > 128 Then
             DBGLog("TTS 内容太多，放弃。")
@@ -301,7 +301,12 @@ retry:
         'If IsEnabled = False Then Exit Sub
         'Dim pThr As New System.Threading.Thread(AddressOf ShowADM)
         'pThr.Start()
-        ShowADM()
+        If My.Computer.Keyboard.ShiftKeyDown Then
+            Dim frm As New Form_WizardChooser
+            frm.Show()
+        Else
+            ShowADM()
+        End If
     End Sub
 
     Public Overrides Sub [Stop]()

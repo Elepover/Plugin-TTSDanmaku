@@ -105,7 +105,7 @@ Module Includings
     ''' 召唤不存在的404娘语音
     ''' </summary>
     ''' <param name="text"></param>
-    Public Sub GoogleTTS(text As String)
+    Public Sub GoogleTTS(text As String, Optional silent As Boolean = False)
         Dim retryCount As Short = 0
 retry:
         Dim filename As String = ""
@@ -120,7 +120,7 @@ retry:
         Dim mp3reader As New NAudio.Wave.Mp3FileReader(filename)
         waveout.Init(mp3reader)
         Try
-            waveout.Play()
+            If Not silent Then waveout.Play()
         Catch ex As Exception
             If retryCount >= 5 Then Throw ex
             retryCount += 1
@@ -128,3 +128,7 @@ retry:
         End Try
     End Sub
 End Module
+
+Public Class WizardStatic
+    Public Property WizardSettings As Settings.Settings = Nothing
+End Class

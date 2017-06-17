@@ -81,10 +81,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoesNotExistTTS.vb" />
+    <Compile Include="Form_SetupWizard_1.Designer.vb">
+      <DependentUpon>Form_SetupWizard_1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_SetupWizard_1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_SetupWizard_2.Designer.vb">
+      <DependentUpon>Form_SetupWizard_2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_SetupWizard_2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form_StatusReport.Designer.vb">
       <DependentUpon>Form_StatusReport.vb</DependentUpon>
     </Compile>
     <Compile Include="Form_StatusReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_WizardChooser.Designer.vb">
+      <DependentUpon>Form_WizardChooser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_WizardChooser.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Includings.vb" />
@@ -115,8 +133,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form_SetupWizard_1.resx">
+      <DependentUpon>Form_SetupWizard_1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_SetupWizard_2.resx">
+      <DependentUpon>Form_SetupWizard_2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_StatusReport.resx">
       <DependentUpon>Form_StatusReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_WizardChooser.resx">
+      <DependentUpon>Form_WizardChooser.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
