@@ -121,6 +121,9 @@ retry:
         waveout.Init(mp3reader)
         Try
             If Not silent Then waveout.Play()
+            Delay(120000)
+            waveout.Dispose()
+            mp3reader.Dispose()
         Catch ex As Exception
             If retryCount >= 5 Then Throw ex
             retryCount += 1
