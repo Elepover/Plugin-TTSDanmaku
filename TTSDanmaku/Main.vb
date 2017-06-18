@@ -204,6 +204,9 @@ retry:
                     Statistics.TTS_Succeeded += 1
                     Now.AddSeconds(1)
                     If Settings.Settings.TTSDelayEnabled Then StartCoolDown() '启动冷却
+                    Delay(120000)
+                    waveout.Dispose()
+                    mp3reader.Dispose()
                 Else
                     Statistics.TTS_PlayedDuringCoolDown += 1
                     DBGLog("正在冷却时间中，将不会播放 TTS。")
