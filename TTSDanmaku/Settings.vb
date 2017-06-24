@@ -269,6 +269,8 @@ Namespace Settings
             Settings.StatusReportInterval = SettingsReader.ReadLine()
             SettingsReader.ReadLine()
             Settings.StatusReportContent = SettingsReader.ReadLine()
+            SettingsReader.ReadLine()
+            Settings.TTSVolume = SettingsReader.ReadLine()
             SettingsReader.Close()
         End Sub
 

@@ -421,6 +421,9 @@ APIs:
         If SRThread?.IsAlive Then
             SRThread.Abort()
         End If
+        'Kill DMJ forcely.
+        Dim proc As Process = Process.GetCurrentProcess
+        proc.Kill()
         IsEnabled = False
     End Sub
 
