@@ -10,6 +10,7 @@
         Settings.Settings.TTSGiftsReceived = CheckBox_TTSGifts.Checked
         Settings.Settings.TTSDanmakuSender = CheckBox_TTSSender.Checked
         Settings.Settings.AutoClearCache = CheckBox_NoCache.Checked
+        Settings.Methods.SaveSettings()
         Dim frm As New Form_SetupWizard_4
         frm.Show()
         Me.Close()

@@ -65,6 +65,7 @@
     Private Sub Button_Next_Click(sender As Object, e As EventArgs) Handles Button_Next.Click
         Settings.Settings.DanmakuText = TextBox_CustomDMContent.Text
         Settings.Settings.GiftsText = TextBox_CustomGiftContent.Text
+        Settings.Methods.SaveSettings()
         Dim frm As New Form_SetupWizard_5
         frm.Show()
         Me.Close()
