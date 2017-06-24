@@ -4,6 +4,7 @@ The TTSDanmaku plugin for bilibili_dm (https://github.com/copyliu/bililive_dm)
 Description last updated at: 06/24/2017 15:28 (UTC)
 
 有问题或是有建议可以 [在作者的 Blog](https://blog.elepover.com/quoteLeft.html) 通过评论提交。
+
 [在此感谢](https://github.com/Elepover/Plugin-TTSDanmaku/blob/master/THANKS.md)每一位为此插件做出贡献的用户。
 
 安装方法
