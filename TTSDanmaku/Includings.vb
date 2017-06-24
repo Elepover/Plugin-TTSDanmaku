@@ -121,6 +121,7 @@ retry:
         Dim mp3reader As New NAudio.Wave.Mp3FileReader(filename)
         waveout.Init(mp3reader)
         Try
+            waveout.Volume = Settings.Settings.TTSVolume / 100
             If Not silent Then waveout.Play()
             If forceDispose Then
                 If waveout.PlaybackState = NAudio.Wave.PlaybackState.Playing Then
@@ -129,7 +130,7 @@ retry:
                     mp3reader.Dispose()
                 End If
             End If
-                Delay(120000)
+            Delay(120000)
             waveout.Dispose()
             mp3reader.Dispose()
         Catch ex As Exception

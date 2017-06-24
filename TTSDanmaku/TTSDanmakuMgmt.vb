@@ -185,6 +185,7 @@
         Settings.Settings.TTSDelayEnabled = CheckBox_TTSCoolDown.Checked
         Settings.Settings.TTSDelayValue = NumericUpDown_CoolDownValue.Value
         Settings.Settings.Engine = ComboBox_Engine.SelectedIndex
+        Settings.Settings.TTSVolume = NumericUpDown_Volume.Value
         '检查自定义字符是否正常
         Dim IllegalVars_DM As Boolean = CheckIfLegal_DM()
         Dim IllegalVars_GIFT As Boolean = CheckIfLegal_GIFT()

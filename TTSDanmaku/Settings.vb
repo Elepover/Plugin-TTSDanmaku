@@ -183,7 +183,7 @@ Namespace Settings
         ''' 新增于 2017/06/24 20:50 - TTS 播放音量
         ''' </summary>
         ''' <returns></returns>
-        Public Shared Property TTSVolume As Boolean
+        Public Shared Property TTSVolume As Integer
     End Class
 
     Public Class Vars

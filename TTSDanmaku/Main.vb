@@ -201,6 +201,7 @@ retry:
             If silent Then DBGLog("正在静默播放模式中。")
             If Not silent Then
                 If Not IsCoolingDown Then
+                    waveout.Volume = Settings.Settings.TTSVolume / 100
                     waveout.Play()
                     Statistics.TTS_Succeeded += 1
                     Now.AddSeconds(1)
@@ -313,6 +314,10 @@ retry:
         If My.Computer.Keyboard.ShiftKeyDown Then
             Dim frm As New Form_WizardChooser
             frm.Show()
+        ElseIf My.Computer.Keyboard.AltKeyDown Then
+            Settings.Methods.InitializeDirectories()
+            Settings.Methods.CreateSettingsFile()
+            NBlockMsgBox("已重置配置文件。", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "TTSDanmaku")
         Else
             ShowADM()
         End If
