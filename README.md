@@ -1,7 +1,7 @@
 # Plugin-TTSDanmaku
 The TTSDanmaku plugin for bilibili_dm (https://github.com/copyliu/bililive_dm)
 
-Description last updated at: 06/11/2017 05:39 (UTC)
+Description last updated at: 06/24/2017 15:28 (UTC)
 
 有问题或是有建议可以 [在作者的 Blog](https://blog.elepover.com/quoteLeft.html) 通过评论提交。
 
@@ -38,9 +38,9 @@ Description last updated at: 06/11/2017 05:39 (UTC)
 更新日志
 ----
 
-稳定版本（弹幕姬插件仓库版本）: **v1.0.3.49**
+稳定版本（弹幕姬插件仓库版本）: **v1.0.4.50**
 
-最新版本: [**v1.0.3.49**](https://ttsdanmaku.elepover.com)
+最新版本: [**v1.0.4.50**](https://ttsdanmaku.elepover.com)
 
 ```
 [i] 各前缀说明:
@@ -54,6 +54,12 @@ Description last updated at: 06/11/2017 05:39 (UTC)
 [i] 楼上的问题将在后期版本中解决。
 
 [i] 新版开发进度:
+
+v1.0.4, build 50 ->
+[+] 新增设置向导功能（可按住 Shift 选择“管理”来打开设置向导）。
+[+] *一定程度上*修复内存爆炸问题。
+[+] 新增 TTS 音量设置。
+[+] 按住 Ctrl 时选择“管理”将会重置配置文件。
 
 v1.0.3, build 49 ->
 [+] 设置窗口秘密更新。
