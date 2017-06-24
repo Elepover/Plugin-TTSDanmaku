@@ -18,6 +18,12 @@
 | LenZhou | 留言板 | TTS 音量调节 |
 | ... | ... | ... |
 
+| Source / 源 | Link / 链接 |
+| :------ | ------: |
+| Telegram | https://t.me/kruintian |
+| 留言板 | https://blog.elepover.com/quoteLeft.html |
+| ... | ... |
+
 真诚感谢所有用户在安装和使用本插件的过程中花费的分分秒秒。
 
 *Copyright (C) 2017 Elepover.*
