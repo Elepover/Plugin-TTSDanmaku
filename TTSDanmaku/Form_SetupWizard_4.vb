@@ -22,17 +22,17 @@
 
         'Apply pass state
         If pass1 Then
-            TextBox_CustomDMContent.ForeColor = Drawing.Color.LightGreen
+            TextBox_CustomDMContent.BackColor = Drawing.Color.LightGreen
             PictureBox_OK_1.Visible = True
         Else
-            TextBox_CustomDMContent.ForeColor = Drawing.Color.Pink
+            TextBox_CustomDMContent.BackColor = Drawing.Color.Pink
             PictureBox_OK_1.Visible = False
         End If
         If pass2 Then
-            TextBox_CustomGiftContent.ForeColor = Drawing.Color.LightGreen
+            TextBox_CustomGiftContent.BackColor = Drawing.Color.LightGreen
             PictureBox_OK_2.Visible = True
         Else
-            TextBox_CustomGiftContent.ForeColor = Drawing.Color.Pink
+            TextBox_CustomGiftContent.BackColor = Drawing.Color.Pink
             PictureBox_OK_2.Visible = False
         End If
 
@@ -70,7 +70,7 @@
         Me.Close()
     End Sub
 
-    Private Sub TextBox_CustomDMContent_TextChanged(sender As Object, e As EventArgs) Handles TextBox_CustomDMContent.TextChanged
+    Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged
         SpellingCheck()
     End Sub
 
