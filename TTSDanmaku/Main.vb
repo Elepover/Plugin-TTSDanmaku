@@ -76,8 +76,9 @@ DLoop:
     ''' <param name="content">TTS 内容。</param>
     ''' <param name="silent">静默模式，调试用。</param>
     ''' <param name="sysMsg">系统消息，启用此选项将无视冷却时间。</param>
+    ''' <param name="forceDispose">播放后瞬间强行释放资源（不播放）</param>
     ''' <returns></returns>
-    Public Function PlayTTS(content As String, Optional silent As Boolean = False, Optional sysMsg As Boolean = False) As Boolean
+    Public Function PlayTTS(content As String, Optional silent As Boolean = False, Optional sysMsg As Boolean = False, Optional forceDispose As Boolean = False) As Boolean
         Statistics.TTS_Total += 1
         If content.Length > 128 Then
             DBGLog("TTS 内容太多，放弃。")
@@ -204,6 +205,11 @@ retry:
                     Statistics.TTS_Succeeded += 1
                     Now.AddSeconds(1)
                     If Settings.Settings.TTSDelayEnabled Then StartCoolDown() '启动冷却
+                    If forceDispose Then
+                        waveout.Stop()
+                        waveout.Dispose()
+                        mp3reader.Dispose()
+                    End If
                     Delay(120000)
                     waveout.Dispose()
                     mp3reader.Dispose()

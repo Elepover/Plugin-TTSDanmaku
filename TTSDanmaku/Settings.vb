@@ -10,6 +10,22 @@ Namespace Settings
     ''' Current Settings
     ''' </summary>
     Public Class Settings
+        Sub New()
+            DebugMode = False
+            TTSDanmakuSender = True
+            TTSGiftsReceived = True
+            AutoClearCache = True
+            TTSDelayEnabled = False
+            TTSDelayValue = 5000
+            DanmakuText = "$USER 说: $DM"
+            GiftsText = "收到来自 $USER 的 $COUNT 个 $GIFT"
+            Engine = 0
+            StatusReport = False
+            StatusReport_ResolveAdvVars = True
+            StatusReportInterval = 60
+            StatusReportContent = "当前在线人数: $ONLINE, 弹幕总数: $TOTALDM, 现在是 $YEAR 年 $MONTH 月 $DAY 日，$HOUR 时 $MINUTE 分 $SEC 秒，当前物理内存可用 $MEMAVAI GB，已用百分之 $MPERCENT，虚拟内存可用 $VMEM GB，已用百分之 $VPERCENT_VM。"
+            TTSVolume = 100
+        End Sub
         ''' <summary>
         ''' 只读设置项, API 字符串。
         ''' </summary>
@@ -163,6 +179,11 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property StatusReport_ResolveAdvVars As Boolean
+        ''' <summary>
+        ''' 新增于 2017/06/24 20:50 - TTS 播放音量
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property TTSVolume As Boolean
     End Class
 
     Public Class Vars
@@ -283,6 +304,8 @@ Namespace Settings
             SettingsWriter.WriteLine("60")
             SettingsWriter.WriteLine("状态报告内容:")
             SettingsWriter.WriteLine("当前在线人数: $ONLINE, 弹幕总数: $TOTALDM, 现在是 $YEAR 年 $MONTH 月 $DAY 日，$HOUR 时 $MINUTE 分 $SEC 秒，当前物理内存可用 $MEMAVAI GB，已用百分之 $MPERCENT，虚拟内存可用 $VMEM GB，已用百分之 $VPERCENT_VM。")
+            SettingsWriter.WriteLine("TTS 音量:")
+            SettingsWriter.WriteLine("100")
             SettingsWriter.Close()
             ReadSettings()
         End Sub
@@ -316,6 +339,8 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.StatusReportInterval)
             SettingsWriter.WriteLine("状态报告内容:")
             SettingsWriter.WriteLine(Settings.StatusReportContent)
+            SettingsWriter.WriteLine("TTS 音量:")
+            SettingsWriter.WriteLine(Settings.TTSVolume)
             SettingsWriter.Close()
         End Sub
     End Class

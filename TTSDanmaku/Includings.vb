@@ -96,7 +96,7 @@ Module Includings
     ''' </summary>
     ''' <param name="text">文本</param>
     Public Sub SpeechOutput(text As String)
-        Dim obj As New Speech.Synthesis.SpeechSynthesizer() With {.Volume = 9, .Rate = 5}
+        Dim obj As New Speech.Synthesis.SpeechSynthesizer() With {.Volume = 9, .Rate = 3}
         obj.SelectVoice("Microsoft Huihui Desktop")
         obj.SpeakAsync(text)
     End Sub
@@ -105,7 +105,8 @@ Module Includings
     ''' 召唤不存在的404娘语音
     ''' </summary>
     ''' <param name="text"></param>
-    Public Sub GoogleTTS(text As String, Optional silent As Boolean = False)
+    ''' <param name="forceDispose">强制释放资源</param>
+    Public Sub GoogleTTS(text As String, Optional silent As Boolean = False, Optional forceDispose As Boolean = False)
         Dim retryCount As Short = 0
 retry:
         Dim filename As String = ""
@@ -121,7 +122,14 @@ retry:
         waveout.Init(mp3reader)
         Try
             If Not silent Then waveout.Play()
-            Delay(120000)
+            If forceDispose Then
+                If waveout.PlaybackState = NAudio.Wave.PlaybackState.Playing Then
+                    waveout.Stop()
+                    waveout.Dispose()
+                    mp3reader.Dispose()
+                End If
+            End If
+                Delay(120000)
             waveout.Dispose()
             mp3reader.Dispose()
         Catch ex As Exception
@@ -133,5 +141,5 @@ retry:
 End Module
 
 Public Class WizardStatic
-    Public Property WizardSettings As Settings.Settings = Nothing
+    Public Shared Property WizardSettings As Settings.Settings
 End Class

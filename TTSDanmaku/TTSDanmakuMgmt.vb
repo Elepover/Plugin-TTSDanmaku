@@ -115,6 +115,7 @@
         CheckBox_NoCache.Checked = Settings.Settings.AutoClearCache
         CheckBox_TTSCoolDown.Checked = Settings.Settings.TTSDelayEnabled
         NumericUpDown_CoolDownValue.Value = Settings.Settings.TTSDelayValue
+        NumericUpDown_Volume.Value = Settings.Settings.TTSVolume
 
         TextBox_CustomDMContent.Text = Settings.Settings.DanmakuText
         TextBox_CustomGiftContent.Text = Settings.Settings.GiftsText
@@ -167,6 +168,8 @@
         GroupBox_TempMgr.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         GroupBox_TTSOptions.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Label_ThanksViaMyHeart.Font = New Drawing.Font("Microsoft Yahei UI", 10)
+        Label_TTSVolume.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        NumericUpDown_Volume.Font = New Drawing.Font("Microsoft Yahei UI", 9)
 
         Status("就绪", False)
     End Sub

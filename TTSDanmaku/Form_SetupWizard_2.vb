@@ -5,6 +5,11 @@
         Me.Close()
     End Sub
 
+    Private Sub ErrorForm()
+        Dim frm As New Form_SetupWizard_Interrupted
+        frm.Show()
+    End Sub
+
     Private Sub Form_SetupWizard_2_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         Me.Font = New Drawing.Font("Microsoft Yahei UI", 9)
 
@@ -19,6 +24,8 @@
             Settings.Methods.Initialize()
         Catch ex As Exception
             NBlockMsgBox("设置系统初始化故障: " & ex.ToString, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "设置向导")
+            ErrorForm()
+            Me.Close()
         End Try
         CheckBox_Prog1.CheckState = Windows.Forms.CheckState.Checked
 
@@ -30,6 +37,8 @@
         Try
             If Not IO.File.Exists(Settings.Vars.LibFileName) Then
                 NBlockMsgBox("NAudio 库文件不存在，请参见弹幕姬插件仓库中的解决方案。", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "设置向导")
+                ErrorForm()
+                Me.Close()
             End If
         Catch ex As Exception
             NBlockMsgBox("NAudio 检测出错: " & ex.ToString, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "设置向导")
@@ -55,12 +64,20 @@
             GoogleTTS("Connectivity test.", True)
         Catch ex As Exception
             NBlockMsgBox("网络连接检测出错: " & ex.ToString, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "设置向导")
+            ErrorForm()
+            Me.Close()
         End Try
         CheckBox_Prog3.CheckState = Windows.Forms.CheckState.Checked
         Button_Next.Enabled = True
     End Sub
 
     Private Sub LinkLabel_Exit_LinkClicked(sender As Object, e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel_Exit.LinkClicked
+        Me.Close()
+    End Sub
+
+    Private Sub Button_Next_Click(sender As Object, e As EventArgs) Handles Button_Next.Click
+        Dim frm As New Form_SetupWizard_3
+        frm.Show()
         Me.Close()
     End Sub
 End Class

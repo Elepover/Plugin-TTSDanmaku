@@ -55,11 +55,14 @@ Partial Class TTSDanmakuMgmt
         Me.LinkLabel_Suggestions = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
+        Me.Label_TTSVolume = New System.Windows.Forms.Label()
+        Me.NumericUpDown_Volume = New System.Windows.Forms.NumericUpDown()
         Me.StatusStrip_Main.SuspendLayout()
         Me.GroupBox_TTSOptions.SuspendLayout()
         CType(Me.NumericUpDown_CoolDownValue, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_Statistics.SuspendLayout()
         Me.GroupBox_TempMgr.SuspendLayout()
+        CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StatusStrip_Main
@@ -82,6 +85,8 @@ Partial Class TTSDanmakuMgmt
         '
         Me.GroupBox_TTSOptions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox_TTSOptions.Controls.Add(Me.NumericUpDown_Volume)
+        Me.GroupBox_TTSOptions.Controls.Add(Me.Label_TTSVolume)
         Me.GroupBox_TTSOptions.Controls.Add(Me.Button_StatusReport)
         Me.GroupBox_TTSOptions.Controls.Add(Me.ComboBox_Engine)
         Me.GroupBox_TTSOptions.Controls.Add(Me.Label_SpeechEngine)
@@ -427,6 +432,23 @@ Partial Class TTSDanmakuMgmt
         "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
         "his is an open-source(MIT) software.")
         '
+        'Label_TTSVolume
+        '
+        Me.Label_TTSVolume.AutoSize = True
+        Me.Label_TTSVolume.Location = New System.Drawing.Point(190, 72)
+        Me.Label_TTSVolume.Name = "Label_TTSVolume"
+        Me.Label_TTSVolume.Size = New System.Drawing.Size(57, 17)
+        Me.Label_TTSVolume.TabIndex = 16
+        Me.Label_TTSVolume.Text = "TTS 音量"
+        '
+        'NumericUpDown_Volume
+        '
+        Me.NumericUpDown_Volume.Location = New System.Drawing.Point(193, 92)
+        Me.NumericUpDown_Volume.Name = "NumericUpDown_Volume"
+        Me.NumericUpDown_Volume.Size = New System.Drawing.Size(137, 23)
+        Me.NumericUpDown_Volume.TabIndex = 17
+        Me.NumericUpDown_Volume.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        '
         'TTSDanmakuMgmt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -462,6 +484,7 @@ Partial Class TTSDanmakuMgmt
         Me.GroupBox_Statistics.PerformLayout()
         Me.GroupBox_TempMgr.ResumeLayout(False)
         Me.GroupBox_TempMgr.PerformLayout()
+        CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -498,4 +521,6 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents ComboBox_Engine As Windows.Forms.ComboBox
     Friend WithEvents Button_StatusReport As Windows.Forms.Button
     Friend WithEvents Label_ThanksViaMyHeart As Windows.Forms.Label
+    Friend WithEvents Label_TTSVolume As Windows.Forms.Label
+    Friend WithEvents NumericUpDown_Volume As Windows.Forms.NumericUpDown
 End Class

@@ -93,6 +93,30 @@
     <Compile Include="Form_SetupWizard_2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form_SetupWizard_3.Designer.vb">
+      <DependentUpon>Form_SetupWizard_3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_SetupWizard_3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_SetupWizard_4.Designer.vb">
+      <DependentUpon>Form_SetupWizard_4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_SetupWizard_4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_SetupWizard_5.Designer.vb">
+      <DependentUpon>Form_SetupWizard_5.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_SetupWizard_5.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_SetupWizard_Interrupted.Designer.vb">
+      <DependentUpon>Form_SetupWizard_Interrupted.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_SetupWizard_Interrupted.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form_StatusReport.Designer.vb">
       <DependentUpon>Form_StatusReport.vb</DependentUpon>
     </Compile>
@@ -139,6 +163,18 @@
     <EmbeddedResource Include="Form_SetupWizard_2.resx">
       <DependentUpon>Form_SetupWizard_2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_SetupWizard_3.resx">
+      <DependentUpon>Form_SetupWizard_3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_SetupWizard_4.resx">
+      <DependentUpon>Form_SetupWizard_4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_SetupWizard_5.resx">
+      <DependentUpon>Form_SetupWizard_5.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_SetupWizard_Interrupted.resx">
+      <DependentUpon>Form_SetupWizard_Interrupted.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_StatusReport.resx">
       <DependentUpon>Form_StatusReport.vb</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +205,8 @@
   <ItemGroup>
     <None Include="Resources\NAudio.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\check_correct.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
