@@ -150,6 +150,8 @@ Partial Class Form_SetupWizard_3
         'CheckBox_NoCache
         '
         Me.CheckBox_NoCache.AutoSize = True
+        Me.CheckBox_NoCache.Checked = True
+        Me.CheckBox_NoCache.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox_NoCache.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.CheckBox_NoCache.Location = New System.Drawing.Point(6, 78)
         Me.CheckBox_NoCache.Name = "CheckBox_NoCache"
@@ -161,6 +163,8 @@ Partial Class Form_SetupWizard_3
         'CheckBox_TTSGifts
         '
         Me.CheckBox_TTSGifts.AutoSize = True
+        Me.CheckBox_TTSGifts.Checked = True
+        Me.CheckBox_TTSGifts.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox_TTSGifts.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.CheckBox_TTSGifts.Location = New System.Drawing.Point(6, 50)
         Me.CheckBox_TTSGifts.Name = "CheckBox_TTSGifts"
@@ -172,6 +176,8 @@ Partial Class Form_SetupWizard_3
         'CheckBox_TTSSender
         '
         Me.CheckBox_TTSSender.AutoSize = True
+        Me.CheckBox_TTSSender.Checked = True
+        Me.CheckBox_TTSSender.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox_TTSSender.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.CheckBox_TTSSender.Location = New System.Drawing.Point(6, 22)
         Me.CheckBox_TTSSender.Name = "CheckBox_TTSSender"

@@ -81,6 +81,12 @@
             ComboBox_Engine.Font = New Drawing.Font(ComboBox_Engine.Font, Drawing.FontStyle.Regular)
         End If
 
+        If Not NumericUpDown_Volume.Value = Settings.Settings.TTSVolume Then
+            NumericUpDown_Volume.Font = New Drawing.Font(NumericUpDown_Volume.Font, Drawing.FontStyle.Bold)
+        Else
+            NumericUpDown_Volume.Font = New Drawing.Font(NumericUpDown_Volume.Font, Drawing.FontStyle.Regular)
+        End If
+
         CheckIfLegal_DM()
         If Not TextBox_CustomDMContent.Text = Settings.Settings.DanmakuText Then
             TextBox_CustomDMContent.Font = New Drawing.Font(TextBox_CustomDMContent.Font, Drawing.FontStyle.Bold)
@@ -266,7 +272,7 @@
         Status("操作成功: " & count & " 个。")
     End Sub
 
-    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged
+    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, NumericUpDown_Volume.ValueChanged
         UpdateControl()
     End Sub
 

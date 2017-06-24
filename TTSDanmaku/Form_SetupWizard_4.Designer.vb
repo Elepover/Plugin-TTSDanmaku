@@ -31,16 +31,16 @@ Partial Class Form_SetupWizard_4
         Me.CheckBox_EnviChk = New System.Windows.Forms.CheckBox()
         Me.CheckBox_Welcome = New System.Windows.Forms.CheckBox()
         Me.GroupBox_Conf = New System.Windows.Forms.GroupBox()
-        Me.Button_Previous = New System.Windows.Forms.Button()
-        Me.Button_Next = New System.Windows.Forms.Button()
-        Me.Label_Subtitle = New System.Windows.Forms.Label()
-        Me.Label_Title = New System.Windows.Forms.Label()
+        Me.PictureBox_OK_2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox_OK_1 = New System.Windows.Forms.PictureBox()
         Me.TextBox_CustomGiftContent = New System.Windows.Forms.TextBox()
         Me.TextBox_CustomDMContent = New System.Windows.Forms.TextBox()
         Me.Label_CustomGiftContent_Header = New System.Windows.Forms.Label()
         Me.Label_CustomDM_Header = New System.Windows.Forms.Label()
-        Me.PictureBox_OK_2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox_OK_1 = New System.Windows.Forms.PictureBox()
+        Me.Button_Previous = New System.Windows.Forms.Button()
+        Me.Button_Next = New System.Windows.Forms.Button()
+        Me.Label_Subtitle = New System.Windows.Forms.Label()
+        Me.Label_Title = New System.Windows.Forms.Label()
         Me.GroupBox_Steps.SuspendLayout()
         Me.GroupBox_Conf.SuspendLayout()
         CType(Me.PictureBox_OK_2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -157,6 +157,66 @@ Partial Class Form_SetupWizard_4
         Me.GroupBox_Conf.TabStop = False
         Me.GroupBox_Conf.Text = "选项"
         '
+        'PictureBox_OK_2
+        '
+        Me.PictureBox_OK_2.Image = Global.TTSDanmaku.My.Resources.Resources.check_correct
+        Me.PictureBox_OK_2.Location = New System.Drawing.Point(371, 88)
+        Me.PictureBox_OK_2.Name = "PictureBox_OK_2"
+        Me.PictureBox_OK_2.Size = New System.Drawing.Size(23, 23)
+        Me.PictureBox_OK_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox_OK_2.TabIndex = 15
+        Me.PictureBox_OK_2.TabStop = False
+        Me.PictureBox_OK_2.Visible = False
+        '
+        'PictureBox_OK_1
+        '
+        Me.PictureBox_OK_1.Image = Global.TTSDanmaku.My.Resources.Resources.check_correct
+        Me.PictureBox_OK_1.Location = New System.Drawing.Point(371, 42)
+        Me.PictureBox_OK_1.Name = "PictureBox_OK_1"
+        Me.PictureBox_OK_1.Size = New System.Drawing.Size(23, 23)
+        Me.PictureBox_OK_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox_OK_1.TabIndex = 15
+        Me.PictureBox_OK_1.TabStop = False
+        Me.PictureBox_OK_1.Visible = False
+        '
+        'TextBox_CustomGiftContent
+        '
+        Me.TextBox_CustomGiftContent.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox_CustomGiftContent.Location = New System.Drawing.Point(6, 88)
+        Me.TextBox_CustomGiftContent.Name = "TextBox_CustomGiftContent"
+        Me.TextBox_CustomGiftContent.Size = New System.Drawing.Size(359, 23)
+        Me.TextBox_CustomGiftContent.TabIndex = 14
+        Me.TextBox_CustomGiftContent.Text = "收到来自 $USER 的 $COUNT 个 $GIFT"
+        '
+        'TextBox_CustomDMContent
+        '
+        Me.TextBox_CustomDMContent.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox_CustomDMContent.Location = New System.Drawing.Point(6, 42)
+        Me.TextBox_CustomDMContent.Name = "TextBox_CustomDMContent"
+        Me.TextBox_CustomDMContent.Size = New System.Drawing.Size(359, 23)
+        Me.TextBox_CustomDMContent.TabIndex = 12
+        Me.TextBox_CustomDMContent.Text = "$USER 说: $DM"
+        '
+        'Label_CustomGiftContent_Header
+        '
+        Me.Label_CustomGiftContent_Header.AutoSize = True
+        Me.Label_CustomGiftContent_Header.Location = New System.Drawing.Point(6, 68)
+        Me.Label_CustomGiftContent_Header.Name = "Label_CustomGiftContent_Header"
+        Me.Label_CustomGiftContent_Header.Size = New System.Drawing.Size(116, 17)
+        Me.Label_CustomGiftContent_Header.TabIndex = 13
+        Me.Label_CustomGiftContent_Header.Text = "自定义礼物读出内容"
+        '
+        'Label_CustomDM_Header
+        '
+        Me.Label_CustomDM_Header.AutoSize = True
+        Me.Label_CustomDM_Header.Location = New System.Drawing.Point(6, 22)
+        Me.Label_CustomDM_Header.Name = "Label_CustomDM_Header"
+        Me.Label_CustomDM_Header.Size = New System.Drawing.Size(116, 17)
+        Me.Label_CustomDM_Header.TabIndex = 11
+        Me.Label_CustomDM_Header.Text = "自定义弹幕读出内容"
+        '
         'Button_Previous
         '
         Me.Button_Previous.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -198,64 +258,6 @@ Partial Class Form_SetupWizard_4
         Me.Label_Title.Size = New System.Drawing.Size(82, 30)
         Me.Label_Title.TabIndex = 15
         Me.Label_Title.Text = "个性化"
-        '
-        'TextBox_CustomGiftContent
-        '
-        Me.TextBox_CustomGiftContent.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox_CustomGiftContent.Location = New System.Drawing.Point(6, 88)
-        Me.TextBox_CustomGiftContent.Name = "TextBox_CustomGiftContent"
-        Me.TextBox_CustomGiftContent.Size = New System.Drawing.Size(359, 23)
-        Me.TextBox_CustomGiftContent.TabIndex = 14
-        '
-        'TextBox_CustomDMContent
-        '
-        Me.TextBox_CustomDMContent.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox_CustomDMContent.Location = New System.Drawing.Point(6, 42)
-        Me.TextBox_CustomDMContent.Name = "TextBox_CustomDMContent"
-        Me.TextBox_CustomDMContent.Size = New System.Drawing.Size(359, 23)
-        Me.TextBox_CustomDMContent.TabIndex = 12
-        '
-        'Label_CustomGiftContent_Header
-        '
-        Me.Label_CustomGiftContent_Header.AutoSize = True
-        Me.Label_CustomGiftContent_Header.Location = New System.Drawing.Point(6, 68)
-        Me.Label_CustomGiftContent_Header.Name = "Label_CustomGiftContent_Header"
-        Me.Label_CustomGiftContent_Header.Size = New System.Drawing.Size(116, 17)
-        Me.Label_CustomGiftContent_Header.TabIndex = 13
-        Me.Label_CustomGiftContent_Header.Text = "自定义礼物读出内容"
-        '
-        'Label_CustomDM_Header
-        '
-        Me.Label_CustomDM_Header.AutoSize = True
-        Me.Label_CustomDM_Header.Location = New System.Drawing.Point(6, 22)
-        Me.Label_CustomDM_Header.Name = "Label_CustomDM_Header"
-        Me.Label_CustomDM_Header.Size = New System.Drawing.Size(116, 17)
-        Me.Label_CustomDM_Header.TabIndex = 11
-        Me.Label_CustomDM_Header.Text = "自定义弹幕读出内容"
-        '
-        'PictureBox_OK_2
-        '
-        Me.PictureBox_OK_2.Image = Global.TTSDanmaku.My.Resources.Resources.check_correct
-        Me.PictureBox_OK_2.Location = New System.Drawing.Point(371, 88)
-        Me.PictureBox_OK_2.Name = "PictureBox_OK_2"
-        Me.PictureBox_OK_2.Size = New System.Drawing.Size(23, 23)
-        Me.PictureBox_OK_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox_OK_2.TabIndex = 15
-        Me.PictureBox_OK_2.TabStop = False
-        Me.PictureBox_OK_2.Visible = False
-        '
-        'PictureBox_OK_1
-        '
-        Me.PictureBox_OK_1.Image = Global.TTSDanmaku.My.Resources.Resources.check_correct
-        Me.PictureBox_OK_1.Location = New System.Drawing.Point(371, 42)
-        Me.PictureBox_OK_1.Name = "PictureBox_OK_1"
-        Me.PictureBox_OK_1.Size = New System.Drawing.Size(23, 23)
-        Me.PictureBox_OK_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox_OK_1.TabIndex = 15
-        Me.PictureBox_OK_1.TabStop = False
-        Me.PictureBox_OK_1.Visible = False
         '
         'Form_SetupWizard_4
         '

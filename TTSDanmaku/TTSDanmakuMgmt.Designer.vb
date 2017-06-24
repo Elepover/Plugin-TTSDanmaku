@@ -27,6 +27,8 @@ Partial Class TTSDanmakuMgmt
         Me.StatusStrip_Main = New System.Windows.Forms.StatusStrip()
         Me.StatusLabel_Default = New System.Windows.Forms.ToolStripStatusLabel()
         Me.GroupBox_TTSOptions = New System.Windows.Forms.GroupBox()
+        Me.NumericUpDown_Volume = New System.Windows.Forms.NumericUpDown()
+        Me.Label_TTSVolume = New System.Windows.Forms.Label()
         Me.Button_StatusReport = New System.Windows.Forms.Button()
         Me.ComboBox_Engine = New System.Windows.Forms.ComboBox()
         Me.Label_SpeechEngine = New System.Windows.Forms.Label()
@@ -55,14 +57,12 @@ Partial Class TTSDanmakuMgmt
         Me.LinkLabel_Suggestions = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
-        Me.Label_TTSVolume = New System.Windows.Forms.Label()
-        Me.NumericUpDown_Volume = New System.Windows.Forms.NumericUpDown()
         Me.StatusStrip_Main.SuspendLayout()
         Me.GroupBox_TTSOptions.SuspendLayout()
+        CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_CoolDownValue, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_Statistics.SuspendLayout()
         Me.GroupBox_TempMgr.SuspendLayout()
-        CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StatusStrip_Main
@@ -110,6 +110,23 @@ Partial Class TTSDanmakuMgmt
         Me.GroupBox_TTSOptions.TabIndex = 0
         Me.GroupBox_TTSOptions.TabStop = False
         Me.GroupBox_TTSOptions.Text = "TTS 设置"
+        '
+        'NumericUpDown_Volume
+        '
+        Me.NumericUpDown_Volume.Location = New System.Drawing.Point(193, 92)
+        Me.NumericUpDown_Volume.Name = "NumericUpDown_Volume"
+        Me.NumericUpDown_Volume.Size = New System.Drawing.Size(137, 23)
+        Me.NumericUpDown_Volume.TabIndex = 17
+        Me.NumericUpDown_Volume.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        '
+        'Label_TTSVolume
+        '
+        Me.Label_TTSVolume.AutoSize = True
+        Me.Label_TTSVolume.Location = New System.Drawing.Point(190, 72)
+        Me.Label_TTSVolume.Name = "Label_TTSVolume"
+        Me.Label_TTSVolume.Size = New System.Drawing.Size(57, 17)
+        Me.Label_TTSVolume.TabIndex = 16
+        Me.Label_TTSVolume.Text = "TTS 音量"
         '
         'Button_StatusReport
         '
@@ -432,23 +449,6 @@ Partial Class TTSDanmakuMgmt
         "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
         "his is an open-source(MIT) software.")
         '
-        'Label_TTSVolume
-        '
-        Me.Label_TTSVolume.AutoSize = True
-        Me.Label_TTSVolume.Location = New System.Drawing.Point(190, 72)
-        Me.Label_TTSVolume.Name = "Label_TTSVolume"
-        Me.Label_TTSVolume.Size = New System.Drawing.Size(57, 17)
-        Me.Label_TTSVolume.TabIndex = 16
-        Me.Label_TTSVolume.Text = "TTS 音量"
-        '
-        'NumericUpDown_Volume
-        '
-        Me.NumericUpDown_Volume.Location = New System.Drawing.Point(193, 92)
-        Me.NumericUpDown_Volume.Name = "NumericUpDown_Volume"
-        Me.NumericUpDown_Volume.Size = New System.Drawing.Size(137, 23)
-        Me.NumericUpDown_Volume.TabIndex = 17
-        Me.NumericUpDown_Volume.Value = New Decimal(New Integer() {100, 0, 0, 0})
-        '
         'TTSDanmakuMgmt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -479,12 +479,12 @@ Partial Class TTSDanmakuMgmt
         Me.StatusStrip_Main.PerformLayout()
         Me.GroupBox_TTSOptions.ResumeLayout(False)
         Me.GroupBox_TTSOptions.PerformLayout()
+        CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown_CoolDownValue, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox_Statistics.ResumeLayout(False)
         Me.GroupBox_Statistics.PerformLayout()
         Me.GroupBox_TempMgr.ResumeLayout(False)
         Me.GroupBox_TempMgr.PerformLayout()
-        CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

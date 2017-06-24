@@ -314,7 +314,7 @@ retry:
         If My.Computer.Keyboard.ShiftKeyDown Then
             Dim frm As New Form_WizardChooser
             frm.Show()
-        ElseIf My.Computer.Keyboard.AltKeyDown Then
+        ElseIf My.Computer.Keyboard.CtrlKeyDown Then
             Settings.Methods.InitializeDirectories()
             Settings.Methods.CreateSettingsFile()
             NBlockMsgBox("已重置配置文件。", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "TTSDanmaku")
