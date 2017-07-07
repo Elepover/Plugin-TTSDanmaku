@@ -16,12 +16,14 @@
 | ppt | 留言板 | TTS 语调更改 (新增 Google TTS) |
 | Zvmaind | QQ | 系统自带引擎语速修复 |
 | LenZhou | 留言板 | TTS 音量调节 |
+| YuXStudio | 讨论区 | 缓存立删功能 |
 | ... | ... | ... |
 
 | Source / 源 | Link / 链接 |
 | :------ | ------: |
 | Telegram | https://t.me/kruintian |
 | 留言板 | https://blog.elepover.com/quoteLeft.html |
+| 讨论区 | [https://f.danmuji.cn](https://f.danmuji.cn/category/6/%E9%9C%80%E6%B1%82-%E5%BB%BA%E8%AE%AE) |
 | ... | ... |
 
 真诚感谢所有用户在安装和使用本插件的过程中花费的分分秒秒。
