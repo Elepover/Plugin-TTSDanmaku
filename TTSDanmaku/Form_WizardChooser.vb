@@ -14,5 +14,4 @@
     Private Sub Form_WizardChooser_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         Me.Font = New Drawing.Font("Microsoft Yahei UI", 9)
     End Sub
-
 End Class

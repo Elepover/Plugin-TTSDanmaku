@@ -33,8 +33,6 @@ Partial Class Form_SetupWizard_1
         Me.Label_Title = New System.Windows.Forms.Label()
         Me.Label_Subtitle = New System.Windows.Forms.Label()
         Me.Button_Next = New System.Windows.Forms.Button()
-        Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
-        Me.LinkLabel_Tips = New System.Windows.Forms.LinkLabel()
         Me.GroupBox_Steps.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -50,7 +48,7 @@ Partial Class Form_SetupWizard_1
         Me.GroupBox_Steps.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox_Steps.Name = "GroupBox_Steps"
         Me.GroupBox_Steps.Size = New System.Drawing.Size(145, 338)
-        Me.GroupBox_Steps.TabIndex = 5
+        Me.GroupBox_Steps.TabIndex = 0
         Me.GroupBox_Steps.TabStop = False
         Me.GroupBox_Steps.Text = "进度"
         '
@@ -128,7 +126,7 @@ Partial Class Form_SetupWizard_1
         Me.Label_Title.Location = New System.Drawing.Point(163, 12)
         Me.Label_Title.Name = "Label_Title"
         Me.Label_Title.Size = New System.Drawing.Size(59, 30)
-        Me.Label_Title.TabIndex = 0
+        Me.Label_Title.TabIndex = 1
         Me.Label_Title.Text = "欢迎"
         '
         'Label_Subtitle
@@ -137,9 +135,9 @@ Partial Class Form_SetupWizard_1
         Me.Label_Subtitle.Font = New System.Drawing.Font("微软雅黑", 9.0!)
         Me.Label_Subtitle.Location = New System.Drawing.Point(165, 42)
         Me.Label_Subtitle.Name = "Label_Subtitle"
-        Me.Label_Subtitle.Size = New System.Drawing.Size(332, 68)
-        Me.Label_Subtitle.TabIndex = 1
-        Me.Label_Subtitle.Text = "本向导将帮助您完成本插件的后续配置选项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "请注意：设置向导的每一步都会自动保存设置。请谨防覆盖。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "在开始之前，您可能想阅读一下"
+        Me.Label_Subtitle.Size = New System.Drawing.Size(248, 17)
+        Me.Label_Subtitle.TabIndex = 2
+        Me.Label_Subtitle.Text = "本向导将帮助您完成本插件的后续配置选项。"
         '
         'Button_Next
         '
@@ -148,29 +146,9 @@ Partial Class Form_SetupWizard_1
         Me.Button_Next.Location = New System.Drawing.Point(497, 327)
         Me.Button_Next.Name = "Button_Next"
         Me.Button_Next.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Next.TabIndex = 4
+        Me.Button_Next.TabIndex = 3
         Me.Button_Next.Text = "下一步 >"
         Me.Button_Next.UseVisualStyleBackColor = True
-        '
-        'LinkLabel_FAQ
-        '
-        Me.LinkLabel_FAQ.AutoSize = True
-        Me.LinkLabel_FAQ.Location = New System.Drawing.Point(165, 110)
-        Me.LinkLabel_FAQ.Name = "LinkLabel_FAQ"
-        Me.LinkLabel_FAQ.Size = New System.Drawing.Size(56, 17)
-        Me.LinkLabel_FAQ.TabIndex = 2
-        Me.LinkLabel_FAQ.TabStop = True
-        Me.LinkLabel_FAQ.Text = "常见问题"
-        '
-        'LinkLabel_Tips
-        '
-        Me.LinkLabel_Tips.AutoSize = True
-        Me.LinkLabel_Tips.Location = New System.Drawing.Point(165, 127)
-        Me.LinkLabel_Tips.Name = "LinkLabel_Tips"
-        Me.LinkLabel_Tips.Size = New System.Drawing.Size(56, 17)
-        Me.LinkLabel_Tips.TabIndex = 3
-        Me.LinkLabel_Tips.TabStop = True
-        Me.LinkLabel_Tips.Text = "注意事项"
         '
         'Form_SetupWizard_1
         '
@@ -179,8 +157,6 @@ Partial Class Form_SetupWizard_1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(584, 362)
-        Me.Controls.Add(Me.LinkLabel_Tips)
-        Me.Controls.Add(Me.LinkLabel_FAQ)
         Me.Controls.Add(Me.Button_Next)
         Me.Controls.Add(Me.Label_Subtitle)
         Me.Controls.Add(Me.Label_Title)
@@ -211,6 +187,4 @@ Partial Class Form_SetupWizard_1
     Friend WithEvents CheckBox_Finish As Windows.Forms.CheckBox
     Friend WithEvents Button_Next As Windows.Forms.Button
     Friend WithEvents LinkLabel_Exit As Windows.Forms.LinkLabel
-    Friend WithEvents LinkLabel_FAQ As Windows.Forms.LinkLabel
-    Friend WithEvents LinkLabel_Tips As Windows.Forms.LinkLabel
 End Class
