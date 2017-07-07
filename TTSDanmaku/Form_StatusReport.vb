@@ -52,18 +52,7 @@
         '重新应用字体
         LoadToControl()
         UpdateControl()
-        GroupBox_Configurations.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        GroupBox_FunctionSwitch.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        CheckBox_EnableAdvVars.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        CheckBox_EnableStatusReport.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        CheckBox_ShowVarsHelp.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_CustomText.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_Interval.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        NumericUpDown_Interval.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Button_Cancel.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Button_Save.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TextBox_ReportText.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TextBox_VarsHelp.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Me.Font = New Drawing.Font("Microsoft Yahei UI", 9)
     End Sub
 
     Private Sub UpdateControl(sender As Object, e As EventArgs) Handles CheckBox_ShowVarsHelp.CheckedChanged, CheckBox_EnableAdvVars.CheckedChanged, CheckBox_EnableStatusReport.CheckedChanged, TextBox_ReportText.TextChanged, NumericUpDown_Interval.ValueChanged
