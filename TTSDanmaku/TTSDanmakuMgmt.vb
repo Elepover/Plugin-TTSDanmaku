@@ -338,4 +338,10 @@
         Dim frm As New Form_StatusReport
         frm.Show()
     End Sub
+
+    Private Sub Button_SetupWizard_Click(sender As Object, e As EventArgs) Handles Button_SetupWizard.Click
+        Dim frm As New Form_SetupWizard_1
+        frm.Show()
+        Me.Close()
+    End Sub
 End Class

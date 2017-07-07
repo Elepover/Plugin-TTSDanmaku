@@ -12,4 +12,22 @@
     Private Sub LinkLabel_Exit_LinkClicked(sender As Object, e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel_Exit.LinkClicked
         Me.Close()
     End Sub
+
+    Private Sub LinkLabel_FAQ_LinkClicked(sender As Object, e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel_FAQ.LinkClicked
+        Dim proc As New Process
+        With proc.StartInfo
+            .FileName = "https://blog.elepover.com/archives/2017/05/faq.html"
+            .ErrorDialog = False
+        End With
+        proc.Start()
+    End Sub
+
+    Private Sub LinkLabel_Notice_LinkClicked(sender As Object, e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel_Notice.LinkClicked
+        Dim proc As New Process
+        With proc.StartInfo
+            .FileName = "https://www.danmuji.cn/plugins/TTSDanmaku#注意事项"
+            .ErrorDialog = False
+        End With
+        proc.Start()
+    End Sub
 End Class

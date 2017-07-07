@@ -33,6 +33,8 @@ Partial Class Form_SetupWizard_1
         Me.Label_Title = New System.Windows.Forms.Label()
         Me.Label_Subtitle = New System.Windows.Forms.Label()
         Me.Button_Next = New System.Windows.Forms.Button()
+        Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabel_Notice = New System.Windows.Forms.LinkLabel()
         Me.GroupBox_Steps.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -48,7 +50,7 @@ Partial Class Form_SetupWizard_1
         Me.GroupBox_Steps.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox_Steps.Name = "GroupBox_Steps"
         Me.GroupBox_Steps.Size = New System.Drawing.Size(145, 338)
-        Me.GroupBox_Steps.TabIndex = 0
+        Me.GroupBox_Steps.TabIndex = 5
         Me.GroupBox_Steps.TabStop = False
         Me.GroupBox_Steps.Text = "进度"
         '
@@ -58,7 +60,7 @@ Partial Class Form_SetupWizard_1
         Me.LinkLabel_Exit.Location = New System.Drawing.Point(6, 315)
         Me.LinkLabel_Exit.Name = "LinkLabel_Exit"
         Me.LinkLabel_Exit.Size = New System.Drawing.Size(32, 17)
-        Me.LinkLabel_Exit.TabIndex = 5
+        Me.LinkLabel_Exit.TabIndex = 0
         Me.LinkLabel_Exit.TabStop = True
         Me.LinkLabel_Exit.Text = "退出"
         '
@@ -69,7 +71,7 @@ Partial Class Form_SetupWizard_1
         Me.CheckBox_Finish.Location = New System.Drawing.Point(6, 137)
         Me.CheckBox_Finish.Name = "CheckBox_Finish"
         Me.CheckBox_Finish.Size = New System.Drawing.Size(51, 21)
-        Me.CheckBox_Finish.TabIndex = 4
+        Me.CheckBox_Finish.TabIndex = 5
         Me.CheckBox_Finish.Text = "完成"
         Me.CheckBox_Finish.UseVisualStyleBackColor = True
         '
@@ -80,7 +82,7 @@ Partial Class Form_SetupWizard_1
         Me.CheckBox_Custom.Location = New System.Drawing.Point(6, 110)
         Me.CheckBox_Custom.Name = "CheckBox_Custom"
         Me.CheckBox_Custom.Size = New System.Drawing.Size(63, 21)
-        Me.CheckBox_Custom.TabIndex = 3
+        Me.CheckBox_Custom.TabIndex = 4
         Me.CheckBox_Custom.Text = "个性化"
         Me.CheckBox_Custom.UseVisualStyleBackColor = True
         '
@@ -91,7 +93,7 @@ Partial Class Form_SetupWizard_1
         Me.CheckBox_Conf.Location = New System.Drawing.Point(6, 83)
         Me.CheckBox_Conf.Name = "CheckBox_Conf"
         Me.CheckBox_Conf.Size = New System.Drawing.Size(75, 21)
-        Me.CheckBox_Conf.TabIndex = 2
+        Me.CheckBox_Conf.TabIndex = 3
         Me.CheckBox_Conf.Text = "功能配置"
         Me.CheckBox_Conf.UseVisualStyleBackColor = True
         '
@@ -102,7 +104,7 @@ Partial Class Form_SetupWizard_1
         Me.CheckBox_EnviChk.Location = New System.Drawing.Point(6, 56)
         Me.CheckBox_EnviChk.Name = "CheckBox_EnviChk"
         Me.CheckBox_EnviChk.Size = New System.Drawing.Size(75, 21)
-        Me.CheckBox_EnviChk.TabIndex = 1
+        Me.CheckBox_EnviChk.TabIndex = 2
         Me.CheckBox_EnviChk.Text = "环境检查"
         Me.CheckBox_EnviChk.UseVisualStyleBackColor = True
         '
@@ -115,7 +117,7 @@ Partial Class Form_SetupWizard_1
         Me.CheckBox_Welcome.Location = New System.Drawing.Point(6, 29)
         Me.CheckBox_Welcome.Name = "CheckBox_Welcome"
         Me.CheckBox_Welcome.Size = New System.Drawing.Size(51, 21)
-        Me.CheckBox_Welcome.TabIndex = 0
+        Me.CheckBox_Welcome.TabIndex = 1
         Me.CheckBox_Welcome.Text = "欢迎"
         Me.CheckBox_Welcome.UseVisualStyleBackColor = True
         '
@@ -126,7 +128,7 @@ Partial Class Form_SetupWizard_1
         Me.Label_Title.Location = New System.Drawing.Point(163, 12)
         Me.Label_Title.Name = "Label_Title"
         Me.Label_Title.Size = New System.Drawing.Size(59, 30)
-        Me.Label_Title.TabIndex = 1
+        Me.Label_Title.TabIndex = 0
         Me.Label_Title.Text = "欢迎"
         '
         'Label_Subtitle
@@ -135,9 +137,9 @@ Partial Class Form_SetupWizard_1
         Me.Label_Subtitle.Font = New System.Drawing.Font("微软雅黑", 9.0!)
         Me.Label_Subtitle.Location = New System.Drawing.Point(165, 42)
         Me.Label_Subtitle.Name = "Label_Subtitle"
-        Me.Label_Subtitle.Size = New System.Drawing.Size(248, 17)
-        Me.Label_Subtitle.TabIndex = 2
-        Me.Label_Subtitle.Text = "本向导将帮助您完成本插件的后续配置选项。"
+        Me.Label_Subtitle.Size = New System.Drawing.Size(248, 68)
+        Me.Label_Subtitle.TabIndex = 1
+        Me.Label_Subtitle.Text = "本向导将帮助您完成本插件的后续配置选项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "请注意：每一步设置将会自动保存设置。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "在开始之前，您可能想阅读："
         '
         'Button_Next
         '
@@ -146,9 +148,29 @@ Partial Class Form_SetupWizard_1
         Me.Button_Next.Location = New System.Drawing.Point(497, 327)
         Me.Button_Next.Name = "Button_Next"
         Me.Button_Next.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Next.TabIndex = 3
+        Me.Button_Next.TabIndex = 4
         Me.Button_Next.Text = "下一步 >"
         Me.Button_Next.UseVisualStyleBackColor = True
+        '
+        'LinkLabel_FAQ
+        '
+        Me.LinkLabel_FAQ.AutoSize = True
+        Me.LinkLabel_FAQ.Location = New System.Drawing.Point(165, 120)
+        Me.LinkLabel_FAQ.Name = "LinkLabel_FAQ"
+        Me.LinkLabel_FAQ.Size = New System.Drawing.Size(56, 17)
+        Me.LinkLabel_FAQ.TabIndex = 2
+        Me.LinkLabel_FAQ.TabStop = True
+        Me.LinkLabel_FAQ.Text = "常见问题"
+        '
+        'LinkLabel_Notice
+        '
+        Me.LinkLabel_Notice.AutoSize = True
+        Me.LinkLabel_Notice.Location = New System.Drawing.Point(165, 137)
+        Me.LinkLabel_Notice.Name = "LinkLabel_Notice"
+        Me.LinkLabel_Notice.Size = New System.Drawing.Size(56, 17)
+        Me.LinkLabel_Notice.TabIndex = 3
+        Me.LinkLabel_Notice.TabStop = True
+        Me.LinkLabel_Notice.Text = "注意事项"
         '
         'Form_SetupWizard_1
         '
@@ -157,6 +179,8 @@ Partial Class Form_SetupWizard_1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(584, 362)
+        Me.Controls.Add(Me.LinkLabel_Notice)
+        Me.Controls.Add(Me.LinkLabel_FAQ)
         Me.Controls.Add(Me.Button_Next)
         Me.Controls.Add(Me.Label_Subtitle)
         Me.Controls.Add(Me.Label_Title)
@@ -187,4 +211,6 @@ Partial Class Form_SetupWizard_1
     Friend WithEvents CheckBox_Finish As Windows.Forms.CheckBox
     Friend WithEvents Button_Next As Windows.Forms.Button
     Friend WithEvents LinkLabel_Exit As Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabel_FAQ As Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabel_Notice As Windows.Forms.LinkLabel
 End Class

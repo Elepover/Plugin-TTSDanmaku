@@ -57,6 +57,7 @@ Partial Class TTSDanmakuMgmt
         Me.LinkLabel_Suggestions = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
+        Me.Button_SetupWizard = New System.Windows.Forms.Button()
         Me.StatusStrip_Main.SuspendLayout()
         Me.GroupBox_TTSOptions.SuspendLayout()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,6 +86,7 @@ Partial Class TTSDanmakuMgmt
         '
         Me.GroupBox_TTSOptions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox_TTSOptions.Controls.Add(Me.Button_SetupWizard)
         Me.GroupBox_TTSOptions.Controls.Add(Me.NumericUpDown_Volume)
         Me.GroupBox_TTSOptions.Controls.Add(Me.Label_TTSVolume)
         Me.GroupBox_TTSOptions.Controls.Add(Me.Button_StatusReport)
@@ -116,7 +118,7 @@ Partial Class TTSDanmakuMgmt
         Me.NumericUpDown_Volume.Location = New System.Drawing.Point(193, 92)
         Me.NumericUpDown_Volume.Name = "NumericUpDown_Volume"
         Me.NumericUpDown_Volume.Size = New System.Drawing.Size(137, 23)
-        Me.NumericUpDown_Volume.TabIndex = 17
+        Me.NumericUpDown_Volume.TabIndex = 14
         Me.NumericUpDown_Volume.Value = New Decimal(New Integer() {100, 0, 0, 0})
         '
         'Label_TTSVolume
@@ -125,7 +127,7 @@ Partial Class TTSDanmakuMgmt
         Me.Label_TTSVolume.Location = New System.Drawing.Point(190, 72)
         Me.Label_TTSVolume.Name = "Label_TTSVolume"
         Me.Label_TTSVolume.Size = New System.Drawing.Size(57, 17)
-        Me.Label_TTSVolume.TabIndex = 16
+        Me.Label_TTSVolume.TabIndex = 13
         Me.Label_TTSVolume.Text = "TTS 音量"
         '
         'Button_StatusReport
@@ -135,7 +137,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_StatusReport.Location = New System.Drawing.Point(579, 78)
         Me.Button_StatusReport.Name = "Button_StatusReport"
         Me.Button_StatusReport.Size = New System.Drawing.Size(75, 23)
-        Me.Button_StatusReport.TabIndex = 15
+        Me.Button_StatusReport.TabIndex = 17
         Me.Button_StatusReport.Text = "状态报告"
         Me.ToolTip_Default.SetToolTip(Me.Button_StatusReport, "以一定时间间隔报告直播间状态。")
         Me.Button_StatusReport.UseVisualStyleBackColor = True
@@ -251,7 +253,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_Load.Location = New System.Drawing.Point(579, 49)
         Me.Button_Load.Name = "Button_Load"
         Me.Button_Load.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Load.TabIndex = 14
+        Me.Button_Load.TabIndex = 16
         Me.Button_Load.Text = "重新读取"
         Me.ToolTip_Default.SetToolTip(Me.Button_Load, "重新读取已经保存的设置。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "这将丢弃您当前的所有更改。")
         Me.Button_Load.UseVisualStyleBackColor = True
@@ -264,7 +266,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_Apply.Location = New System.Drawing.Point(579, 21)
         Me.Button_Apply.Name = "Button_Apply"
         Me.Button_Apply.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Apply.TabIndex = 13
+        Me.Button_Apply.TabIndex = 15
         Me.Button_Apply.Text = "应用"
         Me.Button_Apply.UseVisualStyleBackColor = True
         '
@@ -449,6 +451,16 @@ Partial Class TTSDanmakuMgmt
         "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
         "his is an open-source(MIT) software.")
         '
+        'Button_SetupWizard
+        '
+        Me.Button_SetupWizard.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.Button_SetupWizard.Location = New System.Drawing.Point(579, 107)
+        Me.Button_SetupWizard.Name = "Button_SetupWizard"
+        Me.Button_SetupWizard.Size = New System.Drawing.Size(75, 23)
+        Me.Button_SetupWizard.TabIndex = 18
+        Me.Button_SetupWizard.Text = "设置向导"
+        Me.Button_SetupWizard.UseVisualStyleBackColor = True
+        '
         'TTSDanmakuMgmt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -523,4 +535,5 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents Label_ThanksViaMyHeart As Windows.Forms.Label
     Friend WithEvents Label_TTSVolume As Windows.Forms.Label
     Friend WithEvents NumericUpDown_Volume As Windows.Forms.NumericUpDown
+    Friend WithEvents Button_SetupWizard As Windows.Forms.Button
 End Class
