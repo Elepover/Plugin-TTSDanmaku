@@ -133,6 +133,15 @@ retry:
             Delay(120000)
             waveout.Dispose()
             mp3reader.Dispose()
+            If Not Settings.Settings.DoNotKeepCache = Nothing Then
+                If Settings.Settings.DoNotKeepCache Then
+                    Try
+                        IO.File.Delete(filename)
+                    Catch ex As Exception
+                        Statistics.DBG_LastException = ex
+                    End Try
+                End If
+            End If
         Catch ex As Exception
             If retryCount >= 5 Then Throw ex
             retryCount += 1

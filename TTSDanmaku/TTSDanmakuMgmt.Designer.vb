@@ -58,6 +58,7 @@ Partial Class TTSDanmakuMgmt
         Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
         Me.Button_SetupWizard = New System.Windows.Forms.Button()
+        Me.CheckBox_NoKeepingCache = New System.Windows.Forms.CheckBox()
         Me.StatusStrip_Main.SuspendLayout()
         Me.GroupBox_TTSOptions.SuspendLayout()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,6 +87,7 @@ Partial Class TTSDanmakuMgmt
         '
         Me.GroupBox_TTSOptions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox_TTSOptions.Controls.Add(Me.CheckBox_NoKeepingCache)
         Me.GroupBox_TTSOptions.Controls.Add(Me.Button_SetupWizard)
         Me.GroupBox_TTSOptions.Controls.Add(Me.NumericUpDown_Volume)
         Me.GroupBox_TTSOptions.Controls.Add(Me.Label_TTSVolume)
@@ -119,6 +121,7 @@ Partial Class TTSDanmakuMgmt
         Me.NumericUpDown_Volume.Name = "NumericUpDown_Volume"
         Me.NumericUpDown_Volume.Size = New System.Drawing.Size(137, 23)
         Me.NumericUpDown_Volume.TabIndex = 14
+        Me.ToolTip_Default.SetToolTip(Me.NumericUpDown_Volume, "调节 TTS 的相对音量大小。范围为 0（完全静音）~ 100（与系统音量一致）。")
         Me.NumericUpDown_Volume.Value = New Decimal(New Integer() {100, 0, 0, 0})
         '
         'Label_TTSVolume
@@ -137,7 +140,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_StatusReport.Location = New System.Drawing.Point(579, 78)
         Me.Button_StatusReport.Name = "Button_StatusReport"
         Me.Button_StatusReport.Size = New System.Drawing.Size(75, 23)
-        Me.Button_StatusReport.TabIndex = 17
+        Me.Button_StatusReport.TabIndex = 18
         Me.Button_StatusReport.Text = "状态报告"
         Me.ToolTip_Default.SetToolTip(Me.Button_StatusReport, "以一定时间间隔报告直播间状态。")
         Me.Button_StatusReport.UseVisualStyleBackColor = True
@@ -253,7 +256,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_Load.Location = New System.Drawing.Point(579, 49)
         Me.Button_Load.Name = "Button_Load"
         Me.Button_Load.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Load.TabIndex = 16
+        Me.Button_Load.TabIndex = 17
         Me.Button_Load.Text = "重新读取"
         Me.ToolTip_Default.SetToolTip(Me.Button_Load, "重新读取已经保存的设置。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "这将丢弃您当前的所有更改。")
         Me.Button_Load.UseVisualStyleBackColor = True
@@ -266,7 +269,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_Apply.Location = New System.Drawing.Point(579, 21)
         Me.Button_Apply.Name = "Button_Apply"
         Me.Button_Apply.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Apply.TabIndex = 15
+        Me.Button_Apply.TabIndex = 16
         Me.Button_Apply.Text = "应用"
         Me.Button_Apply.UseVisualStyleBackColor = True
         '
@@ -457,9 +460,21 @@ Partial Class TTSDanmakuMgmt
         Me.Button_SetupWizard.Location = New System.Drawing.Point(579, 107)
         Me.Button_SetupWizard.Name = "Button_SetupWizard"
         Me.Button_SetupWizard.Size = New System.Drawing.Size(75, 23)
-        Me.Button_SetupWizard.TabIndex = 18
+        Me.Button_SetupWizard.TabIndex = 19
         Me.Button_SetupWizard.Text = "设置向导"
+        Me.ToolTip_Default.SetToolTip(Me.Button_SetupWizard, "运行设置向导，帮助您完成主要的插件配置。")
         Me.Button_SetupWizard.UseVisualStyleBackColor = True
+        '
+        'CheckBox_NoKeepingCache
+        '
+        Me.CheckBox_NoKeepingCache.AutoSize = True
+        Me.CheckBox_NoKeepingCache.Location = New System.Drawing.Point(193, 121)
+        Me.CheckBox_NoKeepingCache.Name = "CheckBox_NoKeepingCache"
+        Me.CheckBox_NoKeepingCache.Size = New System.Drawing.Size(183, 21)
+        Me.CheckBox_NoKeepingCache.TabIndex = 15
+        Me.CheckBox_NoKeepingCache.Text = "读完弹幕后立即删除缓存文件"
+        Me.ToolTip_Default.SetToolTip(Me.CheckBox_NoKeepingCache, "在完成播放弹幕后立即删除缓存文件。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "注意：可能有至多 2 分钟的延迟时间。这些缓存将会遵循““自动清理 TTS 缓存””选项的设置进行管理。")
+        Me.CheckBox_NoKeepingCache.UseVisualStyleBackColor = True
         '
         'TTSDanmakuMgmt
         '
@@ -536,4 +551,5 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents Label_TTSVolume As Windows.Forms.Label
     Friend WithEvents NumericUpDown_Volume As Windows.Forms.NumericUpDown
     Friend WithEvents Button_SetupWizard As Windows.Forms.Button
+    Friend WithEvents CheckBox_NoKeepingCache As Windows.Forms.CheckBox
 End Class

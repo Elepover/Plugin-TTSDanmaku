@@ -210,13 +210,37 @@ retry:
                         waveout.Stop()
                         waveout.Dispose()
                         mp3reader.Dispose()
+                        IO.File.Delete(ttsFileName)
                     End If
                     Delay(120000)
                     waveout.Dispose()
                     mp3reader.Dispose()
+                    If Not Settings.Settings.DoNotKeepCache = Nothing Then
+                        If Settings.Settings.DoNotKeepCache Then
+                            Try
+                                DBGLog("正在自动删除 TTS 缓存。")
+                                IO.File.Delete(ttsFileName)
+                            Catch ex As Exception
+                                Statistics.DBG_LastException = ex
+                            End Try
+
+                        End If
+                    End If
                 Else
                     Statistics.TTS_PlayedDuringCoolDown += 1
                     DBGLog("正在冷却时间中，将不会播放 TTS。")
+                    'Appearing to be the same as the code upside.
+                    If Not Settings.Settings.DoNotKeepCache = Nothing Then
+                        If Settings.Settings.DoNotKeepCache Then
+                            Try
+                                DBGLog("正在自动删除 TTS 缓存。")
+                                IO.File.Delete(ttsFileName)
+                            Catch ex As Exception
+                                Statistics.DBG_LastException = ex
+                            End Try
+
+                        End If
+                    End If
                 End If
             Else
                 Statistics.TTS_Silent += 1
@@ -387,7 +411,7 @@ APIs:
         DBGLog("正在准备 API...")
         Try
             DoEvents()
-            If Not PlayTTS("TTSDanmaku Initialization.", True) Then
+            If Not PlayTTS("TTSDanmaku Initialization.", True,, True) Then
                 NBlockMsgBox("API 异常，请注意 TTSDanmaku 可能无法正常工作。", vbExclamation + vbOKOnly + vbSystemModal, "TTSDanmaku Alert")
             End If
         Catch ex As Exception

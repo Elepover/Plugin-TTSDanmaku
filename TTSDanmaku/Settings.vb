@@ -184,6 +184,11 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property TTSVolume As Integer
+        ''' <summary>
+        ''' 新增于 2017/07/08 00:08 - 缓存文件使用后立即删除
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property DoNotKeepCache As Boolean
     End Class
 
     Public Class Vars
@@ -221,11 +226,11 @@ Namespace Settings
         End Sub
 
         Public Shared Sub InitializeSettingsFile()
-            Try
-                ReadSettings()
-            Catch ex As Exception
+
+            If Not ReadSettings() Then
                 CreateSettingsFile()
-            End Try
+            End If
+
             'If Not File.Exists(Vars.LibFileName) Then
             '    Dim [bytes]() As Byte = My.Resources.libNAudio
             '    Dim [stream] As Stream = File.Create(Vars.LibFileName)
@@ -240,39 +245,51 @@ Namespace Settings
             End If
         End Sub
 
-        Public Shared Sub ReadSettings()
-            Dim SettingsReader As New StreamReader(Vars.ConfigFileName, Encoding.UTF8)
-            SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.DebugMode = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.TTSDanmakuSender = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.TTSGiftsReceived = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.AutoClearCache = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.TTSDelayEnabled = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.TTSDelayValue = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.DanmakuText = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.GiftsText = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.Engine = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.StatusReport = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.StatusReport_ResolveAdvVars = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.StatusReportInterval = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.StatusReportContent = SettingsReader.ReadLine()
-            SettingsReader.ReadLine()
-            Settings.TTSVolume = SettingsReader.ReadLine()
-            SettingsReader.Close()
-        End Sub
+        Public Shared Function ReadSettings() As Boolean
+            Dim SettingsReader As StreamReader = Nothing
+            Try
+                SettingsReader = New StreamReader(Vars.ConfigFileName, Encoding.UTF8)
+                SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.DebugMode = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.TTSDanmakuSender = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.TTSGiftsReceived = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.AutoClearCache = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.TTSDelayEnabled = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.TTSDelayValue = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.DanmakuText = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.GiftsText = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.Engine = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.StatusReport = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.StatusReport_ResolveAdvVars = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.StatusReportInterval = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.StatusReportContent = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.TTSVolume = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.DoNotKeepCache = SettingsReader.ReadLine()
+                SettingsReader.Close()
+                Return True
+            Catch ex As Exception
+                Try
+                    SettingsReader.Close()
+                Catch ex2 As Exception
+                End Try
+                Return False
+            End Try
+        End Function
 
         Public Shared Sub CreateSettingsFile()
             '初始化设置系统 -> 寻找基本文件
@@ -308,6 +325,8 @@ Namespace Settings
             SettingsWriter.WriteLine("当前在线人数: $ONLINE, 弹幕总数: $TOTALDM, 现在是 $YEAR 年 $MONTH 月 $DAY 日，$HOUR 时 $MINUTE 分 $SEC 秒，当前物理内存可用 $MEMAVAI GB，已用百分之 $MPERCENT，虚拟内存可用 $VMEM GB，已用百分之 $VPERCENT_VM。")
             SettingsWriter.WriteLine("TTS 音量:")
             SettingsWriter.WriteLine("100")
+            SettingsWriter.WriteLine("播放后立即删除缓存:")
+            SettingsWriter.WriteLine("False")
             SettingsWriter.Close()
             ReadSettings()
         End Sub
@@ -343,6 +362,8 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.StatusReportContent)
             SettingsWriter.WriteLine("TTS 音量:")
             SettingsWriter.WriteLine(Settings.TTSVolume)
+            SettingsWriter.WriteLine("播放后立即删除缓存:")
+            SettingsWriter.WriteLine(Settings.DoNotKeepCache)
             SettingsWriter.Close()
         End Sub
     End Class

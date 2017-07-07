@@ -4,7 +4,7 @@
         StatusLabel_Default.Text = status
         'If log Then TextBox_Stats.AppendText(status & vbCrLf)
         System.Windows.Forms.Application.DoEvents()
-        If Me.Visible Then Threading.Thread.Sleep(2) '假装处理很快
+        If Me.Visible Then Threading.Thread.Sleep(1) '假装处理很快
     End Sub
 
     Public Function CheckIfLegal_DM()
@@ -87,6 +87,12 @@
             NumericUpDown_Volume.Font = New Drawing.Font(NumericUpDown_Volume.Font, Drawing.FontStyle.Regular)
         End If
 
+        If Not CheckBox_NoKeepingCache.Checked = Settings.Settings.DoNotKeepCache Then
+            CheckBox_NoKeepingCache.Font = New Drawing.Font(CheckBox_NoKeepingCache.Font, Drawing.FontStyle.Bold)
+        Else
+            CheckBox_NoKeepingCache.Font = New Drawing.Font(CheckBox_NoKeepingCache.Font, Drawing.FontStyle.Regular)
+        End If
+
         CheckIfLegal_DM()
         If Not TextBox_CustomDMContent.Text = Settings.Settings.DanmakuText Then
             TextBox_CustomDMContent.Font = New Drawing.Font(TextBox_CustomDMContent.Font, Drawing.FontStyle.Bold)
@@ -127,6 +133,8 @@
         TextBox_CustomGiftContent.Text = Settings.Settings.GiftsText
 
         ComboBox_Engine.SelectedIndex = Settings.Settings.Engine
+
+        CheckBox_NoKeepingCache.Checked = Settings.Settings.DoNotKeepCache
 
         TextBox_Stats.Clear()
         TextBox_Stats.AppendText("TTS 播放总尝试次数: " & Statistics.TTS_Total & vbCrLf)
@@ -176,6 +184,7 @@
         Label_ThanksViaMyHeart.Font = New Drawing.Font("Microsoft Yahei UI", 10)
         Label_TTSVolume.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         NumericUpDown_Volume.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        CheckBox_NoKeepingCache.Font = New Drawing.Font("Microsoft Yahei UI", 9)
 
         Status("就绪", False)
     End Sub
@@ -192,6 +201,7 @@
         Settings.Settings.TTSDelayValue = NumericUpDown_CoolDownValue.Value
         Settings.Settings.Engine = ComboBox_Engine.SelectedIndex
         Settings.Settings.TTSVolume = NumericUpDown_Volume.Value
+        Settings.Settings.DoNotKeepCache = CheckBox_NoKeepingCache.Checked
         '检查自定义字符是否正常
         Dim IllegalVars_DM As Boolean = CheckIfLegal_DM()
         Dim IllegalVars_GIFT As Boolean = CheckIfLegal_GIFT()
