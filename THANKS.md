@@ -9,6 +9,7 @@
 | :------ | :------ | ------: |
 | **所有本插件使用者** | *Anywhere* | **我开发的动力来源** |
 | Zohar Wang | Telegram | 插件灵感 |
+| Hxert | Telegram | 逻辑优化 |
 | Copyliu | Telegram | 插件框架 + 插件 Demo |
 | Genteure | Telegram | 插件 - 弹幕姬交互辅助 |
 | 三冥九夜 | 留言板 |自定义弹幕 / 礼物读出内容 |
