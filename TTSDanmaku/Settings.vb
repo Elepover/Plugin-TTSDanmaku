@@ -198,7 +198,7 @@ Namespace Settings
         ''' 新增于 2017/07/16 17:53 - 下载失败后的重试次数，默认为 5
         ''' </summary>
         ''' <returns></returns>
-        Public Shared Property DLFailRetry As Short
+        Public Shared Property DLFailRetry As Short = 5
     End Class
 
     Public Class Vars

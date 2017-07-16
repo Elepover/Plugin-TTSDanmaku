@@ -171,14 +171,17 @@ retry:
             Statistics.DBG_LastException = ex
             Statistics.DBG_ErrCount += 1
             'Retry
-            If retryCount < 5 Then
+            If Settings.Settings.DLFailRetry = 0 Then
+                DBGLog("下载失败，丢弃。（DLFailRetry = 0）")
+            End If
+            If retryCount < Settings.Settings.DLFailRetry Then
                 retryCount += 1
                 DBGLog("下载失败: " & ex.Message & "；将在 1 秒后执行第 " & retryCount & " 次重试。")
                 Statistics.TTS_DownloadFail += 1
                 Delay(1000)
                 GoTo retry
             End If
-            If retryCount = 5 Then
+            If retryCount = Settings.Settings.DLFailRetry Then
                 retryCount += 1
                 DBGLog("下载失败: " & ex.Message & "；即将在 1 秒后执行最后一次重试。")
                 Statistics.TTS_DownloadFail += 1
@@ -186,7 +189,7 @@ retry:
                 GoTo retry
             End If
             'Over 5 times
-            Log("在重试 5 次以后，TTS 下载失败: " & ex.Message)
+            Log("在重试 " & Settings.Settings.DLFailRetry & " 次以后，TTS 下载失败: " & ex.Message)
             Return False
         End Try
         timer.Stop()
@@ -249,14 +252,17 @@ retry:
             Statistics.DBG_ErrCount += 1
             Statistics.DBG_LastException = ex
             'Retry
-            If retryCount < 5 Then
+            If Settings.Settings.DLFailRetry = 0 Then
+                DBGLog("下载失败，丢弃。（DLFailRetry = 0）")
+            End If
+            If retryCount < Settings.Settings.DLFailRetry Then
                 retryCount += 1
                 DBGLog("下载失败: " & ex.Message & "；将在 1 秒后执行第 " & retryCount & " 次重试。")
                 Statistics.TTS_DownloadFail += 1
                 Delay(1000)
                 GoTo retry
             End If
-            If retryCount = 5 Then
+            If retryCount = Settings.Settings.DLFailRetry Then
                 retryCount += 1
                 DBGLog("下载失败: " & ex.Message & "；即将在 1 秒后执行最后一次重试。")
                 Statistics.TTS_DownloadFail += 1
@@ -264,7 +270,7 @@ retry:
                 GoTo retry
             End If
             'Over 5 times
-            Log("在重试 5 次以后，TTS 下载失败: " & ex.Message)
+            Log("在重试 " & Settings.Settings.DLFailRetry & " 次以后，TTS 下载失败: " & ex.Message)
             Return False
         Catch ex As Exception
             Statistics.DBG_ErrCount += 1
@@ -302,18 +308,18 @@ retry:
             If Settings.Settings.TTSDanmakuSender Then
                 Dim unreplacedText As String = Settings.Settings.DanmakuText
                 Dim replacedText As String = unreplacedText.Replace("$USER", e.Danmaku.CommentUser).Replace("$DM", e.Danmaku.CommentText)
-                PlayTTS(replacedText)
+                If Not replacedText = "" Then PlayTTS(replacedText)
             Else
                 Dim unreplacedText As String = Settings.Settings.DanmakuText
                 Dim replacedText As String = unreplacedText.Replace("$USER", "").Replace("$DM", e.Danmaku.CommentText)
-                PlayTTS(replacedText)
+                If Not replacedText = "" Then PlayTTS(replacedText)
             End If
         End If
         If e.Danmaku.MsgType = BilibiliDM_PluginFramework.MsgTypeEnum.GiftSend Then
             'DBGLog("收到来自 " & e.Danmaku.GiftUser & " 的 " & e.Danmaku.GiftNum & " 个 " & e.Danmaku.GiftName & "。")
             Dim unreplacedText As String = Settings.Settings.GiftsText
             Dim replacedText As String = unreplacedText.Replace("$USER", e.Danmaku.GiftUser).Replace("$COUNT", e.Danmaku.GiftNum).Replace("$GIFT", e.Danmaku.GiftName)
-            PlayTTS(replacedText)
+            If Not replacedText = "" Then PlayTTS(replacedText)
         End If
     End Sub
 
@@ -325,7 +331,11 @@ retry:
     Private Sub Main_Connected(sender As Object, e As BilibiliDM_PluginFramework.ConnectedEvtArgs)
         DBGLog("Connected Event Handled, data: " & e.roomid)
         If IsEnabled Then
-            PlayTTS("已成功连接至房间: " & e.roomid)
+            If Settings.Settings.ConnectSuccessful = "" Then
+                PlayTTS("已成功连接至房间: " & e.roomid)
+            Else
+                PlayTTS(Settings.Settings.ConnectSuccessful.Replace("%s", e.roomid))
+            End If
         End If
     End Sub
 
@@ -381,10 +391,12 @@ retry:
             DBGLog("TTSDelayValue: " & Settings.Settings.TTSDelayValue)
             DBGLog("GiftsText: " & Settings.Settings.GiftsText)
             DBGLog("DanmakuText: " & Settings.Settings.DanmakuText)
+            DBGLog("ConnectSuccessful: " & Settings.Settings.ConnectSuccessful)
             DBGLog("StatusReport: " & Settings.Settings.StatusReport)
             DBGLog("StatusReportContent: " & Settings.Settings.StatusReportContent)
             DBGLog("StatusReportInterval: " & Settings.Settings.StatusReportInterval)
             DBGLog("StatusReport_ResolveAdvVars: " & Settings.Settings.StatusReport_ResolveAdvVars)
+            DBGLog("DLFailRetry: " & Settings.Settings.DLFailRetry)
         Catch ex As Exception
             Log("启动失败 - 无法初始化设置系统: " & ex.ToString)
             startupFailure = True

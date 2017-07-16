@@ -143,7 +143,7 @@ retry:
                 End If
             End If
         Catch ex As Exception
-            If retryCount >= 5 Then Throw ex
+            If retryCount >= Settings.Settings.DLFailRetry Then Throw ex
             retryCount += 1
             GoTo retry
         End Try
