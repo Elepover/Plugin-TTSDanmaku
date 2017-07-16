@@ -1,7 +1,7 @@
 # Plugin-TTSDanmaku
 The TTSDanmaku plugin for bilibili_dm (https://github.com/copyliu/bililive_dm)
 
-Description last updated at: 07/07/2017 18:05 (GMT)
+Description last updated at: 07/16/2017 13:50 (GMT)
 
 有问题或是有建议可以 [在作者的 Blog](https://blog.elepover.com/quoteLeft.html) 通过评论提交。
 
@@ -42,7 +42,7 @@ Description last updated at: 07/07/2017 18:05 (GMT)
 
 稳定版本（弹幕姬插件仓库版本）: **v1.0.4.50**
 
-最新版本: [**v1.0.4.51**](https://ttsdanmaku.elepover.com)
+最新版本: [**v1.0.4.52**](https://ttsdanmaku.elepover.com)
 
 ```
 [i] 各前缀说明:
@@ -56,6 +56,18 @@ Description last updated at: 07/07/2017 18:05 (GMT)
 [i] 楼上的问题将在后期版本中解决。
 
 [i] 新版开发进度:
+
+v1.0.4, build 52 ->
+[+] 现可自定义房间连接成功读出内容。
+[+] 现可修改下载错误重试次数。
+[+] 使冷却功能跟进「读完就删」。
+[/] 补上了设置窗口的部分 Tooltip.
+[/] 修复了智障设置向导按钮的 Layout.
+[/] 改进 TTS 播放过程。
+[/] 针对超大弹幕压力进行了测试。
+[/] 内存占用，**真的**不会再炸妈了。
+[/] 在自定义读出内容为空时将不会读出。
+[i] 上方的描述不适用于「自定义连接成功读出内容」
 
 v1.0.4, build 51 ->
 [+] 新增读完就删缓存功能（来自用户 [@YUXSTUDIO]）
