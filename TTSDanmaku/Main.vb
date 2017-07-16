@@ -238,6 +238,9 @@ retry:
                     If Not Settings.Settings.DoNotKeepCache = Nothing Then
                         If Settings.Settings.DoNotKeepCache Then
                             Try
+                                waveout.Stop()
+                                waveout.Dispose()
+                                mp3reader.Dispose()
                                 DBGLog("正在自动删除 TTS 缓存。")
                                 IO.File.Delete(ttsFileName)
                             Catch ex As Exception
