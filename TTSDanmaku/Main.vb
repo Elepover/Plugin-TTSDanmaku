@@ -172,7 +172,9 @@ retry:
             Statistics.DBG_ErrCount += 1
             'Retry
             If Settings.Settings.DLFailRetry = 0 Then
+                Statistics.TTS_DownloadFail += 1
                 DBGLog("下载失败，丢弃。（DLFailRetry = 0）")
+                Return False
             End If
             If retryCount < Settings.Settings.DLFailRetry Then
                 retryCount += 1
@@ -254,6 +256,8 @@ retry:
             'Retry
             If Settings.Settings.DLFailRetry = 0 Then
                 DBGLog("下载失败，丢弃。（DLFailRetry = 0）")
+                Statistics.TTS_DownloadFail += 1
+                Return False
             End If
             If retryCount < Settings.Settings.DLFailRetry Then
                 retryCount += 1
