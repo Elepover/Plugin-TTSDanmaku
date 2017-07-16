@@ -27,6 +27,10 @@ Partial Class TTSDanmakuMgmt
         Me.StatusStrip_Main = New System.Windows.Forms.StatusStrip()
         Me.StatusLabel_Default = New System.Windows.Forms.ToolStripStatusLabel()
         Me.GroupBox_TTSOptions = New System.Windows.Forms.GroupBox()
+        Me.NumericUpDown_RetryCount = New System.Windows.Forms.NumericUpDown()
+        Me.Label_RetryCount = New System.Windows.Forms.Label()
+        Me.TextBox_CustomConnected = New System.Windows.Forms.TextBox()
+        Me.Label_CustomConnected = New System.Windows.Forms.Label()
         Me.CheckBox_NoKeepingCache = New System.Windows.Forms.CheckBox()
         Me.Button_SetupWizard = New System.Windows.Forms.Button()
         Me.NumericUpDown_Volume = New System.Windows.Forms.NumericUpDown()
@@ -59,17 +63,13 @@ Partial Class TTSDanmakuMgmt
         Me.LinkLabel_Suggestions = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
-        Me.Label_CustomConnected = New System.Windows.Forms.Label()
-        Me.TextBox_CustomConnected = New System.Windows.Forms.TextBox()
-        Me.Label_RetryCount = New System.Windows.Forms.Label()
-        Me.NumericUpDown_RetryCount = New System.Windows.Forms.NumericUpDown()
         Me.StatusStrip_Main.SuspendLayout()
         Me.GroupBox_TTSOptions.SuspendLayout()
+        CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_CoolDownValue, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_Statistics.SuspendLayout()
         Me.GroupBox_TempMgr.SuspendLayout()
-        CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StatusStrip_Main
@@ -123,6 +123,44 @@ Partial Class TTSDanmakuMgmt
         Me.GroupBox_TTSOptions.TabIndex = 0
         Me.GroupBox_TTSOptions.TabStop = False
         Me.GroupBox_TTSOptions.Text = "TTS 设置"
+        '
+        'NumericUpDown_RetryCount
+        '
+        Me.NumericUpDown_RetryCount.Location = New System.Drawing.Point(193, 138)
+        Me.NumericUpDown_RetryCount.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.NumericUpDown_RetryCount.Name = "NumericUpDown_RetryCount"
+        Me.NumericUpDown_RetryCount.Size = New System.Drawing.Size(137, 23)
+        Me.NumericUpDown_RetryCount.TabIndex = 23
+        Me.ToolTip_Default.SetToolTip(Me.NumericUpDown_RetryCount, "指定在下载 TTS 文件时出现网络错误的重试次数。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "默认值: 5" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "范围为 0 ~ 10, 指定为 0 将阻止插件重新下载。")
+        '
+        'Label_RetryCount
+        '
+        Me.Label_RetryCount.AutoSize = True
+        Me.Label_RetryCount.Location = New System.Drawing.Point(190, 118)
+        Me.Label_RetryCount.Name = "Label_RetryCount"
+        Me.Label_RetryCount.Size = New System.Drawing.Size(166, 17)
+        Me.Label_RetryCount.TabIndex = 22
+        Me.Label_RetryCount.Text = "下载失败重试次数（0 ~ 10）"
+        '
+        'TextBox_CustomConnected
+        '
+        Me.TextBox_CustomConnected.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox_CustomConnected.BackColor = System.Drawing.Color.LightGreen
+        Me.TextBox_CustomConnected.Location = New System.Drawing.Point(6, 338)
+        Me.TextBox_CustomConnected.Name = "TextBox_CustomConnected"
+        Me.TextBox_CustomConnected.Size = New System.Drawing.Size(648, 23)
+        Me.TextBox_CustomConnected.TabIndex = 21
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_CustomConnected, "指定插件检测到弹幕姬成功连接至房间时读出的内容。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "用 %s 来代替房间号。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "留空可关闭本功能。")
+        '
+        'Label_CustomConnected
+        '
+        Me.Label_CustomConnected.AutoSize = True
+        Me.Label_CustomConnected.Location = New System.Drawing.Point(6, 318)
+        Me.Label_CustomConnected.Name = "Label_CustomConnected"
+        Me.Label_CustomConnected.Size = New System.Drawing.Size(164, 17)
+        Me.Label_CustomConnected.TabIndex = 20
+        Me.Label_CustomConnected.Text = "自定义房间连接成功读出内容"
         '
         'CheckBox_NoKeepingCache
         '
@@ -206,7 +244,8 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_CustomGiftContent.Name = "TextBox_CustomGiftContent"
         Me.TextBox_CustomGiftContent.Size = New System.Drawing.Size(648, 23)
         Me.TextBox_CustomGiftContent.TabIndex = 10
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_CustomGiftContent, "在此自定义收到礼物后的读出内容。")
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_CustomGiftContent, "在此自定义收到礼物后的读出内容。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "留空可关闭本项目读出功能。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "变量参考帮助:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "https://github.com/Elepover/Plugin-TT" &
+        "SDanmaku/wiki")
         '
         'TextBox_CustomDMContent
         '
@@ -216,7 +255,8 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_CustomDMContent.Name = "TextBox_CustomDMContent"
         Me.TextBox_CustomDMContent.Size = New System.Drawing.Size(648, 23)
         Me.TextBox_CustomDMContent.TabIndex = 8
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_CustomDMContent, "在此自定义收到弹幕后的读出内容。")
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_CustomDMContent, "在此自定义收到弹幕后的读出内容。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "留空可关闭本项目读出功能。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "变量参考帮助:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "https://github.com/Elepover/Plugin-TT" &
+        "SDanmaku/wiki")
         '
         'Label_CustomGiftContent_Header
         '
@@ -365,6 +405,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_Stats.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox_Stats.Size = New System.Drawing.Size(643, 75)
         Me.TextBox_Stats.TabIndex = 0
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_Stats, "截至插件本次启动运行到目前的统计数据。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "当您启动插件时，数据将被清空。")
         '
         'GroupBox_TempMgr
         '
@@ -486,42 +527,6 @@ Partial Class TTSDanmakuMgmt
         "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
         "his is an open-source(MIT) software.")
         '
-        'Label_CustomConnected
-        '
-        Me.Label_CustomConnected.AutoSize = True
-        Me.Label_CustomConnected.Location = New System.Drawing.Point(6, 318)
-        Me.Label_CustomConnected.Name = "Label_CustomConnected"
-        Me.Label_CustomConnected.Size = New System.Drawing.Size(164, 17)
-        Me.Label_CustomConnected.TabIndex = 20
-        Me.Label_CustomConnected.Text = "自定义房间连接成功读出内容"
-        '
-        'TextBox_CustomConnected
-        '
-        Me.TextBox_CustomConnected.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox_CustomConnected.BackColor = System.Drawing.Color.LightGreen
-        Me.TextBox_CustomConnected.Location = New System.Drawing.Point(6, 338)
-        Me.TextBox_CustomConnected.Name = "TextBox_CustomConnected"
-        Me.TextBox_CustomConnected.Size = New System.Drawing.Size(648, 23)
-        Me.TextBox_CustomConnected.TabIndex = 21
-        '
-        'Label_RetryCount
-        '
-        Me.Label_RetryCount.AutoSize = True
-        Me.Label_RetryCount.Location = New System.Drawing.Point(190, 118)
-        Me.Label_RetryCount.Name = "Label_RetryCount"
-        Me.Label_RetryCount.Size = New System.Drawing.Size(166, 17)
-        Me.Label_RetryCount.TabIndex = 22
-        Me.Label_RetryCount.Text = "下载失败重试次数（0 ~ 10）"
-        '
-        'NumericUpDown_RetryCount
-        '
-        Me.NumericUpDown_RetryCount.Location = New System.Drawing.Point(193, 138)
-        Me.NumericUpDown_RetryCount.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.NumericUpDown_RetryCount.Name = "NumericUpDown_RetryCount"
-        Me.NumericUpDown_RetryCount.Size = New System.Drawing.Size(137, 23)
-        Me.NumericUpDown_RetryCount.TabIndex = 23
-        '
         'TTSDanmakuMgmt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -552,13 +557,13 @@ Partial Class TTSDanmakuMgmt
         Me.StatusStrip_Main.PerformLayout()
         Me.GroupBox_TTSOptions.ResumeLayout(False)
         Me.GroupBox_TTSOptions.PerformLayout()
+        CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown_CoolDownValue, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox_Statistics.ResumeLayout(False)
         Me.GroupBox_Statistics.PerformLayout()
         Me.GroupBox_TempMgr.ResumeLayout(False)
         Me.GroupBox_TempMgr.PerformLayout()
-        CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
