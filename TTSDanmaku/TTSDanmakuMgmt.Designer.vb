@@ -59,6 +59,8 @@ Partial Class TTSDanmakuMgmt
         Me.LinkLabel_Suggestions = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
+        Me.Label_CustomConnected = New System.Windows.Forms.Label()
+        Me.TextBox_CustomConnected = New System.Windows.Forms.TextBox()
         Me.StatusStrip_Main.SuspendLayout()
         Me.GroupBox_TTSOptions.SuspendLayout()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -87,6 +89,8 @@ Partial Class TTSDanmakuMgmt
         '
         Me.GroupBox_TTSOptions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox_TTSOptions.Controls.Add(Me.TextBox_CustomConnected)
+        Me.GroupBox_TTSOptions.Controls.Add(Me.Label_CustomConnected)
         Me.GroupBox_TTSOptions.Controls.Add(Me.CheckBox_NoKeepingCache)
         Me.GroupBox_TTSOptions.Controls.Add(Me.Button_SetupWizard)
         Me.GroupBox_TTSOptions.Controls.Add(Me.NumericUpDown_Volume)
@@ -477,6 +481,24 @@ Partial Class TTSDanmakuMgmt
         "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
         "his is an open-source(MIT) software.")
         '
+        'Label_CustomConnected
+        '
+        Me.Label_CustomConnected.AutoSize = True
+        Me.Label_CustomConnected.Location = New System.Drawing.Point(6, 318)
+        Me.Label_CustomConnected.Name = "Label_CustomConnected"
+        Me.Label_CustomConnected.Size = New System.Drawing.Size(164, 17)
+        Me.Label_CustomConnected.TabIndex = 20
+        Me.Label_CustomConnected.Text = "自定义房间连接成功读出内容"
+        '
+        'TextBox_CustomConnected
+        '
+        Me.TextBox_CustomConnected.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox_CustomConnected.Location = New System.Drawing.Point(6, 338)
+        Me.TextBox_CustomConnected.Name = "TextBox_CustomConnected"
+        Me.TextBox_CustomConnected.Size = New System.Drawing.Size(648, 23)
+        Me.TextBox_CustomConnected.TabIndex = 21
+        '
         'TTSDanmakuMgmt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -553,4 +575,6 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents NumericUpDown_Volume As Windows.Forms.NumericUpDown
     Friend WithEvents Button_SetupWizard As Windows.Forms.Button
     Friend WithEvents CheckBox_NoKeepingCache As Windows.Forms.CheckBox
+    Friend WithEvents Label_CustomConnected As Windows.Forms.Label
+    Friend WithEvents TextBox_CustomConnected As Windows.Forms.TextBox
 End Class
