@@ -93,6 +93,18 @@
             CheckBox_NoKeepingCache.Font = New Drawing.Font(CheckBox_NoKeepingCache.Font, Drawing.FontStyle.Regular)
         End If
 
+        If Not TextBox_CustomConnected.Text = Settings.Settings.ConnectSuccessful Then
+            TextBox_CustomConnected.Font = New Drawing.Font(TextBox_CustomConnected.Font, Drawing.FontStyle.Bold)
+        Else
+            TextBox_CustomConnected.Font = New Drawing.Font(TextBox_CustomConnected.Font, Drawing.FontStyle.Regular)
+        End If
+
+        If Not NumericUpDown_RetryCount.Value = Settings.Settings.DLFailRetry Then
+            NumericUpDown_RetryCount.Font = New Drawing.Font(NumericUpDown_RetryCount.Font, Drawing.FontStyle.Bold)
+        Else
+            NumericUpDown_RetryCount.Font = New Drawing.Font(NumericUpDown_RetryCount.Font, Drawing.FontStyle.Regular)
+        End If
+
         CheckIfLegal_DM()
         If Not TextBox_CustomDMContent.Text = Settings.Settings.DanmakuText Then
             TextBox_CustomDMContent.Font = New Drawing.Font(TextBox_CustomDMContent.Font, Drawing.FontStyle.Bold)
@@ -128,9 +140,11 @@
         CheckBox_TTSCoolDown.Checked = Settings.Settings.TTSDelayEnabled
         NumericUpDown_CoolDownValue.Value = Settings.Settings.TTSDelayValue
         NumericUpDown_Volume.Value = Settings.Settings.TTSVolume
+        NumericUpDown_RetryCount.Value = Settings.Settings.DLFailRetry
 
         TextBox_CustomDMContent.Text = Settings.Settings.DanmakuText
         TextBox_CustomGiftContent.Text = Settings.Settings.GiftsText
+        TextBox_CustomConnected.Text = Settings.Settings.ConnectSuccessful
 
         ComboBox_Engine.SelectedIndex = Settings.Settings.Engine
 
@@ -185,6 +199,11 @@
         Label_TTSVolume.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         NumericUpDown_Volume.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         CheckBox_NoKeepingCache.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Label_CustomConnected.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        TextBox_CustomConnected.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Label_RetryCount.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        NumericUpDown_RetryCount.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+
 
         Status("就绪", False)
     End Sub
@@ -202,6 +221,8 @@
         Settings.Settings.Engine = ComboBox_Engine.SelectedIndex
         Settings.Settings.TTSVolume = NumericUpDown_Volume.Value
         Settings.Settings.DoNotKeepCache = CheckBox_NoKeepingCache.Checked
+        Settings.Settings.ConnectSuccessful = TextBox_CustomConnected.Text
+        Settings.Settings.DLFailRetry = NumericUpDown_RetryCount.Value
         '检查自定义字符是否正常
         Dim IllegalVars_DM As Boolean = CheckIfLegal_DM()
         Dim IllegalVars_GIFT As Boolean = CheckIfLegal_GIFT()

@@ -61,12 +61,15 @@ Partial Class TTSDanmakuMgmt
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
         Me.Label_CustomConnected = New System.Windows.Forms.Label()
         Me.TextBox_CustomConnected = New System.Windows.Forms.TextBox()
+        Me.Label_RetryCount = New System.Windows.Forms.Label()
+        Me.NumericUpDown_RetryCount = New System.Windows.Forms.NumericUpDown()
         Me.StatusStrip_Main.SuspendLayout()
         Me.GroupBox_TTSOptions.SuspendLayout()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_CoolDownValue, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_Statistics.SuspendLayout()
         Me.GroupBox_TempMgr.SuspendLayout()
+        CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StatusStrip_Main
@@ -89,6 +92,8 @@ Partial Class TTSDanmakuMgmt
         '
         Me.GroupBox_TTSOptions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox_TTSOptions.Controls.Add(Me.NumericUpDown_RetryCount)
+        Me.GroupBox_TTSOptions.Controls.Add(Me.Label_RetryCount)
         Me.GroupBox_TTSOptions.Controls.Add(Me.TextBox_CustomConnected)
         Me.GroupBox_TTSOptions.Controls.Add(Me.Label_CustomConnected)
         Me.GroupBox_TTSOptions.Controls.Add(Me.CheckBox_NoKeepingCache)
@@ -494,10 +499,28 @@ Partial Class TTSDanmakuMgmt
         '
         Me.TextBox_CustomConnected.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox_CustomConnected.BackColor = System.Drawing.Color.LightGreen
         Me.TextBox_CustomConnected.Location = New System.Drawing.Point(6, 338)
         Me.TextBox_CustomConnected.Name = "TextBox_CustomConnected"
         Me.TextBox_CustomConnected.Size = New System.Drawing.Size(648, 23)
         Me.TextBox_CustomConnected.TabIndex = 21
+        '
+        'Label_RetryCount
+        '
+        Me.Label_RetryCount.AutoSize = True
+        Me.Label_RetryCount.Location = New System.Drawing.Point(190, 118)
+        Me.Label_RetryCount.Name = "Label_RetryCount"
+        Me.Label_RetryCount.Size = New System.Drawing.Size(166, 17)
+        Me.Label_RetryCount.TabIndex = 22
+        Me.Label_RetryCount.Text = "下载失败重试次数（0 ~ 10）"
+        '
+        'NumericUpDown_RetryCount
+        '
+        Me.NumericUpDown_RetryCount.Location = New System.Drawing.Point(193, 138)
+        Me.NumericUpDown_RetryCount.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.NumericUpDown_RetryCount.Name = "NumericUpDown_RetryCount"
+        Me.NumericUpDown_RetryCount.Size = New System.Drawing.Size(137, 23)
+        Me.NumericUpDown_RetryCount.TabIndex = 23
         '
         'TTSDanmakuMgmt
         '
@@ -535,6 +558,7 @@ Partial Class TTSDanmakuMgmt
         Me.GroupBox_Statistics.PerformLayout()
         Me.GroupBox_TempMgr.ResumeLayout(False)
         Me.GroupBox_TempMgr.PerformLayout()
+        CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -577,4 +601,6 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents CheckBox_NoKeepingCache As Windows.Forms.CheckBox
     Friend WithEvents Label_CustomConnected As Windows.Forms.Label
     Friend WithEvents TextBox_CustomConnected As Windows.Forms.TextBox
+    Friend WithEvents Label_RetryCount As Windows.Forms.Label
+    Friend WithEvents NumericUpDown_RetryCount As Windows.Forms.NumericUpDown
 End Class
