@@ -290,6 +290,10 @@ Namespace Settings
                 Settings.TTSVolume = SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
                 Settings.DoNotKeepCache = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.ConnectSuccessful = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.DLFailRetry = SettingsReader.ReadLine()
                 SettingsReader.Close()
                 Return True
             Catch ex As Exception
@@ -337,6 +341,10 @@ Namespace Settings
             SettingsWriter.WriteLine("100")
             SettingsWriter.WriteLine("播放后立即删除缓存:")
             SettingsWriter.WriteLine("False")
+            SettingsWriter.WriteLine("成功连接到房间后的读出内容:")
+            SettingsWriter.WriteLine("已成功连接至房间: %s")
+            SettingsWriter.WriteLine("下载失败后的重试次数，默认为 5:")
+            SettingsWriter.WriteLine("5")
             SettingsWriter.Close()
             ReadSettings()
         End Sub
@@ -374,6 +382,10 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.TTSVolume)
             SettingsWriter.WriteLine("播放后立即删除缓存:")
             SettingsWriter.WriteLine(Settings.DoNotKeepCache)
+            SettingsWriter.WriteLine("成功连接到房间后的读出内容:")
+            SettingsWriter.WriteLine(Settings.ConnectSuccessful)
+            SettingsWriter.WriteLine("下载失败后的重试次数，默认为 5:")
+            SettingsWriter.WriteLine(Settings.DLFailRetry)
             SettingsWriter.Close()
         End Sub
     End Class
