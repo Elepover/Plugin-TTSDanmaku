@@ -12,7 +12,7 @@ Public Class Main
         Me.PluginAuth = "Elepover"
         Me.PluginName = "TTSDanmaku"
         Me.PluginCont = "elepover@outlook.com"
-        Me.PluginVer = "1.0.4.51"
+        Me.PluginVer = "1.0.4.52"
         Me.PluginDesc = "把你收到的弹幕和礼物，读出来！"
     End Sub
 
@@ -339,10 +339,14 @@ retry:
             Dim frm As New Form_WizardChooser
             frm.Show()
         ElseIf My.Computer.Keyboard.CtrlKeyDown Then
-            Settings.Vars.Initialize()
-            Settings.Methods.InitializeDirectories()
-            Settings.Methods.CreateSettingsFile()
-            NBlockMsgBox("已重置配置文件。", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "TTSDanmaku")
+            Try
+                Settings.Vars.Initialize()
+                Settings.Methods.InitializeDirectories()
+                Settings.Methods.CreateSettingsFile()
+                NBlockMsgBox("已重置配置文件。", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "TTSDanmaku")
+            Catch ex As Exception
+                NBlockMsgBox("配置文件重置过程中发生错误: " & ex.ToString, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "TTSDanmaku")
+            End Try
         Else
             ShowADM()
         End If
@@ -424,9 +428,6 @@ APIs:
         Statistics.ResetStats()
         DBGLog("启动状态报告守护线程...")
         StartStatusReport()
-        'If Settings.Settings.StatusReport Then
-        '    NBlockMsgBox("状态报告已启动，这可能会阻止弹幕姬正常退出。" & vbCrLf & "请务必在退出弹幕姬之前停止插件！", vbExclamation + vbSystemModal + vbOKOnly, "TTSDanmaku")
-        'End If
         GC.Collect()
         Console.WriteLine("Plugin Started!")
         startSW.Stop()
