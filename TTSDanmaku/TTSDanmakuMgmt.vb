@@ -381,9 +381,9 @@
             If My.Computer.Keyboard.ShiftKeyDown Then
                 'Check beta
                 Dim latest As KruinUpdates.Update = KruinUpdates.CheckUpdatesViaKruinUpdates(KruinUpdates.UpdateType.Beta)
-                Dim latestInt As Integer = CInt(latest.Version.Replace(".", ""))
-                Dim currentInt As Integer = CInt(System.Windows.Forms.Application.ProductVersion.Replace(".", ""))
-                If latestInt > currentInt Then
+                Dim latestVer As Version = New Version(latest.Version)
+                Dim currentVer As Version = New Version(New Main().PluginVer)
+                If latestVer > currentVer Then
                     If MsgBox("最新版本: " & latest.Version & " 已发布！" & vbCrLf & "是否前往下载？", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "KruinUpdates") = MsgBoxResult.Yes Then
                         Dim proc As New Process()
                         proc.StartInfo.FileName = "https://ttsdanmaku.elepover.com/TTSDanmaku v" & latest.Version & ".zip"
@@ -395,9 +395,9 @@
             Else
                 'Check release
                 Dim latest As KruinUpdates.Update = KruinUpdates.CheckUpdatesViaKruinUpdates(KruinUpdates.UpdateType.Release)
-                Dim latestInt As Integer = CInt(latest.Version.Replace(".", ""))
-                Dim currentInt As Integer = CInt(System.Windows.Forms.Application.ProductVersion.Replace(".", ""))
-                If latestInt > currentInt Then
+                Dim latestVer As Version = New Version(latest.Version)
+                Dim currentVer As Version = New Version(New Main().PluginVer)
+                If latestVer > currentVer Then
                     If MsgBox("最新版本: " & latest.Version & " 已发布！" & vbCrLf & "是否前往下载？", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "KruinUpdates") = MsgBoxResult.Yes Then
                         Dim proc As New Process()
                         proc.StartInfo.FileName = "https://www.danmuji.cn/plugins/TTSDanmaku"
