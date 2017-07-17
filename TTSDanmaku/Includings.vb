@@ -148,8 +148,39 @@ retry:
             GoTo retry
         End Try
     End Sub
-End Module
+    Public Class KruinUpdates
+        Public Enum UpdateType
+            ''' <summary>
+            ''' 测试版
+            ''' </summary>
+            Beta = 1
+            ''' <summary>
+            ''' 发布版
+            ''' </summary>
+            Release = 0
+        End Enum
 
-Public Class WizardStatic
-    Public Shared Property WizardSettings As Settings.Settings
-End Class
+        Public Class Update
+            Sub New()
+                Version = "0.0.0.0"
+                Type = UpdateType.Release
+            End Sub
+            Public Version As String
+            Public Type As UpdateType
+        End Class
+
+        Public Shared Function CheckUpdatesViaKruinUpdates(Optional Type As UpdateType = UpdateType.Release) As Update
+            'Check updates via Elepover's APIs.
+            Dim client As New WebClient()
+            Dim ver As String
+            If Type = UpdateType.Beta Then
+                ver = client.DownloadString(New Uri("https://apis.elepover.com/kruinupdates/latest-beta"))
+            Else
+                ver = client.DownloadString(New Uri("https://apis.elepover.com/kruinupdates/latest-release"))
+            End If
+            Dim u As New Update() With {.Type = Type, .Version = ver}
+            Return u
+        End Function
+    End Class
+
+End Module

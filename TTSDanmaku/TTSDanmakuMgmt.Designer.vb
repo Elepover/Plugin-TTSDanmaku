@@ -63,6 +63,7 @@ Partial Class TTSDanmakuMgmt
         Me.LinkLabel_Suggestions = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
+        Me.Button_CheckUpdates = New System.Windows.Forms.Button()
         Me.StatusStrip_Main.SuspendLayout()
         Me.GroupBox_TTSOptions.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,6 +93,7 @@ Partial Class TTSDanmakuMgmt
         '
         Me.GroupBox_TTSOptions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox_TTSOptions.Controls.Add(Me.Button_CheckUpdates)
         Me.GroupBox_TTSOptions.Controls.Add(Me.NumericUpDown_RetryCount)
         Me.GroupBox_TTSOptions.Controls.Add(Me.Label_RetryCount)
         Me.GroupBox_TTSOptions.Controls.Add(Me.TextBox_CustomConnected)
@@ -528,6 +530,17 @@ Partial Class TTSDanmakuMgmt
         "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
         "his is an open-source(MIT) software.")
         '
+        'Button_CheckUpdates
+        '
+        Me.Button_CheckUpdates.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.Button_CheckUpdates.Location = New System.Drawing.Point(579, 136)
+        Me.Button_CheckUpdates.Name = "Button_CheckUpdates"
+        Me.Button_CheckUpdates.Size = New System.Drawing.Size(75, 23)
+        Me.Button_CheckUpdates.TabIndex = 24
+        Me.Button_CheckUpdates.Text = "检查更新"
+        Me.ToolTip_Default.SetToolTip(Me.Button_CheckUpdates, "检查插件更新。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按下 Shift 再点击按钮可检查测试版更新。")
+        Me.Button_CheckUpdates.UseVisualStyleBackColor = True
+        '
         'TTSDanmakuMgmt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -609,4 +622,5 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents TextBox_CustomConnected As Windows.Forms.TextBox
     Friend WithEvents Label_RetryCount As Windows.Forms.Label
     Friend WithEvents NumericUpDown_RetryCount As Windows.Forms.NumericUpDown
+    Friend WithEvents Button_CheckUpdates As Windows.Forms.Button
 End Class

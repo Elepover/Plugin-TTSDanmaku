@@ -375,4 +375,40 @@
         frm.Show()
         Me.Close()
     End Sub
+
+    Private Sub Button_CheckUpdates_Click(sender As Object, e As EventArgs) Handles Button_CheckUpdates.Click
+        Try
+            If My.Computer.Keyboard.ShiftKeyDown Then
+                'Check beta
+                Dim latest As KruinUpdates.Update = KruinUpdates.CheckUpdatesViaKruinUpdates(KruinUpdates.UpdateType.Beta)
+                Dim latestInt As Integer = CInt(latest.Version.Replace(".", ""))
+                Dim currentInt As Integer = CInt(System.Windows.Forms.Application.ProductVersion.Replace(".", ""))
+                If latestInt > currentInt Then
+                    If MsgBox("最新版本: " & latest.Version & " 已发布！" & vbCrLf & "是否前往下载？", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "KruinUpdates") = MsgBoxResult.Yes Then
+                        Dim proc As New Process()
+                        proc.StartInfo.FileName = "https://ttsdanmaku.elepover.com/TTSDanmaku v" & latest.Version & ".zip"
+                        proc.Start()
+                    End If
+                Else
+                    NBlockMsgBox("插件已为最新。", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "KruinUpdates")
+                End If
+            Else
+                'Check release
+                Dim latest As KruinUpdates.Update = KruinUpdates.CheckUpdatesViaKruinUpdates(KruinUpdates.UpdateType.Release)
+                Dim latestInt As Integer = CInt(latest.Version.Replace(".", ""))
+                Dim currentInt As Integer = CInt(System.Windows.Forms.Application.ProductVersion.Replace(".", ""))
+                If latestInt > currentInt Then
+                    If MsgBox("最新版本: " & latest.Version & " 已发布！" & vbCrLf & "是否前往下载？", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "KruinUpdates") = MsgBoxResult.Yes Then
+                        Dim proc As New Process()
+                        proc.StartInfo.FileName = "https://www.danmuji.cn/plugins/TTSDanmaku"
+                        proc.Start()
+                    End If
+                Else
+                    NBlockMsgBox("插件已为最新。", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "KruinUpdates")
+                End If
+            End If
+        Catch ex As Exception
+            NBlockMsgBox("检查更新时出错: " & ex.ToString, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "KruinUpdates")
+        End Try
+    End Sub
 End Class
