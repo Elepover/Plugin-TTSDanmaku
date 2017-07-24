@@ -96,7 +96,7 @@ Module Includings
     ''' </summary>
     ''' <param name="text">文本</param>
     Public Sub SpeechOutput(text As String)
-        Dim obj As New Speech.Synthesis.SpeechSynthesizer() With {.Volume = 100, .Rate = 0}
+        Dim obj As New Speech.Synthesis.SpeechSynthesizer() With {.Volume = Settings.Settings.TTSVolume, .Rate = 0}
         obj.SetOutputToDefaultAudioDevice()
         obj.SelectVoiceByHints(Speech.Synthesis.VoiceGender.Female)
         obj.SpeakAsync(text)
