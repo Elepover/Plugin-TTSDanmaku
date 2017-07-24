@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 '查看程序集特性的值
 
 <Assembly: AssemblyTitle("TTSDanmaku")>
-<Assembly: AssemblyDescription("TTSDanmaku - A BilibiliDM Plugin")>
+<Assembly: AssemblyDescription("TTSDanmaku - A Bililive_DM Plugin")>
 <Assembly: AssemblyCompany("kruin.net")>
 <Assembly: AssemblyProduct("TTSDanmaku")>
 <Assembly: AssemblyCopyright("Copyright © 2017 Elepover.")>
