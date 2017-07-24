@@ -22,7 +22,7 @@
 
 | Source / 源 | Link / 链接 |
 | :------ | ------: |
-| Telegram | https://t.me/kruintian |
+| _它曾经存在过_ | _404 Not Found_ |
 | 留言板 | https://blog.elepover.com/quoteLeft.html |
 | 讨论区 | [https://f.danmuji.cn](https://f.danmuji.cn/category/6/%E9%9C%80%E6%B1%82-%E5%BB%BA%E8%AE%AE) |
 | ... | ... |
