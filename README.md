@@ -62,6 +62,14 @@ Description last updated at: 07/16/2017 13:50 (GMT)
 
 [i] 新版开发进度:
 
+v1.0.4, build 53 ->
+[+] 新增更新检查功能 (按住 Shift 进行 Beta 版更新检查)。
+[+] GitHub repo 里新增了 AppVeyor 编译状态。
+[+] 修复 .NET 框架自带 TTS 引擎的语速和音量问题。
+[+] 修改程序集信息。
+[+] 为 AppVeyor 进行了 git repo 的文件修改。
+[/] Bug 修复。
+
 v1.0.4, build 52 ->
 [+] 现可自定义房间连接成功读出内容。
 [+] 现可修改下载错误重试次数。
