@@ -30,7 +30,15 @@ Namespace Settings
         ''' 只读设置项, API 字符串。
         ''' </summary>
         ''' <returns></returns>
-        Public Shared ReadOnly Property APIString As String = "http://fanyi.baidu.com/gettts?lan=zh&text=ZoharWang&spd=5&source=web"
+        Public Shared ReadOnly Property APIString As String
+            Get
+                If Settings.HTTPSPreference Then
+                    Return "https://fanyi.baidu.com/gettts?lan=zh&text=ZoharWang&spd=5&source=web"
+                Else
+                    Return "http://fanyi.baidu.com/gettts?lan=zh&text=ZoharWang&spd=5&source=web"
+                End If
+            End Get
+        End Property
         ''' <summary>
         ''' 只读设置项, 用户名变量。
         ''' </summary>
@@ -199,6 +207,36 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property DLFailRetry As Short = 5
+        ''' <summary>
+        ''' 新增于 2017/07/28 17:01 - 代理服务器
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property ProxySettings_ProxyServer As String
+        ''' <summary>
+        ''' 新增于 2017/07/28 17:01 - 代理端口
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property ProxySettings_ProxyPort As Integer
+        ''' <summary>
+        ''' 新增于 2017/07/28 17:01 - 代理用户
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property ProxySettings_ProxyUser As String
+        ''' <summary>
+        ''' 新增于 2017/07/28 17:01 - 代理密码
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property ProxySettings_ProxyPassword As String
+        ''' <summary>
+        ''' 新增于 2017/07/28 17:01 - 是否使用 HTTPS
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property HTTPSPreference As Boolean
+        ''' <summary>
+        ''' 新增于 2017/07/28 17:01 - 是否使用 Google Global
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property UseGoogleGlobal As Boolean
     End Class
 
     Public Class Vars
@@ -294,6 +332,18 @@ Namespace Settings
                 Settings.ConnectSuccessful = SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
                 Settings.DLFailRetry = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.ProxySettings_ProxyServer = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.ProxySettings_ProxyPort = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.ProxySettings_ProxyUser = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.ProxySettings_ProxyPassword = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.HTTPSPreference = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.UseGoogleGlobal = SettingsReader.ReadLine()
                 SettingsReader.Close()
                 Return True
             Catch ex As Exception
@@ -345,6 +395,18 @@ Namespace Settings
             SettingsWriter.WriteLine("已成功连接至房间: %s")
             SettingsWriter.WriteLine("下载失败后的重试次数，默认为 5:")
             SettingsWriter.WriteLine("5")
+            SettingsWriter.WriteLine("代理服务器 IP:")
+            SettingsWriter.WriteLine("")
+            SettingsWriter.WriteLine("代理服务器端口:")
+            SettingsWriter.WriteLine("0")
+            SettingsWriter.WriteLine("代理服务器用户名:")
+            SettingsWriter.WriteLine("")
+            SettingsWriter.WriteLine("代理服务器密码:")
+            SettingsWriter.WriteLine("")
+            SettingsWriter.WriteLine("是否使用 HTTPS:")
+            SettingsWriter.WriteLine("True")
+            SettingsWriter.WriteLine("是否使用 Google Global:")
+            SettingsWriter.WriteLine("False")
             SettingsWriter.Close()
             ReadSettings()
         End Sub
@@ -386,6 +448,18 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.ConnectSuccessful)
             SettingsWriter.WriteLine("下载失败后的重试次数，默认为 5:")
             SettingsWriter.WriteLine(Settings.DLFailRetry)
+            SettingsWriter.WriteLine("代理服务器 IP:")
+            SettingsWriter.WriteLine(Settings.ProxySettings_ProxyServer)
+            SettingsWriter.WriteLine("代理服务器端口:")
+            SettingsWriter.WriteLine(Settings.ProxySettings_ProxyPort)
+            SettingsWriter.WriteLine("代理服务器用户名:")
+            SettingsWriter.WriteLine(Settings.ProxySettings_ProxyUser)
+            SettingsWriter.WriteLine("代理服务器密码:")
+            SettingsWriter.WriteLine(Settings.ProxySettings_ProxyPassword)
+            SettingsWriter.WriteLine("是否使用 HTTPS:")
+            SettingsWriter.WriteLine(Settings.HTTPSPreference)
+            SettingsWriter.WriteLine("是否使用 Google Global:")
+            SettingsWriter.WriteLine(Settings.UseGoogleGlobal)
             SettingsWriter.Close()
         End Sub
     End Class

@@ -203,6 +203,8 @@
         TextBox_CustomConnected.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Label_RetryCount.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         NumericUpDown_RetryCount.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Button_CheckUpdates.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Button_ProxySettings.Font = New Drawing.Font("Microsoft Yahei UI", 9)
 
 
         Status("就绪", False)
@@ -410,5 +412,10 @@
         Catch ex As Exception
             NBlockMsgBox("检查更新时出错: " & ex.ToString, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "KruinUpdates")
         End Try
+    End Sub
+
+    Private Sub Button_ProxySettings_Click(sender As Object, e As EventArgs) Handles Button_ProxySettings.Click
+        Dim frm As New Form_ProxySettings
+        frm.Show()
     End Sub
 End Class

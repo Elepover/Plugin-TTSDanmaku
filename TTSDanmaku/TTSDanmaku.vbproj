@@ -86,6 +86,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoesNotExistTTS.vb" />
+    <Compile Include="Form_ProxySettings.Designer.vb">
+      <DependentUpon>Form_ProxySettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_ProxySettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form_SetupWizard_1.Designer.vb">
       <DependentUpon>Form_SetupWizard_1.vb</DependentUpon>
     </Compile>
@@ -162,6 +168,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form_ProxySettings.resx">
+      <DependentUpon>Form_ProxySettings.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_SetupWizard_1.resx">
       <DependentUpon>Form_SetupWizard_1.vb</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +221,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\check_correct.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Network_Warning.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

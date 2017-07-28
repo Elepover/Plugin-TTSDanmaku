@@ -31,7 +31,22 @@ Namespace Google.TTS
         End Sub
 
         Private Shared _request As HttpWebRequest
-        Private Const URL_TTS_GOOGLE As String = "https://translate.google.cn/translate_tts?ie=UTF-8&tl={1}&q={0}&client=tw-ob"
+        Public Shared Function URL_TTS_GOOGLE(useGoogleGlobal As Boolean) As String
+            If Settings.Settings.HTTPSPreference Then
+                If useGoogleGlobal Then
+                    Return "https://translate.google.com/translate_tts?ie=UTF-8&tl={1}&q={0}&client=tw-ob"
+                Else
+                    Return "https://translate.google.cn/translate_tts?ie=UTF-8&tl={1}&q={0}&client=tw-ob"
+                End If
+            Else
+                If useGoogleGlobal Then
+                    Return "http://translate.google.com/translate_tts?ie=UTF-8&tl={1}&q={0}&client=tw-ob"
+                Else
+                    Return "http://translate.google.cn/translate_tts?ie=UTF-8&tl={1}&q={0}&client=tw-ob"
+                End If
+            End If
+
+        End Function
 
 
         Public Shared Property ProxyPath() As String
@@ -74,14 +89,16 @@ Namespace Google.TTS
         End Property
         Private Shared m_ProxyMethod As System.Nullable(Of ProxyMethod)
 
-        Public Shared Function GerarArquivo(texto As String, idioma__1 As Idioma) As String
+        Public Shared Function GerarArquivo(texto As String, idioma__1 As Idioma, googleGlobal As Boolean, Optional useProxy As Boolean = False, Optional proxy As Net.WebProxy = Nothing) As String
             Dim strIdioma As String = If(idioma__1 = Idioma.Chinese, "zh-CN", "en")
-            'String preprocessor
             Dim processedStr As String = HttpUtility.UrlEncode(texto, System.Text.Encoding.UTF8)
-            'MsgBox(processedStr)
-            Dim url As New Uri(String.Format(URL_TTS_GOOGLE, processedStr, strIdioma))
-            PrepareRequest(url)
-            'MsgBox(url.ToString)
+            Dim url As New Uri(String.Format(URL_TTS_GOOGLE(googleGlobal), processedStr, strIdioma))
+            If useProxy Then
+                PrepareRequest(url, True, proxy)
+            Else
+                PrepareRequest(url)
+            End If
+
             Dim response As WebResponse = Nothing
             Try
                 response = _request.GetResponse()
@@ -93,7 +110,6 @@ Namespace Google.TTS
                 End If
             End Try
             Dim fileContent As Stream = response.GetResponseStream()
-            'Dim caminhoTemp = Path.ChangeExtension(Path.GetTempFileName(), ".mp3")
             Dim ran1 As Integer = 0
             Dim ran2 As Integer = 0
             ran1 = (New Random).Next
@@ -113,11 +129,14 @@ Namespace Google.TTS
             Return caminhoTemp
         End Function
 
-        Private Shared Sub PrepareRequest(url As Uri)
+        Private Shared Sub PrepareRequest(url As Uri, Optional useProxy As Boolean = False, Optional proxy As Net.WebProxy = Nothing)
             If ProxyMethod.HasValue AndAlso ProxyMethod.Value = Google.TTS.ProxyMethod.ItauProxy Then
                 Dim urlBytes As Byte() = Encoding.UTF8.GetBytes(url.AbsolutePath.ToCharArray())
                 _request = DirectCast(HttpWebRequest.Create(String.Format(ProxyPath, Convert.ToBase64String(urlBytes))), HttpWebRequest)
                 _request.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727)"
+                If useProxy Then
+                    _request.Proxy = proxy
+                End If
 
                 Dim authBytes As Byte() = Encoding.UTF8.GetBytes(String.Format("{0}:{1}", ProxyUserName, ProxyPassword).ToCharArray())
                 _request.Headers("Authorization") = "Basic " + Convert.ToBase64String(authBytes)

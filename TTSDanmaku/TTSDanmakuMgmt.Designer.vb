@@ -27,6 +27,7 @@ Partial Class TTSDanmakuMgmt
         Me.StatusStrip_Main = New System.Windows.Forms.StatusStrip()
         Me.StatusLabel_Default = New System.Windows.Forms.ToolStripStatusLabel()
         Me.GroupBox_TTSOptions = New System.Windows.Forms.GroupBox()
+        Me.Button_CheckUpdates = New System.Windows.Forms.Button()
         Me.NumericUpDown_RetryCount = New System.Windows.Forms.NumericUpDown()
         Me.Label_RetryCount = New System.Windows.Forms.Label()
         Me.TextBox_CustomConnected = New System.Windows.Forms.TextBox()
@@ -63,7 +64,7 @@ Partial Class TTSDanmakuMgmt
         Me.LinkLabel_Suggestions = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
-        Me.Button_CheckUpdates = New System.Windows.Forms.Button()
+        Me.Button_ProxySettings = New System.Windows.Forms.Button()
         Me.StatusStrip_Main.SuspendLayout()
         Me.GroupBox_TTSOptions.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,6 +94,7 @@ Partial Class TTSDanmakuMgmt
         '
         Me.GroupBox_TTSOptions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox_TTSOptions.Controls.Add(Me.Button_ProxySettings)
         Me.GroupBox_TTSOptions.Controls.Add(Me.Button_CheckUpdates)
         Me.GroupBox_TTSOptions.Controls.Add(Me.NumericUpDown_RetryCount)
         Me.GroupBox_TTSOptions.Controls.Add(Me.Label_RetryCount)
@@ -125,6 +127,17 @@ Partial Class TTSDanmakuMgmt
         Me.GroupBox_TTSOptions.TabIndex = 0
         Me.GroupBox_TTSOptions.TabStop = False
         Me.GroupBox_TTSOptions.Text = "TTS 设置"
+        '
+        'Button_CheckUpdates
+        '
+        Me.Button_CheckUpdates.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.Button_CheckUpdates.Location = New System.Drawing.Point(579, 136)
+        Me.Button_CheckUpdates.Name = "Button_CheckUpdates"
+        Me.Button_CheckUpdates.Size = New System.Drawing.Size(75, 23)
+        Me.Button_CheckUpdates.TabIndex = 24
+        Me.Button_CheckUpdates.Text = "检查更新"
+        Me.ToolTip_Default.SetToolTip(Me.Button_CheckUpdates, "检查插件更新。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按下 Shift 再点击按钮可检查测试版更新。")
+        Me.Button_CheckUpdates.UseVisualStyleBackColor = True
         '
         'NumericUpDown_RetryCount
         '
@@ -530,16 +543,15 @@ Partial Class TTSDanmakuMgmt
         "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
         "his is an open-source(MIT) software.")
         '
-        'Button_CheckUpdates
+        'Button_ProxySettings
         '
-        Me.Button_CheckUpdates.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Button_CheckUpdates.Location = New System.Drawing.Point(579, 136)
-        Me.Button_CheckUpdates.Name = "Button_CheckUpdates"
-        Me.Button_CheckUpdates.Size = New System.Drawing.Size(75, 23)
-        Me.Button_CheckUpdates.TabIndex = 24
-        Me.Button_CheckUpdates.Text = "检查更新"
-        Me.ToolTip_Default.SetToolTip(Me.Button_CheckUpdates, "检查插件更新。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按下 Shift 再点击按钮可检查测试版更新。")
-        Me.Button_CheckUpdates.UseVisualStyleBackColor = True
+        Me.Button_ProxySettings.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.Button_ProxySettings.Location = New System.Drawing.Point(579, 165)
+        Me.Button_ProxySettings.Name = "Button_ProxySettings"
+        Me.Button_ProxySettings.Size = New System.Drawing.Size(75, 23)
+        Me.Button_ProxySettings.TabIndex = 25
+        Me.Button_ProxySettings.Text = "网络设置"
+        Me.Button_ProxySettings.UseVisualStyleBackColor = True
         '
         'TTSDanmakuMgmt
         '
@@ -623,4 +635,5 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents Label_RetryCount As Windows.Forms.Label
     Friend WithEvents NumericUpDown_RetryCount As Windows.Forms.NumericUpDown
     Friend WithEvents Button_CheckUpdates As Windows.Forms.Button
+    Friend WithEvents Button_ProxySettings As Windows.Forms.Button
 End Class

@@ -86,6 +86,19 @@ DLoop:
             Return False
         End If
 
+        'Proxy preprocessing
+        Dim useProxy As Boolean = True
+#Disable Warning 'mmp
+        Dim proxy As System.Net.WebProxy = System.Net.WebProxy.GetDefaultProxy
+#Enable Warning
+        If Settings.Settings.ProxySettings_ProxyServer = "" Then
+            useProxy = False
+        End If
+        If useProxy Then
+            proxy = New System.Net.WebProxy(Settings.Settings.ProxySettings_ProxyServer, Settings.Settings.ProxySettings_ProxyPort)
+        End If
+
+
         If Settings.Settings.Engine = 1 Then
             Try
                 DBGLog("已确定使用 .NET 框架自带方法播放，忽略为毒瘤准备的下载过程。")
@@ -129,7 +142,11 @@ DLoop:
                 If Not silent Then
                     If Not IsCoolingDown Then
                         DBGLog("启动播放: " & content)
-                        GoogleTTS(content)
+                        If useProxy Then
+                            GoogleTTS(content,,, True, proxy)
+                        Else
+                            GoogleTTS(content)
+                        End If
                         Statistics.TTS_Succeeded += 1
                         If Settings.Settings.TTSDelayEnabled Then StartCoolDown() '启动冷却
                         Return True
@@ -160,6 +177,9 @@ retry:
         timer.Start()
         Try
             Dim client As New Net.WebClient()
+            If useProxy Then
+                client.Proxy = proxy
+            End If
             Dim ran1 As Integer = 0
             Dim ran2 As Integer = 0
             ran1 = (New Random).Next
@@ -404,6 +424,12 @@ retry:
             DBGLog("StatusReportInterval: " & Settings.Settings.StatusReportInterval)
             DBGLog("StatusReport_ResolveAdvVars: " & Settings.Settings.StatusReport_ResolveAdvVars)
             DBGLog("DLFailRetry: " & Settings.Settings.DLFailRetry)
+            DBGLog("ProxySettings_ProxyServer: " & Settings.Settings.ProxySettings_ProxyServer)
+            DBGLog("ProxySettings_ProxyPort: " & Settings.Settings.ProxySettings_ProxyPort)
+            DBGLog("ProxySettings_ProxyUser: " & Settings.Settings.ProxySettings_ProxyUser)
+            DBGLog("ProxySettings_ProxyPassword: " & Settings.Settings.ProxySettings_ProxyPassword)
+            DBGLog("HTTPSPreference: " & Settings.Settings.HTTPSPreference)
+            DBGLog("UseGoogleGlobal: " & Settings.Settings.UseGoogleGlobal)
         Catch ex As Exception
             Log("启动失败 - 无法初始化设置系统: " & ex.ToString)
             startupFailure = True

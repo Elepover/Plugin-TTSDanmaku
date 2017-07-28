@@ -107,12 +107,16 @@ Module Includings
     ''' </summary>
     ''' <param name="text"></param>
     ''' <param name="forceDispose">强制释放资源</param>
-    Public Sub GoogleTTS(text As String, Optional silent As Boolean = False, Optional forceDispose As Boolean = False)
+    Public Sub GoogleTTS(text As String, Optional silent As Boolean = False, Optional forceDispose As Boolean = False, Optional useProxy As Boolean = False, Optional proxy As System.Net.WebProxy = Nothing)
         Dim retryCount As Short = 0
 retry:
         Dim filename As String = ""
         Try
-            filename = Google.TTS.TTSHelper.GerarArquivo(text, Google.TTS.Idioma.Chinese)
+            If useProxy Then
+                filename = Google.TTS.TTSHelper.GerarArquivo(text, Google.TTS.Idioma.Chinese, Settings.Settings.UseGoogleGlobal, True, proxy)
+            Else
+                filename = Google.TTS.TTSHelper.GerarArquivo(text, Google.TTS.Idioma.Chinese, Settings.Settings.UseGoogleGlobal)
+            End If
         Catch ex As Exception
             If retryCount >= 5 Then Throw ex
             retryCount += 1
