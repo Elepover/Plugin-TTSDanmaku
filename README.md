@@ -2,7 +2,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/o3wb9g7am3h4peny?svg=true)](https://ci.appveyor.com/project/Elepover/plugin-ttsdanmaku)
 
-The TTSDanmaku plugin for bilibili_dm (https://github.com/copyliu/bililive_dm)
+The TTSDanmaku plugin for bililive_dm (https://github.com/copyliu/bililive_dm)
 
 Description last updated at: 07/16/2017 13:50 (GMT)
 
