@@ -4,7 +4,7 @@
 
 The TTSDanmaku plugin for bilibili_dm (https://github.com/copyliu/bililive_dm)
 
-Description last updated at: 07/16/2017 13:50 (GMT)
+Description last updated at: 07/31/2017 08:52 (GMT)
 
 有问题或是有建议可以 [在作者的 Blog](https://blog.elepover.com/quoteLeft.html) 通过评论提交。
 
@@ -45,9 +45,9 @@ Description last updated at: 07/16/2017 13:50 (GMT)
 更新日志
 ----
 
-稳定版本（弹幕姬插件仓库版本）: **v1.0.4.50**
+稳定版本（弹幕姬插件仓库版本）: **v1.0.4.53**
 
-最新版本: [**v1.0.4.52**](https://ttsdanmaku.elepover.com)
+最新版本: [**v1.0.4.53**](https://ttsdanmaku.elepover.com)
 
 ```
 [i] 各前缀说明:
@@ -70,6 +70,7 @@ v1.0.4, build 53 ->
 [+] 为 AppVeyor 进行了 git repo 的文件修改。
 [+] 新增网络设置。
 [/] Bug 修复。
+[/] 精简弹幕姬官网插件描述。
 
 v1.0.4, build 52 ->
 [+] 现可自定义房间连接成功读出内容。
@@ -219,22 +220,7 @@ v1.0.1, build 19
 自定义弹幕 / 礼物读出内容格式
 ----------------
 
-自定义内容中的以下文本将被替换:
-```
-$USER 弹幕/礼物发送者
-$COUNT 收到的礼物数目
-$GIFT 礼物名称
-$DM 弹幕内容
-```
-比如默认值:
-```
-收到来自 $USER 的 $COUNT 个 $GIFT。
-```
-替换后变成:
-```
-收到来自 Elepover 的 10 个 小拳拳。
-```
-如果文本框为红色，说明有不应该出现的变量出现，将不会保存自定义文本。
+参见 [TTSDanmaku Wiki](https://github.com/Elepover/Plugin-TTSDanmaku/wiki/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%B9%E5%B9%95---%E7%A4%BC%E7%89%A9%E5%86%85%E5%AE%B9%E5%8F%98%E9%87%8F%E8%AF%B4%E6%98%8E)
 
 历史下载
 ----
