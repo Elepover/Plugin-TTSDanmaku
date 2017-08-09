@@ -148,6 +148,11 @@
             Label_Whitelist.Font = New Drawing.Font(Label_Whitelist.Font, Drawing.FontStyle.Regular)
             Label_Whitelist.Text = "白名单"
         End If
+        If Not NumericUpDown_SpeechSpeed.Value = Settings.Settings.NETFramework_VoiceSpeed Then
+            NumericUpDown_SpeechSpeed.Font = New Drawing.Font(NumericUpDown_SpeechSpeed.Font, Drawing.FontStyle.Bold)
+        Else
+            NumericUpDown_SpeechSpeed.Font = New Drawing.Font(NumericUpDown_SpeechSpeed.Font, Drawing.FontStyle.Regular)
+        End If
 
         ToolTip_Default.SetToolTip(Button_Apply, "保存设置。" & vbCrLf & vbCrLf & "当前设置文件路径: " & Settings.Vars.ConfigFileName)
 
@@ -175,6 +180,7 @@
 
         TextBox_Blacklist.Text = Settings.Settings.Blacklist
         TextBox_Whitelist.Text = Settings.Settings.Whitelist
+        NumericUpDown_SpeechSpeed.Value = Settings.Settings.NETFramework_VoiceSpeed
 
         TextBox_Stats.Clear()
         TextBox_Stats.AppendText("TTS 播放总尝试次数: " & Statistics.TTS_Total & vbCrLf)
@@ -227,8 +233,9 @@
         TextBox_CustomConnected.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Label_RetryCount.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         NumericUpDown_RetryCount.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Label_SpeechSpeed.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        NumericUpDown_SpeechSpeed.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Button_CheckUpdates.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Button_NETFramework.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Button_ProxySettings.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         ComboBox_Blockmode.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Label_Blockmode.Font = New Drawing.Font("Microsoft Yahei UI", 9)
@@ -265,6 +272,7 @@
         Settings.Settings.Block_Mode = ComboBox_Blockmode.SelectedIndex
         Settings.Settings.Blacklist = TextBox_Blacklist.Text
         Settings.Settings.Whitelist = TextBox_Whitelist.Text
+        Settings.Settings.NETFramework_VoiceSpeed = NumericUpDown_SpeechSpeed.Value
         '检查自定义字符是否正常
         Dim IllegalVars_DM As Boolean = CheckIfLegal_DM()
         Dim IllegalVars_GIFT As Boolean = CheckIfLegal_GIFT()
@@ -345,7 +353,7 @@
         Status("操作成功: " & count & " 个。")
     End Sub
 
-    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, NumericUpDown_Volume.ValueChanged, NumericUpDown_RetryCount.ValueChanged, TextBox_CustomConnected.TextChanged, ComboBox_Engine.SelectedIndexChanged, CheckBox_NoKeepingCache.CheckedChanged, ComboBox_Blockmode.SelectedIndexChanged, TextBox_Blacklist.TextChanged, TextBox_Whitelist.TextChanged
+    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, NumericUpDown_Volume.ValueChanged, NumericUpDown_RetryCount.ValueChanged, TextBox_CustomConnected.TextChanged, ComboBox_Engine.SelectedIndexChanged, CheckBox_NoKeepingCache.CheckedChanged, ComboBox_Blockmode.SelectedIndexChanged, TextBox_Blacklist.TextChanged, TextBox_Whitelist.TextChanged, NumericUpDown_SpeechSpeed.ValueChanged
         UpdateControl()
     End Sub
 
@@ -456,11 +464,6 @@
 
     Private Sub Button_ProxySettings_Click(sender As Object, e As EventArgs) Handles Button_ProxySettings.Click
         Dim frm As New Form_ProxySettings
-        frm.Show()
-    End Sub
-
-    Private Sub Button_NETFramework_Click(sender As Object, e As EventArgs) Handles Button_NETFramework.Click
-        Dim frm As New Form_FrameworkEngineConf
         frm.Show()
     End Sub
 End Class

@@ -52,8 +52,9 @@ Namespace Settings
             HTTPSPreference = True
             UseGoogleGlobal = False
             NETFramework_VoiceSpeed = 0
-            NETFramework_Gender = 0
             Block_Mode = 0
+            Blacklist = ""
+            Whitelist = ""
         End Sub
         ''' <summary>
         ''' 只读设置项, API 字符串。
@@ -276,11 +277,6 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property NETFramework_VoiceSpeed As String
-        ''' <summary>
-        ''' 新增于 2017/08/09 09:08 - NET 框架语音性别 (0 = 女, 1 = 男)
-        ''' </summary>
-        ''' <returns></returns>
-        Public Shared Property NETFramework_Gender As String
 #End Region
 #Region "Blocking Settings"
         ''' <summary>
@@ -416,8 +412,6 @@ Namespace Settings
                 SettingsReader.ReadLine()
                 Settings.NETFramework_VoiceSpeed = SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
-                Settings.NETFramework_Gender = SettingsReader.ReadLine()
-                SettingsReader.ReadLine()
                 Settings.Block_Mode = SettingsReader.ReadLine()
                 SettingsReader.Close()
 
@@ -493,8 +487,6 @@ Namespace Settings
             SettingsWriter.WriteLine("False")
             SettingsWriter.WriteLine(".NET 框架引擎的语速 (-10 至 10)")
             SettingsWriter.WriteLine("0")
-            SettingsWriter.WriteLine(".NET 框架引擎语音性别 (0 = 女, 1 = 男)")
-            SettingsWriter.WriteLine("0")
             SettingsWriter.WriteLine("屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)")
             SettingsWriter.WriteLine("0")
             SettingsWriter.Close()
@@ -558,8 +550,6 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.UseGoogleGlobal)
             SettingsWriter.WriteLine(".NET 框架引擎的语速 (-10 至 10)")
             SettingsWriter.WriteLine(Settings.NETFramework_VoiceSpeed)
-            SettingsWriter.WriteLine(".NET 框架引擎语音性别 (0 = 女, 1 = 男)")
-            SettingsWriter.WriteLine(Settings.NETFramework_Gender)
             SettingsWriter.WriteLine("屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)")
             SettingsWriter.WriteLine(Settings.Block_Mode)
             SettingsWriter.Close()

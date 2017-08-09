@@ -63,9 +63,11 @@ Partial Class TTSDanmakuMgmt
         Me.LinkLabel_Suggestions = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
+        Me.NumericUpDown_SpeechSpeed = New System.Windows.Forms.NumericUpDown()
         Me.TabControl_PluginSettings = New System.Windows.Forms.TabControl()
         Me.TabPage_BasicSettings = New System.Windows.Forms.TabPage()
         Me.TabPage_Advanced = New System.Windows.Forms.TabPage()
+        Me.Label_SpeechSpeed = New System.Windows.Forms.Label()
         Me.ComboBox_Blockmode = New System.Windows.Forms.ComboBox()
         Me.Label_Blockmode = New System.Windows.Forms.Label()
         Me.TabPage_Customization = New System.Windows.Forms.TabPage()
@@ -74,12 +76,12 @@ Partial Class TTSDanmakuMgmt
         Me.Label_Whitelist = New System.Windows.Forms.Label()
         Me.Label_Blacklist = New System.Windows.Forms.Label()
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
-        Me.Button_NETFramework = New System.Windows.Forms.Button()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_CoolDownValue, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_TempMgr.SuspendLayout()
+        CType(Me.NumericUpDown_SpeechSpeed, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl_PluginSettings.SuspendLayout()
         Me.TabPage_BasicSettings.SuspendLayout()
         Me.TabPage_Advanced.SuspendLayout()
@@ -180,10 +182,10 @@ Partial Class TTSDanmakuMgmt
         '
         Me.Button_SetupWizard.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button_SetupWizard.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Button_SetupWizard.Location = New System.Drawing.Point(511, 93)
+        Me.Button_SetupWizard.Location = New System.Drawing.Point(511, 64)
         Me.Button_SetupWizard.Name = "Button_SetupWizard"
         Me.Button_SetupWizard.Size = New System.Drawing.Size(75, 23)
-        Me.Button_SetupWizard.TabIndex = 15
+        Me.Button_SetupWizard.TabIndex = 14
         Me.Button_SetupWizard.Text = "设置向导"
         Me.ToolTip_Default.SetToolTip(Me.Button_SetupWizard, "运行设置向导，帮助您完成主要的插件配置。")
         Me.Button_SetupWizard.UseVisualStyleBackColor = True
@@ -452,10 +454,10 @@ Partial Class TTSDanmakuMgmt
         '
         Me.Button_Reload.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button_Reload.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Button_Reload.Location = New System.Drawing.Point(511, 122)
+        Me.Button_Reload.Location = New System.Drawing.Point(511, 93)
         Me.Button_Reload.Name = "Button_Reload"
         Me.Button_Reload.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Reload.TabIndex = 16
+        Me.Button_Reload.TabIndex = 15
         Me.Button_Reload.Text = "重载窗口"
         Me.ToolTip_Default.SetToolTip(Me.Button_Reload, "重新载入以下配置：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-> 设置选项" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-> 缓存文件")
         Me.Button_Reload.UseVisualStyleBackColor = True
@@ -516,6 +518,16 @@ Partial Class TTSDanmakuMgmt
         "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
         "his is an open-source(MIT) software.")
         '
+        'NumericUpDown_SpeechSpeed
+        '
+        Me.NumericUpDown_SpeechSpeed.Location = New System.Drawing.Point(173, 76)
+        Me.NumericUpDown_SpeechSpeed.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.NumericUpDown_SpeechSpeed.Minimum = New Decimal(New Integer() {10, 0, 0, -2147483648})
+        Me.NumericUpDown_SpeechSpeed.Name = "NumericUpDown_SpeechSpeed"
+        Me.NumericUpDown_SpeechSpeed.Size = New System.Drawing.Size(120, 23)
+        Me.NumericUpDown_SpeechSpeed.TabIndex = 18
+        Me.ToolTip_Default.SetToolTip(Me.NumericUpDown_SpeechSpeed, "（仅适用于框架自带引擎）" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "设置 TTS 语速，范围从 -10 到 10。")
+        '
         'TabControl_PluginSettings
         '
         Me.TabControl_PluginSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -548,7 +560,8 @@ Partial Class TTSDanmakuMgmt
         '
         'TabPage_Advanced
         '
-        Me.TabPage_Advanced.Controls.Add(Me.Button_NETFramework)
+        Me.TabPage_Advanced.Controls.Add(Me.NumericUpDown_SpeechSpeed)
+        Me.TabPage_Advanced.Controls.Add(Me.Label_SpeechSpeed)
         Me.TabPage_Advanced.Controls.Add(Me.ComboBox_Blockmode)
         Me.TabPage_Advanced.Controls.Add(Me.Label_Blockmode)
         Me.TabPage_Advanced.Controls.Add(Me.Button_ProxySettings)
@@ -572,6 +585,15 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Advanced.TabIndex = 1
         Me.TabPage_Advanced.Text = "高级设置"
         Me.TabPage_Advanced.UseVisualStyleBackColor = True
+        '
+        'Label_SpeechSpeed
+        '
+        Me.Label_SpeechSpeed.AutoSize = True
+        Me.Label_SpeechSpeed.Location = New System.Drawing.Point(170, 56)
+        Me.Label_SpeechSpeed.Name = "Label_SpeechSpeed"
+        Me.Label_SpeechSpeed.Size = New System.Drawing.Size(57, 17)
+        Me.Label_SpeechSpeed.TabIndex = 17
+        Me.Label_SpeechSpeed.Text = "TTS 语速"
         '
         'ComboBox_Blockmode
         '
@@ -622,6 +644,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_Whitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox_Whitelist.Size = New System.Drawing.Size(250, 182)
         Me.TextBox_Whitelist.TabIndex = 9
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_Whitelist, "用户白名单，每行一个用户 ID。")
         '
         'TextBox_Blacklist
         '
@@ -633,6 +656,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_Blacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox_Blacklist.Size = New System.Drawing.Size(250, 182)
         Me.TextBox_Blacklist.TabIndex = 7
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_Blacklist, "用户黑名单，每行一个用户 ID。")
         '
         'Label_Whitelist
         '
@@ -663,16 +687,6 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics.TabIndex = 3
         Me.TabPage_Statistics.Text = "统计数据"
         Me.TabPage_Statistics.UseVisualStyleBackColor = True
-        '
-        'Button_NETFramework
-        '
-        Me.Button_NETFramework.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Button_NETFramework.Location = New System.Drawing.Point(511, 64)
-        Me.Button_NETFramework.Name = "Button_NETFramework"
-        Me.Button_NETFramework.Size = New System.Drawing.Size(75, 23)
-        Me.Button_NETFramework.TabIndex = 14
-        Me.Button_NETFramework.Text = "引擎设置"
-        Me.Button_NETFramework.UseVisualStyleBackColor = True
         '
         'TTSDanmakuMgmt
         '
@@ -707,6 +721,7 @@ Partial Class TTSDanmakuMgmt
         CType(Me.NumericUpDown_CoolDownValue, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox_TempMgr.ResumeLayout(False)
         Me.GroupBox_TempMgr.PerformLayout()
+        CType(Me.NumericUpDown_SpeechSpeed, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl_PluginSettings.ResumeLayout(False)
         Me.TabPage_BasicSettings.ResumeLayout(False)
         Me.TabPage_BasicSettings.PerformLayout()
@@ -771,5 +786,6 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents TextBox_Blacklist As Windows.Forms.TextBox
     Friend WithEvents TextBox_Whitelist As Windows.Forms.TextBox
     Friend WithEvents Label_Whitelist As Windows.Forms.Label
-    Friend WithEvents Button_NETFramework As Windows.Forms.Button
+    Friend WithEvents NumericUpDown_SpeechSpeed As Windows.Forms.NumericUpDown
+    Friend WithEvents Label_SpeechSpeed As Windows.Forms.Label
 End Class

@@ -111,11 +111,7 @@ Module Includings
     Public Sub SpeechOutput(text As String)
         Dim obj As New Speech.Synthesis.SpeechSynthesizer() With {.Volume = Settings.Settings.TTSVolume, .Rate = Settings.Settings.NETFramework_VoiceSpeed}
         obj.SetOutputToDefaultAudioDevice()
-        If Settings.Settings.NETFramework_Gender = 1 Then
-            obj.SelectVoiceByHints(Speech.Synthesis.VoiceGender.Male)
-        Else
-            obj.SelectVoiceByHints(Speech.Synthesis.VoiceGender.Female)
-        End If
+        MsgBox("speaking")
         obj.SpeakAsync(text)
     End Sub
 

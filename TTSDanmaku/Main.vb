@@ -461,6 +461,8 @@ retry:
             DBGLog("ProxySettings_ProxyPassword: " & Settings.Settings.ProxySettings_ProxyPassword)
             DBGLog("HTTPSPreference: " & Settings.Settings.HTTPSPreference)
             DBGLog("UseGoogleGlobal: " & Settings.Settings.UseGoogleGlobal)
+            DBGLog("NETFramework_VoiceSpeed: " & Settings.Settings.NETFramework_VoiceSpeed)
+            DBGLog("Block_Mode: " & Settings.Settings.Block_Mode)
         Catch ex As Exception
             Log("启动失败 - 无法初始化设置系统: " & ex.ToString)
             startupFailure = True
