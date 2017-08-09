@@ -297,12 +297,12 @@ Namespace Settings
 
     Public Class Vars
         Public Shared Sub Initialize()
-            ConfigurationDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\弹幕姬\Plugins\TTSDanmaku"
-            ConfigFileName = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\弹幕姬\Plugins\TTSDanmaku\config.ini"
-            CacheDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\弹幕姬\Plugins\TTSDanmaku\cache"
-            LibFileName = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\弹幕姬\Plugins\NAudio.dll"
-            PluginDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\弹幕姬\Plugins\"
-            BlacklistDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\弹幕姬\Plugins\TTSDanmaku\blocking"
+            PluginDir = Path.GetDirectoryName(Reflection.Assembly.GetExecutingAssembly().Location)
+            LibFileName = Path.Combine(PluginDir, "NAudio.dll")
+            ConfigurationDir = Path.Combine(PluginDir, "TTSDanmaku")
+            ConfigFileName = Path.Combine(ConfigurationDir, "config.ini")
+            CacheDir = Path.Combine(ConfigurationDir, "cache")
+            BlacklistDir = Path.Combine(ConfigurationDir, "blocking")
         End Sub
         Public Shared Property ConfigurationDir As String '配置文件夹
         Public Shared Property ConfigFileName As String '配置文件名
