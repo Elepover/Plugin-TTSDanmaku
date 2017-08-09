@@ -382,7 +382,7 @@
         TextBox_Stats.SelectionStart = TextBox_Stats.TextLength
         TextBox_Stats.SelectionLength = 0
         TextBox_Stats.ScrollToCaret()
-        Delay(1000)
+        Delay(500)
         Label_ThanksViaMyHeart.Visible = True
     End Sub
 
