@@ -216,7 +216,6 @@ Partial Class Form_StatusReport
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Form_StatusReport"
-        Me.Opacity = 0.97R
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TTSDanmaku - 状态报告"

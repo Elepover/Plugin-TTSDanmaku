@@ -305,7 +305,6 @@ Partial Class Form_ProxySettings
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Form_ProxySettings"
-        Me.Opacity = 0.97R
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TTSDanmaku - 网络设置"
         Me.GroupBox_ProxySettings.ResumeLayout(False)

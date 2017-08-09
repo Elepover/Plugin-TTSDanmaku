@@ -192,7 +192,6 @@ Partial Class Form_SetupWizard_1
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Form_SetupWizard_1"
-        Me.Opacity = 0.97R
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TTSDanmaku 设置向导"
         Me.GroupBox_Steps.ResumeLayout(False)

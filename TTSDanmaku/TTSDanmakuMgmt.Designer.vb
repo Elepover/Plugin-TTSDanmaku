@@ -713,7 +713,6 @@ Partial Class TTSDanmakuMgmt
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MinimumSize = New System.Drawing.Size(640, 520)
         Me.Name = "TTSDanmakuMgmt"
-        Me.Opacity = 0.97R
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TTSDanmaku - Admin"
