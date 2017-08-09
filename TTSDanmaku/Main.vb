@@ -1,6 +1,9 @@
 ﻿' Main.vb
 ' Copyright (C) 2017 Elepover & CopyLiu (For his demo version).
 
+Imports System.ComponentModel
+Imports BilibiliDM_PluginFramework
+
 Public Class Main
     Inherits BilibiliDM_PluginFramework.DMPlugin
 
@@ -12,7 +15,7 @@ Public Class Main
         Me.PluginAuth = "Elepover"
         Me.PluginName = "TTSDanmaku"
         Me.PluginCont = "elepover@outlook.com"
-        Me.PluginVer = "1.0.4.53"
+        Me.PluginVer = "1.0.4.54"
         Me.PluginDesc = "把你收到的弹幕和礼物，读出来！"
     End Sub
 
@@ -324,14 +327,29 @@ retry:
 
 #End Region
 
-    Private Sub Main_ReceivedRoomCount(sender As Object, e As BilibiliDM_PluginFramework.ReceivedRoomCountArgs)
+    Private Sub Main_ReceivedRoomCount(sender As Object, e As BilibiliDM_PluginFramework.ReceivedRoomCountArgs) Handles Me.ReceivedRoomCount
         Statistics.DBG_ReceivedRoomCount += 1
         UserCountLatest = e.UserCount
         DBGLog("ReceivedRoomCount Event Handled, data: " & e.UserCount)
     End Sub
 
-    Private Sub Main_ReceivedDanmaku(sender As Object, e As BilibiliDM_PluginFramework.ReceivedDanmakuArgs)
+    Private Sub Main_ReceivedDanmaku(sender As Object, e As BilibiliDM_PluginFramework.ReceivedDanmakuArgs) Handles Me.ReceivedDanmaku
         If e.Danmaku.MsgType = BilibiliDM_PluginFramework.MsgTypeEnum.Comment Then
+            '检查斑马名单配置
+            Select Case Settings.Settings.Block_Mode
+                Case 0
+                Case 1
+                    If Settings.Settings.Blacklist.Contains(e.Danmaku.CommentUser) Then
+                        DBGLog("用户 " & e.Danmaku.CommentUser & " 在黑名单中，放弃。")
+                        Exit Sub
+                    End If
+                Case 2
+                    If Not Settings.Settings.Whitelist.Contains(e.Danmaku.CommentUser) Then
+                        DBGLog("用户 " & e.Danmaku.CommentUser & " 不在白名单中，放弃。")
+                        Exit Sub
+                    End If
+                Case Else
+            End Select
             If Settings.Settings.TTSDanmakuSender Then
                 Dim unreplacedText As String = Settings.Settings.DanmakuText
                 Dim replacedText As String = unreplacedText.Replace("$USER", e.Danmaku.CommentUser).Replace("$DM", e.Danmaku.CommentText)
@@ -343,19 +361,32 @@ retry:
             End If
         End If
         If e.Danmaku.MsgType = BilibiliDM_PluginFramework.MsgTypeEnum.GiftSend Then
-            'DBGLog("收到来自 " & e.Danmaku.GiftUser & " 的 " & e.Danmaku.GiftNum & " 个 " & e.Danmaku.GiftName & "。")
+            '检查斑马名单配置
+            Select Case Settings.Settings.Block_Mode
+                Case 0
+                Case 1
+                    If Settings.Settings.Blacklist.Contains(e.Danmaku.CommentUser) Then
+                        DBGLog("用户 " & e.Danmaku.CommentUser & " 在黑名单中，放弃。")
+                        Exit Sub
+                    End If
+                Case 2
+                    If Not Settings.Settings.Whitelist.Contains(e.Danmaku.CommentUser) Then
+                        DBGLog("用户 " & e.Danmaku.CommentUser & " 不在白名单中，放弃。")
+                        Exit Sub
+                    End If
+                Case Else
+            End Select
             Dim unreplacedText As String = Settings.Settings.GiftsText
             Dim replacedText As String = unreplacedText.Replace("$USER", e.Danmaku.GiftUser).Replace("$COUNT", e.Danmaku.GiftNum).Replace("$GIFT", e.Danmaku.GiftName)
             If Not replacedText = "" Then PlayTTS(replacedText)
         End If
     End Sub
 
-    Private Sub Main_Disconnected(sender As Object, e As BilibiliDM_PluginFramework.DisconnectEvtArgs)
-        'DBGLog("Disconnected Event Handled, data: " & e.Error.ToString)
-        'PlayTTS("插件检测到弹幕姬已断开，错误信息: " & e.Error.Message)
+    Private Sub Main_Disconnected(sender As Object, e As BilibiliDM_PluginFramework.DisconnectEvtArgs) Handles Me.Disconnected
+
     End Sub
 
-    Private Sub Main_Connected(sender As Object, e As BilibiliDM_PluginFramework.ConnectedEvtArgs)
+    Private Sub Main_Connected(sender As Object, e As BilibiliDM_PluginFramework.ConnectedEvtArgs) Handles Me.Connected
         DBGLog("Connected Event Handled, data: " & e.roomid)
         If IsEnabled Then
             If Settings.Settings.ConnectSuccessful = "" Then
@@ -497,5 +528,4 @@ APIs:
         proc.Kill()
         IsEnabled = False
     End Sub
-
 End Class

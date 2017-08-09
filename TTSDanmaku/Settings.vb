@@ -1,6 +1,23 @@
 ﻿' Settings.vb
 ' Copyright (C) 2017 Elepover.
 
+' Basic configurations directory tree:
+' -----------------------------------
+' TTSDanmaku.dll
+' NAudio.dll
+' 
+' TTSDanmaku
+' |- blocking
+' |  |- blacklist.ini
+' |  |- whitelist.ini
+' |- cache
+' |  |- TTS*.mp3
+' |  |- ...
+' -----------------------------------
+'
+' Thanks to Hxert for Logical Optimization.
+'
+
 Imports System.IO
 Imports System.Text
 
@@ -25,6 +42,18 @@ Namespace Settings
             StatusReportInterval = 60
             StatusReportContent = "当前在线人数: $ONLINE, 弹幕总数: $TOTALDM, 现在是 $YEAR 年 $MONTH 月 $DAY 日，$HOUR 时 $MINUTE 分 $SEC 秒，当前物理内存可用 $MEMAVAI GB，已用百分之 $MPERCENT，虚拟内存可用 $VMEM GB，已用百分之 $VPERCENT_VM。"
             TTSVolume = 100
+            DoNotKeepCache = False
+            ConnectSuccessful = "已成功连接至房间: %s"
+            DLFailRetry = 5
+            ProxySettings_ProxyServer = ""
+            ProxySettings_ProxyPort = 0
+            ProxySettings_ProxyUser = ""
+            ProxySettings_ProxyPassword = ""
+            HTTPSPreference = True
+            UseGoogleGlobal = False
+            NETFramework_VoiceSpeed = 0
+            NETFramework_Gender = 0
+            Block_Mode = 0
         End Sub
         ''' <summary>
         ''' 只读设置项, API 字符串。
@@ -163,10 +192,11 @@ Namespace Settings
         ''' <returns></returns>
         Public Shared Property DanmakuText As String
         ''' <summary>
-        ''' 新增于 2017/05/28 22:09 - 弹幕引擎(0 = 毒瘤, 1 = M$)
+        ''' 新增于 2017/05/28 22:09 - 弹幕引擎 (0 = 毒瘤, 1 = .NET, 2 = Does not exist)
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property Engine As Integer
+#Region "Status Reporting"
         ''' <summary>
         ''' 新增于 2017/05/29 23:30 - 是否启用状态报告。
         ''' </summary>
@@ -187,6 +217,7 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property StatusReport_ResolveAdvVars As Boolean
+#End Region
         ''' <summary>
         ''' 新增于 2017/06/24 20:50 - TTS 播放音量
         ''' </summary>
@@ -207,6 +238,7 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property DLFailRetry As Short = 5
+#Region "Proxy"
         ''' <summary>
         ''' 新增于 2017/07/28 17:01 - 代理服务器
         ''' </summary>
@@ -237,6 +269,34 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property UseGoogleGlobal As Boolean
+#End Region
+#Region ".NET Framework TTS"
+        ''' <summary>
+        ''' 新增于 2017/08/09 09:08 - NET 框架引擎语速
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property NETFramework_VoiceSpeed As String
+        ''' <summary>
+        ''' 新增于 2017/08/09 09:08 - NET 框架语音性别 (0 = 女, 1 = 男)
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property NETFramework_Gender As String
+#End Region
+#Region "Blocking Settings"
+        ''' <summary>
+        ''' 新增于 2017/08/09 09:08 - 屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property Block_Mode As String
+#End Region
+        ''' <summary>
+        ''' 常驻内存，黑名单
+        ''' </summary>
+        Public Shared Blacklist As String
+        ''' <summary>
+        ''' 常驻内存，白名单
+        ''' </summary>
+        Public Shared Whitelist As String
     End Class
 
     Public Class Vars
@@ -246,12 +306,14 @@ Namespace Settings
             CacheDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\弹幕姬\Plugins\TTSDanmaku\cache"
             LibFileName = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\弹幕姬\Plugins\NAudio.dll"
             PluginDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\弹幕姬\Plugins\"
+            BlacklistDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\弹幕姬\Plugins\TTSDanmaku\blocking"
         End Sub
         Public Shared Property ConfigurationDir As String '配置文件夹
         Public Shared Property ConfigFileName As String '配置文件名
         Public Shared Property CacheDir As String '缓存文件夹
         Public Shared Property LibFileName As String 'NAudio 文件名
         Public Shared Property PluginDir As String '弹幕姬插件目录
+        Public Shared Property BlacklistDir As String '屏蔽配置目录
     End Class
 
     Public Class Methods
@@ -270,6 +332,9 @@ Namespace Settings
             End If
             If Not Directory.Exists(Vars.CacheDir) Then
                 Directory.CreateDirectory(Vars.CacheDir)
+            End If
+            If Not Directory.Exists(Vars.BlacklistDir) Then
+                Directory.CreateDirectory(Vars.BlacklistDir)
             End If
         End Sub
 
@@ -295,8 +360,12 @@ Namespace Settings
 
         Public Shared Function ReadSettings() As Boolean
             Dim SettingsReader As StreamReader = Nothing
+            Dim BlacklistReader As StreamReader = Nothing
+            Dim WhitelistReader As StreamReader = Nothing
             Try
                 SettingsReader = New StreamReader(Vars.ConfigFileName, Encoding.UTF8)
+                BlacklistReader = New StreamReader(Vars.BlacklistDir & "\blacklist.ini", Encoding.UTF8)
+                WhitelistReader = New StreamReader(Vars.BlacklistDir & "\whitelist.ini", Encoding.UTF8)
                 SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
                 Settings.DebugMode = SettingsReader.ReadLine()
@@ -344,11 +413,26 @@ Namespace Settings
                 Settings.HTTPSPreference = SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
                 Settings.UseGoogleGlobal = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.NETFramework_VoiceSpeed = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.NETFramework_Gender = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.Block_Mode = SettingsReader.ReadLine()
                 SettingsReader.Close()
+
+                Settings.Blacklist = BlacklistReader.ReadToEnd()
+                BlacklistReader.Close()
+
+                Settings.Whitelist = WhitelistReader.ReadToEnd()
+                WhitelistReader.Close()
+
                 Return True
             Catch ex As Exception
                 Try
                     SettingsReader.Close()
+                    BlacklistReader.Close()
+                    WhitelistReader.Close()
                 Catch ex2 As Exception
                 End Try
                 Return False
@@ -407,7 +491,19 @@ Namespace Settings
             SettingsWriter.WriteLine("True")
             SettingsWriter.WriteLine("是否使用 Google Global:")
             SettingsWriter.WriteLine("False")
+            SettingsWriter.WriteLine(".NET 框架引擎的语速 (-10 至 10)")
+            SettingsWriter.WriteLine("0")
+            SettingsWriter.WriteLine(".NET 框架引擎语音性别 (0 = 女, 1 = 男)")
+            SettingsWriter.WriteLine("0")
+            SettingsWriter.WriteLine("屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)")
+            SettingsWriter.WriteLine("0")
             SettingsWriter.Close()
+
+            Dim whitelistWriter As New StreamWriter(Vars.BlacklistDir & "\whitelist.ini", False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim blacklistWriter As New StreamWriter(Vars.BlacklistDir & "\blacklist.ini", False, Encoding.UTF8) With {.AutoFlush = True}
+            whitelistWriter.Close()
+            blacklistWriter.Close()
+
             ReadSettings()
         End Sub
 
@@ -460,7 +556,20 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.HTTPSPreference)
             SettingsWriter.WriteLine("是否使用 Google Global:")
             SettingsWriter.WriteLine(Settings.UseGoogleGlobal)
+            SettingsWriter.WriteLine(".NET 框架引擎的语速 (-10 至 10)")
+            SettingsWriter.WriteLine(Settings.NETFramework_VoiceSpeed)
+            SettingsWriter.WriteLine(".NET 框架引擎语音性别 (0 = 女, 1 = 男)")
+            SettingsWriter.WriteLine(Settings.NETFramework_Gender)
+            SettingsWriter.WriteLine("屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)")
+            SettingsWriter.WriteLine(Settings.Block_Mode)
             SettingsWriter.Close()
+
+            Dim whitelistWriter As New StreamWriter(Vars.BlacklistDir & "\whitelist.ini", False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim blacklistWriter As New StreamWriter(Vars.BlacklistDir & "\blacklist.ini", False, Encoding.UTF8) With {.AutoFlush = True}
+            whitelistWriter.Write(Settings.Whitelist)
+            blacklistWriter.Write(Settings.Blacklist)
+            whitelistWriter.Close()
+            blacklistWriter.Close()
         End Sub
     End Class
 End Namespace
