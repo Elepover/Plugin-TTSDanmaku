@@ -339,12 +339,12 @@ retry:
             Select Case Settings.Settings.Block_Mode
                 Case 0
                 Case 1
-                    If Settings.Settings.Blacklist.Contains(e.Danmaku.CommentUser) Then
+                    If UserExists(Settings.Settings.Blacklist, e.Danmaku.CommentUser) Then
                         DBGLog("用户 " & e.Danmaku.CommentUser & " 在黑名单中，放弃。")
                         Exit Sub
                     End If
                 Case 2
-                    If Not Settings.Settings.Whitelist.Contains(e.Danmaku.CommentUser) Then
+                    If Not UserExists(Settings.Settings.Whitelist, e.Danmaku.CommentUser) Then
                         DBGLog("用户 " & e.Danmaku.CommentUser & " 不在白名单中，放弃。")
                         Exit Sub
                     End If
@@ -365,12 +365,12 @@ retry:
             Select Case Settings.Settings.Block_Mode
                 Case 0
                 Case 1
-                    If Settings.Settings.Blacklist.Contains(e.Danmaku.CommentUser) Then
+                    If UserExists(Settings.Settings.Blacklist, e.Danmaku.CommentUser) Then
                         DBGLog("用户 " & e.Danmaku.CommentUser & " 在黑名单中，放弃。")
                         Exit Sub
                     End If
                 Case 2
-                    If Not Settings.Settings.Whitelist.Contains(e.Danmaku.CommentUser) Then
+                    If Not UserExists(Settings.Settings.Whitelist, e.Danmaku.CommentUser) Then
                         DBGLog("用户 " & e.Danmaku.CommentUser & " 不在白名单中，放弃。")
                         Exit Sub
                     End If

@@ -204,6 +204,12 @@
         Button_CheckUpdates.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Button_ProxySettings.Font = New Drawing.Font("Microsoft Yahei UI", 9)
 
+        TabControl_PluginSettings.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        TabPage_Advanced.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        TabPage_BasicSettings.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        TabPage_Customization.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        TabPage_Statistics.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+
 
         Status("就绪", False)
     End Sub

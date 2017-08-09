@@ -92,6 +92,19 @@ Module Includings
     End Function
 
     ''' <summary>
+    ''' 检查一个列表中是否存在某用户
+    ''' </summary>
+    ''' <param name="list">以换行分割的列表</param>
+    ''' <param name="user">目标用户</param>
+    ''' <returns></returns>
+    Public Function UserExists(list As String, user As String) As Boolean
+        For Each s As String In list.Split(vbCrLf)
+            If s = user Then Return True
+        Next
+        Return False
+    End Function
+
+    ''' <summary>
     ''' 使用 .NET 框架自带实现方法读出，未出错则返回 True.
     ''' </summary>
     ''' <param name="text">文本</param>
