@@ -391,30 +391,15 @@
     End Sub
 
     Private Sub LinkLabel_About_LinkClicked(sender As Object, e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel_About.LinkClicked
-        Dim proc As New Process
-        With proc.StartInfo
-            .FileName = "https://www.danmuji.cn/plugins/TTSDanmaku"
-            .ErrorDialog = False
-        End With
-        proc.Start()
+        Process.Start("https://www.danmuji.cn/plugins/TTSDanmaku")
     End Sub
 
     Private Sub LinkLabel_Suggestions_LinkClicked(sender As Object, e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel_Suggestions.LinkClicked
-        Dim proc As New Process
-        With proc.StartInfo
-            .FileName = "https://blog.elepover.com/quoteLeft.html"
-            .ErrorDialog = False
-        End With
-        proc.Start()
+        Process.Start("https://blog.elepover.com/quoteLeft.html")
     End Sub
 
     Private Sub LinkLabel_FAQ_LinkClicked(sender As Object, e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel_FAQ.LinkClicked
-        Dim proc As New Process
-        With proc.StartInfo
-            .FileName = "https://blog.elepover.com/archives/2017/05/faq.html"
-            .ErrorDialog = False
-        End With
-        proc.Start()
+        Process.Start("https://blog.elepover.com/archives/2017/05/faq.html")
     End Sub
 
     Private Sub Button_StatusReport_Click(sender As Object, e As EventArgs) Handles Button_StatusReport.Click
