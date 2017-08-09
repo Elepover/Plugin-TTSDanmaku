@@ -69,11 +69,12 @@ Partial Class TTSDanmakuMgmt
         Me.ComboBox_Blockmode = New System.Windows.Forms.ComboBox()
         Me.Label_Blockmode = New System.Windows.Forms.Label()
         Me.TabPage_Customization = New System.Windows.Forms.TabPage()
-        Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
-        Me.Label_Blacklist = New System.Windows.Forms.Label()
-        Me.TextBox_Blacklist = New System.Windows.Forms.TextBox()
         Me.TextBox_Whitelist = New System.Windows.Forms.TextBox()
+        Me.TextBox_Blacklist = New System.Windows.Forms.TextBox()
         Me.Label_Whitelist = New System.Windows.Forms.Label()
+        Me.Label_Blacklist = New System.Windows.Forms.Label()
+        Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
+        Me.Button_NETFramework = New System.Windows.Forms.Button()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,7 +93,7 @@ Partial Class TTSDanmakuMgmt
         Me.StatusStrip_Main.Location = New System.Drawing.Point(0, 459)
         Me.StatusStrip_Main.Name = "StatusStrip_Main"
         Me.StatusStrip_Main.Size = New System.Drawing.Size(624, 22)
-        Me.StatusStrip_Main.TabIndex = 9
+        Me.StatusStrip_Main.TabIndex = 0
         Me.StatusStrip_Main.Text = "Status Bar"
         '
         'StatusLabel_Default
@@ -106,10 +107,10 @@ Partial Class TTSDanmakuMgmt
         '
         Me.Button_ProxySettings.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button_ProxySettings.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Button_ProxySettings.Location = New System.Drawing.Point(511, 64)
+        Me.Button_ProxySettings.Location = New System.Drawing.Point(511, 35)
         Me.Button_ProxySettings.Name = "Button_ProxySettings"
         Me.Button_ProxySettings.Size = New System.Drawing.Size(75, 23)
-        Me.Button_ProxySettings.TabIndex = 25
+        Me.Button_ProxySettings.TabIndex = 13
         Me.Button_ProxySettings.Text = "网络设置"
         Me.Button_ProxySettings.UseVisualStyleBackColor = True
         '
@@ -120,7 +121,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_CheckUpdates.Location = New System.Drawing.Point(537, 397)
         Me.Button_CheckUpdates.Name = "Button_CheckUpdates"
         Me.Button_CheckUpdates.Size = New System.Drawing.Size(75, 23)
-        Me.Button_CheckUpdates.TabIndex = 24
+        Me.Button_CheckUpdates.TabIndex = 8
         Me.Button_CheckUpdates.Text = "检查更新"
         Me.ToolTip_Default.SetToolTip(Me.Button_CheckUpdates, "检查插件更新。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按下 Shift 再点击按钮可检查测试版更新。")
         Me.Button_CheckUpdates.UseVisualStyleBackColor = True
@@ -131,7 +132,7 @@ Partial Class TTSDanmakuMgmt
         Me.NumericUpDown_RetryCount.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.NumericUpDown_RetryCount.Name = "NumericUpDown_RetryCount"
         Me.NumericUpDown_RetryCount.Size = New System.Drawing.Size(137, 23)
-        Me.NumericUpDown_RetryCount.TabIndex = 19
+        Me.NumericUpDown_RetryCount.TabIndex = 8
         Me.ToolTip_Default.SetToolTip(Me.NumericUpDown_RetryCount, "指定在下载 TTS 文件时出现网络错误的重试次数。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "默认值: 5" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "范围为 0 ~ 10, 指定为 0 将阻止插件重新下载。")
         '
         'Label_RetryCount
@@ -140,7 +141,7 @@ Partial Class TTSDanmakuMgmt
         Me.Label_RetryCount.Location = New System.Drawing.Point(6, 171)
         Me.Label_RetryCount.Name = "Label_RetryCount"
         Me.Label_RetryCount.Size = New System.Drawing.Size(166, 17)
-        Me.Label_RetryCount.TabIndex = 18
+        Me.Label_RetryCount.TabIndex = 7
         Me.Label_RetryCount.Text = "下载失败重试次数（0 ~ 10）"
         '
         'TextBox_CustomConnected
@@ -151,7 +152,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_CustomConnected.Location = New System.Drawing.Point(6, 115)
         Me.TextBox_CustomConnected.Name = "TextBox_CustomConnected"
         Me.TextBox_CustomConnected.Size = New System.Drawing.Size(580, 23)
-        Me.TextBox_CustomConnected.TabIndex = 13
+        Me.TextBox_CustomConnected.TabIndex = 5
         Me.ToolTip_Default.SetToolTip(Me.TextBox_CustomConnected, "指定插件检测到弹幕姬成功连接至房间时读出的内容。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "用 %s 来代替房间号。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "留空可关闭本功能。")
         '
         'Label_CustomConnected
@@ -160,7 +161,7 @@ Partial Class TTSDanmakuMgmt
         Me.Label_CustomConnected.Location = New System.Drawing.Point(6, 95)
         Me.Label_CustomConnected.Name = "Label_CustomConnected"
         Me.Label_CustomConnected.Size = New System.Drawing.Size(164, 17)
-        Me.Label_CustomConnected.TabIndex = 12
+        Me.Label_CustomConnected.TabIndex = 4
         Me.Label_CustomConnected.Text = "自定义房间连接成功读出内容"
         '
         'CheckBox_NoKeepingCache
@@ -179,10 +180,10 @@ Partial Class TTSDanmakuMgmt
         '
         Me.Button_SetupWizard.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button_SetupWizard.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Button_SetupWizard.Location = New System.Drawing.Point(511, 35)
+        Me.Button_SetupWizard.Location = New System.Drawing.Point(511, 93)
         Me.Button_SetupWizard.Name = "Button_SetupWizard"
         Me.Button_SetupWizard.Size = New System.Drawing.Size(75, 23)
-        Me.Button_SetupWizard.TabIndex = 23
+        Me.Button_SetupWizard.TabIndex = 15
         Me.Button_SetupWizard.Text = "设置向导"
         Me.ToolTip_Default.SetToolTip(Me.Button_SetupWizard, "运行设置向导，帮助您完成主要的插件配置。")
         Me.Button_SetupWizard.UseVisualStyleBackColor = True
@@ -192,7 +193,7 @@ Partial Class TTSDanmakuMgmt
         Me.NumericUpDown_Volume.Location = New System.Drawing.Point(9, 145)
         Me.NumericUpDown_Volume.Name = "NumericUpDown_Volume"
         Me.NumericUpDown_Volume.Size = New System.Drawing.Size(137, 23)
-        Me.NumericUpDown_Volume.TabIndex = 17
+        Me.NumericUpDown_Volume.TabIndex = 6
         Me.ToolTip_Default.SetToolTip(Me.NumericUpDown_Volume, "调节 TTS 的相对音量大小。范围为 0（完全静音）~ 100（与系统音量一致）。")
         Me.NumericUpDown_Volume.Value = New Decimal(New Integer() {100, 0, 0, 0})
         '
@@ -202,7 +203,7 @@ Partial Class TTSDanmakuMgmt
         Me.Label_TTSVolume.Location = New System.Drawing.Point(6, 125)
         Me.Label_TTSVolume.Name = "Label_TTSVolume"
         Me.Label_TTSVolume.Size = New System.Drawing.Size(57, 17)
-        Me.Label_TTSVolume.TabIndex = 16
+        Me.Label_TTSVolume.TabIndex = 5
         Me.Label_TTSVolume.Text = "TTS 音量"
         '
         'Button_StatusReport
@@ -212,7 +213,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_StatusReport.Location = New System.Drawing.Point(511, 6)
         Me.Button_StatusReport.Name = "Button_StatusReport"
         Me.Button_StatusReport.Size = New System.Drawing.Size(75, 23)
-        Me.Button_StatusReport.TabIndex = 22
+        Me.Button_StatusReport.TabIndex = 12
         Me.Button_StatusReport.Text = "状态报告"
         Me.ToolTip_Default.SetToolTip(Me.Button_StatusReport, "以一定时间间隔报告直播间状态。")
         Me.Button_StatusReport.UseVisualStyleBackColor = True
@@ -226,7 +227,7 @@ Partial Class TTSDanmakuMgmt
         Me.ComboBox_Engine.Location = New System.Drawing.Point(9, 97)
         Me.ComboBox_Engine.Name = "ComboBox_Engine"
         Me.ComboBox_Engine.Size = New System.Drawing.Size(137, 25)
-        Me.ComboBox_Engine.TabIndex = 15
+        Me.ComboBox_Engine.TabIndex = 4
         Me.ToolTip_Default.SetToolTip(Me.ComboBox_Engine, "选择 TTS 引擎。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "首选引擎适合所有电脑，但稳定性和效率取决于网络性能。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "备用框架自带引擎不一定能正常工作。盗版系统失败概率较高。")
         '
         'Label_SpeechEngine
@@ -235,7 +236,7 @@ Partial Class TTSDanmakuMgmt
         Me.Label_SpeechEngine.Location = New System.Drawing.Point(6, 77)
         Me.Label_SpeechEngine.Name = "Label_SpeechEngine"
         Me.Label_SpeechEngine.Size = New System.Drawing.Size(57, 17)
-        Me.Label_SpeechEngine.TabIndex = 14
+        Me.Label_SpeechEngine.TabIndex = 3
         Me.Label_SpeechEngine.Text = "TTS 引擎"
         '
         'TextBox_CustomGiftContent
@@ -245,7 +246,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_CustomGiftContent.Location = New System.Drawing.Point(6, 69)
         Me.TextBox_CustomGiftContent.Name = "TextBox_CustomGiftContent"
         Me.TextBox_CustomGiftContent.Size = New System.Drawing.Size(580, 23)
-        Me.TextBox_CustomGiftContent.TabIndex = 11
+        Me.TextBox_CustomGiftContent.TabIndex = 3
         Me.ToolTip_Default.SetToolTip(Me.TextBox_CustomGiftContent, "在此自定义收到礼物后的读出内容。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "留空可关闭本项目读出功能。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "变量参考帮助:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "https://github.com/Elepover/Plugin-TT" &
         "SDanmaku/wiki")
         '
@@ -256,7 +257,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_CustomDMContent.Location = New System.Drawing.Point(6, 23)
         Me.TextBox_CustomDMContent.Name = "TextBox_CustomDMContent"
         Me.TextBox_CustomDMContent.Size = New System.Drawing.Size(580, 23)
-        Me.TextBox_CustomDMContent.TabIndex = 9
+        Me.TextBox_CustomDMContent.TabIndex = 1
         Me.ToolTip_Default.SetToolTip(Me.TextBox_CustomDMContent, "在此自定义收到弹幕后的读出内容。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "留空可关闭本项目读出功能。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "变量参考帮助:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "https://github.com/Elepover/Plugin-TT" &
         "SDanmaku/wiki")
         '
@@ -266,7 +267,7 @@ Partial Class TTSDanmakuMgmt
         Me.Label_CustomGiftContent_Header.Location = New System.Drawing.Point(6, 49)
         Me.Label_CustomGiftContent_Header.Name = "Label_CustomGiftContent_Header"
         Me.Label_CustomGiftContent_Header.Size = New System.Drawing.Size(116, 17)
-        Me.Label_CustomGiftContent_Header.TabIndex = 10
+        Me.Label_CustomGiftContent_Header.TabIndex = 2
         Me.Label_CustomGiftContent_Header.Text = "自定义礼物读出内容"
         '
         'Label_CustomDM_Header
@@ -275,7 +276,7 @@ Partial Class TTSDanmakuMgmt
         Me.Label_CustomDM_Header.Location = New System.Drawing.Point(6, 3)
         Me.Label_CustomDM_Header.Name = "Label_CustomDM_Header"
         Me.Label_CustomDM_Header.Size = New System.Drawing.Size(116, 17)
-        Me.Label_CustomDM_Header.TabIndex = 8
+        Me.Label_CustomDM_Header.TabIndex = 0
         Me.Label_CustomDM_Header.Text = "自定义弹幕读出内容"
         '
         'NumericUpDown_CoolDownValue
@@ -286,7 +287,7 @@ Partial Class TTSDanmakuMgmt
         Me.NumericUpDown_CoolDownValue.Minimum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.NumericUpDown_CoolDownValue.Name = "NumericUpDown_CoolDownValue"
         Me.NumericUpDown_CoolDownValue.Size = New System.Drawing.Size(145, 23)
-        Me.NumericUpDown_CoolDownValue.TabIndex = 7
+        Me.NumericUpDown_CoolDownValue.TabIndex = 2
         Me.ToolTip_Default.SetToolTip(Me.NumericUpDown_CoolDownValue, "设置 TTS 冷却值（以毫秒为单位）。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1s = 1000ms.")
         Me.NumericUpDown_CoolDownValue.Value = New Decimal(New Integer() {1000, 0, 0, 0})
         '
@@ -296,7 +297,7 @@ Partial Class TTSDanmakuMgmt
         Me.Label_Value_Prefix.Location = New System.Drawing.Point(16, 31)
         Me.Label_Value_Prefix.Name = "Label_Value_Prefix"
         Me.Label_Value_Prefix.Size = New System.Drawing.Size(98, 17)
-        Me.Label_Value_Prefix.TabIndex = 6
+        Me.Label_Value_Prefix.TabIndex = 1
         Me.Label_Value_Prefix.Text = "TTS 冷却值 (ms)"
         '
         'CheckBox_TTSCoolDown
@@ -306,7 +307,7 @@ Partial Class TTSDanmakuMgmt
         Me.CheckBox_TTSCoolDown.Location = New System.Drawing.Point(3, 6)
         Me.CheckBox_TTSCoolDown.Name = "CheckBox_TTSCoolDown"
         Me.CheckBox_TTSCoolDown.Size = New System.Drawing.Size(82, 22)
-        Me.CheckBox_TTSCoolDown.TabIndex = 5
+        Me.CheckBox_TTSCoolDown.TabIndex = 0
         Me.CheckBox_TTSCoolDown.Text = "TTS 冷却"
         Me.ToolTip_Default.SetToolTip(Me.CheckBox_TTSCoolDown, "在读出一条弹幕的一段时间内不再读出其他弹幕。")
         Me.CheckBox_TTSCoolDown.UseVisualStyleBackColor = True
@@ -330,7 +331,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_Load.Location = New System.Drawing.Point(12, 426)
         Me.Button_Load.Name = "Button_Load"
         Me.Button_Load.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Load.TabIndex = 21
+        Me.Button_Load.TabIndex = 3
         Me.Button_Load.Text = "重新读取"
         Me.ToolTip_Default.SetToolTip(Me.Button_Load, "重新读取已经保存的设置。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "这将丢弃您当前的所有更改。")
         Me.Button_Load.UseVisualStyleBackColor = True
@@ -343,7 +344,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_Apply.Location = New System.Drawing.Point(12, 397)
         Me.Button_Apply.Name = "Button_Apply"
         Me.Button_Apply.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Apply.TabIndex = 20
+        Me.Button_Apply.TabIndex = 2
         Me.Button_Apply.Text = "应用"
         Me.Button_Apply.UseVisualStyleBackColor = True
         '
@@ -404,7 +405,7 @@ Partial Class TTSDanmakuMgmt
         Me.GroupBox_TempMgr.Location = New System.Drawing.Point(9, 223)
         Me.GroupBox_TempMgr.Name = "GroupBox_TempMgr"
         Me.GroupBox_TempMgr.Size = New System.Drawing.Size(577, 120)
-        Me.GroupBox_TempMgr.TabIndex = 2
+        Me.GroupBox_TempMgr.TabIndex = 9
         Me.GroupBox_TempMgr.TabStop = False
         Me.GroupBox_TempMgr.Text = "管理下载的 TTS 文件缓存"
         '
@@ -443,7 +444,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_Close.Location = New System.Drawing.Point(537, 426)
         Me.Button_Close.Name = "Button_Close"
         Me.Button_Close.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Close.TabIndex = 8
+        Me.Button_Close.TabIndex = 9
         Me.Button_Close.Text = "关闭 / 取消"
         Me.Button_Close.UseVisualStyleBackColor = True
         '
@@ -451,10 +452,10 @@ Partial Class TTSDanmakuMgmt
         '
         Me.Button_Reload.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button_Reload.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Button_Reload.Location = New System.Drawing.Point(511, 93)
+        Me.Button_Reload.Location = New System.Drawing.Point(511, 122)
         Me.Button_Reload.Name = "Button_Reload"
         Me.Button_Reload.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Reload.TabIndex = 3
+        Me.Button_Reload.TabIndex = 16
         Me.Button_Reload.Text = "重载窗口"
         Me.ToolTip_Default.SetToolTip(Me.Button_Reload, "重新载入以下配置：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-> 设置选项" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-> 缓存文件")
         Me.Button_Reload.UseVisualStyleBackColor = True
@@ -528,7 +529,7 @@ Partial Class TTSDanmakuMgmt
         Me.TabControl_PluginSettings.Name = "TabControl_PluginSettings"
         Me.TabControl_PluginSettings.SelectedIndex = 0
         Me.TabControl_PluginSettings.Size = New System.Drawing.Size(600, 379)
-        Me.TabControl_PluginSettings.TabIndex = 26
+        Me.TabControl_PluginSettings.TabIndex = 1
         '
         'TabPage_BasicSettings
         '
@@ -547,6 +548,7 @@ Partial Class TTSDanmakuMgmt
         '
         'TabPage_Advanced
         '
+        Me.TabPage_Advanced.Controls.Add(Me.Button_NETFramework)
         Me.TabPage_Advanced.Controls.Add(Me.ComboBox_Blockmode)
         Me.TabPage_Advanced.Controls.Add(Me.Label_Blockmode)
         Me.TabPage_Advanced.Controls.Add(Me.Button_ProxySettings)
@@ -579,7 +581,7 @@ Partial Class TTSDanmakuMgmt
         Me.ComboBox_Blockmode.Location = New System.Drawing.Point(173, 28)
         Me.ComboBox_Blockmode.Name = "ComboBox_Blockmode"
         Me.ComboBox_Blockmode.Size = New System.Drawing.Size(121, 25)
-        Me.ComboBox_Blockmode.TabIndex = 27
+        Me.ComboBox_Blockmode.TabIndex = 11
         '
         'Label_Blockmode
         '
@@ -587,7 +589,7 @@ Partial Class TTSDanmakuMgmt
         Me.Label_Blockmode.Location = New System.Drawing.Point(170, 8)
         Me.Label_Blockmode.Name = "Label_Blockmode"
         Me.Label_Blockmode.Size = New System.Drawing.Size(56, 17)
-        Me.Label_Blockmode.TabIndex = 26
+        Me.Label_Blockmode.TabIndex = 10
         Me.Label_Blockmode.Text = "屏蔽模式"
         '
         'TabPage_Customization
@@ -610,6 +612,47 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Customization.Text = "自定义"
         Me.TabPage_Customization.UseVisualStyleBackColor = True
         '
+        'TextBox_Whitelist
+        '
+        Me.TextBox_Whitelist.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox_Whitelist.Location = New System.Drawing.Point(336, 161)
+        Me.TextBox_Whitelist.Multiline = True
+        Me.TextBox_Whitelist.Name = "TextBox_Whitelist"
+        Me.TextBox_Whitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_Whitelist.Size = New System.Drawing.Size(250, 182)
+        Me.TextBox_Whitelist.TabIndex = 9
+        '
+        'TextBox_Blacklist
+        '
+        Me.TextBox_Blacklist.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.TextBox_Blacklist.Location = New System.Drawing.Point(6, 161)
+        Me.TextBox_Blacklist.Multiline = True
+        Me.TextBox_Blacklist.Name = "TextBox_Blacklist"
+        Me.TextBox_Blacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_Blacklist.Size = New System.Drawing.Size(250, 182)
+        Me.TextBox_Blacklist.TabIndex = 7
+        '
+        'Label_Whitelist
+        '
+        Me.Label_Whitelist.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label_Whitelist.AutoSize = True
+        Me.Label_Whitelist.Location = New System.Drawing.Point(333, 141)
+        Me.Label_Whitelist.Name = "Label_Whitelist"
+        Me.Label_Whitelist.Size = New System.Drawing.Size(44, 17)
+        Me.Label_Whitelist.TabIndex = 8
+        Me.Label_Whitelist.Text = "白名单"
+        '
+        'Label_Blacklist
+        '
+        Me.Label_Blacklist.AutoSize = True
+        Me.Label_Blacklist.Location = New System.Drawing.Point(6, 141)
+        Me.Label_Blacklist.Name = "Label_Blacklist"
+        Me.Label_Blacklist.Size = New System.Drawing.Size(44, 17)
+        Me.Label_Blacklist.TabIndex = 6
+        Me.Label_Blacklist.Text = "黑名单"
+        '
         'TabPage_Statistics
         '
         Me.TabPage_Statistics.Controls.Add(Me.TextBox_Stats)
@@ -621,49 +664,19 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics.Text = "统计数据"
         Me.TabPage_Statistics.UseVisualStyleBackColor = True
         '
-        'Label_Blacklist
+        'Button_NETFramework
         '
-        Me.Label_Blacklist.AutoSize = True
-        Me.Label_Blacklist.Location = New System.Drawing.Point(6, 141)
-        Me.Label_Blacklist.Name = "Label_Blacklist"
-        Me.Label_Blacklist.Size = New System.Drawing.Size(44, 17)
-        Me.Label_Blacklist.TabIndex = 14
-        Me.Label_Blacklist.Text = "黑名单"
-        '
-        'TextBox_Blacklist
-        '
-        Me.TextBox_Blacklist.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.TextBox_Blacklist.Location = New System.Drawing.Point(6, 161)
-        Me.TextBox_Blacklist.Multiline = True
-        Me.TextBox_Blacklist.Name = "TextBox_Blacklist"
-        Me.TextBox_Blacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_Blacklist.Size = New System.Drawing.Size(250, 182)
-        Me.TextBox_Blacklist.TabIndex = 15
-        '
-        'TextBox_Whitelist
-        '
-        Me.TextBox_Whitelist.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox_Whitelist.Location = New System.Drawing.Point(336, 161)
-        Me.TextBox_Whitelist.Multiline = True
-        Me.TextBox_Whitelist.Name = "TextBox_Whitelist"
-        Me.TextBox_Whitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_Whitelist.Size = New System.Drawing.Size(250, 182)
-        Me.TextBox_Whitelist.TabIndex = 15
-        '
-        'Label_Whitelist
-        '
-        Me.Label_Whitelist.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label_Whitelist.AutoSize = True
-        Me.Label_Whitelist.Location = New System.Drawing.Point(333, 141)
-        Me.Label_Whitelist.Name = "Label_Whitelist"
-        Me.Label_Whitelist.Size = New System.Drawing.Size(44, 17)
-        Me.Label_Whitelist.TabIndex = 14
-        Me.Label_Whitelist.Text = "白名单"
+        Me.Button_NETFramework.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.Button_NETFramework.Location = New System.Drawing.Point(511, 64)
+        Me.Button_NETFramework.Name = "Button_NETFramework"
+        Me.Button_NETFramework.Size = New System.Drawing.Size(75, 23)
+        Me.Button_NETFramework.TabIndex = 14
+        Me.Button_NETFramework.Text = "引擎设置"
+        Me.Button_NETFramework.UseVisualStyleBackColor = True
         '
         'TTSDanmakuMgmt
         '
+        Me.AcceptButton = Me.Button_Apply
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
@@ -758,4 +771,5 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents TextBox_Blacklist As Windows.Forms.TextBox
     Friend WithEvents TextBox_Whitelist As Windows.Forms.TextBox
     Friend WithEvents Label_Whitelist As Windows.Forms.Label
+    Friend WithEvents Button_NETFramework As Windows.Forms.Button
 End Class

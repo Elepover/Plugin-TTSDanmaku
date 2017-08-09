@@ -25,7 +25,6 @@ Partial Class Form_ProxySettings
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_ProxySettings))
         Me.ToolTip_Default = New System.Windows.Forms.ToolTip(Me.components)
-        Me.PictureBox_Alert = New System.Windows.Forms.PictureBox()
         Me.TextBox_ProxyServer_IP = New System.Windows.Forms.TextBox()
         Me.TextBox_ProxyServer_Port = New System.Windows.Forms.TextBox()
         Me.TextBox_ProxyServer_Username = New System.Windows.Forms.TextBox()
@@ -46,24 +45,13 @@ Partial Class Form_ProxySettings
         Me.Button_OK = New System.Windows.Forms.Button()
         Me.Button_Cancel = New System.Windows.Forms.Button()
         Me.Label_Warning = New System.Windows.Forms.Label()
-        CType(Me.PictureBox_Alert, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PictureBox_Alert = New System.Windows.Forms.PictureBox()
         Me.GroupBox_ProxySettings.SuspendLayout()
         Me.GroupBox_Etc.SuspendLayout()
         Me.GroupBox_GoogleTTS.SuspendLayout()
         Me.GroupBox_Security.SuspendLayout()
+        CType(Me.PictureBox_Alert, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'PictureBox_Alert
-        '
-        Me.PictureBox_Alert.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox_Alert.Image = Global.TTSDanmaku.My.Resources.Resources.Network_Warning
-        Me.PictureBox_Alert.Location = New System.Drawing.Point(540, 12)
-        Me.PictureBox_Alert.Name = "PictureBox_Alert"
-        Me.PictureBox_Alert.Size = New System.Drawing.Size(32, 32)
-        Me.PictureBox_Alert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox_Alert.TabIndex = 0
-        Me.PictureBox_Alert.TabStop = False
-        Me.ToolTip_Default.SetToolTip(Me.PictureBox_Alert, "此处设置仅供高级用户使用，可能会导致插件无法正常工作。")
         '
         'TextBox_ProxyServer_IP
         '
@@ -262,6 +250,7 @@ Partial Class Form_ProxySettings
         'Button_Cancel
         '
         Me.Button_Cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Button_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.Button_Cancel.Location = New System.Drawing.Point(497, 268)
         Me.Button_Cancel.Name = "Button_Cancel"
@@ -280,12 +269,27 @@ Partial Class Form_ProxySettings
         Me.Label_Warning.TabIndex = 6
         Me.Label_Warning.Text = "警告"
         Me.Label_Warning.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.ToolTip_Default.SetToolTip(Me.Label_Warning, "此处设置仅供高级用户使用，可能会导致插件无法正常工作。")
+        '
+        'PictureBox_Alert
+        '
+        Me.PictureBox_Alert.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox_Alert.Image = Global.TTSDanmaku.My.Resources.Resources.Network_Warning
+        Me.PictureBox_Alert.Location = New System.Drawing.Point(540, 12)
+        Me.PictureBox_Alert.Name = "PictureBox_Alert"
+        Me.PictureBox_Alert.Size = New System.Drawing.Size(32, 32)
+        Me.PictureBox_Alert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox_Alert.TabIndex = 0
+        Me.PictureBox_Alert.TabStop = False
+        Me.ToolTip_Default.SetToolTip(Me.PictureBox_Alert, "此处设置仅供高级用户使用，可能会导致插件无法正常工作。")
         '
         'Form_ProxySettings
         '
+        Me.AcceptButton = Me.Button_OK
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
+        Me.CancelButton = Me.Button_Cancel
         Me.ClientSize = New System.Drawing.Size(584, 297)
         Me.Controls.Add(Me.Label_Warning)
         Me.Controls.Add(Me.Button_Cancel)
@@ -303,7 +307,6 @@ Partial Class Form_ProxySettings
         Me.Name = "Form_ProxySettings"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TTSDanmaku - 网络设置"
-        CType(Me.PictureBox_Alert, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox_ProxySettings.ResumeLayout(False)
         Me.GroupBox_ProxySettings.PerformLayout()
         Me.GroupBox_Etc.ResumeLayout(False)
@@ -311,6 +314,7 @@ Partial Class Form_ProxySettings
         Me.GroupBox_GoogleTTS.PerformLayout()
         Me.GroupBox_Security.ResumeLayout(False)
         Me.GroupBox_Security.PerformLayout()
+        CType(Me.PictureBox_Alert, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

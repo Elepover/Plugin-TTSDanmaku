@@ -228,6 +228,7 @@
         Label_RetryCount.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         NumericUpDown_RetryCount.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Button_CheckUpdates.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Button_NETFramework.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Button_ProxySettings.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         ComboBox_Blockmode.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Label_Blockmode.Font = New Drawing.Font("Microsoft Yahei UI", 9)
@@ -455,6 +456,11 @@
 
     Private Sub Button_ProxySettings_Click(sender As Object, e As EventArgs) Handles Button_ProxySettings.Click
         Dim frm As New Form_ProxySettings
+        frm.Show()
+    End Sub
+
+    Private Sub Button_NETFramework_Click(sender As Object, e As EventArgs) Handles Button_NETFramework.Click
+        Dim frm As New Form_FrameworkEngineConf
         frm.Show()
     End Sub
 End Class

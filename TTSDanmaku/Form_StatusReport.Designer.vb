@@ -218,7 +218,7 @@ Partial Class Form_StatusReport
         Me.Name = "Form_StatusReport"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "TTSDanmaku 状态报告 - 高级设置"
+        Me.Text = "TTSDanmaku - 状态报告"
         Me.Panel_AutoScroll.ResumeLayout(False)
         Me.Panel_AutoScroll.PerformLayout()
         Me.GroupBox_Configurations.ResumeLayout(False)

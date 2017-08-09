@@ -86,6 +86,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoesNotExistTTS.vb" />
+    <Compile Include="Form_FrameworkEngineConf.Designer.vb">
+      <DependentUpon>Form_FrameworkEngineConf.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_FrameworkEngineConf.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form_ProxySettings.Designer.vb">
       <DependentUpon>Form_ProxySettings.vb</DependentUpon>
     </Compile>
@@ -168,6 +174,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form_FrameworkEngineConf.resx">
+      <DependentUpon>Form_FrameworkEngineConf.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_ProxySettings.resx">
       <DependentUpon>Form_ProxySettings.vb</DependentUpon>
     </EmbeddedResource>
