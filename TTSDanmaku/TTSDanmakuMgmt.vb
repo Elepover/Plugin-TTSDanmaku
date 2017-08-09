@@ -382,6 +382,8 @@
         TextBox_Stats.SelectionStart = TextBox_Stats.TextLength
         TextBox_Stats.SelectionLength = 0
         TextBox_Stats.ScrollToCaret()
+        Delay(1000)
+        Label_ThanksViaMyHeart.Visible = True
     End Sub
 
     Private Sub TTSDanmakuMgmt_Load(sender As Object, e As EventArgs) Handles MyBase.Load

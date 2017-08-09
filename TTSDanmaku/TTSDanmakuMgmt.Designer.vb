@@ -64,15 +64,15 @@ Partial Class TTSDanmakuMgmt
         Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
         Me.NumericUpDown_SpeechSpeed = New System.Windows.Forms.NumericUpDown()
+        Me.ComboBox_Blockmode = New System.Windows.Forms.ComboBox()
+        Me.TextBox_Whitelist = New System.Windows.Forms.TextBox()
+        Me.TextBox_Blacklist = New System.Windows.Forms.TextBox()
         Me.TabControl_PluginSettings = New System.Windows.Forms.TabControl()
         Me.TabPage_BasicSettings = New System.Windows.Forms.TabPage()
         Me.TabPage_Advanced = New System.Windows.Forms.TabPage()
         Me.Label_SpeechSpeed = New System.Windows.Forms.Label()
-        Me.ComboBox_Blockmode = New System.Windows.Forms.ComboBox()
         Me.Label_Blockmode = New System.Windows.Forms.Label()
         Me.TabPage_Customization = New System.Windows.Forms.TabPage()
-        Me.TextBox_Whitelist = New System.Windows.Forms.TextBox()
-        Me.TextBox_Blacklist = New System.Windows.Forms.TextBox()
         Me.Label_Whitelist = New System.Windows.Forms.Label()
         Me.Label_Blacklist = New System.Windows.Forms.Label()
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
@@ -517,6 +517,7 @@ Partial Class TTSDanmakuMgmt
         Me.ToolTip_Default.SetToolTip(Me.Label_ThanksViaMyHeart, "真诚地在此感谢您在安装使用本插件上所花费的分分秒秒。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & """相聚是缘，相逢是歌""，您的使用是对我最大的鼓舞。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果有任何使用问题，请参见右侧常见问题。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如没" &
         "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
         "his is an open-source(MIT) software.")
+        Me.Label_ThanksViaMyHeart.Visible = False
         '
         'NumericUpDown_SpeechSpeed
         '
@@ -527,6 +528,41 @@ Partial Class TTSDanmakuMgmt
         Me.NumericUpDown_SpeechSpeed.Size = New System.Drawing.Size(120, 23)
         Me.NumericUpDown_SpeechSpeed.TabIndex = 18
         Me.ToolTip_Default.SetToolTip(Me.NumericUpDown_SpeechSpeed, "（仅适用于框架自带引擎）" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "设置 TTS 语速，范围从 -10 到 10。")
+        '
+        'ComboBox_Blockmode
+        '
+        Me.ComboBox_Blockmode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox_Blockmode.FormattingEnabled = True
+        Me.ComboBox_Blockmode.Items.AddRange(New Object() {"关闭", "黑名单", "白名单"})
+        Me.ComboBox_Blockmode.Location = New System.Drawing.Point(173, 28)
+        Me.ComboBox_Blockmode.Name = "ComboBox_Blockmode"
+        Me.ComboBox_Blockmode.Size = New System.Drawing.Size(121, 25)
+        Me.ComboBox_Blockmode.TabIndex = 11
+        Me.ToolTip_Default.SetToolTip(Me.ComboBox_Blockmode, "选择用户屏蔽设置。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "名单可在 设置 -> 自定义 中找到。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "关闭: 没有任何屏蔽。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "黑名单: 屏蔽黑名单中的用户。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "白名单: 屏蔽白名单以外所有用户。")
+        '
+        'TextBox_Whitelist
+        '
+        Me.TextBox_Whitelist.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox_Whitelist.Location = New System.Drawing.Point(336, 161)
+        Me.TextBox_Whitelist.Multiline = True
+        Me.TextBox_Whitelist.Name = "TextBox_Whitelist"
+        Me.TextBox_Whitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_Whitelist.Size = New System.Drawing.Size(250, 182)
+        Me.TextBox_Whitelist.TabIndex = 9
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_Whitelist, "用户白名单，每行一个用户 ID。")
+        '
+        'TextBox_Blacklist
+        '
+        Me.TextBox_Blacklist.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.TextBox_Blacklist.Location = New System.Drawing.Point(6, 161)
+        Me.TextBox_Blacklist.Multiline = True
+        Me.TextBox_Blacklist.Name = "TextBox_Blacklist"
+        Me.TextBox_Blacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_Blacklist.Size = New System.Drawing.Size(250, 182)
+        Me.TextBox_Blacklist.TabIndex = 7
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_Blacklist, "用户黑名单，每行一个用户 ID。")
         '
         'TabControl_PluginSettings
         '
@@ -595,17 +631,6 @@ Partial Class TTSDanmakuMgmt
         Me.Label_SpeechSpeed.TabIndex = 17
         Me.Label_SpeechSpeed.Text = "TTS 语速"
         '
-        'ComboBox_Blockmode
-        '
-        Me.ComboBox_Blockmode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox_Blockmode.FormattingEnabled = True
-        Me.ComboBox_Blockmode.Items.AddRange(New Object() {"关闭", "黑名单", "白名单"})
-        Me.ComboBox_Blockmode.Location = New System.Drawing.Point(173, 28)
-        Me.ComboBox_Blockmode.Name = "ComboBox_Blockmode"
-        Me.ComboBox_Blockmode.Size = New System.Drawing.Size(121, 25)
-        Me.ComboBox_Blockmode.TabIndex = 11
-        Me.ToolTip_Default.SetToolTip(Me.ComboBox_Blockmode, "选择用户屏蔽设置。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "名单可在 设置 -> 自定义 中找到。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "关闭: 没有任何屏蔽。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "黑名单: 屏蔽黑名单中的用户。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "白名单: 屏蔽白名单以外所有用户。")
-        '
         'Label_Blockmode
         '
         Me.Label_Blockmode.AutoSize = True
@@ -634,30 +659,6 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Customization.TabIndex = 2
         Me.TabPage_Customization.Text = "自定义"
         Me.TabPage_Customization.UseVisualStyleBackColor = True
-        '
-        'TextBox_Whitelist
-        '
-        Me.TextBox_Whitelist.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox_Whitelist.Location = New System.Drawing.Point(336, 161)
-        Me.TextBox_Whitelist.Multiline = True
-        Me.TextBox_Whitelist.Name = "TextBox_Whitelist"
-        Me.TextBox_Whitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_Whitelist.Size = New System.Drawing.Size(250, 182)
-        Me.TextBox_Whitelist.TabIndex = 9
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_Whitelist, "用户白名单，每行一个用户 ID。")
-        '
-        'TextBox_Blacklist
-        '
-        Me.TextBox_Blacklist.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.TextBox_Blacklist.Location = New System.Drawing.Point(6, 161)
-        Me.TextBox_Blacklist.Multiline = True
-        Me.TextBox_Blacklist.Name = "TextBox_Blacklist"
-        Me.TextBox_Blacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_Blacklist.Size = New System.Drawing.Size(250, 182)
-        Me.TextBox_Blacklist.TabIndex = 7
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_Blacklist, "用户黑名单，每行一个用户 ID。")
         '
         'Label_Whitelist
         '
