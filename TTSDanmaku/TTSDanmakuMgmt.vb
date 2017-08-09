@@ -127,6 +127,28 @@
             Label_Value_Prefix.Enabled = False
         End If
 
+        If Not ComboBox_Blockmode.SelectedIndex = Settings.Settings.Block_Mode Then
+            ComboBox_Blockmode.Font = New Drawing.Font(ComboBox_Blockmode.Font, Drawing.FontStyle.Bold)
+        Else
+            ComboBox_Blockmode.Font = New Drawing.Font(ComboBox_Blockmode.Font, Drawing.FontStyle.Regular)
+        End If
+
+        If Not TextBox_Blacklist.Text = Settings.Settings.Blacklist Then
+            Label_Blacklist.Font = New Drawing.Font(Label_Blacklist.Font, Drawing.FontStyle.Bold)
+            Label_Blacklist.Text = "黑名单*"
+        Else
+            Label_Blacklist.Font = New Drawing.Font(Label_Blacklist.Font, Drawing.FontStyle.Regular)
+            Label_Blacklist.Text = "黑名单"
+        End If
+
+        If Not TextBox_Whitelist.Text = Settings.Settings.Whitelist Then
+            Label_Whitelist.Font = New Drawing.Font(Label_Whitelist.Font, Drawing.FontStyle.Bold)
+            Label_Whitelist.Text = "白名单*"
+        Else
+            Label_Whitelist.Font = New Drawing.Font(Label_Whitelist.Font, Drawing.FontStyle.Regular)
+            Label_Whitelist.Text = "白名单"
+        End If
+
         ToolTip_Default.SetToolTip(Button_Apply, "保存设置。" & vbCrLf & vbCrLf & "当前设置文件路径: " & Settings.Vars.ConfigFileName)
 
         Status("就绪", False)
@@ -147,8 +169,12 @@
         TextBox_CustomConnected.Text = Settings.Settings.ConnectSuccessful
 
         ComboBox_Engine.SelectedIndex = Settings.Settings.Engine
+        ComboBox_Blockmode.SelectedIndex = Settings.Settings.Block_Mode
 
         CheckBox_NoKeepingCache.Checked = Settings.Settings.DoNotKeepCache
+
+        TextBox_Blacklist.Text = Settings.Settings.Blacklist
+        TextBox_Whitelist.Text = Settings.Settings.Whitelist
 
         TextBox_Stats.Clear()
         TextBox_Stats.AppendText("TTS 播放总尝试次数: " & Statistics.TTS_Total & vbCrLf)
@@ -203,6 +229,12 @@
         NumericUpDown_RetryCount.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Button_CheckUpdates.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         Button_ProxySettings.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        ComboBox_Blockmode.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Label_Blockmode.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Label_Blacklist.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Label_Whitelist.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        TextBox_Blacklist.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        TextBox_Whitelist.Font = New Drawing.Font("Microsoft Yahei UI", 9)
 
         TabControl_PluginSettings.Font = New Drawing.Font("Microsoft Yahei UI", 9)
         TabPage_Advanced.Font = New Drawing.Font("Microsoft Yahei UI", 9)
@@ -229,6 +261,9 @@
         Settings.Settings.DoNotKeepCache = CheckBox_NoKeepingCache.Checked
         Settings.Settings.ConnectSuccessful = TextBox_CustomConnected.Text
         Settings.Settings.DLFailRetry = NumericUpDown_RetryCount.Value
+        Settings.Settings.Block_Mode = ComboBox_Blockmode.SelectedIndex
+        Settings.Settings.Blacklist = TextBox_Blacklist.Text
+        Settings.Settings.Whitelist = TextBox_Whitelist.Text
         '检查自定义字符是否正常
         Dim IllegalVars_DM As Boolean = CheckIfLegal_DM()
         Dim IllegalVars_GIFT As Boolean = CheckIfLegal_GIFT()
@@ -309,7 +344,7 @@
         Status("操作成功: " & count & " 个。")
     End Sub
 
-    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, NumericUpDown_Volume.ValueChanged, NumericUpDown_RetryCount.ValueChanged, TextBox_CustomConnected.TextChanged, ComboBox_Engine.SelectedIndexChanged, CheckBox_NoKeepingCache.CheckedChanged
+    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, NumericUpDown_Volume.ValueChanged, NumericUpDown_RetryCount.ValueChanged, TextBox_CustomConnected.TextChanged, ComboBox_Engine.SelectedIndexChanged, CheckBox_NoKeepingCache.CheckedChanged, ComboBox_Blockmode.SelectedIndexChanged, TextBox_Blacklist.TextChanged, TextBox_Whitelist.TextChanged
         UpdateControl()
     End Sub
 

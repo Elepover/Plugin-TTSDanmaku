@@ -66,8 +66,14 @@ Partial Class TTSDanmakuMgmt
         Me.TabControl_PluginSettings = New System.Windows.Forms.TabControl()
         Me.TabPage_BasicSettings = New System.Windows.Forms.TabPage()
         Me.TabPage_Advanced = New System.Windows.Forms.TabPage()
+        Me.ComboBox_Blockmode = New System.Windows.Forms.ComboBox()
+        Me.Label_Blockmode = New System.Windows.Forms.Label()
         Me.TabPage_Customization = New System.Windows.Forms.TabPage()
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
+        Me.Label_Blacklist = New System.Windows.Forms.Label()
+        Me.TextBox_Blacklist = New System.Windows.Forms.TextBox()
+        Me.TextBox_Whitelist = New System.Windows.Forms.TextBox()
+        Me.Label_Whitelist = New System.Windows.Forms.Label()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -541,6 +547,8 @@ Partial Class TTSDanmakuMgmt
         '
         'TabPage_Advanced
         '
+        Me.TabPage_Advanced.Controls.Add(Me.ComboBox_Blockmode)
+        Me.TabPage_Advanced.Controls.Add(Me.Label_Blockmode)
         Me.TabPage_Advanced.Controls.Add(Me.Button_ProxySettings)
         Me.TabPage_Advanced.Controls.Add(Me.NumericUpDown_RetryCount)
         Me.TabPage_Advanced.Controls.Add(Me.CheckBox_TTSCoolDown)
@@ -563,8 +571,31 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Advanced.Text = "高级设置"
         Me.TabPage_Advanced.UseVisualStyleBackColor = True
         '
+        'ComboBox_Blockmode
+        '
+        Me.ComboBox_Blockmode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox_Blockmode.FormattingEnabled = True
+        Me.ComboBox_Blockmode.Items.AddRange(New Object() {"关闭", "黑名单", "白名单"})
+        Me.ComboBox_Blockmode.Location = New System.Drawing.Point(173, 28)
+        Me.ComboBox_Blockmode.Name = "ComboBox_Blockmode"
+        Me.ComboBox_Blockmode.Size = New System.Drawing.Size(121, 25)
+        Me.ComboBox_Blockmode.TabIndex = 27
+        '
+        'Label_Blockmode
+        '
+        Me.Label_Blockmode.AutoSize = True
+        Me.Label_Blockmode.Location = New System.Drawing.Point(170, 8)
+        Me.Label_Blockmode.Name = "Label_Blockmode"
+        Me.Label_Blockmode.Size = New System.Drawing.Size(56, 17)
+        Me.Label_Blockmode.TabIndex = 26
+        Me.Label_Blockmode.Text = "屏蔽模式"
+        '
         'TabPage_Customization
         '
+        Me.TabPage_Customization.Controls.Add(Me.TextBox_Whitelist)
+        Me.TabPage_Customization.Controls.Add(Me.TextBox_Blacklist)
+        Me.TabPage_Customization.Controls.Add(Me.Label_Whitelist)
+        Me.TabPage_Customization.Controls.Add(Me.Label_Blacklist)
         Me.TabPage_Customization.Controls.Add(Me.Label_CustomDM_Header)
         Me.TabPage_Customization.Controls.Add(Me.Label_CustomGiftContent_Header)
         Me.TabPage_Customization.Controls.Add(Me.TextBox_CustomDMContent)
@@ -589,6 +620,47 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics.TabIndex = 3
         Me.TabPage_Statistics.Text = "统计数据"
         Me.TabPage_Statistics.UseVisualStyleBackColor = True
+        '
+        'Label_Blacklist
+        '
+        Me.Label_Blacklist.AutoSize = True
+        Me.Label_Blacklist.Location = New System.Drawing.Point(6, 141)
+        Me.Label_Blacklist.Name = "Label_Blacklist"
+        Me.Label_Blacklist.Size = New System.Drawing.Size(44, 17)
+        Me.Label_Blacklist.TabIndex = 14
+        Me.Label_Blacklist.Text = "黑名单"
+        '
+        'TextBox_Blacklist
+        '
+        Me.TextBox_Blacklist.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.TextBox_Blacklist.Location = New System.Drawing.Point(6, 161)
+        Me.TextBox_Blacklist.Multiline = True
+        Me.TextBox_Blacklist.Name = "TextBox_Blacklist"
+        Me.TextBox_Blacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_Blacklist.Size = New System.Drawing.Size(250, 182)
+        Me.TextBox_Blacklist.TabIndex = 15
+        '
+        'TextBox_Whitelist
+        '
+        Me.TextBox_Whitelist.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox_Whitelist.Location = New System.Drawing.Point(336, 161)
+        Me.TextBox_Whitelist.Multiline = True
+        Me.TextBox_Whitelist.Name = "TextBox_Whitelist"
+        Me.TextBox_Whitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_Whitelist.Size = New System.Drawing.Size(250, 182)
+        Me.TextBox_Whitelist.TabIndex = 15
+        '
+        'Label_Whitelist
+        '
+        Me.Label_Whitelist.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label_Whitelist.AutoSize = True
+        Me.Label_Whitelist.Location = New System.Drawing.Point(333, 141)
+        Me.Label_Whitelist.Name = "Label_Whitelist"
+        Me.Label_Whitelist.Size = New System.Drawing.Size(44, 17)
+        Me.Label_Whitelist.TabIndex = 14
+        Me.Label_Whitelist.Text = "白名单"
         '
         'TTSDanmakuMgmt
         '
@@ -680,4 +752,10 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents TabPage_Advanced As Windows.Forms.TabPage
     Friend WithEvents TabPage_Customization As Windows.Forms.TabPage
     Friend WithEvents TabPage_Statistics As Windows.Forms.TabPage
+    Friend WithEvents Label_Blockmode As Windows.Forms.Label
+    Friend WithEvents ComboBox_Blockmode As Windows.Forms.ComboBox
+    Friend WithEvents Label_Blacklist As Windows.Forms.Label
+    Friend WithEvents TextBox_Blacklist As Windows.Forms.TextBox
+    Friend WithEvents TextBox_Whitelist As Windows.Forms.TextBox
+    Friend WithEvents Label_Whitelist As Windows.Forms.Label
 End Class
