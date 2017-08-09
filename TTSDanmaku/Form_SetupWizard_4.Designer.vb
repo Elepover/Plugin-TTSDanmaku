@@ -31,8 +31,6 @@ Partial Class Form_SetupWizard_4
         Me.CheckBox_EnviChk = New System.Windows.Forms.CheckBox()
         Me.CheckBox_Welcome = New System.Windows.Forms.CheckBox()
         Me.GroupBox_Conf = New System.Windows.Forms.GroupBox()
-        Me.PictureBox_OK_2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox_OK_1 = New System.Windows.Forms.PictureBox()
         Me.TextBox_CustomGiftContent = New System.Windows.Forms.TextBox()
         Me.TextBox_CustomDMContent = New System.Windows.Forms.TextBox()
         Me.Label_CustomGiftContent_Header = New System.Windows.Forms.Label()
@@ -41,6 +39,8 @@ Partial Class Form_SetupWizard_4
         Me.Button_Next = New System.Windows.Forms.Button()
         Me.Label_Subtitle = New System.Windows.Forms.Label()
         Me.Label_Title = New System.Windows.Forms.Label()
+        Me.PictureBox_OK_2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox_OK_1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox_Steps.SuspendLayout()
         Me.GroupBox_Conf.SuspendLayout()
         CType(Me.PictureBox_OK_2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -157,28 +157,6 @@ Partial Class Form_SetupWizard_4
         Me.GroupBox_Conf.TabStop = False
         Me.GroupBox_Conf.Text = "选项"
         '
-        'PictureBox_OK_2
-        '
-        Me.PictureBox_OK_2.Image = Global.TTSDanmaku.My.Resources.Resources.check_correct
-        Me.PictureBox_OK_2.Location = New System.Drawing.Point(371, 88)
-        Me.PictureBox_OK_2.Name = "PictureBox_OK_2"
-        Me.PictureBox_OK_2.Size = New System.Drawing.Size(23, 23)
-        Me.PictureBox_OK_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox_OK_2.TabIndex = 15
-        Me.PictureBox_OK_2.TabStop = False
-        Me.PictureBox_OK_2.Visible = False
-        '
-        'PictureBox_OK_1
-        '
-        Me.PictureBox_OK_1.Image = Global.TTSDanmaku.My.Resources.Resources.check_correct
-        Me.PictureBox_OK_1.Location = New System.Drawing.Point(371, 42)
-        Me.PictureBox_OK_1.Name = "PictureBox_OK_1"
-        Me.PictureBox_OK_1.Size = New System.Drawing.Size(23, 23)
-        Me.PictureBox_OK_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox_OK_1.TabIndex = 15
-        Me.PictureBox_OK_1.TabStop = False
-        Me.PictureBox_OK_1.Visible = False
-        '
         'TextBox_CustomGiftContent
         '
         Me.TextBox_CustomGiftContent.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -259,6 +237,28 @@ Partial Class Form_SetupWizard_4
         Me.Label_Title.TabIndex = 15
         Me.Label_Title.Text = "个性化"
         '
+        'PictureBox_OK_2
+        '
+        Me.PictureBox_OK_2.Image = Global.TTSDanmaku.My.Resources.Resources.check_correct
+        Me.PictureBox_OK_2.Location = New System.Drawing.Point(371, 88)
+        Me.PictureBox_OK_2.Name = "PictureBox_OK_2"
+        Me.PictureBox_OK_2.Size = New System.Drawing.Size(23, 23)
+        Me.PictureBox_OK_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox_OK_2.TabIndex = 15
+        Me.PictureBox_OK_2.TabStop = False
+        Me.PictureBox_OK_2.Visible = False
+        '
+        'PictureBox_OK_1
+        '
+        Me.PictureBox_OK_1.Image = Global.TTSDanmaku.My.Resources.Resources.check_correct
+        Me.PictureBox_OK_1.Location = New System.Drawing.Point(371, 42)
+        Me.PictureBox_OK_1.Name = "PictureBox_OK_1"
+        Me.PictureBox_OK_1.Size = New System.Drawing.Size(23, 23)
+        Me.PictureBox_OK_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox_OK_1.TabIndex = 15
+        Me.PictureBox_OK_1.TabStop = False
+        Me.PictureBox_OK_1.Visible = False
+        '
         'Form_SetupWizard_4
         '
         Me.AcceptButton = Me.Button_Next
@@ -279,6 +279,7 @@ Partial Class Form_SetupWizard_4
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Form_SetupWizard_4"
+        Me.Opacity = 0.97R
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TTSDanmaku 设置向导"
         Me.GroupBox_Steps.ResumeLayout(False)

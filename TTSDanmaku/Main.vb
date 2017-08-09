@@ -327,13 +327,13 @@ retry:
 
 #End Region
 
-    Private Sub Main_ReceivedRoomCount(sender As Object, e As BilibiliDM_PluginFramework.ReceivedRoomCountArgs) Handles Me.ReceivedRoomCount
+    Private Sub Main_ReceivedRoomCount(sender As Object, e As BilibiliDM_PluginFramework.ReceivedRoomCountArgs)
         Statistics.DBG_ReceivedRoomCount += 1
         UserCountLatest = e.UserCount
         DBGLog("ReceivedRoomCount Event Handled, data: " & e.UserCount)
     End Sub
 
-    Private Sub Main_ReceivedDanmaku(sender As Object, e As BilibiliDM_PluginFramework.ReceivedDanmakuArgs) Handles Me.ReceivedDanmaku
+    Private Sub Main_ReceivedDanmaku(sender As Object, e As BilibiliDM_PluginFramework.ReceivedDanmakuArgs)
         If e.Danmaku.MsgType = BilibiliDM_PluginFramework.MsgTypeEnum.Comment Then
             '检查斑马名单配置
             Select Case Settings.Settings.Block_Mode
@@ -382,11 +382,11 @@ retry:
         End If
     End Sub
 
-    Private Sub Main_Disconnected(sender As Object, e As BilibiliDM_PluginFramework.DisconnectEvtArgs) Handles Me.Disconnected
+    Private Sub Main_Disconnected(sender As Object, e As BilibiliDM_PluginFramework.DisconnectEvtArgs)
 
     End Sub
 
-    Private Sub Main_Connected(sender As Object, e As BilibiliDM_PluginFramework.ConnectedEvtArgs) Handles Me.Connected
+    Private Sub Main_Connected(sender As Object, e As BilibiliDM_PluginFramework.ConnectedEvtArgs)
         DBGLog("Connected Event Handled, data: " & e.roomid)
         If IsEnabled Then
             If Settings.Settings.ConnectSuccessful = "" Then

@@ -604,6 +604,7 @@ Partial Class TTSDanmakuMgmt
         Me.ComboBox_Blockmode.Name = "ComboBox_Blockmode"
         Me.ComboBox_Blockmode.Size = New System.Drawing.Size(121, 25)
         Me.ComboBox_Blockmode.TabIndex = 11
+        Me.ToolTip_Default.SetToolTip(Me.ComboBox_Blockmode, "选择用户屏蔽设置。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "名单可在 设置 -> 自定义 中找到。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "关闭: 没有任何屏蔽。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "黑名单: 屏蔽黑名单中的用户。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "白名单: 屏蔽白名单以外所有用户。")
         '
         'Label_Blockmode
         '
@@ -710,7 +711,9 @@ Partial Class TTSDanmakuMgmt
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.MinimumSize = New System.Drawing.Size(640, 520)
         Me.Name = "TTSDanmakuMgmt"
+        Me.Opacity = 0.97R
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TTSDanmaku - Admin"

@@ -111,7 +111,6 @@ Module Includings
     Public Sub SpeechOutput(text As String)
         Dim obj As New Speech.Synthesis.SpeechSynthesizer() With {.Volume = Settings.Settings.TTSVolume, .Rate = Settings.Settings.NETFramework_VoiceSpeed}
         obj.SetOutputToDefaultAudioDevice()
-        MsgBox("speaking")
         obj.SpeakAsync(text)
     End Sub
 

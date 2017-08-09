@@ -81,6 +81,7 @@ Partial Class Form_WizardChooser
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Form_WizardChooser"
+        Me.Opacity = 0.97R
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "选择设置方法"
         Me.ResumeLayout(False)
