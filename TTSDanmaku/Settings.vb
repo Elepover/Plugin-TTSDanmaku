@@ -1,5 +1,5 @@
 ﻿' Settings.vb
-' Copyright (C) 2017 Elepover.
+' Copyright (C) 2017 Elepover, Genteure.
 
 ' Basic configurations directory tree:
 ' -----------------------------------
