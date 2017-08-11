@@ -8,7 +8,7 @@ Description last updated at: 07/31/2017 08:52 (GMT)
 
 有问题或是有建议可以 [在作者的 Blog](https://blog.elepover.com/quoteLeft.html) 通过评论提交。
 
-[在此感谢](https://github.com/Elepover/Plugin-TTSDanmaku/blob/master/THANKS.md)每一位为此插件做出贡献的用户。
+[在此感谢](https://github.com/Elepover/Plugin-TTSDanmaku/blob/master/CONTRIBUTING.md)每一位为此插件做出贡献的用户。
 
 安装方法
 ----
