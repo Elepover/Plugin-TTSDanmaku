@@ -346,9 +346,9 @@ Namespace Settings
             '    [stream].Write([bytes], 0, [bytes].Length)
             '    [stream].Close()
             'End If
-            If Not File.Exists(Vars.PluginDir & "NAudio.dll") Then
+            If Not File.Exists(Path.Combine(Vars.PluginDir, "NAudio.dll")) Then
                 Dim [bytes]() As Byte = My.Resources.libNAudio
-                Dim [stream] As Stream = File.Create(Vars.PluginDir & "NAudio.dll")
+                Dim [stream] As Stream = File.Create(Path.Combine(Vars.PluginDir, "NAudio.dll"))
                 [stream].Write([bytes], 0, [bytes].Length)
                 [stream].Close()
             End If
@@ -360,8 +360,8 @@ Namespace Settings
             Dim WhitelistReader As StreamReader = Nothing
             Try
                 SettingsReader = New StreamReader(Vars.ConfigFileName, Encoding.UTF8)
-                BlacklistReader = New StreamReader(Vars.BlacklistDir & "\blacklist.ini", Encoding.UTF8)
-                WhitelistReader = New StreamReader(Vars.BlacklistDir & "\whitelist.ini", Encoding.UTF8)
+                BlacklistReader = New StreamReader(Path.Combine(Vars.BlacklistDir, "blacklist.ini"), Encoding.UTF8)
+                WhitelistReader = New StreamReader(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), Encoding.UTF8)
                 SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
                 Settings.DebugMode = SettingsReader.ReadLine()
@@ -491,8 +491,8 @@ Namespace Settings
             SettingsWriter.WriteLine("0")
             SettingsWriter.Close()
 
-            Dim whitelistWriter As New StreamWriter(Vars.BlacklistDir & "\whitelist.ini", False, Encoding.UTF8) With {.AutoFlush = True}
-            Dim blacklistWriter As New StreamWriter(Vars.BlacklistDir & "\blacklist.ini", False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim blacklistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "blacklist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
             whitelistWriter.Close()
             blacklistWriter.Close()
 
@@ -554,8 +554,8 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.Block_Mode)
             SettingsWriter.Close()
 
-            Dim whitelistWriter As New StreamWriter(Vars.BlacklistDir & "\whitelist.ini", False, Encoding.UTF8) With {.AutoFlush = True}
-            Dim blacklistWriter As New StreamWriter(Vars.BlacklistDir & "\blacklist.ini", False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "\whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim blacklistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "\blacklist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
             whitelistWriter.Write(Settings.Whitelist)
             blacklistWriter.Write(Settings.Blacklist)
             whitelistWriter.Close()
