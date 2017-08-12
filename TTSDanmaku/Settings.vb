@@ -600,15 +600,15 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.GiftBlock_Mode)
             SettingsWriter.Close()
 
-            Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "\whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
-            Dim blacklistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "\blacklist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim blacklistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "blacklist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
             whitelistWriter.Write(Settings.Whitelist)
             blacklistWriter.Write(Settings.Blacklist)
             whitelistWriter.Close()
             blacklistWriter.Close()
 
-            Dim giftWhitelistWriter As New StreamWriter(Path.Combine(Vars.GiftBlacklistDir, "\whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
-            Dim giftBlacklistWriter As New StreamWriter(Path.Combine(Vars.GiftBlacklistDir, "\blacklist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim giftWhitelistWriter As New StreamWriter(Path.Combine(Vars.GiftBlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim giftBlacklistWriter As New StreamWriter(Path.Combine(Vars.GiftBlacklistDir, "blacklist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
             giftWhitelistWriter.Write(Settings.GiftWhitelist)
             giftBlacklistWriter.Write(Settings.GiftBlacklist)
             giftWhitelistWriter.Close()

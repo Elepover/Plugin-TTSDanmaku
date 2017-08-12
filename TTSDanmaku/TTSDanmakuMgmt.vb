@@ -308,12 +308,15 @@
         Settings.Settings.DoNotKeepCache = CheckBox_NoKeepingCache.Checked
         Settings.Settings.ConnectSuccessful = TextBox_CustomConnected.Text
         Settings.Settings.DLFailRetry = NumericUpDown_RetryCount.Value
+
         Settings.Settings.Block_Mode = ComboBox_Blockmode.SelectedIndex
         Settings.Settings.Blacklist = TextBox_Blacklist.Text
         Settings.Settings.Whitelist = TextBox_Whitelist.Text
+
         Settings.Settings.GiftBlock_Mode = ComboBox_GiftBlockMode.SelectedIndex
         Settings.Settings.GiftBlacklist = TextBox_GiftBlacklist.Text
         Settings.Settings.GiftWhitelist = TextBox_GiftWhitelist.Text
+
         Settings.Settings.NETFramework_VoiceSpeed = NumericUpDown_SpeechSpeed.Value
         '检查自定义字符是否正常
         Dim IllegalVars_DM As Boolean = CheckIfLegal_DM()

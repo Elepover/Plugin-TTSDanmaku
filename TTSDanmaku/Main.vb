@@ -361,6 +361,20 @@ retry:
             End If
         End If
         If e.Danmaku.MsgType = BilibiliDM_PluginFramework.MsgTypeEnum.GiftSend Then
+            Select Case Settings.Settings.GiftBlock_Mode
+                Case 0
+                Case 1
+                    If UserExists(Settings.Settings.GiftBlacklist, e.Danmaku.GiftName) Then
+                        DBGLog("礼物 " & e.Danmaku.GiftName & " 在黑名单中，放弃。")
+                        Exit Sub
+                    End If
+                Case 2
+                    If Not UserExists(Settings.Settings.GiftWhitelist, e.Danmaku.GiftName) Then
+                        DBGLog("礼物 " & e.Danmaku.GiftName & " 不在白名单中，放弃。")
+                        Exit Sub
+                    End If
+                Case Else
+            End Select
             Dim unreplacedText As String = Settings.Settings.GiftsText
             Dim replacedText As String = unreplacedText.Replace("$USER", e.Danmaku.UserName).Replace("$COUNT", e.Danmaku.GiftCount).Replace("$GIFT", e.Danmaku.GiftName)
             If Not replacedText = "" Then PlayTTS(replacedText)
@@ -448,6 +462,7 @@ retry:
             DBGLog("UseGoogleGlobal: " & Settings.Settings.UseGoogleGlobal)
             DBGLog("NETFramework_VoiceSpeed: " & Settings.Settings.NETFramework_VoiceSpeed)
             DBGLog("Block_Mode: " & Settings.Settings.Block_Mode)
+            DBGLog("GiftBlock_Mode: " & Settings.Settings.GiftBlock_Mode)
         Catch ex As Exception
             Log("启动失败 - 无法初始化设置系统: " & ex.ToString)
             startupFailure = True
