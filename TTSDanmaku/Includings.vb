@@ -183,7 +183,8 @@ Module Includings
     ''' <param name="user">目标用户</param>
     ''' <returns></returns>
     Public Function UserExists(list As String, user As String) As Boolean
-        For Each s As String In list.Split(New String() {vbCrLf, vbCr, vbLf}, StringSplitOptions.RemoveEmptyEntries)
+        Dim strs As String() = list.Split(New String() {vbCrLf, vbCr, vbLf}, StringSplitOptions.RemoveEmptyEntries)
+        For Each s As String In strs
             If s = user Then Return True
         Next
         Return False
