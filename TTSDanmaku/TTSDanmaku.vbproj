@@ -148,6 +148,7 @@
     </Compile>
     <Compile Include="Includings.vb" />
     <Compile Include="Main.vb" />
+    <Compile Include="Module_Edition.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

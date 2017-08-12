@@ -85,7 +85,8 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
         Me.PictureBox_ToolTipNotification = New System.Windows.Forms.PictureBox()
         Me.TabPage_DebuggingInfo = New System.Windows.Forms.TabPage()
-        Me.Label_AboutTItle = New System.Windows.Forms.Label()
+        Me.Label_AboutTitle = New System.Windows.Forms.Label()
+        Me.TextBox_Debug = New System.Windows.Forms.TextBox()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -790,7 +791,8 @@ Partial Class TTSDanmakuMgmt
         '
         'TabPage_DebuggingInfo
         '
-        Me.TabPage_DebuggingInfo.Controls.Add(Me.Label_AboutTItle)
+        Me.TabPage_DebuggingInfo.Controls.Add(Me.TextBox_Debug)
+        Me.TabPage_DebuggingInfo.Controls.Add(Me.Label_AboutTitle)
         Me.TabPage_DebuggingInfo.Location = New System.Drawing.Point(4, 26)
         Me.TabPage_DebuggingInfo.Name = "TabPage_DebuggingInfo"
         Me.TabPage_DebuggingInfo.Padding = New System.Windows.Forms.Padding(3)
@@ -799,15 +801,26 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_DebuggingInfo.Text = "关于"
         Me.TabPage_DebuggingInfo.UseVisualStyleBackColor = True
         '
-        'Label_AboutTItle
+        'Label_AboutTitle
         '
-        Me.Label_AboutTItle.AutoSize = True
-        Me.Label_AboutTItle.Font = New System.Drawing.Font("微软雅黑", 12.0!)
-        Me.Label_AboutTItle.Location = New System.Drawing.Point(6, 3)
-        Me.Label_AboutTItle.Name = "Label_AboutTItle"
-        Me.Label_AboutTItle.Size = New System.Drawing.Size(111, 21)
-        Me.Label_AboutTItle.TabIndex = 0
-        Me.Label_AboutTItle.Text = "TTSDanmaku"
+        Me.Label_AboutTitle.AutoSize = True
+        Me.Label_AboutTitle.Font = New System.Drawing.Font("微软雅黑", 12.0!)
+        Me.Label_AboutTitle.Location = New System.Drawing.Point(6, 3)
+        Me.Label_AboutTitle.Name = "Label_AboutTitle"
+        Me.Label_AboutTitle.Size = New System.Drawing.Size(111, 21)
+        Me.Label_AboutTitle.TabIndex = 0
+        Me.Label_AboutTitle.Text = "TTSDanmaku"
+        '
+        'TextBox_Debug
+        '
+        Me.TextBox_Debug.Location = New System.Drawing.Point(10, 27)
+        Me.TextBox_Debug.Multiline = True
+        Me.TextBox_Debug.Name = "TextBox_Debug"
+        Me.TextBox_Debug.ReadOnly = True
+        Me.TextBox_Debug.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_Debug.Size = New System.Drawing.Size(576, 316)
+        Me.TextBox_Debug.TabIndex = 1
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_Debug, "调试数据")
         '
         'TTSDanmakuMgmt
         '
@@ -925,5 +938,6 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents Label_GiftBlacklist As Windows.Forms.Label
     Friend WithEvents PictureBox_ToolTipNotification As Windows.Forms.PictureBox
     Friend WithEvents TabPage_DebuggingInfo As Windows.Forms.TabPage
-    Friend WithEvents Label_AboutTItle As Windows.Forms.Label
+    Friend WithEvents Label_AboutTitle As Windows.Forms.Label
+    Friend WithEvents TextBox_Debug As Windows.Forms.TextBox
 End Class
