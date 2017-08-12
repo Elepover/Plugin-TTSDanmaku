@@ -67,15 +67,17 @@ Partial Class TTSDanmakuMgmt
         Me.ComboBox_Blockmode = New System.Windows.Forms.ComboBox()
         Me.TextBox_Whitelist = New System.Windows.Forms.TextBox()
         Me.TextBox_Blacklist = New System.Windows.Forms.TextBox()
+        Me.ComboBox_GiftBlockMode = New System.Windows.Forms.ComboBox()
+        Me.TextBox_GiftWhitelist = New System.Windows.Forms.TextBox()
+        Me.TextBox_GiftBlacklist = New System.Windows.Forms.TextBox()
+        Me.PictureBox_ToolTipNotification = New System.Windows.Forms.PictureBox()
+        Me.TextBox_Debug = New System.Windows.Forms.TextBox()
         Me.TabControl_PluginSettings = New System.Windows.Forms.TabControl()
         Me.TabPage_BasicSettings = New System.Windows.Forms.TabPage()
         Me.TabPage_Advanced = New System.Windows.Forms.TabPage()
         Me.Label_SpeechSpeed = New System.Windows.Forms.Label()
         Me.TabPage_Blocking = New System.Windows.Forms.TabPage()
-        Me.ComboBox_GiftBlockMode = New System.Windows.Forms.ComboBox()
         Me.Label_GiftBlockMode = New System.Windows.Forms.Label()
-        Me.TextBox_GiftWhitelist = New System.Windows.Forms.TextBox()
-        Me.TextBox_GiftBlacklist = New System.Windows.Forms.TextBox()
         Me.Label_GiftWhitelist = New System.Windows.Forms.Label()
         Me.Label_Whitelist = New System.Windows.Forms.Label()
         Me.Label_GiftBlacklist = New System.Windows.Forms.Label()
@@ -83,23 +85,21 @@ Partial Class TTSDanmakuMgmt
         Me.Label_Blockmode = New System.Windows.Forms.Label()
         Me.TabPage_Customization = New System.Windows.Forms.TabPage()
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
-        Me.PictureBox_ToolTipNotification = New System.Windows.Forms.PictureBox()
         Me.TabPage_DebuggingInfo = New System.Windows.Forms.TabPage()
         Me.Label_AboutTitle = New System.Windows.Forms.Label()
-        Me.TextBox_Debug = New System.Windows.Forms.TextBox()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_CoolDownValue, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_TempMgr.SuspendLayout()
         CType(Me.NumericUpDown_SpeechSpeed, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox_ToolTipNotification, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl_PluginSettings.SuspendLayout()
         Me.TabPage_BasicSettings.SuspendLayout()
         Me.TabPage_Advanced.SuspendLayout()
         Me.TabPage_Blocking.SuspendLayout()
         Me.TabPage_Customization.SuspendLayout()
         Me.TabPage_Statistics.SuspendLayout()
-        CType(Me.PictureBox_ToolTipNotification, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage_DebuggingInfo.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -410,7 +410,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_Stats.Name = "TextBox_Stats"
         Me.TextBox_Stats.ReadOnly = True
         Me.TextBox_Stats.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_Stats.Size = New System.Drawing.Size(586, 347)
+        Me.TextBox_Stats.Size = New System.Drawing.Size(586, 343)
         Me.TextBox_Stats.TabIndex = 0
         Me.ToolTip_Default.SetToolTip(Me.TextBox_Stats, "截至插件本次启动运行到目前的统计数据。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "当您启动插件时，数据将被清空。")
         '
@@ -542,7 +542,7 @@ Partial Class TTSDanmakuMgmt
         Me.NumericUpDown_SpeechSpeed.Minimum = New Decimal(New Integer() {10, 0, 0, -2147483648})
         Me.NumericUpDown_SpeechSpeed.Name = "NumericUpDown_SpeechSpeed"
         Me.NumericUpDown_SpeechSpeed.Size = New System.Drawing.Size(120, 23)
-        Me.NumericUpDown_SpeechSpeed.TabIndex = 18
+        Me.NumericUpDown_SpeechSpeed.TabIndex = 11
         Me.ToolTip_Default.SetToolTip(Me.NumericUpDown_SpeechSpeed, "（仅适用于框架自带引擎）" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "设置 TTS 语速，范围从 -10 到 10。")
         '
         'ComboBox_Blockmode
@@ -575,6 +575,60 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_Blacklist.Size = New System.Drawing.Size(183, 96)
         Me.TextBox_Blacklist.TabIndex = 3
         Me.ToolTip_Default.SetToolTip(Me.TextBox_Blacklist, "用户黑名单，每行一个用户 ID。")
+        '
+        'ComboBox_GiftBlockMode
+        '
+        Me.ComboBox_GiftBlockMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox_GiftBlockMode.FormattingEnabled = True
+        Me.ComboBox_GiftBlockMode.Items.AddRange(New Object() {"关闭", "黑名单", "白名单"})
+        Me.ComboBox_GiftBlockMode.Location = New System.Drawing.Point(202, 23)
+        Me.ComboBox_GiftBlockMode.Name = "ComboBox_GiftBlockMode"
+        Me.ComboBox_GiftBlockMode.Size = New System.Drawing.Size(121, 25)
+        Me.ComboBox_GiftBlockMode.TabIndex = 7
+        Me.ToolTip_Default.SetToolTip(Me.ComboBox_GiftBlockMode, "选择用户屏蔽设置。")
+        '
+        'TextBox_GiftWhitelist
+        '
+        Me.TextBox_GiftWhitelist.Location = New System.Drawing.Point(199, 190)
+        Me.TextBox_GiftWhitelist.Multiline = True
+        Me.TextBox_GiftWhitelist.Name = "TextBox_GiftWhitelist"
+        Me.TextBox_GiftWhitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_GiftWhitelist.Size = New System.Drawing.Size(183, 96)
+        Me.TextBox_GiftWhitelist.TabIndex = 11
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftWhitelist, "用户白名单，每行一个用户 ID。")
+        '
+        'TextBox_GiftBlacklist
+        '
+        Me.TextBox_GiftBlacklist.Location = New System.Drawing.Point(199, 71)
+        Me.TextBox_GiftBlacklist.Multiline = True
+        Me.TextBox_GiftBlacklist.Name = "TextBox_GiftBlacklist"
+        Me.TextBox_GiftBlacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_GiftBlacklist.Size = New System.Drawing.Size(183, 96)
+        Me.TextBox_GiftBlacklist.TabIndex = 9
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftBlacklist, "用户黑名单，每行一个用户 ID。")
+        '
+        'PictureBox_ToolTipNotification
+        '
+        Me.PictureBox_ToolTipNotification.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox_ToolTipNotification.Image = Global.TTSDanmaku.My.Resources.Resources.info
+        Me.PictureBox_ToolTipNotification.Location = New System.Drawing.Point(600, 7)
+        Me.PictureBox_ToolTipNotification.Name = "PictureBox_ToolTipNotification"
+        Me.PictureBox_ToolTipNotification.Size = New System.Drawing.Size(16, 16)
+        Me.PictureBox_ToolTipNotification.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox_ToolTipNotification.TabIndex = 10
+        Me.PictureBox_ToolTipNotification.TabStop = False
+        Me.ToolTip_Default.SetToolTip(Me.PictureBox_ToolTipNotification, "将鼠标悬停于某一设置选项上，可查看有关该设置的相关信息。")
+        '
+        'TextBox_Debug
+        '
+        Me.TextBox_Debug.Location = New System.Drawing.Point(10, 27)
+        Me.TextBox_Debug.Multiline = True
+        Me.TextBox_Debug.Name = "TextBox_Debug"
+        Me.TextBox_Debug.ReadOnly = True
+        Me.TextBox_Debug.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_Debug.Size = New System.Drawing.Size(576, 316)
+        Me.TextBox_Debug.TabIndex = 1
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_Debug, "调试数据")
         '
         'TabControl_PluginSettings
         '
@@ -640,7 +694,7 @@ Partial Class TTSDanmakuMgmt
         Me.Label_SpeechSpeed.Location = New System.Drawing.Point(170, 8)
         Me.Label_SpeechSpeed.Name = "Label_SpeechSpeed"
         Me.Label_SpeechSpeed.Size = New System.Drawing.Size(57, 17)
-        Me.Label_SpeechSpeed.TabIndex = 17
+        Me.Label_SpeechSpeed.TabIndex = 10
         Me.Label_SpeechSpeed.Text = "TTS 语速"
         '
         'TabPage_Blocking
@@ -665,17 +719,6 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Blocking.Text = "屏蔽设置"
         Me.TabPage_Blocking.UseVisualStyleBackColor = True
         '
-        'ComboBox_GiftBlockMode
-        '
-        Me.ComboBox_GiftBlockMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox_GiftBlockMode.FormattingEnabled = True
-        Me.ComboBox_GiftBlockMode.Items.AddRange(New Object() {"关闭", "黑名单", "白名单"})
-        Me.ComboBox_GiftBlockMode.Location = New System.Drawing.Point(202, 23)
-        Me.ComboBox_GiftBlockMode.Name = "ComboBox_GiftBlockMode"
-        Me.ComboBox_GiftBlockMode.Size = New System.Drawing.Size(121, 25)
-        Me.ComboBox_GiftBlockMode.TabIndex = 7
-        Me.ToolTip_Default.SetToolTip(Me.ComboBox_GiftBlockMode, "选择用户屏蔽设置。")
-        '
         'Label_GiftBlockMode
         '
         Me.Label_GiftBlockMode.AutoSize = True
@@ -684,26 +727,6 @@ Partial Class TTSDanmakuMgmt
         Me.Label_GiftBlockMode.Size = New System.Drawing.Size(80, 17)
         Me.Label_GiftBlockMode.TabIndex = 6
         Me.Label_GiftBlockMode.Text = "礼物屏蔽模式"
-        '
-        'TextBox_GiftWhitelist
-        '
-        Me.TextBox_GiftWhitelist.Location = New System.Drawing.Point(199, 190)
-        Me.TextBox_GiftWhitelist.Multiline = True
-        Me.TextBox_GiftWhitelist.Name = "TextBox_GiftWhitelist"
-        Me.TextBox_GiftWhitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_GiftWhitelist.Size = New System.Drawing.Size(183, 96)
-        Me.TextBox_GiftWhitelist.TabIndex = 11
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftWhitelist, "用户白名单，每行一个用户 ID。")
-        '
-        'TextBox_GiftBlacklist
-        '
-        Me.TextBox_GiftBlacklist.Location = New System.Drawing.Point(199, 71)
-        Me.TextBox_GiftBlacklist.Multiline = True
-        Me.TextBox_GiftBlacklist.Name = "TextBox_GiftBlacklist"
-        Me.TextBox_GiftBlacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_GiftBlacklist.Size = New System.Drawing.Size(183, 96)
-        Me.TextBox_GiftBlacklist.TabIndex = 9
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftBlacklist, "用户黑名单，每行一个用户 ID。")
         '
         'Label_GiftWhitelist
         '
@@ -777,18 +800,6 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics.Text = "统计数据"
         Me.TabPage_Statistics.UseVisualStyleBackColor = True
         '
-        'PictureBox_ToolTipNotification
-        '
-        Me.PictureBox_ToolTipNotification.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox_ToolTipNotification.Image = Global.TTSDanmaku.My.Resources.Resources.info
-        Me.PictureBox_ToolTipNotification.Location = New System.Drawing.Point(600, 7)
-        Me.PictureBox_ToolTipNotification.Name = "PictureBox_ToolTipNotification"
-        Me.PictureBox_ToolTipNotification.Size = New System.Drawing.Size(16, 16)
-        Me.PictureBox_ToolTipNotification.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox_ToolTipNotification.TabIndex = 10
-        Me.PictureBox_ToolTipNotification.TabStop = False
-        Me.ToolTip_Default.SetToolTip(Me.PictureBox_ToolTipNotification, "将鼠标悬停于某一设置选项上，可查看有关该设置的相关信息。")
-        '
         'TabPage_DebuggingInfo
         '
         Me.TabPage_DebuggingInfo.Controls.Add(Me.TextBox_Debug)
@@ -810,17 +821,6 @@ Partial Class TTSDanmakuMgmt
         Me.Label_AboutTitle.Size = New System.Drawing.Size(111, 21)
         Me.Label_AboutTitle.TabIndex = 0
         Me.Label_AboutTitle.Text = "TTSDanmaku"
-        '
-        'TextBox_Debug
-        '
-        Me.TextBox_Debug.Location = New System.Drawing.Point(10, 27)
-        Me.TextBox_Debug.Multiline = True
-        Me.TextBox_Debug.Name = "TextBox_Debug"
-        Me.TextBox_Debug.ReadOnly = True
-        Me.TextBox_Debug.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_Debug.Size = New System.Drawing.Size(576, 316)
-        Me.TextBox_Debug.TabIndex = 1
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_Debug, "调试数据")
         '
         'TTSDanmakuMgmt
         '
@@ -858,6 +858,7 @@ Partial Class TTSDanmakuMgmt
         Me.GroupBox_TempMgr.ResumeLayout(False)
         Me.GroupBox_TempMgr.PerformLayout()
         CType(Me.NumericUpDown_SpeechSpeed, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox_ToolTipNotification, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl_PluginSettings.ResumeLayout(False)
         Me.TabPage_BasicSettings.ResumeLayout(False)
         Me.TabPage_BasicSettings.PerformLayout()
@@ -869,7 +870,6 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Customization.PerformLayout()
         Me.TabPage_Statistics.ResumeLayout(False)
         Me.TabPage_Statistics.PerformLayout()
-        CType(Me.PictureBox_ToolTipNotification, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage_DebuggingInfo.ResumeLayout(False)
         Me.TabPage_DebuggingInfo.PerformLayout()
         Me.ResumeLayout(False)
