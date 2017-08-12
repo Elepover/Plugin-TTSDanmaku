@@ -228,13 +228,15 @@
         End If
 
         Label_AboutTitle.Text = "TTSDanmaku " & Edition & " v" & New Main().PluginVer
+        TextBox_Debug.Clear()
         TextBox_Debug.AppendText("---------- OS Environment ----------" & vbCrLf)
         TextBox_Debug.AppendText("Operating System: " & My.Computer.Info.OSFullName & vbCrLf)
         TextBox_Debug.AppendText("OS Version: " & My.Computer.Info.OSVersion & vbCrLf)
-        TextBox_Debug.AppendText("---------- Plugin Enviro. ----------" & vbCrLf)
+        TextBox_Debug.AppendText("---------- Plugin Environment ----------" & vbCrLf)
         TextBox_Debug.AppendText("TTSDanmaku version: " & New Main().PluginVer & vbCrLf)
         TextBox_Debug.AppendText("TTSDanmaku edition: " & Edition & vbCrLf)
-        TextBox_Debug.AppendText("Plugin configuration directory: " & Reflection.Assembly.GetExecutingAssembly().Location & vbCrLf)
+        TextBox_Debug.AppendText("Plugin executable: " & Reflection.Assembly.GetExecutingAssembly().Location & vbCrLf)
+        TextBox_Debug.AppendText("Plugin configuration directory: " & Settings.Vars.ConfigurationDir & vbCrLf)
         TextBox_Debug.AppendText("Plugins directory: " & Settings.Vars.PluginDir & vbCrLf)
 
         Status("应用字体...")

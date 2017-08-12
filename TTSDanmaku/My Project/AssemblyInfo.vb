@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("TTSDanmaku")>
 <Assembly: AssemblyDescription("TTSDanmaku - A Bililive_DM Plugin")>
-<Assembly: AssemblyCompany("kruin.net")>
+<Assembly: AssemblyCompany("Elepover - KruinWorks")>
 <Assembly: AssemblyProduct("TTSDanmaku")>
 <Assembly: AssemblyCopyright("Copyright © 2017 Elepover.")>
 <Assembly: AssemblyTrademark("")>
