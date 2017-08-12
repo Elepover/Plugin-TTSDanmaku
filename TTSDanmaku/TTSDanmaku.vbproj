@@ -234,5 +234,8 @@
   <ItemGroup>
     <None Include="Network_Warning.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

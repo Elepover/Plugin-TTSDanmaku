@@ -64,25 +64,28 @@ Partial Class TTSDanmakuMgmt
         Me.LinkLabel_FAQ = New System.Windows.Forms.LinkLabel()
         Me.Label_ThanksViaMyHeart = New System.Windows.Forms.Label()
         Me.NumericUpDown_SpeechSpeed = New System.Windows.Forms.NumericUpDown()
+        Me.ComboBox_Blockmode = New System.Windows.Forms.ComboBox()
+        Me.TextBox_Whitelist = New System.Windows.Forms.TextBox()
+        Me.TextBox_Blacklist = New System.Windows.Forms.TextBox()
         Me.TabControl_PluginSettings = New System.Windows.Forms.TabControl()
         Me.TabPage_BasicSettings = New System.Windows.Forms.TabPage()
         Me.TabPage_Advanced = New System.Windows.Forms.TabPage()
         Me.Label_SpeechSpeed = New System.Windows.Forms.Label()
+        Me.TabPage_Blocking = New System.Windows.Forms.TabPage()
+        Me.ComboBox_GiftBlockMode = New System.Windows.Forms.ComboBox()
+        Me.Label_GiftBlockMode = New System.Windows.Forms.Label()
+        Me.TextBox_GiftWhitelist = New System.Windows.Forms.TextBox()
+        Me.TextBox_GiftBlacklist = New System.Windows.Forms.TextBox()
+        Me.Label_GiftWhitelist = New System.Windows.Forms.Label()
+        Me.Label_Whitelist = New System.Windows.Forms.Label()
+        Me.Label_GiftBlacklist = New System.Windows.Forms.Label()
+        Me.Label_Blacklist = New System.Windows.Forms.Label()
+        Me.Label_Blockmode = New System.Windows.Forms.Label()
         Me.TabPage_Customization = New System.Windows.Forms.TabPage()
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
-        Me.TabPage_Blocking = New System.Windows.Forms.TabPage()
-        Me.ComboBox_Blockmode = New System.Windows.Forms.ComboBox()
-        Me.Label_Blockmode = New System.Windows.Forms.Label()
-        Me.TextBox_Whitelist = New System.Windows.Forms.TextBox()
-        Me.TextBox_Blacklist = New System.Windows.Forms.TextBox()
-        Me.Label_Whitelist = New System.Windows.Forms.Label()
-        Me.Label_Blacklist = New System.Windows.Forms.Label()
-        Me.Label_GiftBlockMode = New System.Windows.Forms.Label()
-        Me.ComboBox_GiftBlockMode = New System.Windows.Forms.ComboBox()
-        Me.Label_GiftBlacklist = New System.Windows.Forms.Label()
-        Me.Label_GiftWhitelist = New System.Windows.Forms.Label()
-        Me.TextBox_GiftBlacklist = New System.Windows.Forms.TextBox()
-        Me.TextBox_GiftWhitelist = New System.Windows.Forms.TextBox()
+        Me.PictureBox_ToolTipNotification = New System.Windows.Forms.PictureBox()
+        Me.TabPage_DebuggingInfo = New System.Windows.Forms.TabPage()
+        Me.Label_AboutTItle = New System.Windows.Forms.Label()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,9 +95,11 @@ Partial Class TTSDanmakuMgmt
         Me.TabControl_PluginSettings.SuspendLayout()
         Me.TabPage_BasicSettings.SuspendLayout()
         Me.TabPage_Advanced.SuspendLayout()
+        Me.TabPage_Blocking.SuspendLayout()
         Me.TabPage_Customization.SuspendLayout()
         Me.TabPage_Statistics.SuspendLayout()
-        Me.TabPage_Blocking.SuspendLayout()
+        CType(Me.PictureBox_ToolTipNotification, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage_DebuggingInfo.SuspendLayout()
         Me.SuspendLayout()
         '
         'StatusStrip_Main
@@ -122,6 +127,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_ProxySettings.Size = New System.Drawing.Size(75, 23)
         Me.Button_ProxySettings.TabIndex = 13
         Me.Button_ProxySettings.Text = "网络设置"
+        Me.ToolTip_Default.SetToolTip(Me.Button_ProxySettings, "设置语音合成时使用的网络代理和服务器配置。")
         Me.Button_ProxySettings.UseVisualStyleBackColor = True
         '
         'Button_CheckUpdates
@@ -356,6 +362,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_Apply.Size = New System.Drawing.Size(75, 23)
         Me.Button_Apply.TabIndex = 2
         Me.Button_Apply.Text = "应用"
+        Me.ToolTip_Default.SetToolTip(Me.Button_Apply, "保存所有设置。")
         Me.Button_Apply.UseVisualStyleBackColor = True
         '
         'CheckBox_TTSGifts
@@ -402,7 +409,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_Stats.Name = "TextBox_Stats"
         Me.TextBox_Stats.ReadOnly = True
         Me.TextBox_Stats.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_Stats.Size = New System.Drawing.Size(586, 343)
+        Me.TextBox_Stats.Size = New System.Drawing.Size(586, 347)
         Me.TextBox_Stats.TabIndex = 0
         Me.ToolTip_Default.SetToolTip(Me.TextBox_Stats, "截至插件本次启动运行到目前的统计数据。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "当您启动插件时，数据将被清空。")
         '
@@ -522,9 +529,9 @@ Partial Class TTSDanmakuMgmt
         Me.Label_ThanksViaMyHeart.TabIndex = 5
         Me.Label_ThanksViaMyHeart.Text = "感谢您使用本插件。"
         Me.Label_ThanksViaMyHeart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip_Default.SetToolTip(Me.Label_ThanksViaMyHeart, "真诚地在此感谢您在安装使用本插件上所花费的分分秒秒。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & """相聚是缘，相逢是歌""，您的使用是对我最大的鼓舞。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果有任何使用问题，请参见右侧常见问题。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如没" &
-        "有列出，敬请随时与我联系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T" &
-        "his is an open-source(MIT) software.")
+        Me.ToolTip_Default.SetToolTip(Me.Label_ThanksViaMyHeart, "真诚地在此感谢您在安装使用本插件上所花费的分分秒秒。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "您的使用是我开发的最大动力。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果有任何使用问题，请参见右侧常见问题。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如没有列出，敬请随时与我联" &
+        "系。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "若不重要，请您选择 在""给我一些建议""处留下您的意见和建议。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Copyright (C) 2017 Elepover." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "This is an o" &
+        "pen-source(MIT) software.")
         Me.Label_ThanksViaMyHeart.Visible = False
         '
         'NumericUpDown_SpeechSpeed
@@ -537,6 +544,37 @@ Partial Class TTSDanmakuMgmt
         Me.NumericUpDown_SpeechSpeed.TabIndex = 18
         Me.ToolTip_Default.SetToolTip(Me.NumericUpDown_SpeechSpeed, "（仅适用于框架自带引擎）" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "设置 TTS 语速，范围从 -10 到 10。")
         '
+        'ComboBox_Blockmode
+        '
+        Me.ComboBox_Blockmode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox_Blockmode.FormattingEnabled = True
+        Me.ComboBox_Blockmode.Items.AddRange(New Object() {"关闭", "黑名单", "白名单"})
+        Me.ComboBox_Blockmode.Location = New System.Drawing.Point(9, 23)
+        Me.ComboBox_Blockmode.Name = "ComboBox_Blockmode"
+        Me.ComboBox_Blockmode.Size = New System.Drawing.Size(121, 25)
+        Me.ComboBox_Blockmode.TabIndex = 1
+        Me.ToolTip_Default.SetToolTip(Me.ComboBox_Blockmode, "选择用户屏蔽设置。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "名单可在 设置 -> 自定义 中找到。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "关闭: 没有任何屏蔽。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "黑名单: 屏蔽黑名单中的用户。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "白名单: 屏蔽白名单以外所有用户。")
+        '
+        'TextBox_Whitelist
+        '
+        Me.TextBox_Whitelist.Location = New System.Drawing.Point(6, 190)
+        Me.TextBox_Whitelist.Multiline = True
+        Me.TextBox_Whitelist.Name = "TextBox_Whitelist"
+        Me.TextBox_Whitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_Whitelist.Size = New System.Drawing.Size(183, 96)
+        Me.TextBox_Whitelist.TabIndex = 5
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_Whitelist, "用户白名单，每行一个用户 ID。")
+        '
+        'TextBox_Blacklist
+        '
+        Me.TextBox_Blacklist.Location = New System.Drawing.Point(6, 71)
+        Me.TextBox_Blacklist.Multiline = True
+        Me.TextBox_Blacklist.Name = "TextBox_Blacklist"
+        Me.TextBox_Blacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_Blacklist.Size = New System.Drawing.Size(183, 96)
+        Me.TextBox_Blacklist.TabIndex = 3
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_Blacklist, "用户黑名单，每行一个用户 ID。")
+        '
         'TabControl_PluginSettings
         '
         Me.TabControl_PluginSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -547,6 +585,7 @@ Partial Class TTSDanmakuMgmt
         Me.TabControl_PluginSettings.Controls.Add(Me.TabPage_Blocking)
         Me.TabControl_PluginSettings.Controls.Add(Me.TabPage_Customization)
         Me.TabControl_PluginSettings.Controls.Add(Me.TabPage_Statistics)
+        Me.TabControl_PluginSettings.Controls.Add(Me.TabPage_DebuggingInfo)
         Me.TabControl_PluginSettings.Location = New System.Drawing.Point(12, 12)
         Me.TabControl_PluginSettings.Name = "TabControl_PluginSettings"
         Me.TabControl_PluginSettings.SelectedIndex = 0
@@ -603,6 +642,113 @@ Partial Class TTSDanmakuMgmt
         Me.Label_SpeechSpeed.TabIndex = 17
         Me.Label_SpeechSpeed.Text = "TTS 语速"
         '
+        'TabPage_Blocking
+        '
+        Me.TabPage_Blocking.Controls.Add(Me.ComboBox_GiftBlockMode)
+        Me.TabPage_Blocking.Controls.Add(Me.Label_GiftBlockMode)
+        Me.TabPage_Blocking.Controls.Add(Me.TextBox_GiftWhitelist)
+        Me.TabPage_Blocking.Controls.Add(Me.TextBox_Whitelist)
+        Me.TabPage_Blocking.Controls.Add(Me.TextBox_GiftBlacklist)
+        Me.TabPage_Blocking.Controls.Add(Me.TextBox_Blacklist)
+        Me.TabPage_Blocking.Controls.Add(Me.Label_GiftWhitelist)
+        Me.TabPage_Blocking.Controls.Add(Me.Label_Whitelist)
+        Me.TabPage_Blocking.Controls.Add(Me.Label_GiftBlacklist)
+        Me.TabPage_Blocking.Controls.Add(Me.Label_Blacklist)
+        Me.TabPage_Blocking.Controls.Add(Me.ComboBox_Blockmode)
+        Me.TabPage_Blocking.Controls.Add(Me.Label_Blockmode)
+        Me.TabPage_Blocking.Location = New System.Drawing.Point(4, 26)
+        Me.TabPage_Blocking.Name = "TabPage_Blocking"
+        Me.TabPage_Blocking.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage_Blocking.Size = New System.Drawing.Size(592, 349)
+        Me.TabPage_Blocking.TabIndex = 4
+        Me.TabPage_Blocking.Text = "屏蔽设置"
+        Me.TabPage_Blocking.UseVisualStyleBackColor = True
+        '
+        'ComboBox_GiftBlockMode
+        '
+        Me.ComboBox_GiftBlockMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox_GiftBlockMode.FormattingEnabled = True
+        Me.ComboBox_GiftBlockMode.Items.AddRange(New Object() {"关闭", "黑名单", "白名单"})
+        Me.ComboBox_GiftBlockMode.Location = New System.Drawing.Point(202, 23)
+        Me.ComboBox_GiftBlockMode.Name = "ComboBox_GiftBlockMode"
+        Me.ComboBox_GiftBlockMode.Size = New System.Drawing.Size(121, 25)
+        Me.ComboBox_GiftBlockMode.TabIndex = 7
+        Me.ToolTip_Default.SetToolTip(Me.ComboBox_GiftBlockMode, "选择用户屏蔽设置。")
+        '
+        'Label_GiftBlockMode
+        '
+        Me.Label_GiftBlockMode.AutoSize = True
+        Me.Label_GiftBlockMode.Location = New System.Drawing.Point(199, 3)
+        Me.Label_GiftBlockMode.Name = "Label_GiftBlockMode"
+        Me.Label_GiftBlockMode.Size = New System.Drawing.Size(80, 17)
+        Me.Label_GiftBlockMode.TabIndex = 6
+        Me.Label_GiftBlockMode.Text = "礼物屏蔽模式"
+        '
+        'TextBox_GiftWhitelist
+        '
+        Me.TextBox_GiftWhitelist.Location = New System.Drawing.Point(199, 190)
+        Me.TextBox_GiftWhitelist.Multiline = True
+        Me.TextBox_GiftWhitelist.Name = "TextBox_GiftWhitelist"
+        Me.TextBox_GiftWhitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_GiftWhitelist.Size = New System.Drawing.Size(183, 96)
+        Me.TextBox_GiftWhitelist.TabIndex = 11
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftWhitelist, "用户白名单，每行一个用户 ID。")
+        '
+        'TextBox_GiftBlacklist
+        '
+        Me.TextBox_GiftBlacklist.Location = New System.Drawing.Point(199, 71)
+        Me.TextBox_GiftBlacklist.Multiline = True
+        Me.TextBox_GiftBlacklist.Name = "TextBox_GiftBlacklist"
+        Me.TextBox_GiftBlacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox_GiftBlacklist.Size = New System.Drawing.Size(183, 96)
+        Me.TextBox_GiftBlacklist.TabIndex = 9
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftBlacklist, "用户黑名单，每行一个用户 ID。")
+        '
+        'Label_GiftWhitelist
+        '
+        Me.Label_GiftWhitelist.AutoSize = True
+        Me.Label_GiftWhitelist.Location = New System.Drawing.Point(199, 170)
+        Me.Label_GiftWhitelist.Name = "Label_GiftWhitelist"
+        Me.Label_GiftWhitelist.Size = New System.Drawing.Size(44, 17)
+        Me.Label_GiftWhitelist.TabIndex = 10
+        Me.Label_GiftWhitelist.Text = "白名单"
+        '
+        'Label_Whitelist
+        '
+        Me.Label_Whitelist.AutoSize = True
+        Me.Label_Whitelist.Location = New System.Drawing.Point(6, 170)
+        Me.Label_Whitelist.Name = "Label_Whitelist"
+        Me.Label_Whitelist.Size = New System.Drawing.Size(44, 17)
+        Me.Label_Whitelist.TabIndex = 4
+        Me.Label_Whitelist.Text = "白名单"
+        '
+        'Label_GiftBlacklist
+        '
+        Me.Label_GiftBlacklist.AutoSize = True
+        Me.Label_GiftBlacklist.Location = New System.Drawing.Point(199, 51)
+        Me.Label_GiftBlacklist.Name = "Label_GiftBlacklist"
+        Me.Label_GiftBlacklist.Size = New System.Drawing.Size(44, 17)
+        Me.Label_GiftBlacklist.TabIndex = 8
+        Me.Label_GiftBlacklist.Text = "黑名单"
+        '
+        'Label_Blacklist
+        '
+        Me.Label_Blacklist.AutoSize = True
+        Me.Label_Blacklist.Location = New System.Drawing.Point(6, 51)
+        Me.Label_Blacklist.Name = "Label_Blacklist"
+        Me.Label_Blacklist.Size = New System.Drawing.Size(44, 17)
+        Me.Label_Blacklist.TabIndex = 2
+        Me.Label_Blacklist.Text = "黑名单"
+        '
+        'Label_Blockmode
+        '
+        Me.Label_Blockmode.AutoSize = True
+        Me.Label_Blockmode.Location = New System.Drawing.Point(6, 3)
+        Me.Label_Blockmode.Name = "Label_Blockmode"
+        Me.Label_Blockmode.Size = New System.Drawing.Size(56, 17)
+        Me.Label_Blockmode.TabIndex = 0
+        Me.Label_Blockmode.Text = "屏蔽模式"
+        '
         'TabPage_Customization
         '
         Me.TabPage_Customization.Controls.Add(Me.Label_CustomDM_Header)
@@ -630,140 +776,38 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics.Text = "统计数据"
         Me.TabPage_Statistics.UseVisualStyleBackColor = True
         '
-        'TabPage_Blocking
+        'PictureBox_ToolTipNotification
         '
-        Me.TabPage_Blocking.Controls.Add(Me.ComboBox_GiftBlockMode)
-        Me.TabPage_Blocking.Controls.Add(Me.Label_GiftBlockMode)
-        Me.TabPage_Blocking.Controls.Add(Me.TextBox_GiftWhitelist)
-        Me.TabPage_Blocking.Controls.Add(Me.TextBox_Whitelist)
-        Me.TabPage_Blocking.Controls.Add(Me.TextBox_GiftBlacklist)
-        Me.TabPage_Blocking.Controls.Add(Me.TextBox_Blacklist)
-        Me.TabPage_Blocking.Controls.Add(Me.Label_GiftWhitelist)
-        Me.TabPage_Blocking.Controls.Add(Me.Label_Whitelist)
-        Me.TabPage_Blocking.Controls.Add(Me.Label_GiftBlacklist)
-        Me.TabPage_Blocking.Controls.Add(Me.Label_Blacklist)
-        Me.TabPage_Blocking.Controls.Add(Me.ComboBox_Blockmode)
-        Me.TabPage_Blocking.Controls.Add(Me.Label_Blockmode)
-        Me.TabPage_Blocking.Location = New System.Drawing.Point(4, 26)
-        Me.TabPage_Blocking.Name = "TabPage_Blocking"
-        Me.TabPage_Blocking.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage_Blocking.Size = New System.Drawing.Size(592, 349)
-        Me.TabPage_Blocking.TabIndex = 4
-        Me.TabPage_Blocking.Text = "屏蔽设置"
-        Me.TabPage_Blocking.UseVisualStyleBackColor = True
+        Me.PictureBox_ToolTipNotification.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox_ToolTipNotification.Image = Global.TTSDanmaku.My.Resources.Resources.info
+        Me.PictureBox_ToolTipNotification.Location = New System.Drawing.Point(600, 7)
+        Me.PictureBox_ToolTipNotification.Name = "PictureBox_ToolTipNotification"
+        Me.PictureBox_ToolTipNotification.Size = New System.Drawing.Size(16, 16)
+        Me.PictureBox_ToolTipNotification.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox_ToolTipNotification.TabIndex = 10
+        Me.PictureBox_ToolTipNotification.TabStop = False
+        Me.ToolTip_Default.SetToolTip(Me.PictureBox_ToolTipNotification, "将鼠标悬停于某一设置选项上，可查看有关该设置的相关信息。")
         '
-        'ComboBox_Blockmode
+        'TabPage_DebuggingInfo
         '
-        Me.ComboBox_Blockmode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox_Blockmode.FormattingEnabled = True
-        Me.ComboBox_Blockmode.Items.AddRange(New Object() {"关闭", "黑名单", "白名单"})
-        Me.ComboBox_Blockmode.Location = New System.Drawing.Point(9, 23)
-        Me.ComboBox_Blockmode.Name = "ComboBox_Blockmode"
-        Me.ComboBox_Blockmode.Size = New System.Drawing.Size(121, 25)
-        Me.ComboBox_Blockmode.TabIndex = 1
-        Me.ToolTip_Default.SetToolTip(Me.ComboBox_Blockmode, "选择用户屏蔽设置。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "名单可在 设置 -> 自定义 中找到。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "关闭: 没有任何屏蔽。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "黑名单: 屏蔽黑名单中的用户。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "白名单: 屏蔽白名单以外所有用户。")
+        Me.TabPage_DebuggingInfo.Controls.Add(Me.Label_AboutTItle)
+        Me.TabPage_DebuggingInfo.Location = New System.Drawing.Point(4, 26)
+        Me.TabPage_DebuggingInfo.Name = "TabPage_DebuggingInfo"
+        Me.TabPage_DebuggingInfo.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage_DebuggingInfo.Size = New System.Drawing.Size(592, 349)
+        Me.TabPage_DebuggingInfo.TabIndex = 5
+        Me.TabPage_DebuggingInfo.Text = "关于"
+        Me.TabPage_DebuggingInfo.UseVisualStyleBackColor = True
         '
-        'Label_Blockmode
+        'Label_AboutTItle
         '
-        Me.Label_Blockmode.AutoSize = True
-        Me.Label_Blockmode.Location = New System.Drawing.Point(6, 3)
-        Me.Label_Blockmode.Name = "Label_Blockmode"
-        Me.Label_Blockmode.Size = New System.Drawing.Size(56, 17)
-        Me.Label_Blockmode.TabIndex = 0
-        Me.Label_Blockmode.Text = "屏蔽模式"
-        '
-        'TextBox_Whitelist
-        '
-        Me.TextBox_Whitelist.Location = New System.Drawing.Point(6, 190)
-        Me.TextBox_Whitelist.Multiline = True
-        Me.TextBox_Whitelist.Name = "TextBox_Whitelist"
-        Me.TextBox_Whitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_Whitelist.Size = New System.Drawing.Size(183, 96)
-        Me.TextBox_Whitelist.TabIndex = 5
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_Whitelist, "用户白名单，每行一个用户 ID。")
-        '
-        'TextBox_Blacklist
-        '
-        Me.TextBox_Blacklist.Location = New System.Drawing.Point(6, 71)
-        Me.TextBox_Blacklist.Multiline = True
-        Me.TextBox_Blacklist.Name = "TextBox_Blacklist"
-        Me.TextBox_Blacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_Blacklist.Size = New System.Drawing.Size(183, 96)
-        Me.TextBox_Blacklist.TabIndex = 3
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_Blacklist, "用户黑名单，每行一个用户 ID。")
-        '
-        'Label_Whitelist
-        '
-        Me.Label_Whitelist.AutoSize = True
-        Me.Label_Whitelist.Location = New System.Drawing.Point(6, 170)
-        Me.Label_Whitelist.Name = "Label_Whitelist"
-        Me.Label_Whitelist.Size = New System.Drawing.Size(44, 17)
-        Me.Label_Whitelist.TabIndex = 4
-        Me.Label_Whitelist.Text = "白名单"
-        '
-        'Label_Blacklist
-        '
-        Me.Label_Blacklist.AutoSize = True
-        Me.Label_Blacklist.Location = New System.Drawing.Point(6, 51)
-        Me.Label_Blacklist.Name = "Label_Blacklist"
-        Me.Label_Blacklist.Size = New System.Drawing.Size(44, 17)
-        Me.Label_Blacklist.TabIndex = 2
-        Me.Label_Blacklist.Text = "黑名单"
-        '
-        'Label_GiftBlockMode
-        '
-        Me.Label_GiftBlockMode.AutoSize = True
-        Me.Label_GiftBlockMode.Location = New System.Drawing.Point(199, 3)
-        Me.Label_GiftBlockMode.Name = "Label_GiftBlockMode"
-        Me.Label_GiftBlockMode.Size = New System.Drawing.Size(80, 17)
-        Me.Label_GiftBlockMode.TabIndex = 6
-        Me.Label_GiftBlockMode.Text = "礼物屏蔽模式"
-        '
-        'ComboBox_GiftBlockMode
-        '
-        Me.ComboBox_GiftBlockMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox_GiftBlockMode.FormattingEnabled = True
-        Me.ComboBox_GiftBlockMode.Items.AddRange(New Object() {"关闭", "黑名单", "白名单"})
-        Me.ComboBox_GiftBlockMode.Location = New System.Drawing.Point(202, 23)
-        Me.ComboBox_GiftBlockMode.Name = "ComboBox_GiftBlockMode"
-        Me.ComboBox_GiftBlockMode.Size = New System.Drawing.Size(121, 25)
-        Me.ComboBox_GiftBlockMode.TabIndex = 7
-        '
-        'Label_GiftBlacklist
-        '
-        Me.Label_GiftBlacklist.AutoSize = True
-        Me.Label_GiftBlacklist.Location = New System.Drawing.Point(199, 51)
-        Me.Label_GiftBlacklist.Name = "Label_GiftBlacklist"
-        Me.Label_GiftBlacklist.Size = New System.Drawing.Size(44, 17)
-        Me.Label_GiftBlacklist.TabIndex = 8
-        Me.Label_GiftBlacklist.Text = "黑名单"
-        '
-        'Label_GiftWhitelist
-        '
-        Me.Label_GiftWhitelist.AutoSize = True
-        Me.Label_GiftWhitelist.Location = New System.Drawing.Point(199, 170)
-        Me.Label_GiftWhitelist.Name = "Label_GiftWhitelist"
-        Me.Label_GiftWhitelist.Size = New System.Drawing.Size(44, 17)
-        Me.Label_GiftWhitelist.TabIndex = 10
-        Me.Label_GiftWhitelist.Text = "白名单"
-        '
-        'TextBox_GiftBlacklist
-        '
-        Me.TextBox_GiftBlacklist.Location = New System.Drawing.Point(199, 71)
-        Me.TextBox_GiftBlacklist.Multiline = True
-        Me.TextBox_GiftBlacklist.Name = "TextBox_GiftBlacklist"
-        Me.TextBox_GiftBlacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_GiftBlacklist.Size = New System.Drawing.Size(183, 96)
-        Me.TextBox_GiftBlacklist.TabIndex = 9
-        '
-        'TextBox_GiftWhitelist
-        '
-        Me.TextBox_GiftWhitelist.Location = New System.Drawing.Point(199, 190)
-        Me.TextBox_GiftWhitelist.Multiline = True
-        Me.TextBox_GiftWhitelist.Name = "TextBox_GiftWhitelist"
-        Me.TextBox_GiftWhitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_GiftWhitelist.Size = New System.Drawing.Size(183, 96)
-        Me.TextBox_GiftWhitelist.TabIndex = 11
+        Me.Label_AboutTItle.AutoSize = True
+        Me.Label_AboutTItle.Font = New System.Drawing.Font("微软雅黑", 12.0!)
+        Me.Label_AboutTItle.Location = New System.Drawing.Point(6, 3)
+        Me.Label_AboutTItle.Name = "Label_AboutTItle"
+        Me.Label_AboutTItle.Size = New System.Drawing.Size(111, 21)
+        Me.Label_AboutTItle.TabIndex = 0
+        Me.Label_AboutTItle.Text = "TTSDanmaku"
         '
         'TTSDanmakuMgmt
         '
@@ -774,6 +818,7 @@ Partial Class TTSDanmakuMgmt
         Me.BackColor = System.Drawing.Color.White
         Me.CancelButton = Me.Button_Close
         Me.ClientSize = New System.Drawing.Size(624, 481)
+        Me.Controls.Add(Me.PictureBox_ToolTipNotification)
         Me.Controls.Add(Me.TabControl_PluginSettings)
         Me.Controls.Add(Me.Button_CheckUpdates)
         Me.Controls.Add(Me.LinkLabel_FAQ)
@@ -805,12 +850,15 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_BasicSettings.PerformLayout()
         Me.TabPage_Advanced.ResumeLayout(False)
         Me.TabPage_Advanced.PerformLayout()
+        Me.TabPage_Blocking.ResumeLayout(False)
+        Me.TabPage_Blocking.PerformLayout()
         Me.TabPage_Customization.ResumeLayout(False)
         Me.TabPage_Customization.PerformLayout()
         Me.TabPage_Statistics.ResumeLayout(False)
         Me.TabPage_Statistics.PerformLayout()
-        Me.TabPage_Blocking.ResumeLayout(False)
-        Me.TabPage_Blocking.PerformLayout()
+        CType(Me.PictureBox_ToolTipNotification, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage_DebuggingInfo.ResumeLayout(False)
+        Me.TabPage_DebuggingInfo.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -875,4 +923,7 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents TextBox_GiftBlacklist As Windows.Forms.TextBox
     Friend WithEvents Label_GiftWhitelist As Windows.Forms.Label
     Friend WithEvents Label_GiftBlacklist As Windows.Forms.Label
+    Friend WithEvents PictureBox_ToolTipNotification As Windows.Forms.PictureBox
+    Friend WithEvents TabPage_DebuggingInfo As Windows.Forms.TabPage
+    Friend WithEvents Label_AboutTItle As Windows.Forms.Label
 End Class

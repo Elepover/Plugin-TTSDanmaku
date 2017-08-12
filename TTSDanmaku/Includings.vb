@@ -4,6 +4,7 @@
 Imports System.Net
 
 Module Includings
+
     Public Sub Delay(interval As Single)
         Dim TimerCount As Single
         Dim Timer As New Stopwatch
@@ -56,7 +57,7 @@ Module Includings
             pMessage = message
             pStyle = style
             pTitle = title
-            Dim pThread As New System.Threading.Thread(AddressOf msg)
+            Dim pThread As New System.Threading.Thread(AddressOf Msg)
             pThread.Start()
         End Sub
         ''' <summary>
