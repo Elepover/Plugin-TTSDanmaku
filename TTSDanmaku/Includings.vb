@@ -64,7 +64,10 @@ Module Includings
             ElseIf GlobalPlayer.PlaybackState = NAudio.Wave.PlaybackState.Stopped Then '没播就启动
                 PendingTTSes.Add(reader)
                 PendingFilenames.Add(filename)
-                GlobalPlayer.Init(PendingTTSes.ElementAt(0))
+                Try
+                    GlobalPlayer.Init(PendingTTSes.ElementAt(0))
+                Catch ex As Exception
+                End Try
                 GlobalPlayer.Play()
             End If
         End If
