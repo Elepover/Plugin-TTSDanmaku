@@ -36,40 +36,48 @@ Module Includings
         GlobalPlayer.Volume = Settings.Settings.TTSVolume / 100
 
         If Settings.Settings.ReadInArray = False Then
-            Dim waveout As New NAudio.Wave.WaveOutEvent
-            waveout.Init(New NAudio.Wave.Mp3FileReader(filename))
-            waveout.Play()
-            Delay(120000)
-            If waveout.PlaybackState = NAudio.Wave.PlaybackState.Playing Then
-                waveout.Stop()
-                waveout.Dispose()
-            Else
-                waveout.Dispose()
-            End If
-            If Not Settings.Settings.DoNotKeepCache = Nothing Then
-                If Settings.Settings.DoNotKeepCache Then
-                    Try
-                        IO.File.Delete(PendingFilenames(0))
-                    Catch ex As Exception
-                        Statistics.DBG_LastException = ex
-                        PendingFilenames.RemoveAt(0)
-                    End Try
+            Try
+                Dim waveout As New NAudio.Wave.WaveOutEvent
+                waveout.Init(New NAudio.Wave.Mp3FileReader(filename))
+                waveout.Play()
+                Delay(120000)
+                If waveout.PlaybackState = NAudio.Wave.PlaybackState.Playing Then
+                    waveout.Stop()
+                    waveout.Dispose()
+                Else
+                    waveout.Dispose()
                 End If
-            End If
+            Catch ex As Exception
+                Statistics.DBG_ErrCount += 1
+                Statistics.DBG_LastException = ex
+            Finally
+                If Not Settings.Settings.DoNotKeepCache = Nothing Then
+                    If Settings.Settings.DoNotKeepCache Then
+                        Try
+                            IO.File.Delete(filename)
+                        Catch ex2 As Exception
+                            Statistics.DBG_ErrCount += 1
+                            Statistics.DBG_LastException = ex2
+                        End Try
+                    End If
+                End If
+            End Try
         Else
-            Dim reader As New NAudio.Wave.Mp3FileReader(filename)
-            If GlobalPlayer.PlaybackState = NAudio.Wave.PlaybackState.Playing Then '勃了就添加
-                PendingFilenames.Add(filename)
-                PendingTTSes.Add(reader)
-            ElseIf GlobalPlayer.PlaybackState = NAudio.Wave.PlaybackState.Stopped Then '没播就启动
-                PendingTTSes.Add(reader)
-                PendingFilenames.Add(filename)
-                Try
+            Try
+                Dim reader As New NAudio.Wave.Mp3FileReader(filename)
+                If GlobalPlayer.PlaybackState = NAudio.Wave.PlaybackState.Playing Then '勃了就添加
+                    PendingFilenames.Add(filename)
+                    PendingTTSes.Add(reader)
+                ElseIf GlobalPlayer.PlaybackState = NAudio.Wave.PlaybackState.Stopped Then '没播就启动
+                    PendingTTSes.Add(reader)
+                    PendingFilenames.Add(filename)
                     GlobalPlayer.Init(PendingTTSes.ElementAt(0))
-                Catch ex As Exception
-                End Try
-                GlobalPlayer.Play()
-            End If
+                    GlobalPlayer.Play()
+                End If
+            Catch ex As Exception
+                Statistics.DBG_ErrCount += 1
+                Statistics.DBG_LastException = ex
+            End Try
         End If
     End Sub
 
