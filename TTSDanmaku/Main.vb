@@ -22,7 +22,6 @@ Public Class Main
 #Region "Includings"
 
     Public Shared IsEnabled As Boolean = False
-    Public Shared IsCoolingDown As Boolean = False
     Public Shared IsNAudioNotFoundAlerted As Boolean = False
     Public Shared UserCountLatest As Integer = 0
     Public Shared SRThread As Threading.Thread
@@ -102,6 +101,12 @@ DLoop:
         End If
 
 
+        If CheckNAudio() = False Then
+            DBGLog("NAudio 模块错误，放弃。")
+            Statistics.TTS_Dropped += 1
+            Return False
+        End If
+
         If Settings.Settings.Engine = 1 Then
             Try
                 DBGLog("已确定使用 .NET 框架自带方法播放，忽略为毒瘤准备的下载过程。")
@@ -109,9 +114,8 @@ DLoop:
                 If Not silent Then
                     If Not IsCoolingDown Then
                         DBGLog("启动播放: " & content)
-                        SpeechOutput(content)
+                        SpeechOutput(content, GetRandomFilename)
                         Statistics.TTS_Succeeded += 1
-                        If Settings.Settings.TTSDelayEnabled Then StartCoolDown() '启动冷却
                         Return True
                     Else
                         Statistics.TTS_PlayedDuringCoolDown += 1
@@ -129,13 +133,6 @@ DLoop:
                 Log("TTS 播放错误: " & ex.ToString)
                 Return False
             End Try
-        End If
-
-
-        If CheckNAudio() = False Then
-            DBGLog("NAudio 模块错误，放弃。")
-            Statistics.TTS_Dropped += 1
-            Return False
         End If
 
         If Settings.Settings.Engine = 2 Then
@@ -151,7 +148,6 @@ DLoop:
                             GoogleTTS(content)
                         End If
                         Statistics.TTS_Succeeded += 1
-                        If Settings.Settings.TTSDelayEnabled Then StartCoolDown() '启动冷却
                         Return True
                     Else
                         Statistics.TTS_PlayedDuringCoolDown += 1
@@ -171,159 +167,72 @@ DLoop:
             End Try
         End If
 
-        Dim retryCount As Short = 0
+
+
+
+        'Baidu
+        If silent Then DBGLog("正在静默播放模式中。")
+        If Not silent Then
+            If Not IsCoolingDown Then
+                Dim retryCount As Short = 0
 retry:
-        DBGLog("正尝试播放: " & content)
-        'Download
-        Dim ttsFileName As String = ""
-        Dim timer As New Stopwatch
-        timer.Start()
-        Try
-            Dim client As New Net.WebClient()
-            If useProxy Then
-                client.Proxy = proxy
-            End If
-            Dim ran1 As Integer = 0
-            Dim ran2 As Integer = 0
-            ran1 = (New Random).Next
-            Randomize()
-            ran2 = (New Random).Next
-            ttsFileName = Settings.Vars.CacheDir & "\TTS" & ran1 & ran2 & ".mp3"
-            client.DownloadFile(Settings.Settings.APIString.Replace("ZoharWang", content), ttsFileName)
-        Catch ex As Exception
-            Statistics.DBG_LastException = ex
-            Statistics.DBG_ErrCount += 1
-            'Retry
-            If Settings.Settings.DLFailRetry = 0 Then
-                Statistics.TTS_DownloadFail += 1
-                DBGLog("下载失败，丢弃。（DLFailRetry = 0）")
-                Return False
-            End If
-            If retryCount < Settings.Settings.DLFailRetry Then
-                retryCount += 1
-                DBGLog("下载失败: " & ex.Message & "；将在 1 秒后执行第 " & retryCount & " 次重试。")
-                Statistics.TTS_DownloadFail += 1
-                Delay(1000)
-                GoTo retry
-            End If
-            If retryCount = Settings.Settings.DLFailRetry Then
-                retryCount += 1
-                DBGLog("下载失败: " & ex.Message & "；即将在 1 秒后执行最后一次重试。")
-                Statistics.TTS_DownloadFail += 1
-                Delay(1000)
-                GoTo retry
-            End If
-            'Over 5 times
-            Log("在重试 " & Settings.Settings.DLFailRetry & " 次以后，TTS 下载失败: " & ex.Message)
-            Return False
-        End Try
-        timer.Stop()
-        If Not retryCount = 0 Then DBGLog("在重试 " & retryCount & " 次后, TTS 下载成功。")
-        DBGLog("下载完毕，耗时: " & timer.Elapsed.TotalMilliseconds & "ms. 文件名: " & ttsFileName)
-        DBGLog("启动播放.")
-        Statistics.TTS_PlayTries += 1
-        Try
-            Dim waveout As New NAudio.Wave.WaveOutEvent
-            Dim mp3reader As New NAudio.Wave.Mp3FileReader(ttsFileName)
-            waveout.Init(mp3reader)
-            If silent Then DBGLog("正在静默播放模式中。")
-            If Not silent Then
-                If Not IsCoolingDown Then
-                    waveout.Volume = Settings.Settings.TTSVolume / 100
-                    waveout.Play()
-                    Statistics.TTS_Succeeded += 1
-                    Now.AddSeconds(1)
-                    If Settings.Settings.TTSDelayEnabled Then StartCoolDown() '启动冷却
-                    If forceDispose Then
-                        waveout.Stop()
-                        waveout.Dispose()
-                        mp3reader.Dispose()
-                        IO.File.Delete(ttsFileName)
+                DBGLog("正尝试播放: " & content)
+                'Download
+                Dim ttsFileName As String = ""
+                Dim timer As New Stopwatch
+                timer.Start()
+                Try
+                    Dim client As New Net.WebClient()
+                    If useProxy Then
+                        client.Proxy = proxy
                     End If
-                    Delay(120000)
-                    waveout.Dispose()
-                    mp3reader.Dispose()
-                    If Not Settings.Settings.DoNotKeepCache = Nothing Then
-                        If Settings.Settings.DoNotKeepCache Then
-                            Try
-                                DBGLog("正在自动删除 TTS 缓存。")
-                                IO.File.Delete(ttsFileName)
-                            Catch ex As Exception
-                                Statistics.DBG_LastException = ex
-                            End Try
-
-                        End If
+                    ttsFileName = GetRandomFilename()
+                    client.DownloadFile(Settings.Settings.APIString.Replace("ZoharWang", content), ttsFileName)
+                Catch ex As Exception
+                    Statistics.DBG_LastException = ex
+                    Statistics.DBG_ErrCount += 1
+                    'Retry
+                    If Settings.Settings.DLFailRetry = 0 Then
+                        Statistics.TTS_DownloadFail += 1
+                        DBGLog("下载失败，丢弃。（DLFailRetry = 0）")
+                        Return False
                     End If
-                Else
-                    Statistics.TTS_PlayedDuringCoolDown += 1
-                    DBGLog("正在冷却时间中，将不会播放 TTS。")
-                    'Appearing to be the same as the code upside.
-                    If Not Settings.Settings.DoNotKeepCache = Nothing Then
-                        If Settings.Settings.DoNotKeepCache Then
-                            Try
-                                waveout.Stop()
-                                waveout.Dispose()
-                                mp3reader.Dispose()
-                                DBGLog("正在自动删除 TTS 缓存。")
-                                IO.File.Delete(ttsFileName)
-                            Catch ex As Exception
-                                Statistics.DBG_LastException = ex
-                            End Try
-
-                        End If
+                    If retryCount < Settings.Settings.DLFailRetry Then
+                        retryCount += 1
+                        DBGLog("下载失败: " & ex.Message & "；将在 1 秒后执行第 " & retryCount & " 次重试。")
+                        Statistics.TTS_DownloadFail += 1
+                        Delay(1000)
+                        GoTo retry
                     End If
-                End If
+                    If retryCount = Settings.Settings.DLFailRetry Then
+                        retryCount += 1
+                        DBGLog("下载失败: " & ex.Message & "；即将在 1 秒后执行最后一次重试。")
+                        Statistics.TTS_DownloadFail += 1
+                        Delay(1000)
+                        GoTo retry
+                    End If
+                    'Over 5 times
+                    Log("在重试 " & Settings.Settings.DLFailRetry & " 次以后，TTS 下载失败: " & ex.Message)
+                    Return False
+                End Try
+                timer.Stop()
+                If Not retryCount = 0 Then DBGLog("在重试 " & retryCount & " 次后, TTS 下载成功。")
+                DBGLog("下载完毕，耗时: " & timer.Elapsed.TotalMilliseconds & "ms. 文件名: " & ttsFileName)
+                DBGLog("启动播放.")
+                Statistics.TTS_PlayTries += 1
+                NPlayTTS(ttsFileName)
+                Statistics.TTS_Succeeded += 1
+                Now.AddSeconds(1)
             Else
-                Statistics.TTS_Silent += 1
+                Statistics.TTS_PlayedDuringCoolDown += 1
+                DBGLog("正在冷却时间中，将不会播放 TTS。")
             End If
-        Catch ex As Exception When ex.Message.Contains("no MP3 Frames Detected")
-            Statistics.DBG_ErrCount += 1
-            Statistics.DBG_LastException = ex
-            'Retry
-            If Settings.Settings.DLFailRetry = 0 Then
-                DBGLog("下载失败，丢弃。（DLFailRetry = 0）")
-                Statistics.TTS_DownloadFail += 1
-                Return False
-            End If
-            If retryCount < Settings.Settings.DLFailRetry Then
-                retryCount += 1
-                DBGLog("下载失败: " & ex.Message & "；将在 1 秒后执行第 " & retryCount & " 次重试。")
-                Statistics.TTS_DownloadFail += 1
-                Delay(1000)
-                GoTo retry
-            End If
-            If retryCount = Settings.Settings.DLFailRetry Then
-                retryCount += 1
-                DBGLog("下载失败: " & ex.Message & "；即将在 1 秒后执行最后一次重试。")
-                Statistics.TTS_DownloadFail += 1
-                Delay(1000)
-                GoTo retry
-            End If
-            'Over 5 times
-            Log("在重试 " & Settings.Settings.DLFailRetry & " 次以后，TTS 下载失败: " & ex.Message)
-            Return False
-        Catch ex As Exception
-            Statistics.DBG_ErrCount += 1
-            Statistics.DBG_LastException = ex
-            Statistics.TTS_Failed += 1
-            Log("TTS 播放错误: " & ex.ToString)
-            Return False
-        End Try
+
+        Else
+            Statistics.TTS_Silent += 1
+        End If
         Return True
     End Function
-
-    Public Sub CountDown()
-        IsCoolingDown = True
-        Statistics.TTS_CoolDown += 1
-        Delay(Settings.Settings.TTSDelayValue)
-        IsCoolingDown = False
-    End Sub
-
-    Public Sub StartCoolDown()
-        Dim cThread As New System.Threading.Thread(AddressOf CountDown)
-        cThread.Start() '使用新线程 防止阻塞
-        GC.Collect() '回收垃圾
-    End Sub
 
 #End Region
 

@@ -87,6 +87,7 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
         Me.TabPage_DebuggingInfo = New System.Windows.Forms.TabPage()
         Me.Label_AboutTitle = New System.Windows.Forms.Label()
+        Me.CheckBox_OneByOne = New System.Windows.Forms.CheckBox()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -649,6 +650,7 @@ Partial Class TTSDanmakuMgmt
         '
         'TabPage_BasicSettings
         '
+        Me.TabPage_BasicSettings.Controls.Add(Me.CheckBox_OneByOne)
         Me.TabPage_BasicSettings.Controls.Add(Me.CheckBox_NoCache)
         Me.TabPage_BasicSettings.Controls.Add(Me.CheckBox_TTSSender)
         Me.TabPage_BasicSettings.Controls.Add(Me.CheckBox_NoKeepingCache)
@@ -822,6 +824,17 @@ Partial Class TTSDanmakuMgmt
         Me.Label_AboutTitle.TabIndex = 0
         Me.Label_AboutTitle.Text = "TTSDanmaku"
         '
+        'CheckBox_OneByOne
+        '
+        Me.CheckBox_OneByOne.AutoSize = True
+        Me.CheckBox_OneByOne.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.CheckBox_OneByOne.Location = New System.Drawing.Point(6, 146)
+        Me.CheckBox_OneByOne.Name = "CheckBox_OneByOne"
+        Me.CheckBox_OneByOne.Size = New System.Drawing.Size(106, 22)
+        Me.CheckBox_OneByOne.TabIndex = 5
+        Me.CheckBox_OneByOne.Text = "逐条读出 TTS"
+        Me.CheckBox_OneByOne.UseVisualStyleBackColor = True
+        '
         'TTSDanmakuMgmt
         '
         Me.AcceptButton = Me.Button_Apply
@@ -940,4 +953,5 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents TabPage_DebuggingInfo As Windows.Forms.TabPage
     Friend WithEvents Label_AboutTitle As Windows.Forms.Label
     Friend WithEvents TextBox_Debug As Windows.Forms.TextBox
+    Friend WithEvents CheckBox_OneByOne As Windows.Forms.CheckBox
 End Class

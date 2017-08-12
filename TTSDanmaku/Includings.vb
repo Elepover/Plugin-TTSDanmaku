@@ -5,6 +5,87 @@ Imports System.Net
 
 Module Includings
 
+    '排队读 / TTS Dispatching Center
+    Friend WithEvents GlobalPlayer As NAudio.Wave.WaveOutEvent
+
+    Public Sub PlayFinished(sender As Object, e As NAudio.Wave.StoppedEventArgs) Handles GlobalPlayer.PlaybackStopped
+        If Settings.Settings.TTSDelayEnabled Then StartCoolDown() '启动冷却
+        If Not PendingTTSes.Count = 0 Then '如果还有就播，没有就丢
+            If Not Settings.Settings.DoNotKeepCache = Nothing Then '不要缓存就删
+                If Settings.Settings.DoNotKeepCache Then
+                    Try
+                        IO.File.Delete(PendingFilenames(0))
+                    Catch ex As Exception
+                        Statistics.DBG_LastException = ex
+                    End Try
+                End If
+            End If
+            PendingTTSes.RemoveAt(0) '删掉已经读出的
+            PendingFilenames.RemoveAt(0) '删掉已经读出的
+            GlobalPlayer.Init(PendingTTSes.ElementAt(0)) '继续播放
+            GlobalPlayer.Play()
+        End If
+    End Sub
+
+    Public Sub NPlayTTS(filename As String)
+        If IsCoolingDown Then Exit Sub
+        GlobalPlayer.Volume = Settings.Settings.TTSVolume / 100
+
+        If Settings.Settings.ReadInArray = False Then
+            Dim waveout As New NAudio.Wave.WaveOutEvent
+            waveout.Init(New NAudio.Wave.Mp3FileReader(filename))
+            waveout.Play()
+            Delay(120000)
+            If waveout.PlaybackState = NAudio.Wave.PlaybackState.Playing Then
+                waveout.Stop()
+                waveout.Dispose()
+            Else
+                waveout.Dispose()
+            End If
+            If Not Settings.Settings.DoNotKeepCache = Nothing Then
+                If Settings.Settings.DoNotKeepCache Then
+                    Try
+                        IO.File.Delete(PendingFilenames(0))
+                    Catch ex As Exception
+                        Statistics.DBG_LastException = ex
+                        PendingFilenames.RemoveAt(0)
+                    End Try
+                End If
+            End If
+        Else
+            Dim reader As New NAudio.Wave.Mp3FileReader(filename)
+            If GlobalPlayer.PlaybackState = NAudio.Wave.PlaybackState.Playing Then '勃了就添加
+                PendingFilenames.Add(filename)
+                PendingTTSes.Add(reader)
+            ElseIf GlobalPlayer.PlaybackState = NAudio.Wave.PlaybackState.Stopped Then '没播就启动
+                PendingTTSes.Add(reader)
+                PendingFilenames.Add(filename)
+                GlobalPlayer.Init(PendingTTSes.ElementAt(0))
+                GlobalPlayer.Play()
+            End If
+        End If
+    End Sub
+
+    Public CurrentFilename As String
+    Public PendingTTSes As List(Of NAudio.Wave.Mp3FileReader)
+    Public PendingFilenames As List(Of String)
+    Public IsCoolingDown As Boolean = False
+
+    Public Sub CountDown()
+        IsCoolingDown = True
+        Statistics.TTS_CoolDown += 1
+        Delay(Settings.Settings.TTSDelayValue)
+        IsCoolingDown = False
+    End Sub
+
+    Public Sub StartCoolDown()
+        Dim cThread As New System.Threading.Thread(AddressOf CountDown)
+        cThread.Start() '使用新线程 防止阻塞
+        GC.Collect() '回收垃圾
+    End Sub
+
+
+
     Public Sub Delay(interval As Single)
         Dim TimerCount As Single
         Dim Timer As New Stopwatch
@@ -105,14 +186,24 @@ Module Includings
         Return False
     End Function
 
+    Public Function GetRandomFilename() As String
+        Dim ran1 As Integer = 0
+        Dim ran2 As Integer = 0
+        ran1 = (New Random).Next
+        Randomize()
+        ran2 = (New Random).Next
+        Return Settings.Vars.CacheDir & "\TTS" & ran1 & ran2 & ".mp3"
+    End Function
+
     ''' <summary>
     ''' 使用 .NET 框架自带实现方法读出，未出错则返回 True.
     ''' </summary>
     ''' <param name="text">文本</param>
-    Public Sub SpeechOutput(text As String)
+    Public Sub SpeechOutput(text As String, filename As String)
         Dim obj As New Speech.Synthesis.SpeechSynthesizer() With {.Volume = Settings.Settings.TTSVolume, .Rate = Settings.Settings.NETFramework_VoiceSpeed}
-        obj.SetOutputToDefaultAudioDevice()
-        obj.SpeakAsync(text)
+        obj.SetOutputToWaveFile(filename)
+        obj.Speak(text)
+        NPlayTTS(filename)
     End Sub
 
     ''' <summary>
@@ -135,30 +226,11 @@ retry:
             retryCount += 1
             GoTo retry
         End Try
-        Dim waveout As New NAudio.Wave.WaveOutEvent
-        Dim mp3reader As New NAudio.Wave.Mp3FileReader(filename)
-        waveout.Init(mp3reader)
         Try
-            waveout.Volume = Settings.Settings.TTSVolume / 100
-            If Not silent Then waveout.Play()
-            If forceDispose Then
-                If waveout.PlaybackState = NAudio.Wave.PlaybackState.Playing Then
-                    waveout.Stop()
-                    waveout.Dispose()
-                    mp3reader.Dispose()
-                End If
-            End If
-            Delay(120000)
-            waveout.Dispose()
-            mp3reader.Dispose()
-            If Not Settings.Settings.DoNotKeepCache = Nothing Then
-                If Settings.Settings.DoNotKeepCache Then
-                    Try
-                        IO.File.Delete(filename)
-                    Catch ex As Exception
-                        Statistics.DBG_LastException = ex
-                    End Try
-                End If
+            If Not silent Then
+                NPlayTTS(filename)
+            Else
+                Statistics.TTS_Silent += 1
             End If
         Catch ex As Exception
             If retryCount >= Settings.Settings.DLFailRetry Then Throw ex

@@ -4,7 +4,6 @@
         StatusLabel_Default.Text = status
         'If log Then TextBox_Stats.AppendText(status & vbCrLf)
         System.Windows.Forms.Application.DoEvents()
-        If Me.Visible Then Threading.Thread.Sleep(1) '假装处理很快
     End Sub
 
     Public Function CheckIfLegal_DM()
@@ -91,6 +90,12 @@
             CheckBox_NoKeepingCache.Font = New Drawing.Font(CheckBox_NoKeepingCache.Font, Drawing.FontStyle.Bold)
         Else
             CheckBox_NoKeepingCache.Font = New Drawing.Font(CheckBox_NoKeepingCache.Font, Drawing.FontStyle.Regular)
+        End If
+
+        If Not CheckBox_OneByOne.Checked = Settings.Settings.ReadInArray Then
+            CheckBox_OneByOne.Font = New Drawing.Font(CheckBox_OneByOne.Font, Drawing.FontStyle.Bold)
+        Else
+            CheckBox_OneByOne.Font = New Drawing.Font(CheckBox_OneByOne.Font, Drawing.FontStyle.Regular)
         End If
 
         If Not TextBox_CustomConnected.Text = Settings.Settings.ConnectSuccessful Then
@@ -202,6 +207,7 @@
         ComboBox_GiftBlockMode.SelectedIndex = Settings.Settings.GiftBlock_Mode
 
         CheckBox_NoKeepingCache.Checked = Settings.Settings.DoNotKeepCache
+        CheckBox_OneByOne.Checked = Settings.Settings.ReadInArray
 
         TextBox_Blacklist.Text = Settings.Settings.Blacklist
         TextBox_Whitelist.Text = Settings.Settings.Whitelist
@@ -230,6 +236,7 @@
         TextBox_Stats.AppendText("静默模式播放计数: " & Statistics.TTS_Silent & vbCrLf)
         TextBox_Stats.AppendText("房间人数数据接收次数: " & Statistics.DBG_ReceivedRoomCount & vbCrLf)
         TextBox_Stats.AppendText("插件运行过程中出错次数: " & Statistics.DBG_ErrCount & vbCrLf)
+        TextBox_Stats.AppendText("等待播放的 TTS 数量: " & PendingTTSes.Count)
         If IsNothing(Statistics.DBG_LastException) Then
             TextBox_Stats.AppendText("最后一次发生的错误: 无" & vbCrLf)
         Else
@@ -289,6 +296,7 @@
         NumericUpDown_SpeechSpeed.Font = font
         Button_CheckUpdates.Font = font
         Button_ProxySettings.Font = font
+        CheckBox_OneByOne.Font = font
         Label_AboutTitle.Font = New Drawing.Font("Microsoft Yahei UI", 12)
 
         ComboBox_Blockmode.Font = font
@@ -331,6 +339,7 @@
         Settings.Settings.DoNotKeepCache = CheckBox_NoKeepingCache.Checked
         Settings.Settings.ConnectSuccessful = TextBox_CustomConnected.Text
         Settings.Settings.DLFailRetry = NumericUpDown_RetryCount.Value
+        Settings.Settings.ReadInArray = CheckBox_OneByOne.Checked
 
         Settings.Settings.Block_Mode = ComboBox_Blockmode.SelectedIndex
         Settings.Settings.Blacklist = TextBox_Blacklist.Text
@@ -353,7 +362,7 @@
         End If
 
         '停用冷却，如果冷却时间已经关闭。
-        If Settings.Settings.TTSDelayEnabled Then Main.IsCoolingDown = False
+        If Settings.Settings.TTSDelayEnabled Then IsCoolingDown = False
 
         Try
             Status("保存...", False)
@@ -421,7 +430,7 @@
         Status("操作成功: " & count & " 个。")
     End Sub
 
-    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, NumericUpDown_Volume.ValueChanged, NumericUpDown_RetryCount.ValueChanged, TextBox_CustomConnected.TextChanged, ComboBox_Engine.SelectedIndexChanged, CheckBox_NoKeepingCache.CheckedChanged, NumericUpDown_SpeechSpeed.ValueChanged, TextBox_GiftBlacklist.TextChanged, TextBox_GiftWhitelist.TextChanged, ComboBox_GiftBlockMode.SelectedIndexChanged, ComboBox_Blockmode.SelectedIndexChanged, TextBox_Blacklist.TextChanged, TextBox_Whitelist.TextChanged
+    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, NumericUpDown_Volume.ValueChanged, NumericUpDown_RetryCount.ValueChanged, TextBox_CustomConnected.TextChanged, ComboBox_Engine.SelectedIndexChanged, CheckBox_NoKeepingCache.CheckedChanged, NumericUpDown_SpeechSpeed.ValueChanged, TextBox_GiftBlacklist.TextChanged, TextBox_GiftWhitelist.TextChanged, ComboBox_GiftBlockMode.SelectedIndexChanged, ComboBox_Blockmode.SelectedIndexChanged, TextBox_Blacklist.TextChanged, TextBox_Whitelist.TextChanged, CheckBox_OneByOne.CheckedChanged
         UpdateControl()
     End Sub
 

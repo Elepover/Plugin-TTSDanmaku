@@ -110,12 +110,7 @@ Namespace Google.TTS
                 End If
             End Try
             Dim fileContent As Stream = response.GetResponseStream()
-            Dim ran1 As Integer = 0
-            Dim ran2 As Integer = 0
-            ran1 = (New Random).Next
-            Randomize()
-            ran2 = (New Random).Next
-            Dim caminhoTemp As String = Settings.Vars.CacheDir & "\TTS" & ran1 & ran2 & ".mp3"
+            Dim caminhoTemp As String = GetRandomFilename()
 
             Using file__2 As Stream = File.OpenWrite(caminhoTemp)
                 CopyStream(fileContent, file__2)

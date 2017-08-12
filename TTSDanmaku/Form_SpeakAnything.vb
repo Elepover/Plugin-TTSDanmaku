@@ -39,7 +39,7 @@
                 If silent Then DBGLog("Playing with silent mode.")
                 If Not silent Then
                     DBGLog("Attempting playing: " & content)
-                    SpeechOutput(content)
+                    SpeechOutput(content, GetRandomFilename)
                     Return True
                 Else
                     Return True
