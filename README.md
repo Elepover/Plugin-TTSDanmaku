@@ -18,9 +18,8 @@ Description last updated at: 07/31/2017 08:52 (GMT)
  1. 将 `TTSDanmaku.dll` 复制到 `%USERPROFILE%\Documents\弹幕姬\Plugins`
  2. 打开/重启弹幕姬 -> 插件 -> 右键 **TTSDanmaku** -> 启用插件
  
-    btw: %USERPROFILE%\Documents 即 我的文档，上方路径可直接复制到资源管理器路径栏中。
-    
-    比弹幕姬插件仓库中更新的插件可在页面下方找到。
+> btw: %USERPROFILE%\Documents 即 我的文档，上方路径可直接复制到资源管理器路径栏中。
+> 比弹幕姬插件仓库中更新的插件可在页面下方找到。
     
 日常使用
 ----
