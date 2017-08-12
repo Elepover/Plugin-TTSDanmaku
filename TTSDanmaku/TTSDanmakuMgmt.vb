@@ -210,7 +210,13 @@
 
         NumericUpDown_SpeechSpeed.Value = Settings.Settings.NETFramework_VoiceSpeed
 
-        Me.Text = "TTSDanmaku v" & version & " (" & Edition & ")"
+        If Edition = "Live" Then
+            Me.Text = "TTSDanmaku v" & version & " (Live) - **EXPERIMENTAL**"
+        Else
+            Me.Text = "TTSDanmaku v" & version & " (" & Edition & ")"
+        End If
+
+
 
         TextBox_Stats.Clear()
         TextBox_Stats.AppendText("TTS 播放总尝试次数: " & Statistics.TTS_Total & vbCrLf)
