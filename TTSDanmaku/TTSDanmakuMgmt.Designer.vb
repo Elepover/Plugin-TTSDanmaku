@@ -565,7 +565,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_Whitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox_Whitelist.Size = New System.Drawing.Size(183, 96)
         Me.TextBox_Whitelist.TabIndex = 5
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_Whitelist, "用户白名单，使用半角（英文）逗号分隔。")
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_Whitelist, "用户白名单，回车分隔。")
         '
         'TextBox_Blacklist
         '
@@ -575,7 +575,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_Blacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox_Blacklist.Size = New System.Drawing.Size(183, 96)
         Me.TextBox_Blacklist.TabIndex = 3
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_Blacklist, "用户黑名单，使用半角（英文）逗号分隔。")
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_Blacklist, "用户黑名单，回车分隔。")
         '
         'ComboBox_GiftBlockMode
         '
@@ -596,7 +596,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_GiftWhitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox_GiftWhitelist.Size = New System.Drawing.Size(183, 96)
         Me.TextBox_GiftWhitelist.TabIndex = 11
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftWhitelist, "礼物白名单，使用半角（英文）逗号分隔。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "礼物会无视用户屏蔽设置。")
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftWhitelist, "礼物白名单，回车分隔。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "礼物会无视用户屏蔽设置。")
         '
         'TextBox_GiftBlacklist
         '
@@ -606,7 +606,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_GiftBlacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox_GiftBlacklist.Size = New System.Drawing.Size(183, 96)
         Me.TextBox_GiftBlacklist.TabIndex = 9
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftBlacklist, "礼物黑名单，使用半角（英文）逗号分隔。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "礼物会无视用户屏蔽设置。")
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftBlacklist, "礼物黑名单，回车分隔。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "礼物会无视用户屏蔽设置。")
         '
         'PictureBox_ToolTipNotification
         '

@@ -194,7 +194,7 @@ Module Includings
     ''' <param name="user">目标用户</param>
     ''' <returns></returns>
     Public Function UserExists(list As String, user As String) As Boolean
-        Dim strs As String() = list.Split(",")
+        Dim strs As String() = list.Split(New Char() {vbCr, vbLf})
         Dim pass As Boolean = False
         For Each s As String In strs
             If s.Replace(vbCr, "").Replace(vbLf, "").Replace(" ", "") = user.Replace(vbCr, "").Replace(vbLf, "").Replace(" ", "") Then pass = True
