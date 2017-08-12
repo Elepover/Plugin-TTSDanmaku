@@ -10,6 +10,9 @@
 ' |- blocking
 ' |  |- blacklist.ini
 ' |  |- whitelist.ini
+' |  |- gifts
+' |  |  |- blacklist.ini
+' |  |  |- whitelist.ini
 ' |- cache
 ' |  |- TTS*.mp3
 ' |  |- ...
@@ -53,8 +56,11 @@ Namespace Settings
             UseGoogleGlobal = False
             NETFramework_VoiceSpeed = 0
             Block_Mode = 0
+            GiftBlock_Mode = 0
             Blacklist = ""
             Whitelist = ""
+            GiftBlacklist = ""
+            GiftWhitelist = ""
         End Sub
         ''' <summary>
         ''' 只读设置项, API 字符串。
@@ -284,6 +290,11 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property Block_Mode As String
+        ''' <summary>
+        ''' 新增于 2017/08/09 09:08 - 礼物屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property GiftBlock_Mode As String
 #End Region
         ''' <summary>
         ''' 常驻内存，黑名单
@@ -293,16 +304,25 @@ Namespace Settings
         ''' 常驻内存，白名单
         ''' </summary>
         Public Shared Whitelist As String
+        ''' <summary>
+        ''' 常驻内存，礼物黑名单
+        ''' </summary>
+        Public Shared GiftBlacklist As String
+        ''' <summary>
+        ''' 常驻内存，礼物白名单
+        ''' </summary>
+        Public Shared GiftWhitelist As String
     End Class
 
     Public Class Vars
         Public Shared Sub Initialize()
-            PluginDir = Path.GetDirectoryName(Reflection.Assembly.GetExecutingAssembly().Location)
+            PluginDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
             LibFileName = Path.Combine(PluginDir, "NAudio.dll")
             ConfigurationDir = Path.Combine(PluginDir, "TTSDanmaku")
             ConfigFileName = Path.Combine(ConfigurationDir, "config.ini")
             CacheDir = Path.Combine(ConfigurationDir, "cache")
             BlacklistDir = Path.Combine(ConfigurationDir, "blocking")
+            GiftBlacklistDir = Path.Combine(BlacklistDir, "gifts")
         End Sub
         Public Shared Property ConfigurationDir As String '配置文件夹
         Public Shared Property ConfigFileName As String '配置文件名
@@ -310,6 +330,7 @@ Namespace Settings
         Public Shared Property LibFileName As String 'NAudio 文件名
         Public Shared Property PluginDir As String '弹幕姬插件目录
         Public Shared Property BlacklistDir As String '屏蔽配置目录
+        Public Shared Property GiftBlacklistDir As String '礼物屏蔽配置目录
     End Class
 
     Public Class Methods
@@ -331,6 +352,9 @@ Namespace Settings
             End If
             If Not Directory.Exists(Vars.BlacklistDir) Then
                 Directory.CreateDirectory(Vars.BlacklistDir)
+            End If
+            If Not Directory.Exists(Vars.GiftBlacklistDir) Then
+                Directory.CreateDirectory(Vars.GiftBlacklistDir)
             End If
         End Sub
 
@@ -358,10 +382,15 @@ Namespace Settings
             Dim SettingsReader As StreamReader = Nothing
             Dim BlacklistReader As StreamReader = Nothing
             Dim WhitelistReader As StreamReader = Nothing
+            Dim GiftBlacklistReader As StreamReader = Nothing
+            Dim GiftWhitelistReader As StreamReader = Nothing
             Try
                 SettingsReader = New StreamReader(Vars.ConfigFileName, Encoding.UTF8)
                 BlacklistReader = New StreamReader(Path.Combine(Vars.BlacklistDir, "blacklist.ini"), Encoding.UTF8)
                 WhitelistReader = New StreamReader(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), Encoding.UTF8)
+                GiftBlacklistReader = New StreamReader(Path.Combine(Vars.GiftBlacklistDir, "blacklist.ini"), Encoding.UTF8)
+                GiftWhitelistReader = New StreamReader(Path.Combine(Vars.GiftBlacklistDir, "whitelist.ini"), Encoding.UTF8)
+
                 SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
                 Settings.DebugMode = SettingsReader.ReadLine()
@@ -421,12 +450,20 @@ Namespace Settings
                 Settings.Whitelist = WhitelistReader.ReadToEnd()
                 WhitelistReader.Close()
 
+                Settings.GiftBlacklist = GiftBlacklistReader.ReadToEnd()
+                GiftBlacklistReader.Close()
+
+                Settings.GiftWhitelist = GiftWhitelistReader.ReadToEnd()
+                GiftWhitelistReader.Close()
+
                 Return True
             Catch ex As Exception
                 Try
                     SettingsReader.Close()
                     BlacklistReader.Close()
                     WhitelistReader.Close()
+                    GiftBlacklistReader.Close()
+                    GiftWhitelistReader.Close()
                 Catch ex2 As Exception
                 End Try
                 Return False
@@ -489,12 +526,19 @@ Namespace Settings
             SettingsWriter.WriteLine("0")
             SettingsWriter.WriteLine("屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)")
             SettingsWriter.WriteLine("0")
+            SettingsWriter.WriteLine("礼物屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)")
+            SettingsWriter.WriteLine("0")
             SettingsWriter.Close()
 
             Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
             Dim blacklistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "blacklist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
             whitelistWriter.Close()
             blacklistWriter.Close()
+
+            Dim giftWhitelistWriter As New StreamWriter(Path.Combine(Vars.GiftBlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim giftBlacklistWriter As New StreamWriter(Path.Combine(Vars.GiftBlacklistDir, "blacklist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
+            giftWhitelistWriter.Close()
+            giftBlacklistWriter.Close()
 
             ReadSettings()
         End Sub
@@ -552,6 +596,8 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.NETFramework_VoiceSpeed)
             SettingsWriter.WriteLine("屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)")
             SettingsWriter.WriteLine(Settings.Block_Mode)
+            SettingsWriter.WriteLine("礼物屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)")
+            SettingsWriter.WriteLine(Settings.GiftBlock_Mode)
             SettingsWriter.Close()
 
             Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "\whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
@@ -560,6 +606,13 @@ Namespace Settings
             blacklistWriter.Write(Settings.Blacklist)
             whitelistWriter.Close()
             blacklistWriter.Close()
+
+            Dim giftWhitelistWriter As New StreamWriter(Path.Combine(Vars.GiftBlacklistDir, "\whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
+            Dim giftBlacklistWriter As New StreamWriter(Path.Combine(Vars.GiftBlacklistDir, "\blacklist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
+            giftWhitelistWriter.Write(Settings.GiftWhitelist)
+            giftBlacklistWriter.Write(Settings.GiftBlacklist)
+            giftWhitelistWriter.Close()
+            giftBlacklistWriter.Close()
         End Sub
     End Class
 End Namespace
