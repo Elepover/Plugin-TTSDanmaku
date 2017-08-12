@@ -19,7 +19,9 @@ Description last updated at: 07/31/2017 08:52 (GMT)
  2. 打开/重启弹幕姬 -> 插件 -> 右键 **TTSDanmaku** -> 启用插件
  
     btw: %USERPROFILE%\Documents 即 我的文档，上方路径可直接复制到资源管理器路径栏中。
-
+    
+    比弹幕姬插件仓库中更新的插件可在页面下方找到。
+    
 日常使用
 ----
 
@@ -47,8 +49,6 @@ Description last updated at: 07/31/2017 08:52 (GMT)
 
 稳定版本（弹幕姬插件仓库版本）: **v1.0.4.53**
 
-最新版本: [**v1.0.4.53**](https://ttsdanmaku.elepover.com)
-
 ```
 [i] 各前缀说明:
     [i] = 提示
@@ -61,6 +61,17 @@ Description last updated at: 07/31/2017 08:52 (GMT)
 [i] 楼上的问题将在后期版本中解决。
 
 [i] 新版开发进度:
+
+v1.0.4, build 54 ->
+[i] This is the Grand Update.
+[/] 重新设计设置窗口布局，使用标签页来区分。
+[+] 加入用户黑白名单功能。
+[+] 加入礼物黑白名单功能。
+[+] 更细致的版本区分(Stable, Beta, Live)
+[+] 现在可以在 AppVeyor 上获得实时更新的 TTSDanmaku Live 版。
+[+] 提高稳定性。
+[+] 完善 Layouts 和 TabIndexes.
+[+] 加入一个程序媛一般都能找到的彩蛋。
 
 v1.0.4, build 53 ->
 [+] 新增更新检查功能 (按住 Shift 进行 Beta 版更新检查)。
@@ -222,14 +233,20 @@ v1.0.1, build 19
 
 参见 [TTSDanmaku Wiki](https://github.com/Elepover/Plugin-TTSDanmaku/wiki/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%B9%E5%B9%95---%E7%A4%BC%E7%89%A9%E5%86%85%E5%AE%B9%E5%8F%98%E9%87%8F%E8%AF%B4%E6%98%8E)
 
-历史下载
+更多下载
 ----
 
-**如果新版 TTSDanmaku 工作异常**，请在此下载旧版。
+#### TTSDanmaku Beta
+没有推送到弹幕姬插件仓库的版本，功能比弹幕姬插件仓库中插件更多，可能有稳定性问题。
 
-[TTSDanmaku v1.0.1.24](https://www.danmuji.cn/resource/TTSDanmaku/ver10124/TTSDanmaku.zip)
+请[ >在此< ](https://ttsdanmaku.elepover.com)下载。
 
-TTSDanmaku 将在作者的下载服务器实时更新，如需体验新版，请[ >在此< ](https://ttsdanmaku.elepover.com)下载。
+#### TTSDanmaku Live
+更新比 Beta 版本更加激进，可第一时间体验新功能，但可能有比 Beta 版更多的稳定性问题。
+
+（甚至有些功能完全无法工作都是有可能的（逃
+
+在 [AppVeyor](https://ci.appveyor.com/project/Elepover/plugin-ttsdanmaku/build/artifacts) 提供下载。
 
 关于 NAudio 丢失问题
 -------------
