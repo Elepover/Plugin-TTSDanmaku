@@ -183,6 +183,7 @@
     End Sub
     Private Sub LoadToControl()
         Status("载入...", False)
+        Dim version As String = New Main().PluginVer
         CheckBox_TTSDebug.Checked = Settings.Settings.DebugMode
         CheckBox_TTSGifts.Checked = Settings.Settings.TTSGiftsReceived
         CheckBox_TTSSender.Checked = Settings.Settings.TTSDanmakuSender
@@ -209,6 +210,8 @@
 
         NumericUpDown_SpeechSpeed.Value = Settings.Settings.NETFramework_VoiceSpeed
 
+        Me.Text = "TTSDanmaku v" & version & " (" & Edition & ")"
+
         TextBox_Stats.Clear()
         TextBox_Stats.AppendText("TTS 播放总尝试次数: " & Statistics.TTS_Total & vbCrLf)
         TextBox_Stats.AppendText("完全播放成功次数: " & Statistics.TTS_Succeeded & vbCrLf)
@@ -227,13 +230,13 @@
             TextBox_Stats.AppendText("最后一次发生的错误: " & Statistics.DBG_LastException.ToString & vbCrLf)
         End If
 
-        Label_AboutTitle.Text = "TTSDanmaku " & Edition & " v" & New Main().PluginVer
+        Label_AboutTitle.Text = "TTSDanmaku " & Edition & " v" & version
         TextBox_Debug.Clear()
         TextBox_Debug.AppendText("---------- OS Environment ----------" & vbCrLf)
         TextBox_Debug.AppendText("Operating System: " & My.Computer.Info.OSFullName & vbCrLf)
         TextBox_Debug.AppendText("OS Version: " & My.Computer.Info.OSVersion & vbCrLf)
         TextBox_Debug.AppendText("---------- Plugin Environment ----------" & vbCrLf)
-        TextBox_Debug.AppendText("TTSDanmaku version: " & New Main().PluginVer & vbCrLf)
+        TextBox_Debug.AppendText("TTSDanmaku version: " & version & vbCrLf)
         TextBox_Debug.AppendText("TTSDanmaku edition: " & Edition & vbCrLf)
         TextBox_Debug.AppendText("Plugin executable: " & Reflection.Assembly.GetExecutingAssembly().Location & vbCrLf)
         TextBox_Debug.AppendText("Plugin configuration directory: " & Settings.Vars.ConfigurationDir & vbCrLf)
