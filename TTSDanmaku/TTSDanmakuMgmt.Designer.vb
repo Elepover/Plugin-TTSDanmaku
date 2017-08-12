@@ -74,6 +74,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_Debug = New System.Windows.Forms.TextBox()
         Me.TabControl_PluginSettings = New System.Windows.Forms.TabControl()
         Me.TabPage_BasicSettings = New System.Windows.Forms.TabPage()
+        Me.CheckBox_OneByOne = New System.Windows.Forms.CheckBox()
         Me.TabPage_Advanced = New System.Windows.Forms.TabPage()
         Me.Label_SpeechSpeed = New System.Windows.Forms.Label()
         Me.TabPage_Blocking = New System.Windows.Forms.TabPage()
@@ -87,7 +88,6 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
         Me.TabPage_DebuggingInfo = New System.Windows.Forms.TabPage()
         Me.Label_AboutTitle = New System.Windows.Forms.Label()
-        Me.CheckBox_OneByOne = New System.Windows.Forms.CheckBox()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -596,7 +596,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_GiftWhitelist.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox_GiftWhitelist.Size = New System.Drawing.Size(183, 96)
         Me.TextBox_GiftWhitelist.TabIndex = 11
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftWhitelist, "用户白名单，每行一个用户 ID。")
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftWhitelist, "礼物白名单，每行一个礼物名称。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "礼物会无视用户屏蔽设置。")
         '
         'TextBox_GiftBlacklist
         '
@@ -606,7 +606,7 @@ Partial Class TTSDanmakuMgmt
         Me.TextBox_GiftBlacklist.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox_GiftBlacklist.Size = New System.Drawing.Size(183, 96)
         Me.TextBox_GiftBlacklist.TabIndex = 9
-        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftBlacklist, "用户黑名单，每行一个用户 ID。")
+        Me.ToolTip_Default.SetToolTip(Me.TextBox_GiftBlacklist, "礼物黑名单，每行一个礼物名称。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "礼物会无视用户屏蔽设置。")
         '
         'PictureBox_ToolTipNotification
         '
@@ -622,6 +622,9 @@ Partial Class TTSDanmakuMgmt
         '
         'TextBox_Debug
         '
+        Me.TextBox_Debug.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox_Debug.Location = New System.Drawing.Point(10, 27)
         Me.TextBox_Debug.Multiline = True
         Me.TextBox_Debug.Name = "TextBox_Debug"
@@ -663,6 +666,17 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_BasicSettings.TabIndex = 0
         Me.TabPage_BasicSettings.Text = "基本设置"
         Me.TabPage_BasicSettings.UseVisualStyleBackColor = True
+        '
+        'CheckBox_OneByOne
+        '
+        Me.CheckBox_OneByOne.AutoSize = True
+        Me.CheckBox_OneByOne.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.CheckBox_OneByOne.Location = New System.Drawing.Point(6, 146)
+        Me.CheckBox_OneByOne.Name = "CheckBox_OneByOne"
+        Me.CheckBox_OneByOne.Size = New System.Drawing.Size(106, 22)
+        Me.CheckBox_OneByOne.TabIndex = 5
+        Me.CheckBox_OneByOne.Text = "逐条读出 TTS"
+        Me.CheckBox_OneByOne.UseVisualStyleBackColor = True
         '
         'TabPage_Advanced
         '
@@ -823,17 +837,6 @@ Partial Class TTSDanmakuMgmt
         Me.Label_AboutTitle.Size = New System.Drawing.Size(111, 21)
         Me.Label_AboutTitle.TabIndex = 0
         Me.Label_AboutTitle.Text = "TTSDanmaku"
-        '
-        'CheckBox_OneByOne
-        '
-        Me.CheckBox_OneByOne.AutoSize = True
-        Me.CheckBox_OneByOne.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.CheckBox_OneByOne.Location = New System.Drawing.Point(6, 146)
-        Me.CheckBox_OneByOne.Name = "CheckBox_OneByOne"
-        Me.CheckBox_OneByOne.Size = New System.Drawing.Size(106, 22)
-        Me.CheckBox_OneByOne.TabIndex = 5
-        Me.CheckBox_OneByOne.Text = "逐条读出 TTS"
-        Me.CheckBox_OneByOne.UseVisualStyleBackColor = True
         '
         'TTSDanmakuMgmt
         '

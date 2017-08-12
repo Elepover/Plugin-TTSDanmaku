@@ -194,12 +194,14 @@ Module Includings
     ''' <param name="user">目标用户</param>
     ''' <returns></returns>
     Public Function UserExists(list As String, user As String) As Boolean
-        Dim strs As String() = list.Split(New String() {vbCrLf, vbCr, vbLf}, StringSplitOptions.RemoveEmptyEntries)
+        Dim strs As String() = list.Split(New String() {vbCrLf, vbCr, vbLf}, StringSplitOptions.None)
+        Dim pass As Boolean = False
         For Each s As String In strs
-            If s = user Then Return True
+            If s.Replace(vbCr, "").Replace(vbLf, "").Replace(" ", "") = user.Replace(vbCr, "").Replace(vbLf, "").Replace(" ", "") Then pass = True
         Next
-        Return False
+        Return pass
     End Function
+
 
     Public Function GetRandomFilename() As String
         Dim ran1 As Integer = 0
