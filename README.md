@@ -69,7 +69,9 @@ v1.0.4, build 54 ->
 [+] 加入礼物黑白名单功能。
 [+] 更细致的版本区分(Stable, Beta, Live)
 [+] 现在可以在 AppVeyor 上获得实时更新的 TTSDanmaku Live 版。
+[i] 放心，你们在 AppVeyor 上面获得的插件全是 Live 版（逃
 [+] 提高稳定性。
+[+] 插件运行环境页面。
 [+] 完善 Layouts 和 TabIndexes.
 [+] 加入一个程序媛一般都能找到的彩蛋。
 
