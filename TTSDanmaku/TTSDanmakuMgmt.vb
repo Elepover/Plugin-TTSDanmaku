@@ -236,7 +236,7 @@
         TextBox_Stats.AppendText("静默模式播放计数: " & Statistics.TTS_Silent & vbCrLf)
         TextBox_Stats.AppendText("房间人数数据接收次数: " & Statistics.DBG_ReceivedRoomCount & vbCrLf)
         TextBox_Stats.AppendText("插件运行过程中出错次数: " & Statistics.DBG_ErrCount & vbCrLf)
-        TextBox_Stats.AppendText("等待播放的 TTS 数量: " & PendingTTSes.Count)
+        TextBox_Stats.AppendText("等待播放的 TTS 数量: " & PendingTTSes.Count & vbCrLf)
         If IsNothing(Statistics.DBG_LastException) Then
             TextBox_Stats.AppendText("最后一次发生的错误: 无" & vbCrLf)
         Else

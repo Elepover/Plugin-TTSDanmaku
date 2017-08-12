@@ -6,7 +6,7 @@ Imports System.Net
 Module Includings
 
     '排队读 / TTS Dispatching Center
-    Friend WithEvents GlobalPlayer As NAudio.Wave.WaveOutEvent
+    Friend WithEvents GlobalPlayer As New NAudio.Wave.WaveOutEvent
 
     Public Sub PlayFinished(sender As Object, e As NAudio.Wave.StoppedEventArgs) Handles GlobalPlayer.PlaybackStopped
         If Settings.Settings.TTSDelayEnabled Then StartCoolDown() '启动冷却
@@ -20,15 +20,19 @@ Module Includings
                     End Try
                 End If
             End If
-            PendingTTSes.RemoveAt(0) '删掉已经读出的
-            PendingFilenames.RemoveAt(0) '删掉已经读出的
-            GlobalPlayer.Init(PendingTTSes.ElementAt(0)) '继续播放
-            GlobalPlayer.Play()
+            Try
+                GlobalPlayer.Init(PendingTTSes(0))
+                GlobalPlayer.Play()
+            Catch ex As Exception
+            End Try
+            PendingTTSes.RemoveAt(0)
+            PendingFilenames.RemoveAt(0)
         End If
     End Sub
 
     Public Sub NPlayTTS(filename As String)
         If IsCoolingDown Then Exit Sub
+
         GlobalPlayer.Volume = Settings.Settings.TTSVolume / 100
 
         If Settings.Settings.ReadInArray = False Then
@@ -66,9 +70,8 @@ Module Includings
         End If
     End Sub
 
-    Public CurrentFilename As String
-    Public PendingTTSes As List(Of NAudio.Wave.Mp3FileReader)
-    Public PendingFilenames As List(Of String)
+    Public PendingTTSes As New List(Of NAudio.Wave.Mp3FileReader)
+    Public PendingFilenames As New List(Of String)
     Public IsCoolingDown As Boolean = False
 
     Public Sub CountDown()

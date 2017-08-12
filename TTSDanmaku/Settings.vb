@@ -317,7 +317,7 @@ Namespace Settings
         ''' 队列读出
         ''' </summary>
         ''' <returns></returns>
-        Public Shared Property ReadInArray As String
+        Public Shared Property ReadInArray As Boolean
     End Class
 
     Public Class Vars
@@ -449,7 +449,10 @@ Namespace Settings
                 SettingsReader.ReadLine()
                 Settings.Block_Mode = SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
+                Settings.GiftBlock_Mode = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
                 Settings.ReadInArray = SettingsReader.ReadLine()
+
                 SettingsReader.Close()
 
                 Settings.Blacklist = BlacklistReader.ReadToEnd()
