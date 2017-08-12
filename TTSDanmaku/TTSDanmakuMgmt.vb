@@ -148,6 +148,29 @@
             Label_Whitelist.Font = New Drawing.Font(Label_Whitelist.Font, Drawing.FontStyle.Regular)
             Label_Whitelist.Text = "白名单"
         End If
+
+        If Not ComboBox_GiftBlockMode.SelectedIndex = Settings.Settings.GiftBlock_Mode Then
+            ComboBox_GiftBlockMode.Font = New Drawing.Font(ComboBox_GiftBlockMode.Font, Drawing.FontStyle.Bold)
+        Else
+            ComboBox_GiftBlockMode.Font = New Drawing.Font(ComboBox_GiftBlockMode.Font, Drawing.FontStyle.Regular)
+        End If
+
+        If Not TextBox_GiftBlacklist.Text = Settings.Settings.GiftBlacklist Then
+            Label_GiftBlacklist.Font = New Drawing.Font(Label_GiftBlacklist.Font, Drawing.FontStyle.Bold)
+            Label_GiftBlacklist.Text = "黑名单*"
+        Else
+            Label_GiftBlacklist.Font = New Drawing.Font(Label_GiftBlacklist.Font, Drawing.FontStyle.Regular)
+            Label_GiftBlacklist.Text = "黑名单"
+        End If
+
+        If Not TextBox_GiftWhitelist.Text = Settings.Settings.GiftWhitelist Then
+            Label_GiftWhitelist.Font = New Drawing.Font(Label_GiftWhitelist.Font, Drawing.FontStyle.Bold)
+            Label_GiftWhitelist.Text = "白名单*"
+        Else
+            Label_GiftWhitelist.Font = New Drawing.Font(Label_GiftWhitelist.Font, Drawing.FontStyle.Regular)
+            Label_GiftWhitelist.Text = "白名单"
+        End If
+
         If Not NumericUpDown_SpeechSpeed.Value = Settings.Settings.NETFramework_VoiceSpeed Then
             NumericUpDown_SpeechSpeed.Font = New Drawing.Font(NumericUpDown_SpeechSpeed.Font, Drawing.FontStyle.Bold)
         Else
@@ -175,11 +198,15 @@
 
         ComboBox_Engine.SelectedIndex = Settings.Settings.Engine
         ComboBox_Blockmode.SelectedIndex = Settings.Settings.Block_Mode
+        ComboBox_GiftBlockMode.SelectedIndex = Settings.Settings.GiftBlock_Mode
 
         CheckBox_NoKeepingCache.Checked = Settings.Settings.DoNotKeepCache
 
         TextBox_Blacklist.Text = Settings.Settings.Blacklist
         TextBox_Whitelist.Text = Settings.Settings.Whitelist
+        TextBox_GiftBlacklist.Text = Settings.Settings.GiftBlacklist
+        TextBox_GiftWhitelist.Text = Settings.Settings.GiftWhitelist
+
         NumericUpDown_SpeechSpeed.Value = Settings.Settings.NETFramework_VoiceSpeed
 
         TextBox_Stats.Clear()
@@ -200,56 +227,68 @@
             TextBox_Stats.AppendText("最后一次发生的错误: " & Statistics.DBG_LastException.ToString & vbCrLf)
         End If
         Status("应用字体...")
-        CheckBox_NoCache.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        CheckBox_TTSCoolDown.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        CheckBox_TTSDebug.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        CheckBox_TTSGifts.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        CheckBox_TTSSender.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TextBox_CustomDMContent.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TextBox_CustomGiftContent.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TextBox_Files.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TextBox_Stats.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_CustomDM_Header.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_CustomGiftContent_Header.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_Value_Prefix.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_SpeechEngine.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        LinkLabel_About.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        LinkLabel_FAQ.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        LinkLabel_Suggestions.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        StatusLabel_Default.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Button_Apply.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Button_Close.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Button_Load.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Button_DeleteAll.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Button_Reload.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        NumericUpDown_CoolDownValue.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        ComboBox_Engine.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        GroupBox_TempMgr.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+
+        Dim font As New Drawing.Font("Microsoft Yahei UI", 9)
+
+        CheckBox_NoCache.Font = font
+        CheckBox_TTSCoolDown.Font = font
+        CheckBox_TTSDebug.Font = font
+        CheckBox_TTSGifts.Font = font
+        CheckBox_TTSSender.Font = font
+        TextBox_CustomDMContent.Font = font
+        TextBox_CustomGiftContent.Font = font
+        TextBox_Files.Font = font
+        TextBox_Stats.Font = font
+        Label_CustomDM_Header.Font = font
+        Label_CustomGiftContent_Header.Font = font
+        Label_Value_Prefix.Font = font
+        Label_SpeechEngine.Font = font
+        LinkLabel_About.Font = font
+        LinkLabel_FAQ.Font = font
+        LinkLabel_Suggestions.Font = font
+        StatusLabel_Default.Font = font
+        Button_Apply.Font = font
+        Button_Close.Font = font
+        Button_Load.Font = font
+        Button_DeleteAll.Font = font
+        Button_Reload.Font = font
+        NumericUpDown_CoolDownValue.Font = font
+        ComboBox_Engine.Font = font
+        GroupBox_TempMgr.Font = font
         Label_ThanksViaMyHeart.Font = New Drawing.Font("Microsoft Yahei UI", 10)
-        Label_TTSVolume.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        NumericUpDown_Volume.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        CheckBox_NoKeepingCache.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_CustomConnected.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TextBox_CustomConnected.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_RetryCount.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        NumericUpDown_RetryCount.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_SpeechSpeed.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        NumericUpDown_SpeechSpeed.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Button_CheckUpdates.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Button_ProxySettings.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        ComboBox_Blockmode.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_Blockmode.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_Blacklist.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        Label_Whitelist.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TextBox_Blacklist.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TextBox_Whitelist.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        Label_TTSVolume.Font = font
+        NumericUpDown_Volume.Font = font
+        CheckBox_NoKeepingCache.Font = font
+        Label_CustomConnected.Font = font
+        TextBox_CustomConnected.Font = font
+        Label_RetryCount.Font = font
+        NumericUpDown_RetryCount.Font = font
+        Label_SpeechSpeed.Font = font
+        NumericUpDown_SpeechSpeed.Font = font
+        Button_CheckUpdates.Font = font
+        Button_ProxySettings.Font = font
 
-        TabControl_PluginSettings.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TabPage_Advanced.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TabPage_BasicSettings.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TabPage_Customization.Font = New Drawing.Font("Microsoft Yahei UI", 9)
-        TabPage_Statistics.Font = New Drawing.Font("Microsoft Yahei UI", 9)
+        ComboBox_Blockmode.Font = font
+        ComboBox_GiftBlockMode.Font = font
 
+        Label_Blockmode.Font = font
+        Label_Blacklist.Font = font
+        Label_Whitelist.Font = font
+        TextBox_Blacklist.Font = font
+        TextBox_Whitelist.Font = font
+
+        Label_GiftBlockMode.Font = font
+        Label_GiftBlacklist.Font = font
+        Label_GiftWhitelist.Font = font
+        TextBox_GiftBlacklist.Font = font
+        TextBox_GiftWhitelist.Font = font
+
+        TabControl_PluginSettings.Font = font
+        TabPage_Advanced.Font = font
+        TabPage_BasicSettings.Font = font
+        TabPage_Customization.Font = font
+        TabPage_Statistics.Font = font
+        TabPage_Blocking.Font = font
 
         Status("就绪", False)
     End Sub
@@ -272,6 +311,9 @@
         Settings.Settings.Block_Mode = ComboBox_Blockmode.SelectedIndex
         Settings.Settings.Blacklist = TextBox_Blacklist.Text
         Settings.Settings.Whitelist = TextBox_Whitelist.Text
+        Settings.Settings.GiftBlock_Mode = ComboBox_GiftBlockMode.SelectedIndex
+        Settings.Settings.GiftBlacklist = TextBox_GiftBlacklist.Text
+        Settings.Settings.GiftWhitelist = TextBox_GiftWhitelist.Text
         Settings.Settings.NETFramework_VoiceSpeed = NumericUpDown_SpeechSpeed.Value
         '检查自定义字符是否正常
         Dim IllegalVars_DM As Boolean = CheckIfLegal_DM()
@@ -353,7 +395,7 @@
         Status("操作成功: " & count & " 个。")
     End Sub
 
-    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, NumericUpDown_Volume.ValueChanged, NumericUpDown_RetryCount.ValueChanged, TextBox_CustomConnected.TextChanged, ComboBox_Engine.SelectedIndexChanged, CheckBox_NoKeepingCache.CheckedChanged, NumericUpDown_SpeechSpeed.ValueChanged
+    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, NumericUpDown_Volume.ValueChanged, NumericUpDown_RetryCount.ValueChanged, TextBox_CustomConnected.TextChanged, ComboBox_Engine.SelectedIndexChanged, CheckBox_NoKeepingCache.CheckedChanged, NumericUpDown_SpeechSpeed.ValueChanged, TextBox_GiftBlacklist.TextChanged, TextBox_GiftWhitelist.TextChanged, ComboBox_GiftBlockMode.SelectedIndexChanged, ComboBox_Blockmode.SelectedIndexChanged, TextBox_Blacklist.TextChanged, TextBox_Whitelist.TextChanged
         UpdateControl()
     End Sub
 
