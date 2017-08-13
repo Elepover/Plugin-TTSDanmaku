@@ -246,6 +246,7 @@ retry:
         If e.Danmaku.MsgType = BilibiliDM_PluginFramework.MsgTypeEnum.Comment Then
             '检查斑马名单配置
             If Settings.Settings.BlockType = 1 Then
+                DBGLog("用户名屏蔽模式。")
                 Select Case Settings.Settings.Block_Mode
                     Case 0
                     Case 1
@@ -261,15 +262,16 @@ retry:
                     Case Else
                 End Select
             Else
+                DBGLog("UID 屏蔽模式。")
                 Select Case Settings.Settings.Block_Mode
                     Case 0
                     Case 1
-                        If UserExists(Settings.Settings.Blacklist, e.Danmaku.UserName) Then
+                        If UserExists(Settings.Settings.Blacklist, e.Danmaku.UserID) Then
                             DBGLog("用户 " & e.Danmaku.UserName & " (UID:  " & e.Danmaku.UserID & ") 在黑名单中，放弃。")
                             Exit Sub
                         End If
                     Case 2
-                        If Not UserExists(Settings.Settings.Whitelist, e.Danmaku.UserName) Then
+                        If Not UserExists(Settings.Settings.Whitelist, e.Danmaku.UserID) Then
                             DBGLog("用户 " & e.Danmaku.UserName & " (UID:  " & e.Danmaku.UserID & ") 不在白名单中，放弃。")
                             Exit Sub
                         End If
