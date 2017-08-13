@@ -618,6 +618,7 @@ Partial Class TTSDanmakuMgmt
         'PictureBox_ToolTipNotification
         '
         Me.PictureBox_ToolTipNotification.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox_ToolTipNotification.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox_ToolTipNotification.Image = Global.TTSDanmaku.My.Resources.Resources.info
         Me.PictureBox_ToolTipNotification.Location = New System.Drawing.Point(600, 7)
         Me.PictureBox_ToolTipNotification.Name = "PictureBox_ToolTipNotification"
