@@ -238,5 +238,8 @@
   <ItemGroup>
     <None Include="Resources\info.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

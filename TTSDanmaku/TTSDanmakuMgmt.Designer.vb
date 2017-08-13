@@ -92,6 +92,7 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
         Me.TabPage_DebuggingInfo = New System.Windows.Forms.TabPage()
         Me.Label_AboutTitle = New System.Windows.Forms.Label()
+        Me.PictureBox_ModifiedAlert = New System.Windows.Forms.PictureBox()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -107,6 +108,7 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Customization.SuspendLayout()
         Me.TabPage_Statistics.SuspendLayout()
         Me.TabPage_DebuggingInfo.SuspendLayout()
+        CType(Me.PictureBox_ModifiedAlert, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StatusStrip_Main
@@ -889,15 +891,28 @@ Partial Class TTSDanmakuMgmt
         Me.Label_AboutTitle.TabIndex = 0
         Me.Label_AboutTitle.Text = "TTSDanmaku"
         '
+        'PictureBox_ModifiedAlert
+        '
+        Me.PictureBox_ModifiedAlert.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox_ModifiedAlert.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox_ModifiedAlert.Image = Global.TTSDanmaku.My.Resources.Resources.warning
+        Me.PictureBox_ModifiedAlert.Location = New System.Drawing.Point(586, 462)
+        Me.PictureBox_ModifiedAlert.Name = "PictureBox_ModifiedAlert"
+        Me.PictureBox_ModifiedAlert.Size = New System.Drawing.Size(16, 16)
+        Me.PictureBox_ModifiedAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox_ModifiedAlert.TabIndex = 11
+        Me.PictureBox_ModifiedAlert.TabStop = False
+        Me.ToolTip_Default.SetToolTip(Me.PictureBox_ModifiedAlert, "直接关闭将丢失所有已保存的设置。")
+        '
         'TTSDanmakuMgmt
         '
         Me.AcceptButton = Me.Button_Apply
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.White
         Me.CancelButton = Me.Button_Close
         Me.ClientSize = New System.Drawing.Size(624, 481)
+        Me.Controls.Add(Me.PictureBox_ModifiedAlert)
         Me.Controls.Add(Me.PictureBox_ToolTipNotification)
         Me.Controls.Add(Me.TabControl_PluginSettings)
         Me.Controls.Add(Me.Button_CheckUpdates)
@@ -940,6 +955,7 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics.PerformLayout()
         Me.TabPage_DebuggingInfo.ResumeLayout(False)
         Me.TabPage_DebuggingInfo.PerformLayout()
+        CType(Me.PictureBox_ModifiedAlert, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1013,4 +1029,5 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents Label_BlockType As Windows.Forms.Label
     Friend WithEvents Label_UID As Windows.Forms.Label
     Friend WithEvents Label_Username As Windows.Forms.Label
+    Friend WithEvents PictureBox_ModifiedAlert As Windows.Forms.PictureBox
 End Class
