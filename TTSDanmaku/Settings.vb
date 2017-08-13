@@ -62,6 +62,7 @@ Namespace Settings
             GiftBlacklist = ""
             GiftWhitelist = ""
             ReadInArray = True
+            BlockType = 0
         End Sub
         ''' <summary>
         ''' 只读设置项, API 字符串。
@@ -318,6 +319,11 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property ReadInArray As Boolean
+        ''' <summary>
+        ''' 屏蔽类型 (0 = UID, 1 = 用户名)
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property BlockType As String
     End Class
 
     Public Class Vars
@@ -452,6 +458,8 @@ Namespace Settings
                 Settings.GiftBlock_Mode = SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
                 Settings.ReadInArray = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.BlockType = SettingsReader.ReadLine()
 
                 SettingsReader.Close()
 
@@ -541,6 +549,8 @@ Namespace Settings
             SettingsWriter.WriteLine("0")
             SettingsWriter.WriteLine("队列读出")
             SettingsWriter.WriteLine("True")
+            SettingsWriter.WriteLine("黑白名单目标 (0 = UID, 1 = 用户名)")
+            SettingsWriter.WriteLine(0)
             SettingsWriter.Close()
 
             Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
@@ -613,6 +623,8 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.GiftBlock_Mode)
             SettingsWriter.WriteLine("队列读出")
             SettingsWriter.WriteLine(Settings.ReadInArray)
+            SettingsWriter.WriteLine("黑白名单目标 (0 = UID, 1 = 用户名)")
+            SettingsWriter.WriteLine(Settings.BlockType)
             SettingsWriter.Close()
 
             Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}

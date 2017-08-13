@@ -88,6 +88,10 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
         Me.TabPage_DebuggingInfo = New System.Windows.Forms.TabPage()
         Me.Label_AboutTitle = New System.Windows.Forms.Label()
+        Me.Label_BlockType = New System.Windows.Forms.Label()
+        Me.TrackBar_BlockType = New System.Windows.Forms.TrackBar()
+        Me.Label_UID = New System.Windows.Forms.Label()
+        Me.Label_Username = New System.Windows.Forms.Label()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -102,6 +106,7 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Customization.SuspendLayout()
         Me.TabPage_Statistics.SuspendLayout()
         Me.TabPage_DebuggingInfo.SuspendLayout()
+        CType(Me.TrackBar_BlockType, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StatusStrip_Main
@@ -715,6 +720,10 @@ Partial Class TTSDanmakuMgmt
         '
         'TabPage_Blocking
         '
+        Me.TabPage_Blocking.Controls.Add(Me.Label_Username)
+        Me.TabPage_Blocking.Controls.Add(Me.Label_UID)
+        Me.TabPage_Blocking.Controls.Add(Me.TrackBar_BlockType)
+        Me.TabPage_Blocking.Controls.Add(Me.Label_BlockType)
         Me.TabPage_Blocking.Controls.Add(Me.ComboBox_GiftBlockMode)
         Me.TabPage_Blocking.Controls.Add(Me.Label_GiftBlockMode)
         Me.TabPage_Blocking.Controls.Add(Me.TextBox_GiftWhitelist)
@@ -838,6 +847,44 @@ Partial Class TTSDanmakuMgmt
         Me.Label_AboutTitle.TabIndex = 0
         Me.Label_AboutTitle.Text = "TTSDanmaku"
         '
+        'Label_BlockType
+        '
+        Me.Label_BlockType.AutoSize = True
+        Me.Label_BlockType.Location = New System.Drawing.Point(385, 3)
+        Me.Label_BlockType.Name = "Label_BlockType"
+        Me.Label_BlockType.Size = New System.Drawing.Size(56, 17)
+        Me.Label_BlockType.TabIndex = 12
+        Me.Label_BlockType.Text = "屏蔽类型"
+        '
+        'TrackBar_BlockType
+        '
+        Me.TrackBar_BlockType.BackColor = System.Drawing.Color.White
+        Me.TrackBar_BlockType.Location = New System.Drawing.Point(388, 23)
+        Me.TrackBar_BlockType.Maximum = 1
+        Me.TrackBar_BlockType.Name = "TrackBar_BlockType"
+        Me.TrackBar_BlockType.Size = New System.Drawing.Size(198, 45)
+        Me.TrackBar_BlockType.TabIndex = 13
+        Me.ToolTip_Default.SetToolTip(Me.TrackBar_BlockType, "<<< 滑动来改变 >>>")
+        '
+        'Label_UID
+        '
+        Me.Label_UID.Location = New System.Drawing.Point(388, 51)
+        Me.Label_UID.Name = "Label_UID"
+        Me.Label_UID.Size = New System.Drawing.Size(53, 31)
+        Me.Label_UID.TabIndex = 14
+        Me.Label_UID.Text = "UID"
+        Me.ToolTip_Default.SetToolTip(Me.Label_UID, "与用户绑定的数字 ID, 永远不变且具有唯一性。")
+        '
+        'Label_Username
+        '
+        Me.Label_Username.Location = New System.Drawing.Point(521, 51)
+        Me.Label_Username.Name = "Label_Username"
+        Me.Label_Username.Size = New System.Drawing.Size(65, 31)
+        Me.Label_Username.TabIndex = 14
+        Me.Label_Username.Text = "用户名"
+        Me.Label_Username.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.ToolTip_Default.SetToolTip(Me.Label_Username, "用户为自己设置的用户名称。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "（用户可能可以通过修改用户名来绕过限制）")
+        '
         'TTSDanmakuMgmt
         '
         Me.AcceptButton = Me.Button_Apply
@@ -888,6 +935,7 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics.PerformLayout()
         Me.TabPage_DebuggingInfo.ResumeLayout(False)
         Me.TabPage_DebuggingInfo.PerformLayout()
+        CType(Me.TrackBar_BlockType, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -957,4 +1005,8 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents Label_AboutTitle As Windows.Forms.Label
     Friend WithEvents TextBox_Debug As Windows.Forms.TextBox
     Friend WithEvents CheckBox_OneByOne As Windows.Forms.CheckBox
+    Friend WithEvents TrackBar_BlockType As Windows.Forms.TrackBar
+    Friend WithEvents Label_BlockType As Windows.Forms.Label
+    Friend WithEvents Label_UID As Windows.Forms.Label
+    Friend WithEvents Label_Username As Windows.Forms.Label
 End Class

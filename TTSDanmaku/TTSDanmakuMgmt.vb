@@ -176,6 +176,14 @@
             Label_GiftWhitelist.Text = "白名单"
         End If
 
+        If Not TrackBar_BlockType.Value = Settings.Settings.BlockType Then
+            Label_UID.Font = New Drawing.Font(Label_UID.Font, Drawing.FontStyle.Bold)
+            Label_Username.Font = New Drawing.Font(Label_Username.Font, Drawing.FontStyle.Bold)
+        Else
+            Label_UID.Font = New Drawing.Font(Label_UID.Font, Drawing.FontStyle.Regular)
+            Label_Username.Font = New Drawing.Font(Label_Username.Font, Drawing.FontStyle.Regular)
+        End If
+
         If Not NumericUpDown_SpeechSpeed.Value = Settings.Settings.NETFramework_VoiceSpeed Then
             NumericUpDown_SpeechSpeed.Font = New Drawing.Font(NumericUpDown_SpeechSpeed.Font, Drawing.FontStyle.Bold)
         Else
@@ -213,6 +221,7 @@
         TextBox_Whitelist.Text = Settings.Settings.Whitelist
         TextBox_GiftBlacklist.Text = Settings.Settings.GiftBlacklist
         TextBox_GiftWhitelist.Text = Settings.Settings.GiftWhitelist
+        TrackBar_BlockType.Value = Settings.Settings.BlockType
 
         NumericUpDown_SpeechSpeed.Value = Settings.Settings.NETFramework_VoiceSpeed
 
@@ -294,6 +303,10 @@
         NumericUpDown_RetryCount.Font = font
         Label_SpeechSpeed.Font = font
         NumericUpDown_SpeechSpeed.Font = font
+        Label_BlockType.Font = font
+        TrackBar_BlockType.Font = font
+        Label_UID.Font = font
+        Label_Username.Font = font
         Button_CheckUpdates.Font = font
         Button_ProxySettings.Font = font
         CheckBox_OneByOne.Font = font
@@ -348,6 +361,7 @@
         Settings.Settings.GiftBlock_Mode = ComboBox_GiftBlockMode.SelectedIndex
         Settings.Settings.GiftBlacklist = TextBox_GiftBlacklist.Text
         Settings.Settings.GiftWhitelist = TextBox_GiftWhitelist.Text
+        Settings.Settings.BlockType = TrackBar_BlockType.Value
 
         Settings.Settings.NETFramework_VoiceSpeed = NumericUpDown_SpeechSpeed.Value
         '检查自定义字符是否正常
@@ -430,7 +444,7 @@
         Status("操作成功: " & count & " 个。")
     End Sub
 
-    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, NumericUpDown_Volume.ValueChanged, NumericUpDown_RetryCount.ValueChanged, TextBox_CustomConnected.TextChanged, ComboBox_Engine.SelectedIndexChanged, CheckBox_NoKeepingCache.CheckedChanged, NumericUpDown_SpeechSpeed.ValueChanged, TextBox_GiftBlacklist.TextChanged, TextBox_GiftWhitelist.TextChanged, ComboBox_GiftBlockMode.SelectedIndexChanged, ComboBox_Blockmode.SelectedIndexChanged, TextBox_Blacklist.TextChanged, TextBox_Whitelist.TextChanged, CheckBox_OneByOne.CheckedChanged
+    Private Sub ControlReloadReceiver(sender As Object, e As EventArgs) Handles CheckBox_TTSDebug.CheckedChanged, CheckBox_TTSSender.CheckedChanged, CheckBox_TTSGifts.CheckedChanged, CheckBox_NoCache.CheckedChanged, CheckBox_TTSCoolDown.CheckedChanged, NumericUpDown_CoolDownValue.ValueChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, NumericUpDown_Volume.ValueChanged, NumericUpDown_RetryCount.ValueChanged, TextBox_CustomConnected.TextChanged, ComboBox_Engine.SelectedIndexChanged, CheckBox_NoKeepingCache.CheckedChanged, NumericUpDown_SpeechSpeed.ValueChanged, TextBox_GiftBlacklist.TextChanged, TextBox_GiftWhitelist.TextChanged, ComboBox_GiftBlockMode.SelectedIndexChanged, ComboBox_Blockmode.SelectedIndexChanged, TextBox_Blacklist.TextChanged, TextBox_Whitelist.TextChanged, CheckBox_OneByOne.CheckedChanged, TrackBar_BlockType.ValueChanged
         UpdateControl()
     End Sub
 

@@ -245,20 +245,38 @@ retry:
     Private Sub Main_ReceivedDanmaku(sender As Object, e As BilibiliDM_PluginFramework.ReceivedDanmakuArgs)
         If e.Danmaku.MsgType = BilibiliDM_PluginFramework.MsgTypeEnum.Comment Then
             '检查斑马名单配置
-            Select Case Settings.Settings.Block_Mode
-                Case 0
-                Case 1
-                    If UserExists(Settings.Settings.Blacklist, e.Danmaku.UserName) Then
-                        DBGLog("用户 " & e.Danmaku.UserName & " 在黑名单中，放弃。")
-                        Exit Sub
-                    End If
-                Case 2
-                    If Not UserExists(Settings.Settings.Whitelist, e.Danmaku.UserName) Then
-                        DBGLog("用户 " & e.Danmaku.UserName & " 不在白名单中，放弃。")
-                        Exit Sub
-                    End If
-                Case Else
-            End Select
+            If Settings.Settings.BlockType = 1 Then
+                Select Case Settings.Settings.Block_Mode
+                    Case 0
+                    Case 1
+                        If UserExists(Settings.Settings.Blacklist, e.Danmaku.UserName) Then
+                            DBGLog("用户 " & e.Danmaku.UserName & " (UID:  " & e.Danmaku.UserID & ") 在黑名单中，放弃。")
+                            Exit Sub
+                        End If
+                    Case 2
+                        If Not UserExists(Settings.Settings.Whitelist, e.Danmaku.UserName) Then
+                            DBGLog("用户 " & e.Danmaku.UserName & " (UID:  " & e.Danmaku.UserID & ") 不在白名单中，放弃。")
+                            Exit Sub
+                        End If
+                    Case Else
+                End Select
+            Else
+                Select Case Settings.Settings.Block_Mode
+                    Case 0
+                    Case 1
+                        If UserExists(Settings.Settings.Blacklist, e.Danmaku.UserName) Then
+                            DBGLog("用户 " & e.Danmaku.UserName & " (UID:  " & e.Danmaku.UserID & ") 在黑名单中，放弃。")
+                            Exit Sub
+                        End If
+                    Case 2
+                        If Not UserExists(Settings.Settings.Whitelist, e.Danmaku.UserName) Then
+                            DBGLog("用户 " & e.Danmaku.UserName & " (UID:  " & e.Danmaku.UserID & ") 不在白名单中，放弃。")
+                            Exit Sub
+                        End If
+                    Case Else
+                End Select
+            End If
+
             If Settings.Settings.TTSDanmakuSender Then
                 Dim unreplacedText As String = Settings.Settings.DanmakuText
                 Dim replacedText As String = unreplacedText.Replace("$USER", e.Danmaku.UserName).Replace("$DM", e.Danmaku.CommentText)
