@@ -2,9 +2,9 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/o3wb9g7am3h4peny?svg=true)](https://ci.appveyor.com/project/Elepover/plugin-ttsdanmaku)
 
-The TTSDanmaku plugin for bililive_dm (https://github.com/copyliu/bililive_dm)
+The TTSDanmaku plugin for Bililive_dm (https://github.com/copyliu/bililive_dm)
 
-Description last updated at: 07/31/2017 08:52 (GMT)
+Description last updated at: 08/13/2017 03:02 (GMT)
 
 有问题或是有建议可以 [在作者的 Blog](https://blog.elepover.com/quoteLeft.html) 通过评论提交。
 
@@ -70,9 +70,14 @@ v1.0.4, build 54 ->
 [+] 更细致的版本区分(Stable, Beta, Live)
 [+] 现在可以在 AppVeyor 上获得实时更新的 TTSDanmaku Live 版。
 [i] 放心，你们在 AppVeyor 上面获得的插件全是 Live 版（逃
+[i] Beta 版可以通过自己编译获得。
 [+] 提高稳定性。
 [+] 插件运行环境页面。
 [+] 完善 Layouts 和 TabIndexes.
+[+] 黑白名单现在可以屏蔽 UID 了。
+[/] 修改 THANKS.md 为 CONTRIBUTING.md, 以符合 Community Standards.
+[+] 加入设置窗口右上角小提醒。
+[/] 修改窗口颜色。
 [+] 加入一个程序媛一般都能找到的彩蛋。
 
 v1.0.4, build 53 ->

@@ -18,6 +18,8 @@
 | Zvmaind | QQ | 系统自带引擎语速修复 |
 | LenZhou | 留言板 | TTS 音量调节 |
 | YuXStudio | 讨论区 | 缓存立删功能 |
+| 匿名用户 | / | 黑白名单模式 |
+| 多个用户* | / | 弹幕逐个读出功能 |
 | ... | ... | ... |
 
 | Source / 源 | Link / 链接 |
@@ -26,6 +28,14 @@
 | 留言板 | https://blog.elepover.com/quoteLeft.html |
 | 讨论区 | [https://f.danmuji.cn](https://f.danmuji.cn/category/6/%E9%9C%80%E6%B1%82-%E5%BB%BA%E8%AE%AE) |
 | ... | ... |
+
+*: 来自 Blog 留言板的以下用户:
+
+- miracle
+- Yellabble
+- 饭团砸
+- mymonkeyking
+
 
 真诚感谢所有用户在安装和使用本插件的过程中花费的分分秒秒。
 

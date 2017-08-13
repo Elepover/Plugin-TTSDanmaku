@@ -334,6 +334,13 @@
         TabPage_Statistics.Font = font
         TabPage_Blocking.Font = font
 
+        TabPage_Advanced.BackColor = Drawing.Color.White
+        TabPage_BasicSettings.BackColor = Drawing.Color.White
+        TabPage_Blocking.BackColor = Drawing.Color.White
+        TabPage_Customization.BackColor = Drawing.Color.White
+        TabPage_DebuggingInfo.BackColor = Drawing.Color.White
+        TabPage_Statistics.BackColor = Drawing.Color.White
+
         Status("就绪", False)
     End Sub
 #End Region
