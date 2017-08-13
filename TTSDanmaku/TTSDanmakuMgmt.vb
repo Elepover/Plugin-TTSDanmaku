@@ -227,6 +227,7 @@
 
         If Edition = "Live" Then
             Me.Text = "TTSDanmaku v" & version & " (Live) - **EXPERIMENTAL**"
+            Label_ThanksViaMyHeart.Text = "感谢您使用 Live 版。"
         Else
             Me.Text = "TTSDanmaku v" & version & " (" & Edition & ")"
         End If
