@@ -75,6 +75,7 @@ Partial Class TTSDanmakuMgmt
         Me.TrackBar_BlockType = New System.Windows.Forms.TrackBar()
         Me.Label_UID = New System.Windows.Forms.Label()
         Me.Label_Username = New System.Windows.Forms.Label()
+        Me.PictureBox_ModifiedAlert = New System.Windows.Forms.PictureBox()
         Me.TabControl_PluginSettings = New System.Windows.Forms.TabControl()
         Me.TabPage_BasicSettings = New System.Windows.Forms.TabPage()
         Me.CheckBox_OneByOne = New System.Windows.Forms.CheckBox()
@@ -92,7 +93,7 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
         Me.TabPage_DebuggingInfo = New System.Windows.Forms.TabPage()
         Me.Label_AboutTitle = New System.Windows.Forms.Label()
-        Me.PictureBox_ModifiedAlert = New System.Windows.Forms.PictureBox()
+        Me.ToolStripStatusLabel_Copyright = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -101,6 +102,7 @@ Partial Class TTSDanmakuMgmt
         CType(Me.NumericUpDown_SpeechSpeed, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox_ToolTipNotification, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TrackBar_BlockType, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox_ModifiedAlert, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl_PluginSettings.SuspendLayout()
         Me.TabPage_BasicSettings.SuspendLayout()
         Me.TabPage_Advanced.SuspendLayout()
@@ -108,12 +110,11 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Customization.SuspendLayout()
         Me.TabPage_Statistics.SuspendLayout()
         Me.TabPage_DebuggingInfo.SuspendLayout()
-        CType(Me.PictureBox_ModifiedAlert, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StatusStrip_Main
         '
-        Me.StatusStrip_Main.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StatusLabel_Default})
+        Me.StatusStrip_Main.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StatusLabel_Default, Me.ToolStripStatusLabel_Copyright})
         Me.StatusStrip_Main.Location = New System.Drawing.Point(0, 459)
         Me.StatusStrip_Main.Name = "StatusStrip_Main"
         Me.StatusStrip_Main.Size = New System.Drawing.Size(624, 22)
@@ -334,7 +335,7 @@ Partial Class TTSDanmakuMgmt
         Me.CheckBox_TTSCoolDown.Size = New System.Drawing.Size(82, 22)
         Me.CheckBox_TTSCoolDown.TabIndex = 0
         Me.CheckBox_TTSCoolDown.Text = "TTS 冷却"
-        Me.ToolTip_Default.SetToolTip(Me.CheckBox_TTSCoolDown, "在读出一条弹幕的一段时间内不再读出其他弹幕。")
+        Me.ToolTip_Default.SetToolTip(Me.CheckBox_TTSCoolDown, "在读出一条弹幕的一段时间内不再读出其他弹幕。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "在「逐条读出 TTS」功能关闭后方可生效。")
         Me.CheckBox_TTSCoolDown.UseVisualStyleBackColor = True
         '
         'CheckBox_NoCache
@@ -674,6 +675,19 @@ Partial Class TTSDanmakuMgmt
         Me.Label_Username.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.ToolTip_Default.SetToolTip(Me.Label_Username, "用户为自己设置的用户名称。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "（用户可能可以通过修改用户名来绕过限制）")
         '
+        'PictureBox_ModifiedAlert
+        '
+        Me.PictureBox_ModifiedAlert.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox_ModifiedAlert.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox_ModifiedAlert.Image = Global.TTSDanmaku.My.Resources.Resources.warning
+        Me.PictureBox_ModifiedAlert.Location = New System.Drawing.Point(586, 462)
+        Me.PictureBox_ModifiedAlert.Name = "PictureBox_ModifiedAlert"
+        Me.PictureBox_ModifiedAlert.Size = New System.Drawing.Size(16, 16)
+        Me.PictureBox_ModifiedAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox_ModifiedAlert.TabIndex = 11
+        Me.PictureBox_ModifiedAlert.TabStop = False
+        Me.ToolTip_Default.SetToolTip(Me.PictureBox_ModifiedAlert, "直接关闭将丢失所有已保存的设置。")
+        '
         'TabControl_PluginSettings
         '
         Me.TabControl_PluginSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -892,18 +906,12 @@ Partial Class TTSDanmakuMgmt
         Me.Label_AboutTitle.TabIndex = 0
         Me.Label_AboutTitle.Text = "TTSDanmaku"
         '
-        'PictureBox_ModifiedAlert
+        'ToolStripStatusLabel_Copyright
         '
-        Me.PictureBox_ModifiedAlert.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox_ModifiedAlert.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox_ModifiedAlert.Image = Global.TTSDanmaku.My.Resources.Resources.warning
-        Me.PictureBox_ModifiedAlert.Location = New System.Drawing.Point(586, 462)
-        Me.PictureBox_ModifiedAlert.Name = "PictureBox_ModifiedAlert"
-        Me.PictureBox_ModifiedAlert.Size = New System.Drawing.Size(16, 16)
-        Me.PictureBox_ModifiedAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox_ModifiedAlert.TabIndex = 11
-        Me.PictureBox_ModifiedAlert.TabStop = False
-        Me.ToolTip_Default.SetToolTip(Me.PictureBox_ModifiedAlert, "直接关闭将丢失所有已保存的设置。")
+        Me.ToolStripStatusLabel_Copyright.Name = "ToolStripStatusLabel_Copyright"
+        Me.ToolStripStatusLabel_Copyright.Size = New System.Drawing.Size(546, 17)
+        Me.ToolStripStatusLabel_Copyright.Spring = True
+        Me.ToolStripStatusLabel_Copyright.Text = "本软件为开源 (MIT) 软件，版权所有 (C) 2017, Elepover."
         '
         'TTSDanmakuMgmt
         '
@@ -943,6 +951,7 @@ Partial Class TTSDanmakuMgmt
         CType(Me.NumericUpDown_SpeechSpeed, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox_ToolTipNotification, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TrackBar_BlockType, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox_ModifiedAlert, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl_PluginSettings.ResumeLayout(False)
         Me.TabPage_BasicSettings.ResumeLayout(False)
         Me.TabPage_BasicSettings.PerformLayout()
@@ -956,7 +965,6 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics.PerformLayout()
         Me.TabPage_DebuggingInfo.ResumeLayout(False)
         Me.TabPage_DebuggingInfo.PerformLayout()
-        CType(Me.PictureBox_ModifiedAlert, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1031,4 +1039,5 @@ Partial Class TTSDanmakuMgmt
     Friend WithEvents Label_UID As Windows.Forms.Label
     Friend WithEvents Label_Username As Windows.Forms.Label
     Friend WithEvents PictureBox_ModifiedAlert As Windows.Forms.PictureBox
+    Friend WithEvents ToolStripStatusLabel_Copyright As Windows.Forms.ToolStripStatusLabel
 End Class
