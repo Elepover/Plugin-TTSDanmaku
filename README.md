@@ -78,6 +78,8 @@ v1.0.4, build 54 ->
 [/] 修改 THANKS.md 为 CONTRIBUTING.md, 以符合 Community Standards.
 [+] 加入设置窗口右上角小提醒。
 [/] 修改窗口颜色。
+[+] 加入版权声明。
+[+] 加入保存警告。
 [+] 加入一个程序媛一般都能找到的彩蛋。
 
 v1.0.4, build 53 ->

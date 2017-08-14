@@ -911,7 +911,7 @@ Partial Class TTSDanmakuMgmt
         Me.ToolStripStatusLabel_Copyright.Name = "ToolStripStatusLabel_Copyright"
         Me.ToolStripStatusLabel_Copyright.Size = New System.Drawing.Size(546, 17)
         Me.ToolStripStatusLabel_Copyright.Spring = True
-        Me.ToolStripStatusLabel_Copyright.Text = "本软件为开源 (MIT) 软件，版权所有 (C) 2017, Elepover."
+        Me.ToolStripStatusLabel_Copyright.Text = "本插件为开源 (MIT) 软件，版权所有 (C) 2017, Elepover."
         '
         'TTSDanmakuMgmt
         '

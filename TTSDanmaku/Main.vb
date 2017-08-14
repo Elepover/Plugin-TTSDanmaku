@@ -448,7 +448,7 @@ APIs:
         ElseIf Edition = "Stable" Then
             Log("您正在使用稳定版插件，如需新功能可于弹幕姬插件仓库寻找 TTSDanmaku Live 版本。")
         End If
-        Log("本插件为开源软件（MIT），**不包含任何付费功能**，请谨防上当受骗。")
+        Log("本插件为开源软件（MIT），**不包含任何付费功能**，世风日下，请谨防上当受骗。")
         If startSW.ElapsedMilliseconds > 5000 Then
             Log("TTSDanmaku 启动用时比以往来得久...如有条件请将 TTSDanmaku 自动清理缓存选项关闭。")
         End If
