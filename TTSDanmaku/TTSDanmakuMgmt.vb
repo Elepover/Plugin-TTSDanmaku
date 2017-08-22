@@ -552,4 +552,14 @@
         Dim frm As New Form_ProxySettings
         frm.Show()
     End Sub
+
+    Private Sub ToolStripStatusLabel_Copyright_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel_Copyright.Click
+        Process.Start("https://github.com/Elepover/Plugin-TTSDanmaku/blob/master/LICENSE")
+    End Sub
+
+    Private Sub Label_ThanksViaMyHeart_Click(sender As Object, e As EventArgs) Handles Label_ThanksViaMyHeart.Click
+        If Edition = "Live" Then
+            NBlockMsgBox("Live 版具有高度的不稳定性和实验性，感谢您的使用。" & vbCrLf & vbCrLf & "已知问题: 由于编译环境问题，部分内置文本可能显示异常。", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "TTSDanmaku")
+        End If
+    End Sub
 End Class

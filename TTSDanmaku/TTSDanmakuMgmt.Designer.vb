@@ -26,6 +26,7 @@ Partial Class TTSDanmakuMgmt
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TTSDanmakuMgmt))
         Me.StatusStrip_Main = New System.Windows.Forms.StatusStrip()
         Me.StatusLabel_Default = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel_Copyright = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Button_ProxySettings = New System.Windows.Forms.Button()
         Me.Button_CheckUpdates = New System.Windows.Forms.Button()
         Me.NumericUpDown_RetryCount = New System.Windows.Forms.NumericUpDown()
@@ -93,7 +94,6 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_Statistics = New System.Windows.Forms.TabPage()
         Me.TabPage_DebuggingInfo = New System.Windows.Forms.TabPage()
         Me.Label_AboutTitle = New System.Windows.Forms.Label()
-        Me.ToolStripStatusLabel_Copyright = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip_Main.SuspendLayout()
         CType(Me.NumericUpDown_RetryCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown_Volume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -127,6 +127,15 @@ Partial Class TTSDanmakuMgmt
         Me.StatusLabel_Default.Name = "StatusLabel_Default"
         Me.StatusLabel_Default.Size = New System.Drawing.Size(32, 17)
         Me.StatusLabel_Default.Text = "就绪"
+        '
+        'ToolStripStatusLabel_Copyright
+        '
+        Me.ToolStripStatusLabel_Copyright.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStripStatusLabel_Copyright.Name = "ToolStripStatusLabel_Copyright"
+        Me.ToolStripStatusLabel_Copyright.Size = New System.Drawing.Size(577, 17)
+        Me.ToolStripStatusLabel_Copyright.Spring = True
+        Me.ToolStripStatusLabel_Copyright.Text = "本插件为开源 (MIT) 软件，版权所有 (C) 2017, Elepover."
+        Me.ToolStripStatusLabel_Copyright.ToolTipText = resources.GetString("ToolStripStatusLabel_Copyright.ToolTipText")
         '
         'Button_ProxySettings
         '
@@ -686,7 +695,7 @@ Partial Class TTSDanmakuMgmt
         Me.PictureBox_ModifiedAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox_ModifiedAlert.TabIndex = 11
         Me.PictureBox_ModifiedAlert.TabStop = False
-        Me.ToolTip_Default.SetToolTip(Me.PictureBox_ModifiedAlert, "直接关闭将丢失所有已保存的设置。")
+        Me.ToolTip_Default.SetToolTip(Me.PictureBox_ModifiedAlert, "直接关闭将丢失所有未保存的设置。")
         '
         'TabControl_PluginSettings
         '
@@ -730,6 +739,7 @@ Partial Class TTSDanmakuMgmt
         Me.CheckBox_OneByOne.Size = New System.Drawing.Size(106, 22)
         Me.CheckBox_OneByOne.TabIndex = 5
         Me.CheckBox_OneByOne.Text = "逐条读出 TTS"
+        Me.ToolTip_Default.SetToolTip(Me.CheckBox_OneByOne, "逐条读出收到的所有弹幕。")
         Me.CheckBox_OneByOne.UseVisualStyleBackColor = True
         '
         'TabPage_Advanced
@@ -905,13 +915,6 @@ Partial Class TTSDanmakuMgmt
         Me.Label_AboutTitle.Size = New System.Drawing.Size(111, 21)
         Me.Label_AboutTitle.TabIndex = 0
         Me.Label_AboutTitle.Text = "TTSDanmaku"
-        '
-        'ToolStripStatusLabel_Copyright
-        '
-        Me.ToolStripStatusLabel_Copyright.Name = "ToolStripStatusLabel_Copyright"
-        Me.ToolStripStatusLabel_Copyright.Size = New System.Drawing.Size(546, 17)
-        Me.ToolStripStatusLabel_Copyright.Spring = True
-        Me.ToolStripStatusLabel_Copyright.Text = "本插件为开源 (MIT) 软件，版权所有 (C) 2017, Elepover."
         '
         'TTSDanmakuMgmt
         '
