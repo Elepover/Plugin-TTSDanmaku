@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen" MaxHeight="336"
         MaxWidth="600"
         MinHeight="336"
-        MinWidth="600">
+        MinWidth="600" ResizeMode="NoResize">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="网络设置" VerticalAlignment="Top" FontSize="17"/>
         <TabControl Margin="15,37,10,45">
@@ -20,28 +20,29 @@
                     <TextBox x:Name="TextBox_ProxyServer_IP" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,58,0,0" TextWrapping="Wrap" Text="代理服务器端口" VerticalAlignment="Top"/>
                     <TextBox x:Name="TextBox_ProxyServer_Port" HorizontalAlignment="Left" Height="23" Margin="10,78,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="150"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,106,0,0" TextWrapping="Wrap" Text="代理用户名" VerticalAlignment="Top"/>
-                    <TextBox x:Name="TextBox_ProxyServer_Username" HorizontalAlignment="Left" Height="23" Margin="10,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,154,0,0" TextWrapping="Wrap" Text="代理密码 [!]" VerticalAlignment="Top"/>
-                    <TextBox x:Name="TextBox_ProxyServer_Password" HorizontalAlignment="Left" Height="23" Margin="10,174,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,106,0,0" TextWrapping="Wrap" Text="代理用户名" VerticalAlignment="Top" IsEnabled="False"/>
+                    <TextBox x:Name="TextBox_ProxyServer_Username" HorizontalAlignment="Left" Height="23" Margin="10,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" IsEnabled="False"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,154,0,0" TextWrapping="Wrap" Text="代理密码 [!]" VerticalAlignment="Top" IsEnabled="False"/>
+                    <TextBox x:Name="TextBox_ProxyServer_Password" HorizontalAlignment="Left" Height="23" Margin="10,174,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" IsEnabled="False"/>
                 </Grid>
             </TabItem>
             <TabItem Header="杂项设置">
                 <Grid Background="White">
-                    <Grid HorizontalAlignment="Left" Height="35" Margin="10,30,0,0" VerticalAlignment="Top" Width="165">
+                    <Grid x:Name="Grid_Security" HorizontalAlignment="Left" Height="35" Margin="10,30,0,0" VerticalAlignment="Top" Width="165">
                         <RadioButton x:Name="RadioButton_HTTPS" Content="使用 HTTPS - 建议" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True"/>
                         <RadioButton x:Name="RadioButton_HTTP" Content="使用 HTTP" HorizontalAlignment="Left" Margin="0,19,0,0" VerticalAlignment="Top"/>
                     </Grid>
                     <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="安全性" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,70,0,0" TextWrapping="Wrap" Text="Google TTS 服务器" VerticalAlignment="Top"/>
-                    <Grid HorizontalAlignment="Left" Height="42" Margin="10,90,0,0" VerticalAlignment="Top" Width="280">
+                    <Grid x:Name="Grid_Google" HorizontalAlignment="Left" Height="42" Margin="10,90,0,0" VerticalAlignment="Top" Width="280">
                         <RadioButton x:Name="RadioButton_GoogleGlobal" Content="使用 translate.google.com - 可能需要 ladder" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                         <RadioButton x:Name="RadioButton_GoogleCN" Content="使用 translate.google.cn" HorizontalAlignment="Left" Margin="0,19,0,0" VerticalAlignment="Top" IsChecked="True"/>
-
                     </Grid>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Image HorizontalAlignment="Right" Height="32" Margin="0,10,10,0" VerticalAlignment="Top" Width="32"/>
+        <Image HorizontalAlignment="Right" Height="32" Margin="0,10,10,0" VerticalAlignment="Top" Width="32" Source="pack://siteoforigin:,,,/Network_Warning.png" ToolTip="此处设置仅供高级用户使用，可能会导致插件无法正常工作。"/>
+        <Button x:Name="Button_Cancel" Content="取消" HorizontalAlignment="Left" Margin="507,265,0,0" VerticalAlignment="Top" Width="75" Height="30" IsCancel="True"/>
+        <Button x:Name="Button_OK" Content="保存" HorizontalAlignment="Left" Margin="427,265,0,0" VerticalAlignment="Top" Width="75" Height="30" IsDefault="True"/>
     </Grid>
 </Window>
