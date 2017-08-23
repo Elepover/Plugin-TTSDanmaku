@@ -59,6 +59,7 @@ Public Class Window_ProxySettings
         Catch ex As Exception
             MsgBox("代理设置保存失败: " & ex.ToString, vbCritical + vbOKOnly, "网络设置")
         End Try
+        Me.Close()
     End Sub
 
     Private Sub Button_Cancel_Click(sender As Object, e As RoutedEventArgs) Handles Button_Cancel.Click

@@ -56,7 +56,7 @@ $VPERCENT_VM 虚拟内存占用百分比。"
             NBlockMsgBox("保存出差错: " & ex.ToString, MsgBoxStyle.Critical + vbSystemModal + vbOKOnly, "TTSDanmaku 状态报告 - 高级设置")
         End Try
         LoadToControl()
-
+        Me.Close()
     End Sub
 
     Private Sub LoadToControl()
