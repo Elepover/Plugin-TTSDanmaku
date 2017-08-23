@@ -4,7 +4,7 @@
 
 The TTSDanmaku plugin for Bililive_dm (https://github.com/copyliu/bililive_dm)
 
-Description last updated at: 08/13/2017 03:02 (GMT)
+Description last updated at: 08/23/2017 08:16 (GMT)
 
 有问题或是有建议可以 [在作者的 Blog](https://blog.elepover.com/quoteLeft.html) 通过评论提交。
 
@@ -81,6 +81,8 @@ v1.0.4, build 54 ->
 [+] 加入版权声明。
 [+] 加入保存警告。
 [+] 加入一个程序媛一般都能找到的彩蛋。
+[+] 进化绝大多数常用窗口到 WPF。
+[-] 弃用 TTS 冷却功能。
 
 v1.0.4, build 53 ->
 [+] 新增更新检查功能 (按住 Shift 进行 Beta 版更新检查)。
