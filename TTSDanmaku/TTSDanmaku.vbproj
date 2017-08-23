@@ -246,19 +246,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NAudio.dll" />
+    <EmbeddedResource Include="Resources\NAudio.dll" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\check_correct.png" />
+    <EmbeddedResource Include="Resources\check_correct.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Network_Warning.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\info.png" />
+    <EmbeddedResource Include="Resources\info.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\warning.png" />
+    <EmbeddedResource Include="Resources\warning.png" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Window_Administration.xaml">
@@ -279,10 +279,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon.png" />
+    <EmbeddedResource Include="Resources\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
