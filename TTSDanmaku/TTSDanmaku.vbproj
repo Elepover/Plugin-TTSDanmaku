@@ -186,6 +186,9 @@
     <Compile Include="Window_SpeakAnything.xaml.vb">
       <DependentUpon>Window_SpeakAnything.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window_StatusReport.xaml.vb">
+      <DependentUpon>Window_StatusReport.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form_ProxySettings.resx">
@@ -260,6 +263,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Window_SpeakAnything.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_StatusReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

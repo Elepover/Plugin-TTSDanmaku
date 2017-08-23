@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TTSDanmaku"
         mc:Ignorable="d"
-        Title="Hey, could you please speak anything?" Height="400" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Hey, could you please speak anything?" Height="400" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/icon.png">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TTSGen" VerticalAlignment="Top" FontSize="17"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,32,0,0" TextWrapping="Wrap" Text="Enter Target Text Here:" VerticalAlignment="Top" FontSize="11"/>
