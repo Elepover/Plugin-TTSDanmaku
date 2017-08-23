@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TTSDanmaku"
         mc:Ignorable="d"
-        Title="TTSDanmaku - Administration (Grand Update)" Height="520" Width="640" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/Resources/icon.png" ResizeMode="NoResize">
+        Title="TTSDanmaku - Administration (Grand Update)" Height="520" Width="640" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <TabControl Width="632" Margin="0,0,0,80">
             <TabItem Header="基本设置">

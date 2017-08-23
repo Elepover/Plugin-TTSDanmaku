@@ -1,4 +1,6 @@
-﻿Public Class Window_SpeakAnything
+﻿Imports System.Windows
+
+Public Class Window_SpeakAnything
 
     Private Sub DBGLog(text As String)
         TextBox_Log.AppendText(text & vbCrLf)
@@ -164,5 +166,9 @@ retry:
 
     Private Sub Button_Exit_Click(sender As Object, e As Windows.RoutedEventArgs) Handles Button_Exit.Click
         Me.Close()
+    End Sub
+
+    Private Sub Button_SpeakOut_Loaded(sender As Object, e As RoutedEventArgs) Handles Button_SpeakOut.Loaded
+        Icon = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(My.Resources.icon.GetHbitmap, IntPtr.Zero, Int32Rect.Empty, Media.Imaging.BitmapSizeOptions.FromEmptyOptions())
     End Sub
 End Class

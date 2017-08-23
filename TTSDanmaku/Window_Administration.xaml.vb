@@ -368,6 +368,7 @@ Public Class Window_Administration
 
     Private Sub Window_Administration_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         Settings.Methods.Initialize()
+        Icon = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(My.Resources.icon.GetHbitmap, IntPtr.Zero, Int32Rect.Empty, Media.Imaging.BitmapSizeOptions.FromEmptyOptions())
         LoadToControl()
         UpdateControl()
         '处理缓存

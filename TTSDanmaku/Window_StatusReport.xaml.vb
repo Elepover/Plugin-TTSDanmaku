@@ -2,6 +2,7 @@
 
 Public Class Window_StatusReport
     Private Sub Window_StatusReport_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        Icon = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(My.Resources.icon.GetHbitmap, IntPtr.Zero, Int32Rect.Empty, Media.Imaging.BitmapSizeOptions.FromEmptyOptions())
         LoadToControl()
         UpdateControl()
         TextBox_VarsHelp.Text = "状态报告 - 变量帮助。

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TTSDanmaku"
         mc:Ignorable="d"
-        Title="TTSDanmaku - 状态报告" Height="450" Width="500" ResizeMode="NoResize" Icon="pack://siteoforigin:,,,/Resources/icon.png" WindowStartupLocation="CenterScreen">
+        Title="TTSDanmaku - 状态报告" Height="450" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="功能开关" VerticalAlignment="Top" FontSize="17"/>
         <Grid Height="80" Margin="10,37,0,0" VerticalAlignment="Top" Width="474">

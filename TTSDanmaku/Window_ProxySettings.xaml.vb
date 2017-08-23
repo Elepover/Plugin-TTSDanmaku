@@ -21,6 +21,7 @@ Public Class Window_ProxySettings
     End Sub
 
     Private Sub Window_ProxySettings_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        Icon = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(My.Resources.icon.GetHbitmap, IntPtr.Zero, Int32Rect.Empty, Media.Imaging.BitmapSizeOptions.FromEmptyOptions())
         LoadToControl()
         UpdateControl()
     End Sub

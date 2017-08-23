@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:TTSDanmaku"
         mc:Ignorable="d"
         Title="TTSDanmaku - 网络设置" Height="336" Width="600"
-        Icon="pack://siteoforigin:,,,/Resources/icon.png"
         WindowStartupLocation="CenterScreen" MaxHeight="336"
         MaxWidth="600"
         MinHeight="336"
