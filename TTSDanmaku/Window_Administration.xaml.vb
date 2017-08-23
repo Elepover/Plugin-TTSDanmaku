@@ -320,5 +320,12 @@ Public Class Window_Administration
             TextBlock_SpeechSpeed.Text = CInt(NumericUpDown_SpeechSpeed.Value)
         End If
     End Sub
+
+    Private Sub TextBox_TextChanged(sender As Object, e As Controls.TextChangedEventArgs) Handles TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged
+        If IsVisible Then
+            CheckIfLegal_DM()
+            CheckIfLegal_GIFT()
+        End If
+    End Sub
 #End Region
 End Class
