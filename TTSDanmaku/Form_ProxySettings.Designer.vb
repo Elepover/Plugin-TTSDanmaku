@@ -29,6 +29,8 @@ Partial Class Form_ProxySettings
         Me.TextBox_ProxyServer_Port = New System.Windows.Forms.TextBox()
         Me.TextBox_ProxyServer_Username = New System.Windows.Forms.TextBox()
         Me.TextBox_ProxyServer_Password = New System.Windows.Forms.TextBox()
+        Me.Label_Warning = New System.Windows.Forms.Label()
+        Me.PictureBox_Alert = New System.Windows.Forms.PictureBox()
         Me.Label_Title = New System.Windows.Forms.Label()
         Me.GroupBox_ProxySettings = New System.Windows.Forms.GroupBox()
         Me.Label_ProxyServer_Password = New System.Windows.Forms.Label()
@@ -44,13 +46,11 @@ Partial Class Form_ProxySettings
         Me.RadioButton_HTTPS = New System.Windows.Forms.RadioButton()
         Me.Button_OK = New System.Windows.Forms.Button()
         Me.Button_Cancel = New System.Windows.Forms.Button()
-        Me.Label_Warning = New System.Windows.Forms.Label()
-        Me.PictureBox_Alert = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox_Alert, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_ProxySettings.SuspendLayout()
         Me.GroupBox_Etc.SuspendLayout()
         Me.GroupBox_GoogleTTS.SuspendLayout()
         Me.GroupBox_Security.SuspendLayout()
-        CType(Me.PictureBox_Alert, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBox_ProxyServer_IP
@@ -87,6 +87,30 @@ Partial Class Form_ProxySettings
         Me.TextBox_ProxyServer_Password.TabIndex = 7
         Me.ToolTip_Default.SetToolTip(Me.TextBox_ProxyServer_Password, "HTTP 代理服务器的密码" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "「！」注意：您的代理密码将以明文形式存储于本地计算机中，请注意密码安全。")
         Me.TextBox_ProxyServer_Password.UseSystemPasswordChar = True
+        '
+        'Label_Warning
+        '
+        Me.Label_Warning.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label_Warning.Font = New System.Drawing.Font("微软雅黑", 10.0!, System.Drawing.FontStyle.Italic)
+        Me.Label_Warning.Location = New System.Drawing.Point(472, 12)
+        Me.Label_Warning.Name = "Label_Warning"
+        Me.Label_Warning.Size = New System.Drawing.Size(62, 30)
+        Me.Label_Warning.TabIndex = 6
+        Me.Label_Warning.Text = "警告"
+        Me.Label_Warning.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.ToolTip_Default.SetToolTip(Me.Label_Warning, "此处设置仅供高级用户使用，可能会导致插件无法正常工作。")
+        '
+        'PictureBox_Alert
+        '
+        Me.PictureBox_Alert.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox_Alert.Image = Global.TTSDanmaku.My.Resources.Resources.Network_Warning
+        Me.PictureBox_Alert.Location = New System.Drawing.Point(540, 12)
+        Me.PictureBox_Alert.Name = "PictureBox_Alert"
+        Me.PictureBox_Alert.Size = New System.Drawing.Size(32, 32)
+        Me.PictureBox_Alert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox_Alert.TabIndex = 0
+        Me.PictureBox_Alert.TabStop = False
+        Me.ToolTip_Default.SetToolTip(Me.PictureBox_Alert, "此处设置仅供高级用户使用，可能会导致插件无法正常工作。")
         '
         'Label_Title
         '
@@ -259,30 +283,6 @@ Partial Class Form_ProxySettings
         Me.Button_Cancel.Text = "取消"
         Me.Button_Cancel.UseVisualStyleBackColor = True
         '
-        'Label_Warning
-        '
-        Me.Label_Warning.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label_Warning.Font = New System.Drawing.Font("微软雅黑", 10.0!, System.Drawing.FontStyle.Italic)
-        Me.Label_Warning.Location = New System.Drawing.Point(472, 12)
-        Me.Label_Warning.Name = "Label_Warning"
-        Me.Label_Warning.Size = New System.Drawing.Size(62, 30)
-        Me.Label_Warning.TabIndex = 6
-        Me.Label_Warning.Text = "警告"
-        Me.Label_Warning.TextAlign = System.Drawing.ContentAlignment.TopRight
-        Me.ToolTip_Default.SetToolTip(Me.Label_Warning, "此处设置仅供高级用户使用，可能会导致插件无法正常工作。")
-        '
-        'PictureBox_Alert
-        '
-        Me.PictureBox_Alert.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox_Alert.Image = Global.TTSDanmaku.My.Resources.Resources.Network_Warning
-        Me.PictureBox_Alert.Location = New System.Drawing.Point(540, 12)
-        Me.PictureBox_Alert.Name = "PictureBox_Alert"
-        Me.PictureBox_Alert.Size = New System.Drawing.Size(32, 32)
-        Me.PictureBox_Alert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox_Alert.TabIndex = 0
-        Me.PictureBox_Alert.TabStop = False
-        Me.ToolTip_Default.SetToolTip(Me.PictureBox_Alert, "此处设置仅供高级用户使用，可能会导致插件无法正常工作。")
-        '
         'Form_ProxySettings
         '
         Me.AcceptButton = Me.Button_OK
@@ -307,6 +307,7 @@ Partial Class Form_ProxySettings
         Me.Name = "Form_ProxySettings"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TTSDanmaku - 网络设置"
+        CType(Me.PictureBox_Alert, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox_ProxySettings.ResumeLayout(False)
         Me.GroupBox_ProxySettings.PerformLayout()
         Me.GroupBox_Etc.ResumeLayout(False)
@@ -314,7 +315,6 @@ Partial Class Form_ProxySettings
         Me.GroupBox_GoogleTTS.PerformLayout()
         Me.GroupBox_Security.ResumeLayout(False)
         Me.GroupBox_Security.PerformLayout()
-        CType(Me.PictureBox_Alert, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

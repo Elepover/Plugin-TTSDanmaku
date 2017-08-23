@@ -71,6 +71,7 @@
     <Reference Include="System.Speech" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -85,6 +86,9 @@
     <Import Include="System.Data" />
     <Import Include="System.Diagnostics" />
     <Import Include="System.Linq" />
+    <Import Include="System.Xaml" />
+    <Import Include="System.Xaml.Permissions" />
+    <Import Include="System.Xaml.Schema" />
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +180,9 @@
     <Compile Include="TTSDanmakuMgmt.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Window_ProxySettings.xaml.vb">
+      <DependentUpon>Window_ProxySettings.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form_ProxySettings.resx">
@@ -243,6 +250,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Window_ProxySettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
