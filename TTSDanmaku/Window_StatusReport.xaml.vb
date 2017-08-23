@@ -91,4 +91,8 @@ $VPERCENT_VM 虚拟内存占用百分比。"
             TextBox_ReportText.FontWeight = FontWeights.Normal
         End If
     End Sub
+
+    Private Sub Button_Cancel_Click(sender As Object, e As RoutedEventArgs) Handles Button_Cancel.Click
+        Me.Close()
+    End Sub
 End Class

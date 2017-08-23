@@ -170,6 +170,10 @@ Public Class Window_Administration
         Status("就绪", False)
     End Sub
 
+    Private Sub UpdateControl(sender As Object, e As RoutedEventArgs) Handles NumericUpDown_RetryCount.ValueChanged, NumericUpDown_SpeechSpeed.ValueChanged, NumericUpDown_Volume.ValueChanged, TextBox_Blacklist.TextChanged, TextBox_CustomConnected.TextChanged, TextBox_CustomDMContent.TextChanged, TextBox_CustomGiftContent.TextChanged, TextBox_GiftBlacklist.TextChanged, TextBox_GiftWhitelist.TextChanged, TextBox_Whitelist.TextChanged, TrackBar_BlockType.ValueChanged
+        UpdateControl()
+    End Sub
+
     Private Sub LoadToControl()
         Status("载入...", False)
         Dim version As String = New Main().PluginVer
@@ -434,6 +438,18 @@ Public Class Window_Administration
 
     Private Sub Button_Suggestions_Click(sender As Object, e As RoutedEventArgs) Handles Button_Suggestions.Click
         Process.Start("https://blog.elepover.com/quoteLeft.html")
+    End Sub
+
+    Private Sub NumericUpDown_Volume_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles NumericUpDown_Volume.ValueChanged
+        TextBlock_Volume.Text = NumericUpDown_Volume.Value
+    End Sub
+
+    Private Sub NumericUpDown_RetryCount_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles NumericUpDown_RetryCount.ValueChanged
+        TextBlock_RetryCount.Text = NumericUpDown_RetryCount.Value
+    End Sub
+
+    Private Sub NumericUpDown_SpeechSpeed_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles NumericUpDown_SpeechSpeed.ValueChanged
+        TextBlock_SpeechSpeed.Text = NumericUpDown_SpeechSpeed.Value
     End Sub
 #End Region
 End Class
