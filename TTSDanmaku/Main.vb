@@ -28,7 +28,7 @@ Public Class Main
     Public Shared SRCount As Integer = 0
 
     Private Sub ShowADM()
-        Dim frm As New TTSDanmakuMgmt
+        Dim frm As New Window_Administration
         frm.Show()
     End Sub
 
