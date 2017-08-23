@@ -183,6 +183,9 @@
     <Compile Include="Window_ProxySettings.xaml.vb">
       <DependentUpon>Window_ProxySettings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window_SpeakAnything.xaml.vb">
+      <DependentUpon>Window_SpeakAnything.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form_ProxySettings.resx">
@@ -253,6 +256,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Window_ProxySettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_SpeakAnything.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

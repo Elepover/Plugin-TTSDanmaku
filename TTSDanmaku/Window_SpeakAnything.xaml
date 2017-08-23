@@ -1,0 +1,17 @@
+﻿<Window x:Class="Window_SpeakAnything"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TTSDanmaku"
+        mc:Ignorable="d"
+        Title="Hey, could you please speak anything?" Height="400" Width="700" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TTSGen" VerticalAlignment="Top" FontSize="17"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,32,0,0" TextWrapping="Wrap" Text="Enter Target Text Here:" VerticalAlignment="Top" FontSize="11"/>
+        <TextBox x:Name="TextBox_Text" HorizontalAlignment="Left" Height="135" Margin="10,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="673" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
+        <Button x:Name="Button_SpeakOut" Content="Speak Out" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="TextBox_Log" HorizontalAlignment="Left" Height="146" Margin="11,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="672" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" IsReadOnly="True"/>
+        <Button x:Name="Button_Exit" Content="Exit" HorizontalAlignment="Left" Margin="608,191,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>
