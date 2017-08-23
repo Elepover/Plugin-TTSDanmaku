@@ -28,14 +28,14 @@
             <TabItem Header="杂项设置">
                 <Grid Background="White">
                     <Grid x:Name="Grid_Security" HorizontalAlignment="Left" Height="35" Margin="10,30,0,0" VerticalAlignment="Top" Width="165">
-                        <RadioButton x:Name="RadioButton_HTTPS" Content="使用 HTTPS - 建议" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True"/>
-                        <RadioButton x:Name="RadioButton_HTTP" Content="使用 HTTP" HorizontalAlignment="Left" Margin="0,19,0,0" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="RadioButton_HTTPS" Content="使用 HTTPS - 建议" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True" ToolTip="使用加密后的 HTTP 传输。"/>
+                        <RadioButton x:Name="RadioButton_HTTP" Content="使用 HTTP" HorizontalAlignment="Left" Margin="0,19,0,0" VerticalAlignment="Top" ToolTip="明文传输。"/>
                     </Grid>
                     <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="安全性" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,70,0,0" TextWrapping="Wrap" Text="Google TTS 服务器" VerticalAlignment="Top"/>
                     <Grid x:Name="Grid_Google" HorizontalAlignment="Left" Height="42" Margin="10,90,0,0" VerticalAlignment="Top" Width="280">
-                        <RadioButton x:Name="RadioButton_GoogleGlobal" Content="使用 translate.google.com - 可能需要 ladder" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <RadioButton x:Name="RadioButton_GoogleCN" Content="使用 translate.google.cn" HorizontalAlignment="Left" Margin="0,19,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                        <RadioButton x:Name="RadioButton_GoogleGlobal" Content="使用 translate.google.com - 可能需要 ladder" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="国际版 Google 翻译服务器。"/>
+                        <RadioButton x:Name="RadioButton_GoogleCN" Content="使用 translate.google.cn" HorizontalAlignment="Left" Margin="0,19,0,0" VerticalAlignment="Top" IsChecked="True" ToolTip="国内版 Google 翻译服务器。"/>
                     </Grid>
                 </Grid>
             </TabItem>

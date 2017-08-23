@@ -17,9 +17,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,122,0,0" TextWrapping="Wrap" Text="细节设置" VerticalAlignment="Top" FontSize="17"/>
         <Grid Height="110" Margin="15,149,5,0" VerticalAlignment="Top" Width="474">
             <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="状态报告时间间隔（45 ~ 3600）（秒）" VerticalAlignment="Top"/>
-            <TextBox x:Name="NumericUpDown_Interval" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" Text="60" VerticalAlignment="Top" Width="214" MaxLines="1"/>
+            <TextBox x:Name="NumericUpDown_Interval" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" Text="60" VerticalAlignment="Top" Width="214" MaxLines="1" ToolTip="每个多少时间后播放状态报告。"/>
             <TextBlock HorizontalAlignment="Left" Margin="10,58,0,0" TextWrapping="Wrap" Text="自定义状态报告内容" VerticalAlignment="Top"/>
-            <TextBox x:Name="TextBox_ReportText" HorizontalAlignment="Left" Height="23" Margin="10,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" MaxLines="1"/>
+            <TextBox x:Name="TextBox_ReportText" HorizontalAlignment="Left" Height="23" Margin="10,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" MaxLines="1" ToolTip="自定义状态报告时的读出内容。"/>
         </Grid>
         <Expander Header="变量帮助" Margin="10,269,10,10" Width="474">
             <Grid Background="White">
