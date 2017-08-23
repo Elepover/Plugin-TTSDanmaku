@@ -1,6 +1,15 @@
 ﻿Imports System.Windows
 
 Public Class Window_StatusReport
+    Public Sub New()
+
+        ' 此调用是设计器所必需的。
+        InitializeComponent()
+
+        ' 在 InitializeComponent() 调用之后添加任何初始化。
+
+    End Sub
+
     Private Sub Window_StatusReport_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         Icon = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(My.Resources.icon.GetHbitmap, IntPtr.Zero, Int32Rect.Empty, Media.Imaging.BitmapSizeOptions.FromEmptyOptions())
         LoadToControl()

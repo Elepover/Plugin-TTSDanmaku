@@ -1,6 +1,15 @@
 ﻿Imports System.Windows
 
 Public Class Window_ProxySettings
+    Public Sub New()
+
+        ' 此调用是设计器所必需的。
+        InitializeComponent()
+
+        ' 在 InitializeComponent() 调用之后添加任何初始化。
+
+    End Sub
+
     Private Sub LoadToControl()
         TextBox_ProxyServer_IP.Text = Settings.Settings.ProxySettings_ProxyServer
         TextBox_ProxyServer_Port.Text = Settings.Settings.ProxySettings_ProxyPort

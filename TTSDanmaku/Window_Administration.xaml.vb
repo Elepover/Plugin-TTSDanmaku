@@ -2,10 +2,17 @@
 
 Public Class Window_Administration
 #Region "Including"
+    Public Sub New()
+
+        ' 此调用是设计器所必需的。
+        InitializeComponent()
+
+        ' 在 InitializeComponent() 调用之后添加任何初始化。
+
+    End Sub
+
     Private Sub Status(status As String, Optional log As Boolean = True)
         StatusLabel_Default.Text = status
-        'If log Then TextBox_Stats.AppendText(status & vbCrLf)
-        System.Windows.Forms.Application.DoEvents()
     End Sub
 
     Public Function CheckIfLegal_DM()
