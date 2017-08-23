@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TTSDanmaku"
         mc:Ignorable="d"
-        Title="TTSDanmaku - 状态报告" Height="450" Width="500" ResizeMode="NoResize" Icon="pack://siteoforigin:,,,/icon.png">
+        Title="TTSDanmaku - 状态报告" Height="450" Width="500" ResizeMode="NoResize" Icon="pack://siteoforigin:,,,/icon.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="功能开关" VerticalAlignment="Top" FontSize="17"/>
         <Grid Height="80" Margin="10,37,0,0" VerticalAlignment="Top" Width="474">
@@ -21,7 +21,10 @@
             <TextBlock HorizontalAlignment="Left" Margin="10,58,0,0" TextWrapping="Wrap" Text="自定义状态报告内容" VerticalAlignment="Top"/>
             <TextBox x:Name="TextBox_ReportText" HorizontalAlignment="Left" Height="23" Margin="10,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" MaxLines="1"/>
         </Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,264,0,0" TextWrapping="Wrap" Text="变量帮助" VerticalAlignment="Top" FontSize="17"/>
-        <TextBox x:Name="TextBox_VarsHelp" Height="120" Margin="10,0,10,10" TextWrapping="Wrap" VerticalAlignment="Bottom" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
+        <Expander Header="变量帮助" Margin="10,269,10,10" Width="474">
+            <Grid Background="White">
+                <TextBox x:Name="TextBox_VarsHelp" TextWrapping="Wrap" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
+            </Grid>
+        </Expander>
     </Grid>
 </Window>

@@ -180,6 +180,9 @@
     <Compile Include="TTSDanmakuMgmt.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Window_Administration.xaml.vb">
+      <DependentUpon>Window_Administration.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window_ProxySettings.xaml.vb">
       <DependentUpon>Window_ProxySettings.xaml</DependentUpon>
     </Compile>
@@ -258,6 +261,10 @@
     <None Include="Resources\warning.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Window_Administration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window_ProxySettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

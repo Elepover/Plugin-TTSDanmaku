@@ -42,7 +42,7 @@
             </TabItem>
         </TabControl>
         <Image HorizontalAlignment="Right" Height="32" Margin="0,10,10,0" VerticalAlignment="Top" Width="32" Source="pack://siteoforigin:,,,/Network_Warning.png" ToolTip="此处设置仅供高级用户使用，可能会导致插件无法正常工作。"/>
-        <Button x:Name="Button_Cancel" Content="取消" HorizontalAlignment="Left" Margin="507,265,0,0" VerticalAlignment="Top" Width="75" Height="30" IsCancel="True"/>
         <Button x:Name="Button_OK" Content="保存" HorizontalAlignment="Left" Margin="427,265,0,0" VerticalAlignment="Top" Width="75" Height="30" IsDefault="True"/>
+        <Button x:Name="Button_Cancel" Content="取消" HorizontalAlignment="Left" Margin="507,265,0,0" VerticalAlignment="Top" Width="75" Height="30" IsCancel="True"/>
     </Grid>
 </Window>

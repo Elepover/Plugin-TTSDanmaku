@@ -77,9 +77,9 @@ Partial Class TTSDanmakuMgmt
         Me.Label_UID = New System.Windows.Forms.Label()
         Me.Label_Username = New System.Windows.Forms.Label()
         Me.PictureBox_ModifiedAlert = New System.Windows.Forms.PictureBox()
+        Me.CheckBox_OneByOne = New System.Windows.Forms.CheckBox()
         Me.TabControl_PluginSettings = New System.Windows.Forms.TabControl()
         Me.TabPage_BasicSettings = New System.Windows.Forms.TabPage()
-        Me.CheckBox_OneByOne = New System.Windows.Forms.CheckBox()
         Me.TabPage_Advanced = New System.Windows.Forms.TabPage()
         Me.Label_SpeechSpeed = New System.Windows.Forms.Label()
         Me.TabPage_Blocking = New System.Windows.Forms.TabPage()
@@ -603,7 +603,8 @@ Partial Class TTSDanmakuMgmt
         Me.ComboBox_GiftBlockMode.Name = "ComboBox_GiftBlockMode"
         Me.ComboBox_GiftBlockMode.Size = New System.Drawing.Size(121, 25)
         Me.ComboBox_GiftBlockMode.TabIndex = 7
-        Me.ToolTip_Default.SetToolTip(Me.ComboBox_GiftBlockMode, "选择用户屏蔽设置。")
+        Me.ToolTip_Default.SetToolTip(Me.ComboBox_GiftBlockMode, "选择用户屏蔽设置。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "名单可在 设置 -> 自定义 中找到。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "关闭: 没有任何屏蔽。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "黑名单: 屏蔽黑名单中的用户。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "白名单: 屏蔽白名单以外所有用户。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) &
+        "")
         '
         'TextBox_GiftWhitelist
         '
@@ -697,6 +698,18 @@ Partial Class TTSDanmakuMgmt
         Me.PictureBox_ModifiedAlert.TabStop = False
         Me.ToolTip_Default.SetToolTip(Me.PictureBox_ModifiedAlert, "直接关闭将丢失所有未保存的设置。")
         '
+        'CheckBox_OneByOne
+        '
+        Me.CheckBox_OneByOne.AutoSize = True
+        Me.CheckBox_OneByOne.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.CheckBox_OneByOne.Location = New System.Drawing.Point(6, 146)
+        Me.CheckBox_OneByOne.Name = "CheckBox_OneByOne"
+        Me.CheckBox_OneByOne.Size = New System.Drawing.Size(106, 22)
+        Me.CheckBox_OneByOne.TabIndex = 5
+        Me.CheckBox_OneByOne.Text = "逐条读出 TTS"
+        Me.ToolTip_Default.SetToolTip(Me.CheckBox_OneByOne, "逐条读出收到的所有弹幕。")
+        Me.CheckBox_OneByOne.UseVisualStyleBackColor = True
+        '
         'TabControl_PluginSettings
         '
         Me.TabControl_PluginSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -729,18 +742,6 @@ Partial Class TTSDanmakuMgmt
         Me.TabPage_BasicSettings.TabIndex = 0
         Me.TabPage_BasicSettings.Text = "基本设置"
         Me.TabPage_BasicSettings.UseVisualStyleBackColor = True
-        '
-        'CheckBox_OneByOne
-        '
-        Me.CheckBox_OneByOne.AutoSize = True
-        Me.CheckBox_OneByOne.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.CheckBox_OneByOne.Location = New System.Drawing.Point(6, 146)
-        Me.CheckBox_OneByOne.Name = "CheckBox_OneByOne"
-        Me.CheckBox_OneByOne.Size = New System.Drawing.Size(106, 22)
-        Me.CheckBox_OneByOne.TabIndex = 5
-        Me.CheckBox_OneByOne.Text = "逐条读出 TTS"
-        Me.ToolTip_Default.SetToolTip(Me.CheckBox_OneByOne, "逐条读出收到的所有弹幕。")
-        Me.CheckBox_OneByOne.UseVisualStyleBackColor = True
         '
         'TabPage_Advanced
         '

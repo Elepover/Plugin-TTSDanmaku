@@ -9,7 +9,7 @@ Module Includings
     Friend WithEvents GlobalPlayer As New NAudio.Wave.WaveOutEvent
 
     Public Sub PlayFinished(sender As Object, e As NAudio.Wave.StoppedEventArgs) Handles GlobalPlayer.PlaybackStopped
-        If Settings.Settings.TTSDelayEnabled Then StartCoolDown() '启动冷却
+        'If Settings.Settings.TTSDelayEnabled Then StartCoolDown() '启动冷却
         If Not PendingTTSes.Count = 0 Then '如果还有就播，没有就丢
             If Not Settings.Settings.DoNotKeepCache = Nothing Then '不要缓存就删
                 If Settings.Settings.DoNotKeepCache Then
