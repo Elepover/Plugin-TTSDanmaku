@@ -13,7 +13,6 @@ Public Class Window_StatusReport
     Private Sub Window_StatusReport_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         Icon = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(My.Resources.icon.GetHbitmap, IntPtr.Zero, Int32Rect.Empty, Media.Imaging.BitmapSizeOptions.FromEmptyOptions())
         LoadToControl()
-        UpdateControl()
         TextBox_VarsHelp.Text = "状态报告 - 变量帮助。
 
 以下变量将在读出时被自动替换为对应内容。
@@ -57,7 +56,7 @@ $VPERCENT_VM 虚拟内存占用百分比。"
             NBlockMsgBox("保存出差错: " & ex.ToString, MsgBoxStyle.Critical + vbSystemModal + vbOKOnly, "TTSDanmaku 状态报告 - 高级设置")
         End Try
         LoadToControl()
-        UpdateControl()
+
     End Sub
 
     Private Sub LoadToControl()
@@ -67,38 +66,8 @@ $VPERCENT_VM 虚拟内存占用百分比。"
         TextBox_ReportText.Text = Settings.Settings.StatusReportContent
     End Sub
 
-    Private Sub UpdateControl()
-        Try
-            If (CInt(NumericUpDown_Interval.Text) > 3600) Or (CInt(NumericUpDown_Interval.Text) < 45) Then
-                NumericUpDown_Interval.Background = Media.Brushes.Pink
-            Else
-                NumericUpDown_Interval.Background = Media.Brushes.White
-            End If
-        Catch ex As Exception
-            NumericUpDown_Interval.Background = Media.Brushes.Pink
-        End Try
-
-        '检测配置是否不同于控件
-        If Not CheckBox_EnableAdvVars.IsChecked = Settings.Settings.StatusReport_ResolveAdvVars Then
-            CheckBox_EnableAdvVars.FontWeight = FontWeights.Bold
-        Else
-            CheckBox_EnableAdvVars.FontWeight = FontWeights.Normal
-        End If
-        If Not CheckBox_EnableStatusReport.IsChecked = Settings.Settings.StatusReport Then
-            CheckBox_EnableStatusReport.FontWeight = FontWeights.Bold
-        Else
-            CheckBox_EnableStatusReport.FontWeight = FontWeights.Normal
-        End If
-        If Not NumericUpDown_Interval.Text = Settings.Settings.StatusReportInterval Then
-            NumericUpDown_Interval.FontWeight = FontWeights.Bold
-        Else
-            NumericUpDown_Interval.FontWeight = FontWeights.Normal
-        End If
-        If Not TextBox_ReportText.Text = Settings.Settings.StatusReportContent Then
-            TextBox_ReportText.FontWeight = FontWeights.Bold
-        Else
-            TextBox_ReportText.FontWeight = FontWeights.Normal
-        End If
+    Private Sub Button_Cancel_Click(sender As Object, e As RoutedEventArgs) Handles Button_Cancel.Click
+        Me.Close()
     End Sub
 
     Private Sub Button_Cancel_Click(sender As Object, e As RoutedEventArgs) Handles Button_Cancel.Click
