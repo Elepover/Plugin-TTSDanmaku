@@ -101,11 +101,9 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Image HorizontalAlignment="Right" Height="16" Margin="0,10,10,0" VerticalAlignment="Top" Width="16" Source="pack://siteoforigin:,,,/Resources/info.png" ToolTip="将鼠标悬停于某一设置选项上，可查看有关该设置的相关信息。"/>
         <StatusBar Height="25" VerticalAlignment="Bottom" Width="632">
             <TextBlock x:Name="StatusLabel_Default" TextWrapping="Wrap" Text="Ready"/>
         </StatusBar>
-        <Image HorizontalAlignment="Left" Height="16" Margin="616,0,0,0" VerticalAlignment="Bottom" Width="16" Source="pack://siteoforigin:,,,/Resources/warning.png" ToolTip="直接关闭将丢失所有未保存的设置。"/>
         <Button x:Name="Button_Apply" Content="应用" HorizontalAlignment="Left" Margin="10,0,0,56" VerticalAlignment="Bottom" Width="75" IsDefault="True" ToolTip="保存所有设置。"/>
         <Button x:Name="Button_Load" Content="重新读取" HorizontalAlignment="Left" Margin="10,0,0,32" VerticalAlignment="Bottom" Width="75" ToolTip="重新读取已经保存的设置。"/>
         <Button x:Name="Button_CheckUpdates" Content="检查更新" HorizontalAlignment="Right" Margin="0,0,10,56" VerticalAlignment="Bottom" Width="75" ToolTip="检查插件更新。&#x0a;&#x0a;按下 Shift 再点击按钮可检查测试版更新。"/>

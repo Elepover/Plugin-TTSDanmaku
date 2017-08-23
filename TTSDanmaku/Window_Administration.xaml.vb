@@ -35,139 +35,8 @@ Public Class Window_Administration
             Return False
         End If
     End Function
-
     Private Sub UpdateControl()
-        Status("载入...", False)
-
-        If Not CheckBox_TTSDebug.IsChecked = Settings.Settings.DebugMode Then
-            CheckBox_TTSDebug.FontWeight = Windows.FontWeights.Bold
-        Else
-            CheckBox_TTSDebug.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not CheckBox_TTSGifts.IsChecked = Settings.Settings.TTSGiftsReceived Then
-            CheckBox_TTSGifts.FontWeight = Windows.FontWeights.Bold
-        Else
-            CheckBox_TTSGifts.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not CheckBox_TTSSender.IsChecked = Settings.Settings.TTSDanmakuSender Then
-            CheckBox_TTSSender.FontWeight = Windows.FontWeights.Bold
-        Else
-            CheckBox_TTSSender.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not CheckBox_NoCache.IsChecked = Settings.Settings.AutoClearCache Then
-            CheckBox_NoCache.FontWeight = Windows.FontWeights.Bold
-        Else
-            CheckBox_NoCache.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not ComboBox_Engine.SelectedIndex = Settings.Settings.Engine Then
-            ComboBox_Engine.FontWeight = Windows.FontWeights.Bold
-        Else
-            ComboBox_Engine.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not NumericUpDown_Volume.Value = Settings.Settings.TTSVolume Then
-            NumericUpDown_Volume.FontWeight = Windows.FontWeights.Bold
-        Else
-            NumericUpDown_Volume.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not CheckBox_NoKeepingCache.IsChecked = Settings.Settings.DoNotKeepCache Then
-            CheckBox_NoKeepingCache.FontWeight = Windows.FontWeights.Bold
-        Else
-            CheckBox_NoKeepingCache.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not CheckBox_OneByOne.IsChecked = Settings.Settings.ReadInArray Then
-            CheckBox_OneByOne.FontWeight = Windows.FontWeights.Bold
-        Else
-            CheckBox_OneByOne.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not TextBox_CustomConnected.Text = Settings.Settings.ConnectSuccessful Then
-            TextBox_CustomConnected.FontWeight = Windows.FontWeights.Bold
-        Else
-            TextBox_CustomConnected.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not NumericUpDown_RetryCount.Value = Settings.Settings.DLFailRetry Then
-            NumericUpDown_RetryCount.FontWeight = Windows.FontWeights.Bold
-        Else
-            NumericUpDown_RetryCount.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        CheckIfLegal_DM()
-        If Not TextBox_CustomDMContent.Text = Settings.Settings.DanmakuText Then
-            TextBox_CustomDMContent.FontWeight = Windows.FontWeights.Bold
-        Else
-            TextBox_CustomDMContent.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        CheckIfLegal_GIFT()
-        If Not TextBox_CustomGiftContent.Text = Settings.Settings.GiftsText Then
-            TextBox_CustomGiftContent.FontWeight = Windows.FontWeights.Bold
-        Else
-            TextBox_CustomGiftContent.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not ComboBox_Blockmode.SelectedIndex = Settings.Settings.Block_Mode Then
-            ComboBox_Blockmode.FontWeight = Windows.FontWeights.Bold
-        Else
-            ComboBox_Blockmode.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not TextBox_Blacklist.Text = Settings.Settings.Blacklist Then
-            Label_Blacklist.FontWeight = Windows.FontWeights.Bold
-            Label_Blacklist.Text = "黑名单*"
-        Else
-            Label_Blacklist.FontWeight = Windows.FontWeights.Normal
-            Label_Blacklist.Text = "黑名单"
-        End If
-
-        If Not TextBox_Whitelist.Text = Settings.Settings.Whitelist Then
-            Label_Whitelist.FontWeight = Windows.FontWeights.Bold
-            Label_Whitelist.Text = "白名单*"
-        Else
-            Label_Whitelist.FontWeight = Windows.FontWeights.Normal
-            Label_Whitelist.Text = "白名单"
-        End If
-
-        If Not ComboBox_GiftBlockMode.SelectedIndex = Settings.Settings.GiftBlock_Mode Then
-            ComboBox_GiftBlockMode.FontWeight = Windows.FontWeights.Bold
-        Else
-            ComboBox_GiftBlockMode.FontWeight = Windows.FontWeights.Normal
-        End If
-
-        If Not TextBox_GiftBlacklist.Text = Settings.Settings.GiftBlacklist Then
-            Label_GiftBlacklist.FontWeight = Windows.FontWeights.Bold
-            Label_GiftBlacklist.Text = "黑名单*"
-        Else
-            Label_GiftBlacklist.FontWeight = Windows.FontWeights.Normal
-            Label_GiftBlacklist.Text = "黑名单"
-        End If
-
-        If Not TextBox_GiftWhitelist.Text = Settings.Settings.GiftWhitelist Then
-            Label_GiftWhitelist.FontWeight = Windows.FontWeights.Bold
-            Label_GiftWhitelist.Text = "白名单*"
-        Else
-            Label_GiftWhitelist.FontWeight = Windows.FontWeights.Normal
-            Label_GiftWhitelist.Text = "白名单"
-        End If
-
-        If Not TrackBar_BlockType.Value = Settings.Settings.BlockType Then
-            Label_UID.FontWeight = Windows.FontWeights.Bold
-            Label_Username.FontWeight = Windows.FontWeights.Bold
-        Else
-            Label_UID.FontWeight = Windows.FontWeights.Normal
-            Label_Username.FontWeight = Windows.FontWeights.Normal
-        End If
-
         Button_Apply.ToolTip = "保存设置。" & vbCrLf & vbCrLf & "当前设置文件路径: " & Settings.Vars.ConfigFileName
-
-        Status("就绪", False)
     End Sub
 
     Private Sub LoadToControl()
@@ -249,10 +118,10 @@ Public Class Window_Administration
         Settings.Settings.TTSGiftsReceived = CheckBox_TTSGifts.IsChecked
         Settings.Settings.AutoClearCache = CheckBox_NoCache.IsChecked
         Settings.Settings.Engine = ComboBox_Engine.SelectedIndex
-        Settings.Settings.TTSVolume = NumericUpDown_Volume.Value
+        Settings.Settings.TTSVolume = CInt(NumericUpDown_Volume.Value)
         Settings.Settings.DoNotKeepCache = CheckBox_NoKeepingCache.IsChecked
         Settings.Settings.ConnectSuccessful = TextBox_CustomConnected.Text
-        Settings.Settings.DLFailRetry = NumericUpDown_RetryCount.Value
+        Settings.Settings.DLFailRetry = CInt(NumericUpDown_RetryCount.Value)
         Settings.Settings.ReadInArray = CheckBox_OneByOne.IsChecked
 
         Settings.Settings.Block_Mode = ComboBox_Blockmode.SelectedIndex
@@ -262,9 +131,9 @@ Public Class Window_Administration
         Settings.Settings.GiftBlock_Mode = ComboBox_GiftBlockMode.SelectedIndex
         Settings.Settings.GiftBlacklist = TextBox_GiftBlacklist.Text
         Settings.Settings.GiftWhitelist = TextBox_GiftWhitelist.Text
-        Settings.Settings.BlockType = TrackBar_BlockType.Value
+        Settings.Settings.BlockType = CInt(TrackBar_BlockType.Value)
 
-        Settings.Settings.NETFramework_VoiceSpeed = NumericUpDown_SpeechSpeed.Value
+        Settings.Settings.NETFramework_VoiceSpeed = CInt(NumericUpDown_SpeechSpeed.Value)
         '检查自定义字符是否正常
         Dim IllegalVars_DM As Boolean = CheckIfLegal_DM()
         Dim IllegalVars_GIFT As Boolean = CheckIfLegal_GIFT()
@@ -288,9 +157,8 @@ Public Class Window_Administration
             Statistics.DBG_LastException = ex
             Status("保存错误，请检查权限设置。")
         End Try
-        Button_Load.RaiseEvent(Nothing)
+        Button_Load_Click(Nothing, Nothing)
         LoadToControl()
-        UpdateControl()
     End Sub
 
     Private Sub Button_Load_Click(sender As Object, e As Windows.RoutedEventArgs) Handles Button_Load.Click
@@ -300,7 +168,6 @@ Public Class Window_Administration
         Settings.Methods.ReadSettings()
         Status("更新...", False)
         LoadToControl()
-        UpdateControl()
         Status("就绪", False)
     End Sub
 
@@ -369,8 +236,8 @@ Public Class Window_Administration
     Private Sub Window_Administration_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         Settings.Methods.Initialize()
         Icon = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(My.Resources.icon.GetHbitmap, IntPtr.Zero, Int32Rect.Empty, Media.Imaging.BitmapSizeOptions.FromEmptyOptions())
+
         LoadToControl()
-        UpdateControl()
         '处理缓存
         Try
             Status("处理 TTS 缓存...")
@@ -434,6 +301,24 @@ Public Class Window_Administration
 
     Private Sub Button_Suggestions_Click(sender As Object, e As RoutedEventArgs) Handles Button_Suggestions.Click
         Process.Start("https://blog.elepover.com/quoteLeft.html")
+    End Sub
+
+    Private Sub NumericUpDown_Volume_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles NumericUpDown_Volume.ValueChanged
+        If IsVisible Then
+            TextBlock_Volume.Text = CInt(NumericUpDown_Volume.Value)
+        End If
+    End Sub
+
+    Private Sub NumericUpDown_RetryCount_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles NumericUpDown_RetryCount.ValueChanged
+        If IsVisible Then
+            TextBlock_RetryCount.Text = CInt(NumericUpDown_RetryCount.Value)
+        End If
+    End Sub
+
+    Private Sub NumericUpDown_SpeechSpeed_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles NumericUpDown_SpeechSpeed.ValueChanged
+        If IsVisible Then
+            TextBlock_SpeechSpeed.Text = CInt(NumericUpDown_SpeechSpeed.Value)
+        End If
     End Sub
 #End Region
 End Class

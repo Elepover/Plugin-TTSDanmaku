@@ -7,7 +7,7 @@
 
     Private Sub Button_Wizard_Click(sender As Object, e As EventArgs) Handles Button_Wizard.Click
         If My.Computer.Keyboard.ShiftKeyDown Then
-            Dim frm As New Form_SpeakAnything
+            Dim frm As New Window_SpeakAnything
             frm.Show()
             Me.Close()
             Exit Sub
