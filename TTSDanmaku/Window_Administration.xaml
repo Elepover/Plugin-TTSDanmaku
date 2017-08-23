@@ -22,7 +22,7 @@
             <TabItem Header="高级设置">
                 <Grid Background="White">
                     <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TTS 引擎" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="ComboBox_Engine" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="120">
+                    <ComboBox x:Name="ComboBox_Engine" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="120" ToolTip="选择 TTS 引擎。&#x0a;&#x0a;首选引擎适合所有电脑，但稳定性和效率取决于网络性能。&#x0a;备用框架自带引擎不一定能正常工作。盗版系统失败概率较高。">
                         <ComboBoxItem Content="百度翻译 API（伪"/>
                         <ComboBoxItem Content=".NET 框架自带引擎"/>
                         <ComboBoxItem Content="Google 娘"/>
