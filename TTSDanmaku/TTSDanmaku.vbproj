@@ -58,9 +58,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\BilibiliDM_PluginFramework.dll</HintPath>
     </Reference>
-    <Reference Include="NAudio, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\Vegas 预演\NAudio\NAudio\bin\Release\NAudio.dll</HintPath>
+    <Reference Include="NAudio">
+      <HintPath>Resources\NAudio.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
