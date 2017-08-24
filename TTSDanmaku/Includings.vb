@@ -309,13 +309,30 @@ retry:
         ''' <returns></returns>
         Public Shared Function GetLatestUpd() As Update
             Dim gottenResult As String
-            gottenResult = New WebClient().DownloadString(New Uri("https://www.danmuji.cn/api/v2/TTSDanmaku"))
+            gottenResult = HttpGet(New Uri("https://www.danmuji.cn/api/v2/TTSDanmaku"))
             Dim jsonObj As Newtonsoft.Json.Linq.JObject = Newtonsoft.Json.Linq.JObject.Parse(gottenResult)
             Dim latestVer As Version = New Version(jsonObj("version").ToString())
             Dim updDesc As String = jsonObj("update_desc").ToString()
             Dim updTime As Date = DateTimeOffset.Parse(jsonObj("update_datetime"), Nothing).DateTime
 
             Return New Update(latestVer, updTime, updDesc)
+        End Function
+
+        ''' <summary>
+        ''' 等同于 DownloadString 吧，mmp
+        ''' </summary>
+        ''' <param name="uri">请求 URI</param>
+        ''' <returns></returns>
+        Public Shared Function HttpGet(uri As Uri) As String
+            Dim request As HttpWebRequest = DirectCast(WebRequest.Create(uri), HttpWebRequest)
+            Using response As HttpWebResponse = DirectCast(request.GetResponse(), HttpWebResponse)
+                Using stream As IO.Stream = response.GetResponseStream()
+                    Using reader As New IO.StreamReader(stream)
+                        Dim text = reader.ReadToEnd()
+                        Return text
+                    End Using
+                End Using
+            End Using
         End Function
 
         ''' <summary>
