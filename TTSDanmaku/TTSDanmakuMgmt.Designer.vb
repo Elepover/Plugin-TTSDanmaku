@@ -158,7 +158,7 @@ Partial Class TTSDanmakuMgmt
         Me.Button_CheckUpdates.Size = New System.Drawing.Size(75, 23)
         Me.Button_CheckUpdates.TabIndex = 8
         Me.Button_CheckUpdates.Text = "检查更新"
-        Me.ToolTip_Default.SetToolTip(Me.Button_CheckUpdates, "检查插件更新。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按下 Shift 再点击按钮可检查测试版更新。")
+        Me.ToolTip_Default.SetToolTip(Me.Button_CheckUpdates, "检查插件更新。")
         Me.Button_CheckUpdates.UseVisualStyleBackColor = True
         '
         'NumericUpDown_RetryCount

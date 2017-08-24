@@ -256,37 +256,90 @@ retry:
         End Try
     End Sub
     Public Class KruinUpdates
-        Public Enum UpdateType
-            ''' <summary>
-            ''' 测试版
-            ''' </summary>
-            Beta = 1
-            ''' <summary>
-            ''' 发布版
-            ''' </summary>
-            Release = 0
-        End Enum
 
         Public Class Update
-            Sub New()
-                Version = "0.0.0.0"
-                Type = UpdateType.Release
+            ''' <summary>
+            ''' 产生一个新的 Update 对象。
+            ''' </summary>
+            ''' <param name="latestVer">最新版本</param>
+            ''' <param name="updTime">更新日期</param>
+            ''' <param name="updDesc">更新描述</param>
+            Sub New(latestVer As Version, updTime As Date, updDesc As String)
+                pLatestVersion = latestVer
+                pUpdateTime = updTime
+                pUpdateDescription = updDesc
             End Sub
-            Public Version As String
-            Public Type As UpdateType
+
+            ''' <summary>
+            ''' 获得的最新版本
+            ''' </summary>
+            ''' <returns></returns>
+            Public ReadOnly Property LatestVersion As Version
+                Get
+                    Return pLatestVersion
+                End Get
+            End Property
+            ''' <summary>
+            ''' 最新版本更新日期
+            ''' </summary>
+            ''' <returns></returns>
+            Public ReadOnly Property UpdateTime As Date
+                Get
+                    Return pUpdateTime
+                End Get
+            End Property
+            ''' <summary>
+            ''' 更新描述
+            ''' </summary>
+            ''' <returns></returns>
+            Public ReadOnly Property UpdateDescription As String
+                Get
+                    Return pUpdateDescription
+                End Get
+            End Property
+
+            Private Property pLatestVersion As Version
+            Private Property pUpdateTime As Date
+            Private Property pUpdateDescription As String
         End Class
 
-        Public Shared Function CheckUpdatesViaKruinUpdates(Optional Type As UpdateType = UpdateType.Release) As Update
-            'Check updates via Elepover's APIs.
-            Dim client As New WebClient()
-            Dim ver As String
-            If Type = UpdateType.Beta Then
-                ver = client.DownloadString(New Uri("https://apis.elepover.com/kruinupdates/latest-beta"))
+        ''' <summary>
+        ''' 获取最新的插件版本
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Function GetLatestUpd() As Update
+            Dim gottenResult As String
+            gottenResult = New WebClient().DownloadString(New Uri("https://www.danmuji.cn/api/v2/TTSDanmaku"))
+            Dim jsonObj As Newtonsoft.Json.Linq.JObject = Newtonsoft.Json.Linq.JObject.Parse(gottenResult)
+            Dim latestVer As Version = New Version(jsonObj("version").ToString())
+            Dim updDesc As String = jsonObj("update_desc").ToString()
+            Dim updTime As Date = DateTimeOffset.Parse(jsonObj("update_datetime"), Nothing).DateTime
+
+            Return New Update(latestVer, updTime, updDesc)
+        End Function
+
+        ''' <summary>
+        ''' 插件是不是最新版?
+        ''' </summary>
+        ''' <param name="currentVer">当前版本</param>
+        ''' <returns></returns>
+        Public Shared Function CheckIfLatest(currentVer As Version) As Boolean
+            Dim upd As Update = GetLatestUpd()
+            Return CheckIfLatest(upd, currentVer)
+        End Function
+
+        ''' <summary>
+        ''' 插件是不是最新版?
+        ''' </summary>
+        ''' <param name="upd">检查到的最新版本</param>
+        ''' <param name="currentVer">当前版本</param>
+        ''' <returns></returns>
+        Public Shared Function CheckIfLatest(upd As Update, currentVer As Version) As Boolean
+            If upd.LatestVersion > currentVer Then
+                Return False
             Else
-                ver = client.DownloadString(New Uri("https://apis.elepover.com/kruinupdates/latest-release"))
+                Return True
             End If
-            Dim u As New Update() With {.Type = Type, .Version = ver}
-            Return u
         End Function
     End Class
 
