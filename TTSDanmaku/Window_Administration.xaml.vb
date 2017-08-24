@@ -177,7 +177,7 @@ Public Class Window_Administration
             Dim latest As KruinUpdates.Update = KruinUpdates.GetLatestUpd()
             Dim currVer As Version = New Version(New Main().PluginVer)
 
-            If KruinUpdates.CheckIfLatest(latest, currVer) Then
+            If Not KruinUpdates.CheckIfLatest(latest, currVer) Then
                 If MsgBox("最新版本: " & latest.LatestVersion.ToString & " 已发布！" & vbCrLf & "更新时间: " & latest.UpdateTime.ToLongDateString & " " & latest.UpdateTime.ToShortTimeString & vbCrLf & vbCrLf & "更新内容: " & latest.UpdateDescription & vbCrLf & vbCrLf & "是否前往下载？", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "KruinUpdates") = MsgBoxResult.Yes Then
                     Dim proc As New Process()
                     proc.StartInfo.FileName = "https://www.danmuji.cn/plugins/TTSDanmaku"
