@@ -290,6 +290,7 @@ Public Class Window_Administration
         TextBox_Files.AppendText("总大小: " & (totalLength2 / 1024) & " KiB.")
         Status("操作成功: " & count & " 个。")
     End Sub
+#End Region
 
     Private Sub Button_About_Click(sender As Object, e As RoutedEventArgs) Handles Button_About.Click
         Process.Start("https://www.danmuji.cn/plugins/TTSDanmaku")
@@ -327,5 +328,8 @@ Public Class Window_Administration
             CheckIfLegal_GIFT()
         End If
     End Sub
-#End Region
+
+    Private Sub Button_Donation_Click(sender As Object, e As RoutedEventArgs) Handles Button_Donation.Click
+        Process.Start("https://blog.elepover.com/donation.html")
+    End Sub
 End Class

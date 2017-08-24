@@ -109,5 +109,6 @@
         <Button x:Name="Button_CheckUpdates" Content="检查更新" HorizontalAlignment="Right" Margin="0,0,10,56" VerticalAlignment="Bottom" Width="75" ToolTip="检查插件更新。&#x0a;&#x0a;按下 Shift 再点击按钮可检查测试版更新。"/>
         <Button x:Name="Button_Close" Content="关闭 / 取消" HorizontalAlignment="Right" Margin="0,0,10,32" VerticalAlignment="Bottom" Width="75" IsCancel="True" VerticalContentAlignment="Center" ToolTip="关闭窗口。&#x0a;所有未保存的配置都会丢失！"/>
         <TextBlock x:Name="Label_ThanksViaMyHeart" Margin="90,0,90,32" TextWrapping="Wrap" Text="感谢您使用本插件。" VerticalAlignment="Bottom" Width="452" Height="19" TextAlignment="Center" ToolTip="真诚地在此感谢您在安装使用本插件上所花费的分分秒秒。&#x0a;您的使用是我开发的最大动力。&#x0a;&#x0a;如果有任何使用问题，请参见右侧常见问题。&#x0a;如没有列出，敬请随时与我联系。&#x0a;若不重要，请您选择 在「给我一些建议」处留下您的意见和建议。&#x0a;&#x0a;Copyright (C) 2017 Elepover.&#x0a;This is an open-source(MIT) software."/>
+        <Button x:Name="Button_Donation" Content="捐赠" HorizontalAlignment="Left" Margin="90,440,0,0" VerticalAlignment="Top" Width="75" ToolTip="赞助插件作者，如果您喜欢这个插件的话。&#x0a;&#x0a;如果您并没有那个意思，请随意使用。&#x0a;&#x0a;本插件没有捐赠版与非捐赠版之分。"/>
     </Grid>
 </Window>
