@@ -1,4 +1,6 @@
-﻿Imports System.Windows
+﻿Imports System.Runtime.InteropServices
+Imports System.Windows
+Imports System.Windows.Interop
 
 Public Class Window_Administration
 #Region "Including"
@@ -221,6 +223,10 @@ Public Class Window_Administration
         Settings.Methods.Initialize()
         Icon = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(My.Resources.icon.GetHbitmap, IntPtr.Zero, Int32Rect.Empty, Media.Imaging.BitmapSizeOptions.FromEmptyOptions())
 
+        'If CheckIfWin10() Then
+        '    FullOpenAero()
+        'End If
+
         LoadToControl()
         '处理缓存
         Try
@@ -273,6 +279,89 @@ Public Class Window_Administration
         Next
         TextBox_Files.AppendText("总大小: " & (totalLength2 / 1024) & " KiB.")
         Status("操作成功: " & count & " 个。")
+    End Sub
+#End Region
+
+#Region "Glass"
+    Private Declare Auto Function DwmIsCompositionEnabled Lib "dwmapi.dll" Alias "DwmIsCompositionEnabled" (ByRef pfEnabled As Boolean) As Integer
+    Private Declare Auto Function DwmExtendFrameIntoClientArea Lib "dwmapi.dll" Alias "DwmExtendFrameIntoClientArea" (ByVal hWnd As IntPtr, ByRef pMargin As MARGINS) As Integer
+    <StructLayout(LayoutKind.Sequential)>
+    Private Structure MARGINS
+        Public cxLeftWidth As Integer
+        Public cxRightWidth As Integer
+        Public cyTopHeight As Integer
+        Public cyButtomheight As Integer
+    End Structure
+    Private Const FramBrod = -1
+
+    <DllImport("user32.dll")>
+    Friend Shared Function SetWindowCompositionAttribute(hwnd As IntPtr, ByRef data As WindowCompositionAttributeData) As Integer
+    End Function
+
+    <StructLayout(LayoutKind.Sequential)>
+    Friend Structure WindowCompositionAttributeData
+        Public Attribute As WindowCompositionAttribute
+        Public Data As IntPtr
+        Public SizeOfData As Integer
+    End Structure
+
+    Friend Enum WindowCompositionAttribute
+        WCA_ACCENT_POLICY = 19
+    End Enum
+
+    Friend Enum AccentState
+        ACCENT_DISABLED = 0
+        ACCENT_ENABLE_GRADIENT = 1
+        ACCENT_ENABLE_TRANSPARENTGRADIENT = 2
+        ACCENT_ENABLE_BLURBEHIND = 3
+        ACCENT_INVALID_STATE = 4
+    End Enum
+
+    <StructLayout(LayoutKind.Sequential)>
+    Friend Structure AccentPolicy
+        Public AccentState As AccentState
+        Public AccentFlags As Integer
+        Public GradientColor As Integer
+        Public AnimationId As Integer
+    End Structure
+
+    Friend Sub EnableBlur()
+
+        Dim accent = New AccentPolicy()
+        Dim accentStructSize = Marshal.SizeOf(accent)
+        accent.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND
+
+        Dim accentPtr = Marshal.AllocHGlobal(accentStructSize)
+        Marshal.StructureToPtr(accent, accentPtr, False)
+
+        Dim data = New WindowCompositionAttributeData With {
+            .Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY,
+            .SizeOfData = accentStructSize,
+            .Data = accentPtr
+        }
+
+        SetWindowCompositionAttribute(New WindowInteropHelper(Me).Handle, data)
+
+        Marshal.FreeHGlobal(accentPtr)
+    End Sub
+
+    Friend Sub FullOpenAero()
+        Dim IsOpenAero As Boolean = False
+        Dim margins As MARGINS = New MARGINS
+        With margins
+            .cxLeftWidth = FramBrod
+            .cxRightWidth = FramBrod
+            .cyTopHeight = FramBrod
+            .cyButtomheight = FramBrod
+        End With
+        Dim hwnd As IntPtr = New WindowInteropHelper(Me).Handle
+        If System.Environment.OSVersion.Version.Major < 6 Then Exit Sub
+        DwmIsCompositionEnabled(IsOpenAero)
+
+        EnableBlur()
+        If (IsOpenAero) Then
+            DwmExtendFrameIntoClientArea(hwnd, margins)
+        End If
     End Sub
 #End Region
 

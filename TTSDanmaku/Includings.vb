@@ -2,6 +2,7 @@
 ' Copyright (C) 2017 Elepover.
 
 Imports System.Net
+Imports Microsoft.Win32
 
 Module Includings
 
@@ -202,7 +203,26 @@ Module Includings
         Return pass
     End Function
 
+    ''' <summary>
+    ''' 检查系统是否为 Windows 10 或 Windows Server 2016
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function CheckIfWin10() As Boolean
+        Dim regKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\Microsoft\Windows NT\CurrentVersion")
+        Dim productName As String = DirectCast(regKey.GetValue("ProductName"), String)
+        Dim pass As Boolean = False
+        If productName.Contains("Windows Server 2016") Then
+            pass = True
+        ElseIf productName.Contains("Windows 10") Then
+            pass = True
+        End If
+        Return pass
+    End Function
 
+    ''' <summary>
+    ''' 获得随机 TTS 文件名（包含完整路径）
+    ''' </summary>
+    ''' <returns></returns>
     Public Function GetRandomFilename() As String
         Dim ran1 As Integer = 0
         Dim ran2 As Integer = 0
