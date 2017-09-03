@@ -4,7 +4,7 @@
 
 The TTSDanmaku plugin for Bililive_dm (https://github.com/copyliu/bililive_dm)
 
-Description last updated at: 08/24/2017 14:03 (GMT)
+Description last updated at: 09/03/2017 16:29 (UTC)
 
 有问题或是有建议可以 [在作者的 Blog](https://blog.elepover.com/quoteLeft.html) 通过评论提交。
 
@@ -62,7 +62,7 @@ Description last updated at: 08/24/2017 14:03 (GMT)
 
 [i] 新版开发进度:
 
-v1.0.4, build 54 ->
+v1.0.4, build 54 -> 最后发行版本
 [i] This is the Grand Update.
 [/] 重新设计设置窗口布局，使用标签页来区分。
 [+] 加入用户黑白名单功能。
@@ -211,7 +211,7 @@ v1.0.2, build 25 ->
 [i] TTSDanmaku 即将开源。
 
 
-v1.0.1, build 24 -> 最后发行版本
+v1.0.1, build 24
 [+] 尴尬...忘了写关于部分的链接代码了...我还是升级一个 build 吧。
 
 v1.0.1, build 23
