@@ -31,6 +31,7 @@
 
 *: 来自 Blog 留言板的以下用户:
 
+- 小小小小小马
 - miracle
 - Yellabble
 - 饭团砸
@@ -38,6 +39,7 @@
 
 
 真诚感谢所有用户在安装和使用本插件的过程中花费的分分秒秒。
+欢迎反馈 / PR / Issue!
 
 *Copyright (C) 2017 Elepover.*
 *This is an open-source(MIT) software.*
