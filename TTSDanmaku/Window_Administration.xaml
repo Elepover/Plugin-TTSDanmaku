@@ -16,7 +16,7 @@
                     <CheckBox x:Name="CheckBox_NoCache" Content="自动清理 TTS 缓存" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" ToolTip="在插件被启用时自动清理 TTS 缓存。&#x0a;&#x0a;注意：启用这个选项可能会延长插件启动时间并导致弹幕姬假死。"/>
                     <CheckBox x:Name="CheckBox_NoKeepingCache" Content="读完弹幕后立即删除缓存文件" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" ToolTip="在完成播放弹幕后立即删除缓存文件。&#x0a;&#x0a;注意：可能有至多 2 分钟的延迟时间。这些缓存将会遵循「自动清理 TTS 缓存」选项的设置进行管理。"/>
                     <CheckBox x:Name="CheckBox_OneByOne" Content="逐条读出 TTS" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" ToolTip="逐条读出收到的所有弹幕。"/>
-
+                    <CheckBox x:Name="CheckBox_EnableTrayIcon" Content="插件托盘图标" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" IsChecked="True" ToolTip="在通知区域显示一个通知图标，便于管理插件。&#x0a;&#x0a;（该设置不会保存，默认为启用。）"/>
                 </Grid>
             </TabItem>
             <TabItem Header="高级设置">
@@ -46,6 +46,9 @@
                             <Button x:Name="Button_DeleteAll" HorizontalAlignment="Left" Margin="519,10,0,0" VerticalAlignment="Top" Width="75" Height="146" Content="全部&#x0a;删除" ToolTip="手动删除缓存目录中的所有 TTS 缓存。&#x0a;您也可以启动【自动删除 TTS 缓存】选项。&#x0a;&#x0a;当前会话中产生的 TTS 缓存由于文件占用无法删除，&#x0a;可在下次启动时手动清除。"/>
                         </Grid>
                     </Expander>
+                    <TextBlock HorizontalAlignment="Left" Margin="170,10,0,0" TextWrapping="Wrap" Text="最低弹幕字数限制" VerticalAlignment="Top"/>
+                    <Slider x:Name="Slider_DMLengthLimit" HorizontalAlignment="Left" Margin="170,30,0,0" VerticalAlignment="Top" Width="120" Height="21" Minimum="1" Maximum="100" Value="1"/>
+                    <TextBlock x:Name="TextBlock_DMLengthLimit" HorizontalAlignment="Left" Margin="295,30,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="21"/>
                 </Grid>
             </TabItem>
             <TabItem Header="屏蔽设置">

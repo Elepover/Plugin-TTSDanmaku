@@ -63,6 +63,7 @@ Namespace Settings
             GiftWhitelist = ""
             ReadInArray = True
             BlockType = 0
+            MiniumDMLength = 1
         End Sub
         ''' <summary>
         ''' 只读设置项, API 字符串。
@@ -324,6 +325,11 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property BlockType As String
+        ''' <summary>
+        ''' 最少弹幕字数限制
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property MiniumDMLength As String
     End Class
 
     Public Class Vars
@@ -460,6 +466,8 @@ Namespace Settings
                 Settings.ReadInArray = SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
                 Settings.BlockType = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.MiniumDMLength = SettingsReader.ReadLine()
 
                 SettingsReader.Close()
 
@@ -541,16 +549,18 @@ Namespace Settings
             SettingsWriter.WriteLine("True")
             SettingsWriter.WriteLine("是否使用 Google Global:")
             SettingsWriter.WriteLine("False")
-            SettingsWriter.WriteLine(".NET 框架引擎的语速 (-10 至 10)")
+            SettingsWriter.WriteLine(".NET 框架引擎的语速 (-10 至 10):")
             SettingsWriter.WriteLine("0")
-            SettingsWriter.WriteLine("屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)")
+            SettingsWriter.WriteLine("屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单):")
             SettingsWriter.WriteLine("0")
-            SettingsWriter.WriteLine("礼物屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单)")
+            SettingsWriter.WriteLine("礼物屏蔽模式 (0 = 已关闭, 1 = 黑名单, 2 = 白名单):")
             SettingsWriter.WriteLine("0")
-            SettingsWriter.WriteLine("队列读出")
+            SettingsWriter.WriteLine("队列读出:")
             SettingsWriter.WriteLine("True")
-            SettingsWriter.WriteLine("黑白名单目标 (0 = UID, 1 = 用户名)")
+            SettingsWriter.WriteLine("黑白名单目标 (0 = UID, 1 = 用户名):")
             SettingsWriter.WriteLine(0)
+            SettingsWriter.WriteLine("最少弹幕字数限制:")
+            SettingsWriter.WriteLine(1)
             SettingsWriter.Close()
 
             Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
@@ -625,6 +635,8 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.ReadInArray)
             SettingsWriter.WriteLine("黑白名单目标 (0 = UID, 1 = 用户名)")
             SettingsWriter.WriteLine(Settings.BlockType)
+            SettingsWriter.WriteLine("最少弹幕字数限制:")
+            SettingsWriter.WriteLine(Settings.MiniumDMLength)
             SettingsWriter.Close()
 
             Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}

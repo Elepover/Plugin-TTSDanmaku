@@ -95,6 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoesNotExistTTS.vb" />
+    <Compile Include="Form_NotifyIconKeeper.Designer.vb">
+      <DependentUpon>Form_NotifyIconKeeper.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form_NotifyIconKeeper.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form_ProxySettings.Designer.vb">
       <DependentUpon>Form_ProxySettings.vb</DependentUpon>
     </Compile>
@@ -199,6 +205,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form_NotifyIconKeeper.resx">
+      <DependentUpon>Form_NotifyIconKeeper.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_ProxySettings.resx">
       <DependentUpon>Form_ProxySettings.vb</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +299,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

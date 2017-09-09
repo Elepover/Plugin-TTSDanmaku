@@ -278,6 +278,12 @@ retry:
                     Case Else
                 End Select
             End If
+            '检查字数要求
+            If e.Danmaku.CommentText.Length < Settings.Settings.MiniumDMLength Then
+                DBGLog("弹幕字数 (" & e.Danmaku.CommentText.Length & ") 不符合弹幕字数下限 (" & Settings.Settings.MiniumDMLength & "), 放弃。")
+                Exit Sub
+            End If
+
 
             If Settings.Settings.TTSDanmakuSender Then
                 Dim unreplacedText As String = Settings.Settings.DanmakuText
@@ -355,7 +361,8 @@ retry:
             SRThread.Abort()
         End If
         IsEnabled = False
-        Console.WriteLine("Plugin Stoped!")
+        Console.WriteLine("Plugin Stopped!")
+        TrayKeeper.NotifyIcon_Default.Visible = False
         Log("插件已停止。")
     End Sub
 
@@ -457,6 +464,7 @@ APIs:
 
     Public Overrides Sub DeInit()
         MyBase.DeInit()
+        TrayKeeper.NotifyIcon_Default.Visible = False
         If SRThread?.IsAlive Then
             SRThread.Abort()
         End If

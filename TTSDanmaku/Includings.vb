@@ -5,6 +5,7 @@ Imports System.Net
 Imports Microsoft.Win32
 
 Module Includings
+    Friend WithEvents TrayKeeper As New Form_NotifyIconKeeper
 
     '排队读 / TTS Dispatching Center
     Friend WithEvents GlobalPlayer As New NAudio.Wave.WaveOutEvent
@@ -345,6 +346,7 @@ retry:
         ''' <returns></returns>
         Public Shared Function HttpGet(uri As Uri) As String
             Dim request As HttpWebRequest = DirectCast(WebRequest.Create(uri), HttpWebRequest)
+            request.UserAgent = "KruinUpdates/" & New Main().PluginVer & " (TTSDanmaku;)"
             Using response As HttpWebResponse = DirectCast(request.GetResponse(), HttpWebResponse)
                 Using stream As IO.Stream = response.GetResponseStream()
                     Using reader As New IO.StreamReader(stream)

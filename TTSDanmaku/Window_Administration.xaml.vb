@@ -50,6 +50,7 @@ Public Class Window_Administration
         CheckBox_NoCache.IsChecked = Settings.Settings.AutoClearCache
         NumericUpDown_Volume.Value = Settings.Settings.TTSVolume
         NumericUpDown_RetryCount.Value = Settings.Settings.DLFailRetry
+        Slider_DMLengthLimit.Value = Settings.Settings.MiniumDMLength
 
         TextBox_CustomDMContent.Text = Settings.Settings.DanmakuText
         TextBox_CustomGiftContent.Text = Settings.Settings.GiftsText
@@ -67,6 +68,8 @@ Public Class Window_Administration
         TextBox_GiftBlacklist.Text = Settings.Settings.GiftBlacklist
         TextBox_GiftWhitelist.Text = Settings.Settings.GiftWhitelist
         TrackBar_BlockType.Value = Settings.Settings.BlockType
+
+        CheckBox_EnableTrayIcon.IsChecked = TrayKeeper.NotifyIcon_Default.Visible
 
         NumericUpDown_SpeechSpeed.Value = Settings.Settings.NETFramework_VoiceSpeed
 
@@ -125,6 +128,7 @@ Public Class Window_Administration
         Settings.Settings.ConnectSuccessful = TextBox_CustomConnected.Text
         Settings.Settings.DLFailRetry = CInt(NumericUpDown_RetryCount.Value)
         Settings.Settings.ReadInArray = CheckBox_OneByOne.IsChecked
+        Settings.Settings.MiniumDMLength = CInt(Slider_DMLengthLimit.Value)
 
         Settings.Settings.Block_Mode = ComboBox_Blockmode.SelectedIndex
         Settings.Settings.Blacklist = TextBox_Blacklist.Text
@@ -389,5 +393,19 @@ Public Class Window_Administration
 
     Private Sub Button_Donation_Click(sender As Object, e As RoutedEventArgs) Handles Button_Donation.Click
         Process.Start("https://blog.elepover.com/donation.html")
+    End Sub
+
+    Private Sub CheckBox_EnableTrayIcon_Click(sender As Object, e As RoutedEventArgs) Handles CheckBox_EnableTrayIcon.Click
+        If CheckBox_EnableTrayIcon.IsChecked Then
+            TrayKeeper.NotifyIcon_Default.Visible = True
+        Else
+            TrayKeeper.NotifyIcon_Default.Visible = False
+        End If
+    End Sub
+
+    Private Sub Slider_DMLengthLimit_ValueChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Double)) Handles Slider_DMLengthLimit.ValueChanged
+        If IsVisible Then
+            TextBlock_DMLengthLimit.Text = CInt(Slider_DMLengthLimit.Value)
+        End If
     End Sub
 End Class
