@@ -28,6 +28,7 @@ Partial Class Form_NotifyIconKeeper
         Me.ContextMenuStrip_Default = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem_LeaveDMJ = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem_ShowMgmtWindow = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem_ShowHideDMJForm = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip_Default.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -40,31 +41,38 @@ Partial Class Form_NotifyIconKeeper
         '
         'ContextMenuStrip_Default
         '
-        Me.ContextMenuStrip_Default.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem_ShowMgmtWindow, Me.ToolStripMenuItem_LeaveDMJ})
+        Me.ContextMenuStrip_Default.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem_ShowMgmtWindow, Me.ToolStripMenuItem_ShowHideDMJForm, Me.ToolStripMenuItem_LeaveDMJ})
         Me.ContextMenuStrip_Default.Name = "ContextMenuStrip_Default"
-        Me.ContextMenuStrip_Default.Size = New System.Drawing.Size(170, 48)
+        Me.ContextMenuStrip_Default.Size = New System.Drawing.Size(235, 92)
         '
         'ToolStripMenuItem_LeaveDMJ
         '
         Me.ToolStripMenuItem_LeaveDMJ.Image = Global.TTSDanmaku.My.Resources.Resources.warning
         Me.ToolStripMenuItem_LeaveDMJ.Name = "ToolStripMenuItem_LeaveDMJ"
-        Me.ToolStripMenuItem_LeaveDMJ.Size = New System.Drawing.Size(169, 22)
+        Me.ToolStripMenuItem_LeaveDMJ.Size = New System.Drawing.Size(234, 22)
         Me.ToolStripMenuItem_LeaveDMJ.Text = "退出弹幕姬 (&E)"
         '
         'ToolStripMenuItem_ShowMgmtWindow
         '
-        Me.ToolStripMenuItem_ShowMgmtWindow.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.ToolStripMenuItem_ShowMgmtWindow.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!)
         Me.ToolStripMenuItem_ShowMgmtWindow.Image = Global.TTSDanmaku.My.Resources.Resources.settings
         Me.ToolStripMenuItem_ShowMgmtWindow.Name = "ToolStripMenuItem_ShowMgmtWindow"
-        Me.ToolStripMenuItem_ShowMgmtWindow.Size = New System.Drawing.Size(169, 22)
+        Me.ToolStripMenuItem_ShowMgmtWindow.Size = New System.Drawing.Size(234, 22)
         Me.ToolStripMenuItem_ShowMgmtWindow.Text = "显示管理窗口 (&S)"
+        '
+        'ToolStripMenuItem_ShowHideDMJForm
+        '
+        Me.ToolStripMenuItem_ShowHideDMJForm.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.ToolStripMenuItem_ShowHideDMJForm.Name = "ToolStripMenuItem_ShowHideDMJForm"
+        Me.ToolStripMenuItem_ShowHideDMJForm.Size = New System.Drawing.Size(234, 22)
+        Me.ToolStripMenuItem_ShowHideDMJForm.Text = "显示 / 隐藏弹幕姬主窗口 (&D)"
         '
         'Form_NotifyIconKeeper
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(284, 1)
+        Me.ClientSize = New System.Drawing.Size(284, 61)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -83,4 +91,5 @@ Partial Class Form_NotifyIconKeeper
     Friend WithEvents ContextMenuStrip_Default As Windows.Forms.ContextMenuStrip
     Friend WithEvents ToolStripMenuItem_ShowMgmtWindow As Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem_LeaveDMJ As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem_ShowHideDMJForm As Windows.Forms.ToolStripMenuItem
 End Class
