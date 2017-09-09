@@ -174,23 +174,8 @@ Public Class Window_Administration
     End Sub
 
     Private Sub Button_CheckUpdates_Click(sender As Object, e As Windows.RoutedEventArgs) Handles Button_CheckUpdates.Click
-        Try
-            'Check release
-            Dim latest As KruinUpdates.Update = KruinUpdates.GetLatestUpd()
-            Dim currVer As Version = New Version(New Main().PluginVer)
-
-            If Not KruinUpdates.CheckIfLatest(latest, currVer) Then
-                If MsgBox("最新版本: " & latest.LatestVersion.ToString & " 已发布！" & vbCrLf & "更新时间: " & latest.UpdateTime.ToLongDateString & " " & latest.UpdateTime.ToShortTimeString & vbCrLf & vbCrLf & "更新内容: " & latest.UpdateDescription & vbCrLf & vbCrLf & "是否前往下载？", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "KruinUpdates") = MsgBoxResult.Yes Then
-                    Dim proc As New Process()
-                    proc.StartInfo.FileName = "https://www.danmuji.cn/plugins/TTSDanmaku"
-                    proc.Start()
-                End If
-            Else
-                NBlockMsgBox("插件已为最新(" & currVer.ToString & ")。" & vbCrLf & "更新时间: " & latest.UpdateTime.ToLongDateString & " " & latest.UpdateTime.ToShortTimeString, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "KruinUpdates")
-            End If
-        Catch ex As Exception
-            NBlockMsgBox("检查更新时出错: " & ex.ToString, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "KruinUpdates")
-        End Try
+        Dim frm As New Window_Upgrader
+        frm.Show()
     End Sub
 
     Private Sub Button_Close_Click(sender As Object, e As Windows.RoutedEventArgs) Handles Button_Close.Click
