@@ -303,5 +303,11 @@
   <ItemGroup>
     <None Include="Resources\settings.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dmj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mgmt.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

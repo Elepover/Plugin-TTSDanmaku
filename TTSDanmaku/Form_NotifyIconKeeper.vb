@@ -25,4 +25,5 @@
             System.Windows.Application.Current.MainWindow.Visibility = Windows.Visibility.Visible
         End If
     End Sub
+
 End Class

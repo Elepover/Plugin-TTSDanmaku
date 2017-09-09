@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.InteropServices
+﻿Imports System.ComponentModel
+Imports System.Runtime.InteropServices
 Imports System.Windows
 Imports System.Windows.Interop
 
@@ -400,6 +401,9 @@ Public Class Window_Administration
             TrayKeeper.NotifyIcon_Default.Visible = True
         Else
             TrayKeeper.NotifyIcon_Default.Visible = False
+            If Not System.Windows.Application.Current.MainWindow.Visibility = Windows.Visibility.Visible Then
+                System.Windows.Application.Current.MainWindow.Visibility = Windows.Visibility.Visible
+            End If
         End If
     End Sub
 
@@ -408,4 +412,5 @@ Public Class Window_Administration
             TextBlock_DMLengthLimit.Text = CInt(Slider_DMLengthLimit.Value)
         End If
     End Sub
+
 End Class

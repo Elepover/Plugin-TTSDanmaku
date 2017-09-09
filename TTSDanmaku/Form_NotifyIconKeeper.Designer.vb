@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form_NotifyIconKeeper
     Inherits System.Windows.Forms.Form
 
     'Form 重写 Dispose，以清理组件列表。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,15 +20,15 @@ Partial Class Form_NotifyIconKeeper
     '注意: 以下过程是 Windows 窗体设计器所必需的
     '可以使用 Windows 窗体设计器修改它。  
     '不要使用代码编辑器修改它。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_NotifyIconKeeper))
         Me.NotifyIcon_Default = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ContextMenuStrip_Default = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ToolStripMenuItem_LeaveDMJ = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem_ShowMgmtWindow = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem_ShowHideDMJForm = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem_LeaveDMJ = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip_Default.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -41,16 +41,9 @@ Partial Class Form_NotifyIconKeeper
         '
         'ContextMenuStrip_Default
         '
-        Me.ContextMenuStrip_Default.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem_ShowMgmtWindow, Me.ToolStripMenuItem_ShowHideDMJForm, Me.ToolStripMenuItem_LeaveDMJ})
+        Me.ContextMenuStrip_Default.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem_ShowHideDMJForm, Me.ToolStripMenuItem_ShowMgmtWindow, Me.ToolStripMenuItem_LeaveDMJ})
         Me.ContextMenuStrip_Default.Name = "ContextMenuStrip_Default"
         Me.ContextMenuStrip_Default.Size = New System.Drawing.Size(235, 92)
-        '
-        'ToolStripMenuItem_LeaveDMJ
-        '
-        Me.ToolStripMenuItem_LeaveDMJ.Image = Global.TTSDanmaku.My.Resources.Resources.warning
-        Me.ToolStripMenuItem_LeaveDMJ.Name = "ToolStripMenuItem_LeaveDMJ"
-        Me.ToolStripMenuItem_LeaveDMJ.Size = New System.Drawing.Size(234, 22)
-        Me.ToolStripMenuItem_LeaveDMJ.Text = "退出弹幕姬 (&E)"
         '
         'ToolStripMenuItem_ShowMgmtWindow
         '
@@ -63,9 +56,17 @@ Partial Class Form_NotifyIconKeeper
         'ToolStripMenuItem_ShowHideDMJForm
         '
         Me.ToolStripMenuItem_ShowHideDMJForm.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.ToolStripMenuItem_ShowHideDMJForm.Image = Global.TTSDanmaku.My.Resources.Resources.dmj
         Me.ToolStripMenuItem_ShowHideDMJForm.Name = "ToolStripMenuItem_ShowHideDMJForm"
         Me.ToolStripMenuItem_ShowHideDMJForm.Size = New System.Drawing.Size(234, 22)
         Me.ToolStripMenuItem_ShowHideDMJForm.Text = "显示 / 隐藏弹幕姬主窗口 (&D)"
+        '
+        'ToolStripMenuItem_LeaveDMJ
+        '
+        Me.ToolStripMenuItem_LeaveDMJ.Image = Global.TTSDanmaku.My.Resources.Resources.warning
+        Me.ToolStripMenuItem_LeaveDMJ.Name = "ToolStripMenuItem_LeaveDMJ"
+        Me.ToolStripMenuItem_LeaveDMJ.Size = New System.Drawing.Size(234, 22)
+        Me.ToolStripMenuItem_LeaveDMJ.Text = "退出弹幕姬 (&E)"
         '
         'Form_NotifyIconKeeper
         '

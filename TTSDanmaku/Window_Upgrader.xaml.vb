@@ -14,13 +14,14 @@ Public Class Window_Upgrader
         Try
             'Check release
             latest = KruinUpdates.GetLatestUpd()
-            TextBlock_Latest.Text = "最新版本: " & latest.LatestVersion.ToString
+            TextBlock_Latest.Text = "最新版本 (Stable): " & latest.LatestVersion.ToString & " / 当前版本: " & currVer.ToString & " (" & Edition & ")"
             If KruinUpdates.CheckIfLatest(latest, currVer) Then
                 TextBlock_Status.Text = "插件已为最新。"
             Else
-                TextBlock_Status.Text = "最新版本: " & latest.LatestVersion.ToString & " / 当前版本: " & currVer.ToString
+                TextBlock_Status.Text = "发现更新。"
             End If
             TextBox_UpdContents.Text = "更新时间: " & latest.UpdateTime.ToString() & vbCrLf & "更新日志: " & vbCrLf & latest.UpdateDescription
+            PluginDLURL = "https://www.danmuji.cn" & latest.DLURL
         Catch ex As Exception
             TextBlock_Status.Text = "检查更新时出错。"
             TextBox_UpdContents.Text = "检查更新时出错: " & ex.ToString

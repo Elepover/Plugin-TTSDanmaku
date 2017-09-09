@@ -285,10 +285,11 @@ retry:
             ''' <param name="latestVer">最新版本</param>
             ''' <param name="updTime">更新日期</param>
             ''' <param name="updDesc">更新描述</param>
-            Sub New(latestVer As Version, updTime As Date, updDesc As String)
+            Sub New(latestVer As Version, updTime As Date, updDesc As String, dlLink As String)
                 pLatestVersion = latestVer
                 pUpdateTime = updTime
                 pUpdateDescription = updDesc
+                pDLLink = dlLink
             End Sub
 
             ''' <summary>
@@ -319,9 +320,20 @@ retry:
                 End Get
             End Property
 
+            ''' <summary>
+            ''' 更新下载链接
+            ''' </summary>
+            ''' <returns></returns>
+            Public ReadOnly Property DLURL As String
+                Get
+                    Return pDLLink
+                End Get
+            End Property
+
             Private Property pLatestVersion As Version
             Private Property pUpdateTime As Date
             Private Property pUpdateDescription As String
+            Private Property pDLLink As String
         End Class
 
         ''' <summary>
@@ -335,8 +347,9 @@ retry:
             Dim latestVer As Version = New Version(jsonObj("version").ToString())
             Dim updDesc As String = jsonObj("update_desc").ToString()
             Dim updTime As Date = DateTimeOffset.Parse(jsonObj("update_datetime"), Nothing).DateTime
+            Dim dlLink As String = jsonObj("dl_url").ToString()
 
-            Return New Update(latestVer, updTime, updDesc)
+            Return New Update(latestVer, updTime, updDesc, dlLink)
         End Function
 
         ''' <summary>
