@@ -69,7 +69,7 @@ Partial Class Form_NotifyIconKeeper
         'ToolStripMenuItem_StopPlugin
         '
         Me.ToolStripMenuItem_StopPlugin.Enabled = False
-        Me.ToolStripMenuItem_StopPlugin.Image = Global.TTSDanmaku.My.Resources.Resources._stop
+        Me.ToolStripMenuItem_StopPlugin.Image = Global.TTSDanmaku.My.Resources.Resources.stopplugin
         Me.ToolStripMenuItem_StopPlugin.Name = "ToolStripMenuItem_StopPlugin"
         Me.ToolStripMenuItem_StopPlugin.Size = New System.Drawing.Size(234, 22)
         Me.ToolStripMenuItem_StopPlugin.Text = "停用插件 (&Q)"
