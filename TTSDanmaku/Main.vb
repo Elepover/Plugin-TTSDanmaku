@@ -25,11 +25,25 @@ Public Class Main
     Public Shared IsNAudioNotFoundAlerted As Boolean = False
     Public Shared UserCountLatest As Integer = 0
     Public Shared SRThread As Threading.Thread
+    Public Shared BridgeListener As Threading.Thread
+    Public Shared UpdThread As Threading.Thread
     Public Shared SRCount As Integer = 0
 
     Private Sub ShowADM()
-        Dim frm As New Window_Administration
-        frm.Show()
+        Try
+            ManagementWindow.Show()
+        Catch ex As Exception When ex.GetType() = GetType(ObjectDisposedException)
+            ManagementWindow = New Window_Administration
+            ManagementWindow.Show()
+        Catch ex As Exception When ex.GetType() = GetType(InvalidOperationException)
+            ManagementWindow = New Window_Administration
+            ManagementWindow.Show()
+        End Try
+    End Sub
+
+    Private Sub StartUpdCheck()
+        UpdThread = New Threading.Thread(AddressOf ThrUpdCheck)
+        UpdThread.Start()
     End Sub
 
     Private Sub StartStatusReport()
@@ -37,7 +51,39 @@ Public Class Main
         SRThread.Start()
     End Sub
 
-    Private Sub ThrStatusReport()
+    Private Sub StartMainBridge()
+        Try
+            If Not BridgeListener.IsAlive Then
+                BridgeListener = New Threading.Thread(AddressOf ThrBridgeListener)
+                BridgeListener.Start()
+            End If
+        Catch ex As Exception
+            BridgeListener = New Threading.Thread(AddressOf ThrBridgeListener)
+            BridgeListener.Start()
+        End Try
+    End Sub
+
+    Private Sub ThrUpdCheck()
+        Dim latest As KruinUpdates.Update
+        Dim currVer As Version = MainBridge.MainBridge.MainVersion
+        Try
+            'Check release
+            latest = KruinUpdates.GetLatestUpd()
+            If KruinUpdates.CheckIfLatest(latest, currVer) Then
+                Log("插件已为最新 (v" & currVer.ToString & ")。")
+            Else
+                Log("发现更新 (v" & latest.LatestVersion.ToString & ")。")
+                UpdateFound = True
+                If Settings.Settings.ShowTrayIcon Then
+                    TrayKeeper.NotifyIcon_Default.ShowBalloonTip(1000, "KruinUpdates", "发现 TTSDanmaku 更新 (v" & latest.LatestVersion.ToString & ")。", Windows.Forms.ToolTipIcon.Info)
+                End If
+            End If
+        Catch ex As Exception
+            Log("检查更新时出错: " & ex.Message)
+        End Try
+    End Sub
+
+    Public Sub ThrStatusReport()
         Do Until 233 = 2333
             '注意检测插件是否启用
             DBGLog("状态报告已开始计时: " & Settings.Settings.StatusReportInterval)
@@ -54,6 +100,54 @@ Public Class Main
             PlayTTS(content)
             SRCount += 1
 DLoop:
+        Loop
+    End Sub
+
+    Private Sub ThrBridgeListener()
+        'Initialize MainBridge
+        If Me.Status Then
+            MainBridge.MainBridge.MainStatus = MainBridge.MainStatusModel.Started
+            MainBridge.MainBridge.MainStatusReq = MainBridge.MainStatusModel.Started
+        Else
+            MainBridge.MainBridge.MainStatus = MainBridge.MainStatusModel.Stopped
+            MainBridge.MainBridge.MainStatusReq = MainBridge.MainStatusModel.Stopped
+        End If
+        MainBridge.MainBridge.MainVersion = New Version(PluginVer)
+
+        Do Until 233 = 2333
+            If Me.Status Then
+                MainBridge.MainBridge.MainStatus = MainBridge.MainStatusModel.Started
+            Else
+                MainBridge.MainBridge.MainStatus = MainBridge.MainStatusModel.Stopped
+            End If
+            'Check pending logs
+            If MainBridge.MainBridge.LogArray.Count > 0 Then
+                Do Until MainBridge.MainBridge.LogArray.Count = 0
+                    If MainBridge.MainBridge.LogArray(0).IsDebug Then
+                        DBGLog(MainBridge.MainBridge.LogArray(0).Message)
+                        MainBridge.MainBridge.LogArray.RemoveAt(0)
+                    Else
+                        Log(MainBridge.MainBridge.LogArray(0).Message)
+                        MainBridge.MainBridge.LogArray.RemoveAt(0)
+                    End If
+                Loop
+            End If
+            'Response stop/start request.
+            If MainBridge.MainBridge.MainStatusReq = MainBridge.MainStatusModel.RequestedStop Then
+                If Me.Status Then
+                    [Stop]()
+                End If
+                MainBridge.MainBridge.MainStatusReq = MainBridge.MainStatusModel.Stopped
+            End If
+            If MainBridge.MainBridge.MainStatusReq = MainBridge.MainStatusModel.RequestedStart Then
+                If Me.Status = False Then
+                    Start()
+                End If
+                MainBridge.MainBridge.MainStatusReq = MainBridge.MainStatusModel.Started
+            End If
+
+            Statistics.DBG_BridgeUpdateCount += 1
+            Threading.Thread.Sleep(10)
         Loop
     End Sub
 
@@ -355,15 +449,15 @@ retry:
     End Sub
 
     Public Overrides Sub [Stop]()
-        MyBase.[Stop]()
         ''請勿使用任何阻塞方法
         If SRThread?.IsAlive Then
             SRThread.Abort()
         End If
         IsEnabled = False
         Console.WriteLine("Plugin Stopped!")
-        TrayKeeper.NotifyIcon_Default.Visible = False
         Log("插件已停止。")
+        TrayKeeper.NotifyIcon_Default.Text = "TTSDanmaku - 已停用"
+        MyBase.[Stop]()
     End Sub
 
     Public Overrides Sub Start()
@@ -399,6 +493,15 @@ retry:
             DBGLog("NETFramework_VoiceSpeed: " & Settings.Settings.NETFramework_VoiceSpeed)
             DBGLog("Block_Mode: " & Settings.Settings.Block_Mode)
             DBGLog("GiftBlock_Mode: " & Settings.Settings.GiftBlock_Mode)
+            DBGLog("MiniumDMLength: " & Settings.Settings.MiniumDMLength)
+            DBGLog("FirstUseTrayIcon: " & Settings.Settings.FirstUseTrayIcon)
+            DBGLog("ShowTrayIcon: " & Settings.Settings.ShowTrayIcon)
+            DBGLog("AutoUpdEnabled: " & Settings.Settings.AutoUpdEnabled)
+            If Settings.Settings.ShowTrayIcon Then
+                TrayKeeper.NotifyIcon_Default.Visible = True
+            Else
+                TrayKeeper.NotifyIcon_Default.Visible = False
+            End If
         Catch ex As Exception
             Log("启动失败 - 无法初始化设置系统: " & ex.ToString)
             startupFailure = True
@@ -442,6 +545,19 @@ APIs:
         Statistics.ResetStats()
         DBGLog("启动状态报告守护线程...")
         StartStatusReport()
+        DBGLog("启动 MainBridge...")
+        StartMainBridge()
+        If Settings.Settings.FirstUseTrayIcon Then
+            If Settings.Settings.ShowTrayIcon Then
+                Settings.Settings.FirstUseTrayIcon = False
+                Settings.Methods.SaveSettings()
+                TrayKeeper.NotifyIcon_Default.ShowBalloonTip(1000, "TTSDanmaku", "现在可以直接在任务栏通知区域管理插件啦！", Windows.Forms.ToolTipIcon.Info)
+            End If
+        End If
+        TrayKeeper.ToolStripMenuItem_RestartPlugin.Enabled = True
+        TrayKeeper.ToolStripMenuItem_StopPlugin.Enabled = True
+        TrayKeeper.NotifyIcon_Default.Text = "TTSDanmaku - 已启用"
+
         GC.Collect()
         Console.WriteLine("Plugin Started!")
         startSW.Stop()
@@ -460,6 +576,15 @@ APIs:
             Log("TTSDanmaku 启动用时比以往来得久...如有条件请将 TTSDanmaku 自动清理缓存选项关闭。")
         End If
         IsEnabled = True
+        If Settings.Settings.AutoUpdEnabled Then
+            Log("正在检查更新...")
+            StartUpdCheck()
+        End If
+    End Sub
+
+    Public Overrides Sub Inited()
+        MyBase.Inited()
+        Console.WriteLine("Initialized!")
     End Sub
 
     Public Overrides Sub DeInit()
@@ -467,6 +592,9 @@ APIs:
         TrayKeeper.NotifyIcon_Default.Visible = False
         If SRThread?.IsAlive Then
             SRThread.Abort()
+        End If
+        If BridgeListener?.IsAlive Then
+            BridgeListener.Abort()
         End If
         'Kill DMJ forcely.
         Dim proc As Process = Process.GetCurrentProcess

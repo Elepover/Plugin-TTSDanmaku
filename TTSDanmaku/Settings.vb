@@ -64,6 +64,9 @@ Namespace Settings
             ReadInArray = True
             BlockType = 0
             MiniumDMLength = 1
+            FirstUseTrayIcon = True
+            ShowTrayIcon = True
+            AutoUpdEnabled = True
         End Sub
         ''' <summary>
         ''' 只读设置项, API 字符串。
@@ -330,6 +333,21 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property MiniumDMLength As String
+        ''' <summary>
+        ''' 首次使用通知栏图标
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property FirstUseTrayIcon As Boolean
+        ''' <summary>
+        ''' 是否展示通知栏图标
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property ShowTrayIcon As Boolean
+        ''' <summary>
+        ''' 是否启用自动更新
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property AutoUpdEnabled As Boolean
     End Class
 
     Public Class Vars
@@ -468,6 +486,12 @@ Namespace Settings
                 Settings.BlockType = SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
                 Settings.MiniumDMLength = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.FirstUseTrayIcon = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.ShowTrayIcon = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.AutoUpdEnabled = SettingsReader.ReadLine()
 
                 SettingsReader.Close()
 
@@ -561,6 +585,12 @@ Namespace Settings
             SettingsWriter.WriteLine(0)
             SettingsWriter.WriteLine("最少弹幕字数限制:")
             SettingsWriter.WriteLine(1)
+            SettingsWriter.WriteLine("首次使用通知栏图标:")
+            SettingsWriter.WriteLine(True)
+            SettingsWriter.WriteLine("显示通知栏图标:")
+            SettingsWriter.WriteLine(True)
+            SettingsWriter.WriteLine("自动检查更新:")
+            SettingsWriter.WriteLine(True)
             SettingsWriter.Close()
 
             Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
@@ -637,6 +667,12 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.BlockType)
             SettingsWriter.WriteLine("最少弹幕字数限制:")
             SettingsWriter.WriteLine(Settings.MiniumDMLength)
+            SettingsWriter.WriteLine("首次使用通知栏图标:")
+            SettingsWriter.WriteLine(Settings.FirstUseTrayIcon)
+            SettingsWriter.WriteLine("显示通知栏图标:")
+            SettingsWriter.WriteLine(Settings.ShowTrayIcon)
+            SettingsWriter.WriteLine("自动检查更新:")
+            SettingsWriter.WriteLine(Settings.AutoUpdEnabled)
             SettingsWriter.Close()
 
             Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}

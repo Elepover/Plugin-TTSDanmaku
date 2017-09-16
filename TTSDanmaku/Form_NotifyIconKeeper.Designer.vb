@@ -26,8 +26,11 @@ Partial Class Form_NotifyIconKeeper
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_NotifyIconKeeper))
         Me.NotifyIcon_Default = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ContextMenuStrip_Default = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ToolStripMenuItem_ShowMgmtWindow = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem_ShowHideDMJForm = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem_RestartPlugin = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem_StopPlugin = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem_CheckUpd = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem_ShowMgmtWindow = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem_LeaveDMJ = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip_Default.SuspendLayout()
         Me.SuspendLayout()
@@ -41,17 +44,9 @@ Partial Class Form_NotifyIconKeeper
         '
         'ContextMenuStrip_Default
         '
-        Me.ContextMenuStrip_Default.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem_ShowHideDMJForm, Me.ToolStripMenuItem_ShowMgmtWindow, Me.ToolStripMenuItem_LeaveDMJ})
+        Me.ContextMenuStrip_Default.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem_ShowHideDMJForm, Me.ToolStripMenuItem_RestartPlugin, Me.ToolStripMenuItem_StopPlugin, Me.ToolStripMenuItem_CheckUpd, Me.ToolStripMenuItem_ShowMgmtWindow, Me.ToolStripMenuItem_LeaveDMJ})
         Me.ContextMenuStrip_Default.Name = "ContextMenuStrip_Default"
-        Me.ContextMenuStrip_Default.Size = New System.Drawing.Size(235, 92)
-        '
-        'ToolStripMenuItem_ShowMgmtWindow
-        '
-        Me.ToolStripMenuItem_ShowMgmtWindow.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!)
-        Me.ToolStripMenuItem_ShowMgmtWindow.Image = Global.TTSDanmaku.My.Resources.Resources.settings
-        Me.ToolStripMenuItem_ShowMgmtWindow.Name = "ToolStripMenuItem_ShowMgmtWindow"
-        Me.ToolStripMenuItem_ShowMgmtWindow.Size = New System.Drawing.Size(234, 22)
-        Me.ToolStripMenuItem_ShowMgmtWindow.Text = "显示管理窗口 (&S)"
+        Me.ContextMenuStrip_Default.Size = New System.Drawing.Size(235, 136)
         '
         'ToolStripMenuItem_ShowHideDMJForm
         '
@@ -60,6 +55,41 @@ Partial Class Form_NotifyIconKeeper
         Me.ToolStripMenuItem_ShowHideDMJForm.Name = "ToolStripMenuItem_ShowHideDMJForm"
         Me.ToolStripMenuItem_ShowHideDMJForm.Size = New System.Drawing.Size(234, 22)
         Me.ToolStripMenuItem_ShowHideDMJForm.Text = "显示 / 隐藏弹幕姬主窗口 (&D)"
+        Me.ToolStripMenuItem_ShowHideDMJForm.ToolTipText = "显示或隐藏弹幕姬主窗口。"
+        '
+        'ToolStripMenuItem_RestartPlugin
+        '
+        Me.ToolStripMenuItem_RestartPlugin.Enabled = False
+        Me.ToolStripMenuItem_RestartPlugin.Image = Global.TTSDanmaku.My.Resources.Resources.run
+        Me.ToolStripMenuItem_RestartPlugin.Name = "ToolStripMenuItem_RestartPlugin"
+        Me.ToolStripMenuItem_RestartPlugin.Size = New System.Drawing.Size(234, 22)
+        Me.ToolStripMenuItem_RestartPlugin.Text = "重新启用插件 (&R)"
+        Me.ToolStripMenuItem_RestartPlugin.ToolTipText = "重新启用插件。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "此选项仅在启动插件一次后生效。"
+        '
+        'ToolStripMenuItem_StopPlugin
+        '
+        Me.ToolStripMenuItem_StopPlugin.Enabled = False
+        Me.ToolStripMenuItem_StopPlugin.Image = Global.TTSDanmaku.My.Resources.Resources._stop
+        Me.ToolStripMenuItem_StopPlugin.Name = "ToolStripMenuItem_StopPlugin"
+        Me.ToolStripMenuItem_StopPlugin.Size = New System.Drawing.Size(234, 22)
+        Me.ToolStripMenuItem_StopPlugin.Text = "停用插件 (&Q)"
+        Me.ToolStripMenuItem_StopPlugin.ToolTipText = "请求停用插件。"
+        '
+        'ToolStripMenuItem_CheckUpd
+        '
+        Me.ToolStripMenuItem_CheckUpd.Image = Global.TTSDanmaku.My.Resources.Resources.update
+        Me.ToolStripMenuItem_CheckUpd.Name = "ToolStripMenuItem_CheckUpd"
+        Me.ToolStripMenuItem_CheckUpd.Size = New System.Drawing.Size(234, 22)
+        Me.ToolStripMenuItem_CheckUpd.Text = "检查更新 (&U)"
+        '
+        'ToolStripMenuItem_ShowMgmtWindow
+        '
+        Me.ToolStripMenuItem_ShowMgmtWindow.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!)
+        Me.ToolStripMenuItem_ShowMgmtWindow.Image = Global.TTSDanmaku.My.Resources.Resources.settings
+        Me.ToolStripMenuItem_ShowMgmtWindow.Name = "ToolStripMenuItem_ShowMgmtWindow"
+        Me.ToolStripMenuItem_ShowMgmtWindow.Size = New System.Drawing.Size(234, 22)
+        Me.ToolStripMenuItem_ShowMgmtWindow.Text = "显示管理窗口 (&S)"
+        Me.ToolStripMenuItem_ShowMgmtWindow.ToolTipText = "显示插件管理窗口。"
         '
         'ToolStripMenuItem_LeaveDMJ
         '
@@ -67,6 +97,7 @@ Partial Class Form_NotifyIconKeeper
         Me.ToolStripMenuItem_LeaveDMJ.Name = "ToolStripMenuItem_LeaveDMJ"
         Me.ToolStripMenuItem_LeaveDMJ.Size = New System.Drawing.Size(234, 22)
         Me.ToolStripMenuItem_LeaveDMJ.Text = "退出弹幕姬 (&E)"
+        Me.ToolStripMenuItem_LeaveDMJ.ToolTipText = "退出弹幕姬。"
         '
         'Form_NotifyIconKeeper
         '
@@ -93,4 +124,7 @@ Partial Class Form_NotifyIconKeeper
     Friend WithEvents ToolStripMenuItem_ShowMgmtWindow As Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem_LeaveDMJ As Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem_ShowHideDMJForm As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem_RestartPlugin As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem_StopPlugin As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem_CheckUpd As Windows.Forms.ToolStripMenuItem
 End Class

@@ -1,7 +1,14 @@
 ﻿Public Class Form_NotifyIconKeeper
     Private Sub ToolStripMenuItem_ShowHideMgmtWindow_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem_ShowMgmtWindow.Click
-        Dim frm As New Window_Administration
-        frm.Show()
+        Try
+            ManagementWindow.Show()
+        Catch ex As Exception When ex.GetType() = GetType(ObjectDisposedException)
+            ManagementWindow = New Window_Administration
+            ManagementWindow.Show()
+        Catch ex As Exception When ex.GetType() = GetType(InvalidOperationException)
+            ManagementWindow = New Window_Administration
+            ManagementWindow.Show()
+        End Try
     End Sub
 
     Private Sub ToolStripMenuItem_LeaveDMJ_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem_LeaveDMJ.Click
@@ -26,4 +33,23 @@
         End If
     End Sub
 
+    Private Sub ToolStripMenuItem_RestartPlugin_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem_RestartPlugin.Click
+        MainBridge.MainBridge.MainStatusReq = MainBridge.MainStatusModel.RequestedStart
+    End Sub
+
+    Private Sub ToolStripMenuItem_StopPlugin_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem_StopPlugin.Click
+        MainBridge.MainBridge.MainStatusReq = MainBridge.MainStatusModel.RequestedStop
+    End Sub
+
+    Private Sub ToolStripMenuItem_CheckUpd_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem_CheckUpd.Click
+        Try
+            KruinUpdatesWindow.Show()
+        Catch ex As Exception When ex.GetType() = GetType(ObjectDisposedException)
+            KruinUpdatesWindow = New Window_Upgrader
+            KruinUpdatesWindow.Show()
+        Catch ex As Exception When ex.GetType() = GetType(InvalidOperationException)
+            KruinUpdatesWindow = New Window_Upgrader
+            KruinUpdatesWindow.Show()
+        End Try
+    End Sub
 End Class

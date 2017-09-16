@@ -5,6 +5,8 @@ Imports System.Net
 Imports Microsoft.Win32
 
 Module Includings
+    Friend WithEvents ManagementWindow As New Window_Administration
+    Friend WithEvents KruinUpdatesWindow As New Window_Upgrader
     Friend WithEvents TrayKeeper As New Form_NotifyIconKeeper
 
     '排队读 / TTS Dispatching Center
@@ -16,16 +18,20 @@ Module Includings
             If Not Settings.Settings.DoNotKeepCache = Nothing Then '不要缓存就删
                 If Settings.Settings.DoNotKeepCache Then
                     Try
+                        MainBridge.MainBridge.LogToArray("尝试删除以下文件: " & PendingFilenames(0), True)
                         IO.File.Delete(PendingFilenames(0))
                     Catch ex As Exception
+                        MainBridge.MainBridge.LogToArray("删除失败: " & ex.Message, True)
                         Statistics.DBG_LastException = ex
                     End Try
                 End If
             End If
             Try
                 GlobalPlayer.Init(PendingTTSes(0))
+                MainBridge.MainBridge.LogToArray("启动播放。", True)
                 GlobalPlayer.Play()
             Catch ex As Exception
+                MainBridge.MainBridge.LogToArray("播放文件时遇到错误: " & ex.ToString, True)
             End Try
             PendingTTSes.RemoveAt(0)
             PendingFilenames.RemoveAt(0)
@@ -68,15 +74,18 @@ Module Includings
             Try
                 Dim reader As New NAudio.Wave.Mp3FileReader(filename)
                 If GlobalPlayer.PlaybackState = NAudio.Wave.PlaybackState.Playing Then '勃了就添加
+                    MainBridge.MainBridge.LogToArray("正在播放，已添加至队列。", True)
                     PendingFilenames.Add(filename)
                     PendingTTSes.Add(reader)
                 ElseIf GlobalPlayer.PlaybackState = NAudio.Wave.PlaybackState.Stopped Then '没播就启动
+                    MainBridge.MainBridge.LogToArray("没有播放，正在启动播放。", True)
                     PendingTTSes.Add(reader)
                     PendingFilenames.Add(filename)
                     GlobalPlayer.Init(PendingTTSes.ElementAt(0))
                     GlobalPlayer.Play()
                 End If
             Catch ex As Exception
+                MainBridge.MainBridge.LogToArray("预播放阶段出现错误: " & ex.Message, True)
                 Statistics.DBG_ErrCount += 1
                 Statistics.DBG_LastException = ex
             End Try
@@ -86,6 +95,7 @@ Module Includings
     Public PendingTTSes As New List(Of NAudio.Wave.Mp3FileReader)
     Public PendingFilenames As New List(Of String)
     Public IsCoolingDown As Boolean = False
+    Public UpdateFound As Boolean = False
 
     Public Sub CountDown()
         IsCoolingDown = True

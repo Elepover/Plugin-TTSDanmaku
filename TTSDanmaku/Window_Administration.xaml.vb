@@ -39,6 +39,11 @@ Public Class Window_Administration
         End If
     End Function
     Private Sub UpdateControl()
+        If Settings.Settings.ShowTrayIcon Then
+            TrayKeeper.NotifyIcon_Default.Visible = True
+        Else
+            TrayKeeper.NotifyIcon_Default.Visible = False
+        End If
         Button_Apply.ToolTip = "保存设置。" & vbCrLf & vbCrLf & "当前设置文件路径: " & Settings.Vars.ConfigFileName
     End Sub
 
@@ -70,6 +75,13 @@ Public Class Window_Administration
         TextBox_GiftWhitelist.Text = Settings.Settings.GiftWhitelist
         TrackBar_BlockType.Value = Settings.Settings.BlockType
 
+        CheckBox_EnableTrayIcon.IsChecked = Settings.Settings.ShowTrayIcon
+        CheckBox_AutoUpd.IsChecked = Settings.Settings.AutoUpdEnabled
+
+        If UpdateFound Then
+            Button_CheckUpdates.Background = Media.Brushes.Pink
+        End If
+
         CheckBox_EnableTrayIcon.IsChecked = TrayKeeper.NotifyIcon_Default.Visible
 
         NumericUpDown_SpeechSpeed.Value = Settings.Settings.NETFramework_VoiceSpeed
@@ -96,6 +108,7 @@ Public Class Window_Administration
         TextBox_Stats.AppendText("房间人数数据接收次数: " & Statistics.DBG_ReceivedRoomCount & vbCrLf)
         TextBox_Stats.AppendText("插件运行过程中出错次数: " & Statistics.DBG_ErrCount & vbCrLf)
         TextBox_Stats.AppendText("等待播放的 TTS 数量: " & PendingTTSes.Count & vbCrLf)
+        TextBox_Stats.AppendText("MainBridge 检查计数: " & Statistics.DBG_BridgeUpdateCount & vbCrLf)
         If IsNothing(Statistics.DBG_LastException) Then
             TextBox_Stats.AppendText("最后一次发生的错误: 无" & vbCrLf)
         Else
@@ -139,6 +152,8 @@ Public Class Window_Administration
         Settings.Settings.GiftBlacklist = TextBox_GiftBlacklist.Text
         Settings.Settings.GiftWhitelist = TextBox_GiftWhitelist.Text
         Settings.Settings.BlockType = CInt(TrackBar_BlockType.Value)
+        Settings.Settings.AutoUpdEnabled = CheckBox_AutoUpd.IsChecked
+        Settings.Settings.ShowTrayIcon = CheckBox_EnableTrayIcon.IsChecked
 
         Settings.Settings.NETFramework_VoiceSpeed = CInt(NumericUpDown_SpeechSpeed.Value)
         '检查自定义字符是否正常
@@ -179,8 +194,15 @@ Public Class Window_Administration
     End Sub
 
     Private Sub Button_CheckUpdates_Click(sender As Object, e As Windows.RoutedEventArgs) Handles Button_CheckUpdates.Click
-        Dim frm As New Window_Upgrader
-        frm.Show()
+        Try
+            KruinUpdatesWindow.Show()
+        Catch ex As Exception When ex.GetType() = GetType(ObjectDisposedException)
+            KruinUpdatesWindow = New Window_Upgrader
+            KruinUpdatesWindow.Show()
+        Catch ex As Exception When ex.GetType() = GetType(InvalidOperationException)
+            KruinUpdatesWindow = New Window_Upgrader
+            KruinUpdatesWindow.Show()
+        End Try
     End Sub
 
     Private Sub Button_Close_Click(sender As Object, e As Windows.RoutedEventArgs) Handles Button_Close.Click
@@ -189,12 +211,12 @@ Public Class Window_Administration
 
     Private Sub Button_StatusReport_Click(sender As Object, e As Windows.RoutedEventArgs) Handles Button_StatusReport.Click
         Dim frm As New Window_StatusReport
-        frm.Show()
+        frm.ShowDialog()
     End Sub
 
     Private Sub Button_ProxySettings_Click(sender As Object, e As Windows.RoutedEventArgs) Handles Button_ProxySettings.Click
         Dim frm As New Window_ProxySettings
-        frm.Show()
+        frm.ShowDialog()
     End Sub
 
     Private Sub Button_SetupWizard_Click(sender As Object, e As Windows.RoutedEventArgs) Handles Button_SetupWizard.Click
@@ -205,7 +227,7 @@ Public Class Window_Administration
 
     Private Sub Button_Reload_Click(sender As Object, e As Windows.RoutedEventArgs) Handles Button_Reload.Click
         Me.IsEnabled = False
-
+        Window_Administration_Loaded(Nothing, Nothing)
         Me.IsEnabled = True
     End Sub
 

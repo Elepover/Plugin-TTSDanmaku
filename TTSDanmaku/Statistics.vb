@@ -66,6 +66,8 @@ Public Class Statistics
     ''' <returns></returns>
     Public Shared Property DBG_LastException As Exception
 
+    Public Shared Property DBG_BridgeUpdateCount As Long
+
     ''' <summary>
     ''' 重置统计数据
     ''' </summary>
@@ -82,5 +84,6 @@ Public Class Statistics
         DBG_ReceivedRoomCount = 0
         DBG_ErrCount = 0
         DBG_LastException = Nothing
+        DBG_BridgeUpdateCount = 0
     End Sub
 End Class

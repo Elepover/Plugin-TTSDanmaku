@@ -163,6 +163,7 @@
     </Compile>
     <Compile Include="Includings.vb" />
     <Compile Include="Main.vb" />
+    <Compile Include="MainBridge.vb" />
     <Compile Include="Module_Edition.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -308,6 +309,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mgmt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\run.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
