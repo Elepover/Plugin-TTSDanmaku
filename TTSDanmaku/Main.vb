@@ -2,6 +2,7 @@
 ' Copyright (C) 2017 Elepover & CopyLiu (For his demo version).
 
 Imports System.ComponentModel
+Imports System.IO
 Imports BilibiliDM_PluginFramework
 
 Public Class Main
@@ -467,6 +468,7 @@ retry:
         startSW.Start()
         Dim startupFailure As Boolean = False
         Log("正在启动...")
+        Log("丢失 NAudio 文件将阻止插件成功启动。")
         Try
             Settings.Methods.Initialize()
             DBGLog("设置初始化成功: ")
