@@ -406,12 +406,12 @@ Namespace Settings
             '    [stream].Write([bytes], 0, [bytes].Length)
             '    [stream].Close()
             'End If
-            If Not File.Exists(Path.Combine(Vars.PluginDir, "NAudio.dll")) Then
-                Dim [bytes]() As Byte = My.Resources.libNAudio
-                Dim [stream] As Stream = File.Create(Path.Combine(Vars.PluginDir, "NAudio.dll"))
-                [stream].Write([bytes], 0, [bytes].Length)
-                [stream].Close()
-            End If
+            'If Not File.Exists(Path.Combine(Vars.PluginDir, "NAudio.dll")) Then
+            '    Dim [bytes]() As Byte = My.Resources.libNAudio
+            '    Dim [stream] As Stream = File.Create(Path.Combine(Vars.PluginDir, "NAudio.dll"))
+            '    [stream].Write([bytes], 0, [bytes].Length)
+            '    [stream].Close()
+            'End If
         End Sub
 
         Public Shared Function ReadSettings() As Boolean
