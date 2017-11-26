@@ -16,7 +16,7 @@ Public Class Main
         Me.PluginAuth = "Elepover"
         Me.PluginName = "TTSDanmaku"
         Me.PluginCont = "elepover@outlook.com"
-        Me.PluginVer = "1.0.4.55"
+        Me.PluginVer = "1.0.4.56"
         Me.PluginDesc = "把你收到的弹幕和礼物，读出来！"
     End Sub
 
