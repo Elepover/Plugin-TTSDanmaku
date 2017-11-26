@@ -20,8 +20,8 @@ Public Class Window_Upgrader
             Else
                 TextBlock_Status.Text = "发现更新。"
             End If
-            TextBox_UpdContents.Text = "更新时间: " & latest.UpdateTime.ToString() & vbCrLf & "更新日志: " & vbCrLf & latest.UpdateDescription
-            PluginDLURL = "https://www.danmuji.cn" & latest.DLURL
+            TextBox_UpdContents.Text = "更新时间: " & latest.UpdateTime.ToString() & vbCrLf & "更新日志: " & vbCrLf & latest.UpdateDescription.Replace(vbLf, vbCrLf) 'LF Optimized.
+            PluginDLURL = "https://www.danmuji.org" & latest.DLURL
         Catch ex As Exception
             TextBlock_Status.Text = "检查更新时出错。"
             TextBox_UpdContents.Text = "检查更新时出错: " & ex.ToString
