@@ -67,6 +67,7 @@ Namespace Settings
             FirstUseTrayIcon = True
             ShowTrayIcon = True
             AutoUpdEnabled = True
+            IgnoreTTSVolume = False
         End Sub
         ''' <summary>
         ''' 只读设置项, API 字符串。
@@ -348,6 +349,11 @@ Namespace Settings
         ''' </summary>
         ''' <returns></returns>
         Public Shared Property AutoUpdEnabled As Boolean
+        ''' <summary>
+        ''' 是否忽略 TTS 音量。
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Property IgnoreTTSVolume As Boolean
     End Class
 
     Public Class Vars
@@ -478,6 +484,8 @@ Namespace Settings
                 Settings.ShowTrayIcon = SettingsReader.ReadLine()
                 SettingsReader.ReadLine()
                 Settings.AutoUpdEnabled = SettingsReader.ReadLine()
+                SettingsReader.ReadLine()
+                Settings.IgnoreTTSVolume = SettingsReader.ReadLine()
 
                 SettingsReader.Close()
 
@@ -577,6 +585,8 @@ Namespace Settings
             SettingsWriter.WriteLine(True)
             SettingsWriter.WriteLine("自动检查更新:")
             SettingsWriter.WriteLine(True)
+            SettingsWriter.WriteLine("忽略 TTS 音量设置以回避 MmException:")
+            SettingsWriter.WriteLine(True)
             SettingsWriter.Close()
 
             Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}
@@ -659,6 +669,8 @@ Namespace Settings
             SettingsWriter.WriteLine(Settings.ShowTrayIcon)
             SettingsWriter.WriteLine("自动检查更新:")
             SettingsWriter.WriteLine(Settings.AutoUpdEnabled)
+            SettingsWriter.WriteLine("忽略 TTS 音量设置以回避 MmException:")
+            SettingsWriter.WriteLine(Settings.IgnoreTTSVolume)
             SettingsWriter.Close()
 
             Dim whitelistWriter As New StreamWriter(Path.Combine(Vars.BlacklistDir, "whitelist.ini"), False, Encoding.UTF8) With {.AutoFlush = True}

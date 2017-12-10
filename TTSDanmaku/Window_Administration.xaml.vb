@@ -77,6 +77,7 @@ Public Class Window_Administration
 
         CheckBox_EnableTrayIcon.IsChecked = Settings.Settings.ShowTrayIcon
         CheckBox_AutoUpd.IsChecked = Settings.Settings.AutoUpdEnabled
+        CheckBox_IgnoreTTSVolume.IsChecked = Settings.Settings.IgnoreTTSVolume
 
         If UpdateFound Then
             Button_CheckUpdates.Background = Media.Brushes.Pink
@@ -154,6 +155,7 @@ Public Class Window_Administration
         Settings.Settings.BlockType = CInt(TrackBar_BlockType.Value)
         Settings.Settings.AutoUpdEnabled = CheckBox_AutoUpd.IsChecked
         Settings.Settings.ShowTrayIcon = CheckBox_EnableTrayIcon.IsChecked
+        Settings.Settings.IgnoreTTSVolume = CheckBox_IgnoreTTSVolume.IsChecked
 
         Settings.Settings.NETFramework_VoiceSpeed = CInt(NumericUpDown_SpeechSpeed.Value)
         '检查自定义字符是否正常

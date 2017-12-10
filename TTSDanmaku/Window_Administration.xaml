@@ -1,9 +1,10 @@
-﻿<Window x:Class="Window_Administration"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TTSDanmaku"
+        x:Class="Window_Administration"
         mc:Ignorable="d"
         Title="TTSDanmaku - Administration (Grand Update)" Height="520" Width="640" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
@@ -13,8 +14,8 @@
                     <CheckBox x:Name="CheckBox_TTSDebug" Content="启用调试模式" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" ToolTip="输出更多内容到日志中，便于排错。"/>
                     <CheckBox x:Name="CheckBox_TTSSender" Content="读出弹幕发送者" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" ToolTip="↑↑↑ 我觉得你可以看这个 ↑↑↑"/>
                     <CheckBox x:Name="CheckBox_TTSGifts" Content="读出收到的礼物" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" ToolTip="↑↑↑ 我觉得你可以看这个 ↑↑↑"/>
-                    <CheckBox x:Name="CheckBox_NoCache" Content="自动清理 TTS 缓存" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" ToolTip="在插件被启用时自动清理 TTS 缓存。&#x0a;&#x0a;注意：启用这个选项可能会延长插件启动时间并导致弹幕姬假死。"/>
-                    <CheckBox x:Name="CheckBox_NoKeepingCache" Content="读完弹幕后立即删除缓存文件" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" ToolTip="在完成播放弹幕后立即删除缓存文件。&#x0a;&#x0a;注意：可能有至多 2 分钟的延迟时间。这些缓存将会遵循「自动清理 TTS 缓存」选项的设置进行管理。"/>
+                    <CheckBox x:Name="CheckBox_NoCache" Content="自动清理 TTS 缓存" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" ToolTip="在插件被启用时自动清理 TTS 缓存。&#xA;&#xA;注意：启用这个选项可能会延长插件启动时间并导致弹幕姬假死。"/>
+                    <CheckBox x:Name="CheckBox_NoKeepingCache" Content="读完弹幕后立即删除缓存文件" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" ToolTip="在完成播放弹幕后立即删除缓存文件。&#xA;&#xA;注意：可能有至多 2 分钟的延迟时间。这些缓存将会遵循「自动清理 TTS 缓存」选项的设置进行管理。"/>
                     <CheckBox x:Name="CheckBox_OneByOne" Content="逐条读出 TTS" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" ToolTip="逐条读出收到的所有弹幕。"/>
                     <CheckBox x:Name="CheckBox_EnableTrayIcon" Content="插件托盘图标" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" IsChecked="True" ToolTip="在通知区域显示一个通知图标，便于管理插件。"/>
                     <CheckBox x:Name="CheckBox_AutoUpd" Content="自动检查更新" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" ToolTip="启动插件时自动访问弹幕姬服务器获取更新。"/>
@@ -23,7 +24,7 @@
             <TabItem Header="高级设置">
                 <Grid Background="White">
                     <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TTS 引擎" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="ComboBox_Engine" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="146" ToolTip="选择 TTS 引擎。&#x0a;&#x0a;首选引擎适合所有电脑，但稳定性和效率取决于网络性能。&#x0a;备用框架自带引擎不一定能正常工作。盗版系统失败概率较高。">
+                    <ComboBox x:Name="ComboBox_Engine" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="146" ToolTip="选择 TTS 引擎。&#xA;&#xA;首选引擎适合所有电脑，但稳定性和效率取决于网络性能。&#xA;备用框架自带引擎不一定能正常工作。盗版系统失败概率较高。">
                         <ComboBoxItem Content="百度翻译 API（伪"/>
                         <ComboBoxItem Content=".NET 框架自带引擎"/>
                         <ComboBoxItem Content="Google 娘"/>
@@ -32,30 +33,31 @@
                     <Slider x:Name="NumericUpDown_Volume" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="120" SmallChange="1" Maximum="100" Value="100" ToolTip="调节 TTS 的相对音量大小。范围为 0（完全静音）~ 100（与系统音量一致）。"/>
                     <TextBlock x:Name="TextBlock_Volume" HorizontalAlignment="Left" Margin="135,76,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Height="18"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,99,0,0" TextWrapping="Wrap" Text="下载失败重试次数（0 ~ 10）" VerticalAlignment="Top"/>
-                    <Slider x:Name="NumericUpDown_RetryCount" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="120" SmallChange="1" Value="5" ToolTip="指定在下载 TTS 文件时出现网络错误的重试次数。&#x0a;默认值: 5&#x0a;范围为 0 ~ 10, 指定为 0 将阻止插件重新下载。"/>
+                    <Slider x:Name="NumericUpDown_RetryCount" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="120" SmallChange="1" Value="5" ToolTip="指定在下载 TTS 文件时出现网络错误的重试次数。&#xA;默认值: 5&#xA;范围为 0 ~ 10, 指定为 0 将阻止插件重新下载。"/>
                     <TextBlock x:Name="TextBlock_RetryCount" HorizontalAlignment="Left" Margin="135,119,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Height="18"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,142,0,0" TextWrapping="Wrap" Text="TTS 语速" VerticalAlignment="Top"/>
-                    <Slider x:Name="NumericUpDown_SpeechSpeed" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" Width="120" SmallChange="1" ToolTip="（仅适用于框架自带引擎）&#x0a;设置 TTS 语速，范围从 -10 到 10。" Minimum="-10"/>
+                    <Slider x:Name="NumericUpDown_SpeechSpeed" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" Width="120" SmallChange="1" ToolTip="（仅适用于框架自带引擎）&#xA;设置 TTS 语速，范围从 -10 到 10。" Minimum="-10"/>
                     <TextBlock x:Name="TextBlock_SpeechSpeed" HorizontalAlignment="Left" Margin="135,162,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="18"/>
                     <Button x:Name="Button_StatusReport" Content="状态报告" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="75" ToolTip="以一定时间间隔报告直播间状态。"/>
                     <Button x:Name="Button_ProxySettings" Content="网络设置" HorizontalAlignment="Right" Margin="0,34,10,0" VerticalAlignment="Top" Width="75" ToolTip="设置语音合成时使用的网络代理和服务器配置。"/>
                     <Button x:Name="Button_SetupWizard" Content="设置向导" HorizontalAlignment="Right" Margin="0,58,10,0" VerticalAlignment="Top" Width="75" ToolTip="运行设置向导，帮助您完成主要的插件配置。"/>
-                    <Button x:Name="Button_Reload" Content="重载窗口" HorizontalAlignment="Right" Margin="0,82,10,0" VerticalAlignment="Top" Width="75" ToolTip="重新载入以下配置：&#x0a;-> 设置选项&#x0a;-> 缓存文件"/>
+                    <Button x:Name="Button_Reload" Content="重载窗口" HorizontalAlignment="Right" Margin="0,82,10,0" VerticalAlignment="Top" Width="75" ToolTip="重新载入以下配置：&#xA;-&gt; 设置选项&#xA;-&gt; 缓存文件"/>
                     <Expander Header="管理 TTS 缓存" Height="189" Margin="10,0,10,10" VerticalAlignment="Bottom" Width="606" IsExpanded="True">
                         <Grid>
                             <TextBox x:Name="TextBox_Files" HorizontalAlignment="Left" Margin="10,10,0,10" TextWrapping="Wrap" Width="504" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
-                            <Button x:Name="Button_DeleteAll" HorizontalAlignment="Left" Margin="519,10,0,0" VerticalAlignment="Top" Width="75" Height="146" Content="全部&#x0a;删除" ToolTip="手动删除缓存目录中的所有 TTS 缓存。&#x0a;您也可以启动【自动删除 TTS 缓存】选项。&#x0a;&#x0a;当前会话中产生的 TTS 缓存由于文件占用无法删除，&#x0a;可在下次启动时手动清除。"/>
+                            <Button x:Name="Button_DeleteAll" HorizontalAlignment="Left" Margin="519,10,0,0" VerticalAlignment="Top" Width="75" Height="146" Content="全部&#xA;删除" ToolTip="手动删除缓存目录中的所有 TTS 缓存。&#xA;您也可以启动【自动删除 TTS 缓存】选项。&#xA;&#xA;当前会话中产生的 TTS 缓存由于文件占用无法删除，&#xA;可在下次启动时手动清除。"/>
                         </Grid>
                     </Expander>
                     <TextBlock HorizontalAlignment="Left" Margin="170,10,0,0" TextWrapping="Wrap" Text="最低弹幕字数限制" VerticalAlignment="Top"/>
                     <Slider x:Name="Slider_DMLengthLimit" HorizontalAlignment="Left" Margin="170,30,0,0" VerticalAlignment="Top" Width="120" Height="21" Minimum="1" Maximum="100" Value="1"/>
                     <TextBlock x:Name="TextBlock_DMLengthLimit" HorizontalAlignment="Left" Margin="295,30,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="21"/>
+                    <CheckBox x:Name="CheckBox_IgnoreTTSVolume" Content="忽略 TTS 音量设置" HorizontalAlignment="Left" Margin="170,56,0,0" VerticalAlignment="Top" Height="21" Width="132" ToolTip="如果您经常遇到 &quot;NAudio.MmException: NoDriver calling waveOutSetVolume&quot; 问题，请尝试启用此选项。"/>
                 </Grid>
             </TabItem>
             <TabItem Header="屏蔽设置">
                 <Grid Background="White">
                     <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="屏蔽模式" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="ComboBox_Blockmode" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="120" ToolTip="选择用户屏蔽设置。&#x0a;名单可在 设置 -> 自定义 中找到。&#x0a;关闭: 没有任何屏蔽。&#x0a;黑名单: 屏蔽黑名单中的用户。&#x0a;白名单: 屏蔽白名单以外所有用户。">
+                    <ComboBox x:Name="ComboBox_Blockmode" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="120" ToolTip="选择用户屏蔽设置。&#xA;名单可在 设置 -&gt; 自定义 中找到。&#xA;关闭: 没有任何屏蔽。&#xA;黑名单: 屏蔽黑名单中的用户。&#xA;白名单: 屏蔽白名单以外所有用户。">
                         <ComboBoxItem Content="关闭"/>
                         <ComboBoxItem Content="黑名单"/>
                         <ComboBoxItem Content="白名单"/>
@@ -65,15 +67,15 @@
                     <TextBlock x:Name="Label_Whitelist" HorizontalAlignment="Left" Margin="10,201,0,0" TextWrapping="Wrap" Text="白名单" VerticalAlignment="Top"/>
                     <TextBox x:Name="TextBox_Whitelist" HorizontalAlignment="Left" Height="120" Margin="10,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="hidden" ToolTip="用户白名单，回车分隔。" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True"/>
                     <TextBlock HorizontalAlignment="Left" Margin="215,10,0,0" TextWrapping="Wrap" Text="礼物屏蔽模式" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="ComboBox_GiftBlockMode" HorizontalAlignment="Left" Margin="215,30,0,0" VerticalAlignment="Top" Width="120" ToolTip="选择用户屏蔽设置。&#x0a;名单可在 设置 -> 自定义 中找到。&#x0a;关闭: 没有任何屏蔽。&#x0a;黑名单: 屏蔽黑名单中的用户。&#x0a;白名单: 屏蔽白名单以外所有用户。">
+                    <ComboBox x:Name="ComboBox_GiftBlockMode" HorizontalAlignment="Left" Margin="215,30,0,0" VerticalAlignment="Top" Width="120" ToolTip="选择用户屏蔽设置。&#xA;名单可在 设置 -&gt; 自定义 中找到。&#xA;关闭: 没有任何屏蔽。&#xA;黑名单: 屏蔽黑名单中的用户。&#xA;白名单: 屏蔽白名单以外所有用户。">
                         <ComboBoxItem Content="关闭"/>
                         <ComboBoxItem Content="黑名单"/>
                         <ComboBoxItem Content="白名单"/>
                     </ComboBox>
                     <TextBlock x:Name="Label_GiftBlacklist" HorizontalAlignment="Left" Margin="215,56,0,0" TextWrapping="Wrap" Text="黑名单" VerticalAlignment="Top"/>
-                    <TextBox x:Name="TextBox_GiftBlacklist" HorizontalAlignment="Left" Height="120" Margin="215,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ToolTip="礼物黑名单，回车分隔。&#x0a;&#x0a;礼物会无视用户屏蔽设置。" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True"/>
+                    <TextBox x:Name="TextBox_GiftBlacklist" HorizontalAlignment="Left" Height="120" Margin="215,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ToolTip="礼物黑名单，回车分隔。&#xA;&#xA;礼物会无视用户屏蔽设置。" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True"/>
                     <TextBlock x:Name="Label_GiftWhitelist" HorizontalAlignment="Left" Margin="215,201,0,0" TextWrapping="Wrap" Text="白名单" VerticalAlignment="Top"/>
-                    <TextBox x:Name="TextBox_GiftWhitelist" HorizontalAlignment="Left" Height="120" Margin="215,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ToolTip="礼物白名单，回车分隔。&#x0a;&#x0a;礼物会无视用户屏蔽设置。" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True"/>
+                    <TextBox x:Name="TextBox_GiftWhitelist" HorizontalAlignment="Left" Height="120" Margin="215,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ToolTip="礼物白名单，回车分隔。&#xA;&#xA;礼物会无视用户屏蔽设置。" SpellCheck.IsEnabled="True" AcceptsReturn="True" AcceptsTab="True"/>
                     <TextBlock x:Name="Label_UID" HorizontalAlignment="Right" Margin="0,56,184,0" TextWrapping="Wrap" Text="UID" VerticalAlignment="Top"/>
                     <Slider x:Name="TrackBar_BlockType" HorizontalAlignment="Right" Margin="0,30,10,0" VerticalAlignment="Top" Width="196" Height="21" ToolTip="&lt;&lt;&lt; 滑动来改变 &gt;&gt;&gt;" Maximum="1" SmallChange="1"/>
                     <TextBlock x:Name="Label_Username" HorizontalAlignment="Right" Margin="0,56,10,0" TextWrapping="Wrap" Text="用户名" VerticalAlignment="Top"/>
@@ -83,16 +85,16 @@
             <TabItem Header="自定义">
                 <Grid Background="White">
                     <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="自定义弹幕读出内容" VerticalAlignment="Top"/>
-                    <TextBox x:Name="TextBox_CustomDMContent" Height="23" Margin="10,30,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="606" MaxLines="1" ToolTip="在此自定义收到弹幕后的读出内容。&#x0a;留空可关闭本项目读出功能。&#x0a;&#x0a;变量参考帮助:&#x0a;https://github.com/Elepover/Plugin-TTSDanmaku/wiki" SpellCheck.IsEnabled="True"/>
+                    <TextBox x:Name="TextBox_CustomDMContent" Height="23" Margin="10,30,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="606" MaxLines="1" ToolTip="在此自定义收到弹幕后的读出内容。&#xA;留空可关闭本项目读出功能。&#xA;&#xA;变量参考帮助:&#xA;https://github.com/Elepover/Plugin-TTSDanmaku/wiki" SpellCheck.IsEnabled="True"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,58,0,0" TextWrapping="Wrap" Text="自定义礼物读出内容" VerticalAlignment="Top"/>
-                    <TextBox x:Name="TextBox_CustomGiftContent" Height="23" Margin="10,78,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="606" MaxLines="1" ToolTip="在此自定义收到礼物后的读出内容。&#x0a;留空可关闭本项目读出功能。&#x0a;&#x0a;变量参考帮助:&#x0a;https://github.com/Elepover/Plugin-TTSDanmaku/wiki" SpellCheck.IsEnabled="True"/>
+                    <TextBox x:Name="TextBox_CustomGiftContent" Height="23" Margin="10,78,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="606" MaxLines="1" ToolTip="在此自定义收到礼物后的读出内容。&#xA;留空可关闭本项目读出功能。&#xA;&#xA;变量参考帮助:&#xA;https://github.com/Elepover/Plugin-TTSDanmaku/wiki" SpellCheck.IsEnabled="True"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,106,0,0" TextWrapping="Wrap" Text="自定义房间连接成功读出内容" VerticalAlignment="Top"/>
-                    <TextBox x:Name="TextBox_CustomConnected" Height="23" Margin="10,126,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="606" MaxLines="1" Background="LightGreen" ToolTip="指定插件检测到弹幕姬成功连接至房间时读出的内容。&#x0a;用 %s 来代替房间号。&#x0a;&#x0a;留空可关闭本功能。" SpellCheck.IsEnabled="True"/>
+                    <TextBox x:Name="TextBox_CustomConnected" Height="23" Margin="10,126,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="606" MaxLines="1" Background="LightGreen" ToolTip="指定插件检测到弹幕姬成功连接至房间时读出的内容。&#xA;用 %s 来代替房间号。&#xA;&#xA;留空可关闭本功能。" SpellCheck.IsEnabled="True"/>
                 </Grid>
             </TabItem>
             <TabItem Header="统计数据">
                 <Grid Background="White">
-                    <TextBox x:Name="TextBox_Stats" Height="382" TextWrapping="Wrap" Text="" Width="626" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" IsReadOnly="True" ToolTip="截至插件本次启动运行到目前的统计数据。&#x0a;当您启动插件时，数据将被清空。"/>
+                    <TextBox x:Name="TextBox_Stats" Height="382" TextWrapping="Wrap" Text="" Width="626" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" IsReadOnly="True" ToolTip="截至插件本次启动运行到目前的统计数据。&#xA;当您启动插件时，数据将被清空。"/>
                 </Grid>
             </TabItem>
             <TabItem Header="关于">
@@ -100,7 +102,7 @@
                     <TextBlock x:Name="Label_AboutTitle" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TTSDanmaku" VerticalAlignment="Top" FontSize="16"/>
                     <Button x:Name="Button_About" Content="关于 TTSDanmaku" HorizontalAlignment="Right" Margin="0,10,180,0" VerticalAlignment="Top" Width="130" Height="20" ToolTip="在弹幕姬网站上查看插件信息。"/>
                     <Button x:Name="Button_FAQ" Content="常见问题" HorizontalAlignment="Right" Margin="0,10,100,0" VerticalAlignment="Top" Width="75" Height="20" ToolTip="查看常遇到的问题以及解决方案。"/>
-                    <Button x:Name="Button_Suggestions" Content="给我一点建议" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="85" Height="20" ToolTip="前往作者的留言板。&#x0a;我会尽快回复相关建议，但不一定准时准点，感谢理解。"/>
+                    <Button x:Name="Button_Suggestions" Content="给我一点建议" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="85" Height="20" ToolTip="前往作者的留言板。&#xA;我会尽快回复相关建议，但不一定准时准点，感谢理解。"/>
                     <TextBox x:Name="TextBox_Debug" Height="337" Margin="10,35,10,10" TextWrapping="Wrap" Text="" Width="606" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" IsReadOnly="True"/>
                 </Grid>
             </TabItem>
@@ -111,8 +113,8 @@
         <Button x:Name="Button_Apply" Content="应用" HorizontalAlignment="Left" Margin="10,0,0,56" VerticalAlignment="Bottom" Width="75" ToolTip="保存所有设置。"/>
         <Button x:Name="Button_Load" Content="重新读取" HorizontalAlignment="Left" Margin="10,0,0,32" VerticalAlignment="Bottom" Width="75" ToolTip="重新读取已经保存的设置。"/>
         <Button x:Name="Button_CheckUpdates" Content="检查更新" HorizontalAlignment="Right" Margin="0,0,10,56" VerticalAlignment="Bottom" Width="75" ToolTip="检查插件更新。"/>
-        <Button x:Name="Button_Close" Content="关闭 / 取消" HorizontalAlignment="Right" Margin="0,0,10,32" VerticalAlignment="Bottom" Width="75" IsCancel="True" VerticalContentAlignment="Center" ToolTip="关闭窗口。&#x0a;所有未保存的配置都会丢失！"/>
-        <TextBlock x:Name="Label_ThanksViaMyHeart" Margin="90,0,90,32" TextWrapping="Wrap" Text="感谢您使用本插件。" VerticalAlignment="Bottom" Width="452" Height="19" TextAlignment="Center" ToolTip="真诚地在此感谢您在安装使用本插件上所花费的分分秒秒。&#x0a;您的使用是我开发的最大动力。&#x0a;&#x0a;如果有任何使用问题，请参见右侧常见问题。&#x0a;如没有列出，敬请随时与我联系。&#x0a;若不重要，请您选择 在「给我一些建议」处留下您的意见和建议。&#x0a;&#x0a;Copyright (C) 2017 Elepover.&#x0a;This is an open-source(MIT) software."/>
-        <Button x:Name="Button_Donation" Content="捐赠" HorizontalAlignment="Left" Margin="90,440,0,0" VerticalAlignment="Top" Width="75" ToolTip="赞助插件作者，如果您喜欢这个插件的话。&#x0a;&#x0a;如果您并没有那个意思，请随意使用。&#x0a;&#x0a;本插件没有捐赠版与非捐赠版之分。"/>
+        <Button x:Name="Button_Close" Content="关闭 / 取消" HorizontalAlignment="Right" Margin="0,0,10,32" VerticalAlignment="Bottom" Width="75" IsCancel="True" VerticalContentAlignment="Center" ToolTip="关闭窗口。&#xA;所有未保存的配置都会丢失！"/>
+        <TextBlock x:Name="Label_ThanksViaMyHeart" Margin="90,0,90,32" TextWrapping="Wrap" Text="感谢您使用本插件。" VerticalAlignment="Bottom" Width="452" Height="19" TextAlignment="Center" ToolTip="真诚地在此感谢您在安装使用本插件上所花费的分分秒秒。&#xA;您的使用是我开发的最大动力。&#xA;&#xA;如果有任何使用问题，请参见右侧常见问题。&#xA;如没有列出，敬请随时与我联系。&#xA;若不重要，请您选择 在「给我一些建议」处留下您的意见和建议。&#xA;&#xA;Copyright (C) 2017 Elepover.&#xA;This is an open-source(MIT) software."/>
+        <Button x:Name="Button_Donation" Content="捐赠" HorizontalAlignment="Left" Margin="90,440,0,0" VerticalAlignment="Top" Width="75" ToolTip="赞助插件作者，如果您喜欢这个插件的话。&#xA;&#xA;如果您并没有那个意思，请随意使用。&#xA;&#xA;本插件没有捐赠版与非捐赠版之分。"/>
     </Grid>
 </Window>

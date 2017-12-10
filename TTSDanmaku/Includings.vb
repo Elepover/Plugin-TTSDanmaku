@@ -41,7 +41,11 @@ Module Includings
     Public Sub NPlayTTS(filename As String)
         If IsCoolingDown Then Exit Sub
 
-        GlobalPlayer.Volume = Settings.Settings.TTSVolume / 100
+        If Settings.Settings.IgnoreTTSVolume = False Then
+            GlobalPlayer.Volume = Settings.Settings.TTSVolume / 100
+        Else
+            MainBridge.MainBridge.LogToArray("已忽略音量设置。", True)
+        End If
 
         If Settings.Settings.ReadInArray = False Then
             Try
